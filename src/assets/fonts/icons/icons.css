@@ -1,0 +1,74 @@
+@font-face {
+  font-family: "icon";
+  src: url("icon.eot?1602668386063");
+  src: url("icon.eot?#iefix-1602668386063") format("embedded-opentype"), url("icon.woff2?1602668386063") format("woff2"), url("icon.woff?1602668386063") format("woff"), url("icon.ttf?1602668386063") format("truetype"), url("icon.svg?1602668386063#icon") format("svg");
+  font-display: block;
+  unicode-range: U+EA01-EA0B;
+}
+
+.be-icon:before {
+  font-family: "icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-decoration: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  line-height: 1em;
+  margin-left: .2em;
+}
+
+/* Glyphs list */
+.be-icon-arrow-down:before {
+  content: '\ea01';
+}
+
+.be-icon-arrow-left:before {
+  content: '\ea02';
+}
+
+.be-icon-arrow-right:before {
+  content: '\ea03';
+}
+
+.be-icon-arrow-up:before {
+  content: '\ea04';
+}
+
+.be-icon-car:before {
+  content: '\ea05';
+}
+
+.be-icon-fb:before {
+  content: '\ea06';
+}
+
+.be-icon-ig:before {
+  content: '\ea07';
+}
+
+.be-icon-payment:before {
+  content: '\ea08';
+}
+
+.be-icon-service:before {
+  content: '\ea09';
+}
+
+.be-icon-time-cost:before {
+  content: '\ea0a';
+}
+
+.be-icon-tool:before {
+  content: '\ea0b';
+}

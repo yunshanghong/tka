@@ -1,11 +1,36 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <!-- [START] 測試站防止被爬蟲搜尋-->
+  <!--
+  上線後刪除此段Meta與註解
+  參考文件：https://developers.google.com/search/reference/robots_meta_tag?hl=zh-tw
+  -->
+  <meta name="robots" content="noindex, nofollow,noarchive,nosnippet,noimageindex,noodp">
+  <!-- [END] 測試站防止被爬蟲搜尋-->
   <meta charset="utf-8">
-  <title>ToyotaKintoAngular</title>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0">
+  <meta name="theme-color" content="#00708d">
+  <title>KINTO ONE</title>
+  <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/images/touch-icon.png">
+  <!-- [START] SEO Setting-->
+  <!-- 
+  <meta name="keywords" content="關鍵字設定">
+  <meta name="description" content="頁面敘述">
+  <meta property="og:title" content="頁面標題">
+  <meta property="og:description" content="頁面敘述">
+  <meta property="og:url" content="頁面連結">
+  <meta property="og:image" content="網頁代表圖FB使用600x314 ">
+  <meta property="og:locate" content="zh_tw">
+  <meta name="twitter:site" content="@sonytaiwan">
+  <meta name="twitter:title" content="頁面標題">
+  <meta name="twitter:description" content="頁面敘述">
+  <meta name="twitter:image" content="網頁代表圖">
+  -->
+  <!-- [END] SEO Setting-->
   <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
   <app-root></app-root>

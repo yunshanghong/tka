@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+	<meta name="robots" content="noindex, nofollow,noarchive,nosnippet,noimageindex,noodp">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<link rel="icon" type="image/ico" href="https://begonia-design.com.tw/favicon.ico">
+	<title>Icon Font - glyphs list</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="icons.css">
+	<link rel="stylesheet" href="iconfont-demo.css">
+</head>
+<body>
+<div class="wrapper" id="app">
+
+	<header id="header">
+		<div class="container">
+			<div class="hd-top">
+				<span class="t-title">使用說明文件：</span>
+				<a href="https://docs.google.com/document/d/1o-waHPhJDr3yPD8cfRazkEjcxA7Ho1SVKK8pNGNb9Ig/edit?usp=sharing" target="_blank" class="tooltip" data-title="限海棠設計員工讀取">gulp-iconfont 使用方式</a>
+			</div>
+			<div class="hd-center">
+				<h1 class="title">Icon Font<small class="t-tip"> - glyphs list</small></h1>
+				<div class="hd-gulptip">
+					<ul>
+						<li><span class="t-title">font-family:</span> "icon";</li>
+						<li><span class="t-title">Font class:</span> .be-icon</li>
+					</ul>
+					<p class="t-tip"><small>（於gulpfile.js調整設定）</small></p>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Main Container -->
+	<main class="container" id="main">
+		<!-- Show Type -->
+		<div class="list-type-wrapper" id="list-type-wrapper">
+			<div data-fixed-panel>
+				<div class="amount">總計 <span class="num" ref="amountNum">(ﾟ∀ﾟ)</span> 個</div>
+				<ul class="list-type">
+					<li v-if="svgIconShow === 'html' || svgIconShow === 'pug'">
+						<input type="checkbox" id="checkbox" class="checkbox" v-model="ariaHidden">
+						<label for="checkbox">使用 aria-hidden</label>
+					</li>
+					<li v-if="svgIconShow === 'sass'">
+						<input type="checkbox" id="checkbox" class="checkbox" v-model="showScss">
+						<label for="checkbox">顯示 SCSS</label>
+					</li>
+					<li v-for="item in selectOptions">
+						<input type="radio" name="showtype" :id="'show-' + item.name" class="radiobox" :value="item.name" v-model="svgIconShow" checked>
+						<label :for="'show-' + item.name">顯示 {{item.text}}</label>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- List -->
+		<ul class="glyphs-list">
+			
+			<li>
+				<i class="be-icon be-icon-arrow-down"></i>
+				<h4>arrow-down</h4>
+				<div class="input-item">
+					<input type="text" :value="svgIconInputVal('arrow-down')">
+					<button class="btn-copy">複製</button>
+				</div>
+				<p class="text-code"><span class="t-title">Unicode</span><code class="copy-unicode tooltip" data-title="複製 Unicode">\ea01</code></p>
+			</li>
+			
+			<li>
+				<i class="be-icon be-icon-arrow-left"></i>
+				<h4>arrow-left</h4>
+				<div class="input-item">
+					<input type="text" :value="svgIconInputVal('arrow-left')">
+					<button class="btn-copy">複製</button>
+				</div>
+				<p class="text-code"><span class="t-title">Unicode</span><code class="copy-unicode tooltip" data-title="複製 Unicode">\ea02</code></p>
+			</li>
+			
+			<li>
+				<i class="be-icon be-icon-arrow-right"></i>
+				<h4>arrow-right</h4>
+				<div class="input-item">
+					<input type="text" :value="svgIconInputVal('arrow-right')">
+					<button class="btn-copy">複製</button>
+				</div>
+				<p class="text-code"><span class="t-title">Unicode</span><code class="copy-unicode tooltip" data-title="複製 Unicode">\ea03</code></p>
+			</li>
+			
+			<li>
+				<i class="be-icon be-icon-arrow-up"></i>
+				<h4>arrow-up</h4>
+				<div class="input-item">
+					<input type="text" :value="svgIconInputVal('arrow-up')">
+					<button class="btn-copy">複製</button>
+				</div>
+				<p class="text-code"><span class="t-title">Unicode</span><code class="copy-unicode tooltip" data-title="複製 Unicode">\ea04</code></p>
+			</li>
+			
+			<li>
+				<i class="be-icon be-icon-car"></i>
+				<h4>car</h4>
+				<div class="input-item">
+					<input type="text" :value="svgIconInputVal('car')">
+					<button class="btn-copy">複製</button>
+				</div>
+				<p class="text-code"><span class="t-title">Unicode</span><code class="copy-unicode tooltip" data-title="複製 Unicode">\ea05</code></p>
+			</li>
+			
+			<li>
+				<i class="be-icon be-icon-fb"></i>
+				<h4>fb</h4>
+				<div class="input-item">
+					<input type="text" :value="svgIconInputVal('fb')">
+					<button class="btn-copy">複製</button>
+				</div>
+				<p class="text-code"><span class="t-title">Unicode</span><code class="copy-unicode tooltip" data-title="複製 Unicode">\ea06</code></p>
+			</li>
+			
+			<li>
+				<i class="be-icon be-icon-ig"></i>
+				<h4>ig</h4>
+				<div class="input-item">
+					<input type="text" :value="svgIconInputVal('ig')">
+					<button class="btn-copy">複製</button>
+				</div>
+				<p class="text-code"><span class="t-title">Unicode</span><code class="copy-unicode tooltip" data-title="複製 Unicode">\ea07</code></p>
+			</li>
+			
+			<li>
+				<i class="be-icon be-icon-payment"></i>
+				<h4>payment</h4>
+				<div class="input-item">
+					<input type="text" :value="svgIconInputVal('payment')">
+					<button class="btn-copy">複製</button>
+				</div>
+				<p class="text-code"><span class="t-title">Unicode</span><code class="copy-unicode tooltip" data-title="複製 Unicode">\ea08</code></p>
+			</li>
+			
+			<li>
+				<i class="be-icon be-icon-service"></i>
+				<h4>service</h4>
+				<div class="input-item">
+					<input type="text" :value="svgIconInputVal('service')">
+					<button class="btn-copy">複製</button>
+				</div>
+				<p class="text-code"><span class="t-title">Unicode</span><code class="copy-unicode tooltip" data-title="複製 Unicode">\ea09</code></p>
+			</li>
+			
+			<li>
+				<i class="be-icon be-icon-time-cost"></i>
+				<h4>time-cost</h4>
+				<div class="input-item">
+					<input type="text" :value="svgIconInputVal('time-cost')">
+					<button class="btn-copy">複製</button>
+				</div>
+				<p class="text-code"><span class="t-title">Unicode</span><code class="copy-unicode tooltip" data-title="複製 Unicode">\ea0a</code></p>
+			</li>
+			
+			<li>
+				<i class="be-icon be-icon-tool"></i>
+				<h4>tool</h4>
+				<div class="input-item">
+					<input type="text" :value="svgIconInputVal('tool')">
+					<button class="btn-copy">複製</button>
+				</div>
+				<p class="text-code"><span class="t-title">Unicode</span><code class="copy-unicode tooltip" data-title="複製 Unicode">\ea0b</code></p>
+			</li>
+			
+		</ul>
+		<!-- /.End List -->
+	</main>
+
+	<footer id="footer">
+		© 2020 網頁設計的專家－ <a href="https://begonia-design.com.tw/" target="_blank">海棠網頁設計公司</a> ALL RIGHTS RESERVED
+	</footer>
+
+</div>
+<!-- /.End .wrapper -->
+
+<!-- JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js" crossorigin="anonymous"></script>
+<script defer>
+	(function(window, document){
+		
+		// Create Element.remove() function if not exist
+		if (!('remove' in Element.prototype)) {
+			Element.prototype.remove = function() {
+				if (this.parentNode) {
+					this.parentNode.removeChild(this);
+				}
+			};
+		}
+
+		// Copy to Clipboard
+		var successMsg, clipTimer;
+
+		function addCopySuccess(){
+			if(successMsg == undefined){
+				successMsg = document.createElement('div');
+				successMsg.className = 'copysuctip';
+				successMsg.innerText = '複製成功';
+			}
+			document.body.appendChild(successMsg);
+
+			// Remove
+			clearTimeout(clipTimer);
+			clipTimer = null;
+			clipTimer = setTimeout(function(){
+				successMsg.remove();
+				clipTimer = null;
+			},3000);
+		}
+
+		var clipboard = new ClipboardJS('.btn-copy',{
+			target: function(el) {
+				return el.parentElement.querySelector('input');
+			}
+		});
+		clipboard.on('success', addCopySuccess);
+
+		var clipboard2 = new ClipboardJS('.copy-unicode',{
+			text: function(el) {
+				return el.innerText;
+			}
+		});
+		clipboard2.on('success', addCopySuccess);
+
+
+		// -----------------------------------
+		// Change Type (Vue)
+		var selectOptions = [
+			{
+				name: 'name', // radio value, vue判斷是否顯示該值基準(v-if="svgIconShow === 值")
+				text: 'File Name', // radio 顯示名稱
+
+				// input value值
+				// * tag=要使用的HTML tag
+				// * key=屬性值(一般專案為class、前端框架(Vue)專案可能會是不同值)
+				// * name=檔案名稱
+				// * mainClass為[一般專案]需求的主要class(fontClassName)[要由模板帶入值]
+				code: 'name'
+			},
+			{
+				name: 'class',
+				text: 'class',
+				code: 'mainClass mainClass-name'
+			},
+			{
+				name: 'sass',
+				text: 'SASS Mixin',
+				code: '+font-icon-name'
+			},
+			{
+				name: 'html',
+				text: 'HTML',
+				code: '<tag key="mainClass mainClass-name" aria-hidden="true"></tag>'
+			},
+			{
+				name: 'pug',
+				text: 'Pug',
+				code: 'tag.mainClass.mainClass-name(aria-hidden="true")'
+			}
+		];
+		new Vue({
+			el: '#app',
+			data: {
+				selectOptions: selectOptions,
+				svgIconShow: 'pug',
+				ariaHidden: true,
+				showScss: true,
+				// Svg Icon 設定<tag key="icon值">
+				settings: {
+					tag: 'i',
+					key: 'class',
+					mainClass: 'be-icon',
+				},
+				iconLength: '11',
+				// 快取相關↓
+				cacheEnable: true, // 是啟用快取
+				cacheKey: '_BEGONIA_ICON_DEMO_'
+			},
+			computed: {
+				// 是否使用 Cache(Local Storage)（※只有 localhost 才有）
+				cacheUse: function() {
+					return location.hostname === 'localhost'
+				}
+			},
+			watch: {
+				svgIconShow: function() {
+					this.cacheSet()
+				},
+				ariaHidden: function() {
+					this.cacheSet()
+				},
+				showScss: function() {
+					this.cacheSet()
+				}
+			},
+			mounted: function() {
+				var vm = this;
+				setTimeout(function() {
+					vm.$refs.amountNum.innerHTML = vm.iconLength
+				}, 1000)
+
+				// Cache
+				if (vm.cacheEnable) {
+					vm.cacheLoad();
+				} else {
+					vm.cacheDel();
+				}
+			},
+			methods: {
+				// 輸出 input value 值
+				svgIconInputVal: function(icon) {
+					var vm = this;
+					var result = selectOptions.filter(function(val) { return val.name === vm.svgIconShow })[0];
+					var val = result.code;
+					val = val.replace(/name/gi, icon);
+					val = val.replace(/tag/gi, vm.settings.tag);
+					val = val.replace(/key=/gi, vm.settings.key + '=');
+					val = val.replace(/mainClass/gi, vm.settings.mainClass);
+					
+					// 增加aria-hidden
+					if(!vm.ariaHidden && (vm.svgIconShow === 'html' || vm.svgIconShow === 'pug')) {
+						var regex = vm.svgIconShow === 'html' ? / aria-hidden="true"/gi : /\(aria-hidden="true"\)/gi
+						val = val.replace(regex, '');
+					}
+
+					if(vm.svgIconShow === 'sass' && vm.showScss) {
+						val = val.replace(/\+/gi, '@include ') + ';';
+					}
+
+					return val;
+				},
+				// 讀取 Cache(Local Storage)
+				cacheLoad: function() {
+					var vm = this;
+					// Get Cache(Local Storage)
+					var val = JSON.parse(localStorage.getItem(vm.cacheKey));
+					if (val !== null) {
+						vm.svgIconShow = val.svgIconShow;
+						vm.ariaHidden = val.ariaHidden;
+						vm.showScss = val.showScss;
+					}
+				},
+				// 設定 Cache(Local Storage)
+				cacheSet: function() {
+					if (this.cacheUse) {
+						var vm = this;
+						var val = {
+							svgIconShow: vm.svgIconShow,
+							ariaHidden: vm.ariaHidden,
+							showScss: vm.showScss,
+						}
+						localStorage.setItem(this.cacheKey, JSON.stringify(val));
+					}
+				},
+				cacheDel: function() {
+					localStorage.removeItem(this.cacheKey)
+				}
+			}
+		});
+
+		// -----------------------------------
+		// Scroll and fixed navigation
+
+		// Get Body Scroll Top (zh-Hant): http://www.eion.com.tw/Blogger/?Pid=1154
+		function getScrollTop(){
+			var bodyTop = 0;
+			if (typeof window.pageYOffset != "undefined") {
+				bodyTop = window.pageYOffset;
+
+			} else if (typeof document.compatMode != "undefined"
+						&& document.compatMode != "BackCompat") {
+				bodyTop = document.documentElement.scrollTop;
+
+			} else if (typeof document.body != "undefined") {
+				bodyTop = document.body.scrollTop;
+			}
+			return bodyTop
+		};
+
+		var showTypeWrapper = document.querySelector('#list-type-wrapper');
+		var showTypeWrapperOffsetTop = showTypeWrapper.getBoundingClientRect().top + getScrollTop();
+		function scrollNav(){
+			var ws = getScrollTop();
+			if(ws > showTypeWrapperOffsetTop){
+				showTypeWrapper.classList.add('is-fixed');
+			}else{
+				showTypeWrapper.classList.remove('is-fixed');
+			}
+		};
+		window.addEventListener('scroll', scrollNav);
+
+		// -----------------------------------
+		//IE old version tip
+		var userAgent = window.navigator.userAgent;  
+		if (userAgent.indexOf("MSIE 7.0")>0 || userAgent.indexOf("MSIE 8.0")>0 || userAgent.indexOf("MSIE 9.0")>0 || userAgent.indexOf("MSIE 10.0")>0) {
+			var ieTip = document.createElement('div');
+			ieTip.className = "ie-tip";
+
+			var ieTipSpan = document.createElement('span');
+			ieTipSpan.innerHTML = "不支援此版本瀏覽器，請開發者更換支援度較高之瀏覽器。<br><small>（用IE開發是要毀滅世界嗎？ಠ_ಠ）</small>";
+			ieTip.appendChild(ieTipSpan);
+
+			document.body.appendChild(ieTip);
+		}
+
+	})(window, document);
+</script>
+
+</body>
+
+</html>

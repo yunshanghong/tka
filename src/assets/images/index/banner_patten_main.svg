@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1130" height="640" viewBox="0 0 1130 640" class="banner-patten-main__svg">
+  <defs>
+    <mask id="banner-patten-main__mask">
+      <g class="banner-patten-main__mask__clouds" fill="#fff">
+        <path class="left" d="M522.5 159.5c0 11.046-8.954 20-20 20h-360c-11.046 0-20-8.954-20-20s8.954-20 20-20h360c11.046 0 20 8.954 20 20z"/>
+        <path class="left" d="M428.5 311.5c0 19.33-15.67 35-35 35h-330c-19.33 0-35-15.67-35-35s15.67-35 35-35h330c19.33 0 35 15.67 35 35z"/>
+        <path class="left" d="M409.5 463c0 4.143-3.358 7.5-7.5 7.5H217c-4.142 0-7.5-3.357-7.5-7.5s3.358-7.5 7.5-7.5h185c4.142 0 7.5 3.357 7.5 7.5z"/>
+        <path class="right" d="M1060.5 255c0 12.426-10.073 22.5-22.5 22.5H683c-12.426 0-22.5-10.074-22.5-22.5s10.074-22.5 22.5-22.5h355c12.427 0 22.5 10.074 22.5 22.5z"/>
+        <path class="right" d="M992.5 383.5c0 8.284-6.716 15-15 15h-170c-8.284 0-15-6.716-15-15 0-8.284 6.716-15 15-15h170c8.284 0 15 6.716 15 15z"/>
+      </g>
+      <circle class="banner-patten-main__mask__circle" fill="#000" stroke-miterlimit="10" cx="565" cy="319.915" r="294.782"/>
+    </mask>
+    <linearGradient id="banner-patten-main__gradient" x1="0%" y1="0%" x2="57.735%" y2="100%"> 
+      <stop offset="0%" stop-color="#a6cdd7" />
+      <stop offset="100%" stop-color="#59a2b5" />
+    </linearGradient>
+    <filter id="banner-patten-main__blur" x="0" y="0">
+      <fegaussianblur in="SourceGraphic" stdDeviation="15" />
+    </filter>
+  </defs>
+  <g class="banner-patten-main__patten--blur" filter="url(#banner-patten-main__blur)">
+    <rect x="0" y="0" width="1130" height="640" opacity="0.4" mask="url(#banner-patten-main__mask)" fill="url(#banner-patten-main__gradient)"/>
+    <circle class="banner-patten-main__circle" fill="none" stroke="#59a2b5" stroke-miterlimit="10" cx="565" cy="319.915" r="294.782"/>
+  </g>
+  <g class="banner-patten-main__patten">
+    <rect x="0" y="0" width="1130" height="640" opacity="0.4" mask="url(#banner-patten-main__mask)" fill="url(#banner-patten-main__gradient)"/>
+    <circle class="banner-patten-main__circle" fill="none" stroke="#59a2b5" stroke-miterlimit="10" cx="565" cy="319.915" r="294.782"/>
+  </g>
+</svg>

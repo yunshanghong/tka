@@ -1,0 +1,463 @@
+<main class="main-wrapper">
+	<!-- [START] Page Content-->
+	<!-- 各區塊的 JS 尋找頁面的 JS 註解-->
+	<!--
+	有滑動到該區增加動態者增加class "js-ani" ， 滑動到該區增加class "is-animated"
+	相關 JS 在 all.js
+	
+	-->
+	<!-- [START] Key Banner-->
+	<section class="sec sec-index-banner js-ani" #jsAni #bannersection>
+        <!-- [START] 背景插圖-->
+        <div class="banner-patten-bg top-right img-deco"></div>
+        <div class="banner-patten-bg bottom-left img-deco"></div>
+        <div class="banner-patten-thin-line line-1"></div>
+        <div class="banner-patten-thin-line line-2"></div>
+		<div class="banner-patten-thin-line line-3"></div>
+		
+
+
+
+
+
+
+		<!-- 圖片在 images/index/banner_patten_main.svg ，有需要使用 inline SVG 可使用-->
+        <div class="banner-patten-main img-deco">
+          <svg class="banner-patten-main__svg img-deco" xmlns="http://www.w3.org/2000/svg" width="1130" height="640" viewBox="0 0 1130 640">
+            <defs>
+              <mask id="banner-patten-main__mask">
+                <g class="banner-patten-main__mask__clouds" fill="#fff">
+                  <path class="left" d="M522.5 159.5c0 11.046-8.954 20-20 20h-360c-11.046 0-20-8.954-20-20s8.954-20 20-20h360c11.046 0 20 8.954 20 20z"></path>
+                  <path class="left" d="M428.5 311.5c0 19.33-15.67 35-35 35h-330c-19.33 0-35-15.67-35-35s15.67-35 35-35h330c19.33 0 35 15.67 35 35z"></path>
+                  <path class="left" d="M409.5 463c0 4.143-3.358 7.5-7.5 7.5H217c-4.142 0-7.5-3.357-7.5-7.5s3.358-7.5 7.5-7.5h185c4.142 0 7.5 3.357 7.5 7.5z"></path>
+                  <path class="right" d="M1060.5 255c0 12.426-10.073 22.5-22.5 22.5H683c-12.426 0-22.5-10.074-22.5-22.5s10.074-22.5 22.5-22.5h355c12.427 0 22.5 10.074 22.5 22.5z"></path>
+                  <path class="right" d="M992.5 383.5c0 8.284-6.716 15-15 15h-170c-8.284 0-15-6.716-15-15 0-8.284 6.716-15 15-15h170c8.284 0 15 6.716 15 15z"></path>
+                </g>
+                <circle class="banner-patten-main__mask__circle" fill="#000" stroke-miterlimit="10" cx="565" cy="319.915" r="294.782"></circle>
+              </mask>
+              <lineargradient id="banner-patten-main__gradient" x1="0%" y1="0%" x2="57.735%" y2="100%">
+                <stop offset="0%" stop-color="#a6cdd7"></stop>
+                <stop offset="100%" stop-color="#59a2b5"></stop>
+              </lineargradient>
+              <filter id="banner-patten-main__blur" x="0" y="0">
+                <fegaussianblur in="SourceGraphic" stdDeviation="15"></fegaussianblur>
+              </filter>
+            </defs>
+            <g class="banner-patten-main__patten--blur" filter="url(#banner-patten-main__blur)">
+              <rect x="0" y="0" width="1130" height="640" opacity="0.4" mask="url(#banner-patten-main__mask)" fill="url(#banner-patten-main__gradient)"></rect>
+              <circle class="banner-patten-main__circle" fill="none" stroke="#59a2b5" stroke-miterlimit="10" cx="565" cy="319.915" r="294.782"></circle>
+            </g>
+            <g class="banner-patten-main__patten">
+              <rect x="0" y="0" width="1130" height="640" opacity="0.4" mask="url(#banner-patten-main__mask)" fill="url(#banner-patten-main__gradient)"></rect>
+              <circle class="banner-patten-main__circle" fill="none" stroke="#59a2b5" stroke-miterlimit="10" cx="565" cy="319.915" r="294.782"></circle>
+            </g>
+          </svg>
+        </div>
+		<!-- [END] 背景插圖-->
+		
+
+
+
+
+
+
+        <div class="grid-container">
+			<div class="sec-title">
+				<h2 class="sec-title__title">An Easy Way<br><span class="to">to </span><span class="em">Own</span><br>a New Car.</h2>
+			</div>
+		  
+				<div class="swiper-box index-banner">
+					<div class="swiper-container" id="banner-carousel" #bannerSwiperContainer>
+						<div class="car-diffuse-glow"></div>
+						<div class="swiper-wrapper">
+							<div class="swiper-slide index-banner__item"><a class="index-banner__link" href="javascript:;" title="Red Mica Metallic - Model detail">
+								<div class="index-banner__cont"><img class="swiper-lazy" src="assets/images/products/corolla_altis_red.png" alt="Red Mica Metallic"/></div></a></div>
+							<div class="swiper-slide index-banner__item"><a class="index-banner__link" href="javascript:;" title="Phantom Brown Metallic - Model detail">
+								<div class="index-banner__cont"><img class="swiper-lazy" src="assets/images/products/corolla_altis_brown.png" alt="Phantom Brown Metallic"/></div></a></div>
+							<div class="swiper-slide index-banner__item"><a class="index-banner__link" href="javascript:;" title="Attitude Black Mica - Model detail">
+								<div class="index-banner__cont"><img class="swiper-lazy" src="assets/images/products/corolla_altis_black.png" alt="Attitude Black Mica"/></div></a></div>
+							<div class="swiper-slide index-banner__item"><a class="index-banner__link" href="javascript:;" title="White Pearl Crystal Shine - Model detail">
+								<div class="index-banner__cont"><img class="swiper-lazy" src="assets/images/products/corolla_altis_white.png" alt="White Pearl Crystal Shine"/></div></a></div>
+							<div class="swiper-slide index-banner__item"><a class="index-banner__link" href="javascript:;" title="Celestite Gray Metallic - Model detail">
+								<div class="index-banner__cont"><img class="swiper-lazy" src="assets/images/products/corolla_altis_gray.png" alt="Celestite Gray Metallic"/></div></a></div>
+							<div class="swiper-slide index-banner__item"><a class="index-banner__link" href="javascript:;" title="Silver Metallic - Model detail">
+								<div class="index-banner__cont"><img class="swiper-lazy" src="assets/images/products/corolla_altis_silver.png" alt="Silver Metallic"/></div></a></div>
+						</div>
+					</div>
+					<div class="swiper-ctrl no-selection">
+					<div class="swiper-pagination" #bannerSwiperPagination></div>
+					<div class="swiper-button-prev" #bannerSwiperPrev></div>
+					<div class="swiper-button-next" #bannerSwiperNext></div>
+					</div>
+				</div>
+		  
+		</div>
+		
+
+
+
+
+
+
+        <div class="grid-container text-center" #bannaerGridContainer>
+			<div class="grid-x grid-padding-x index-choice-info one-line" >
+				<div class="cell index-choice-info__title-box"><a class="index-choice-info__title-link" href="javascript:;">
+					<h3 class="index-choice-info__name">Corolla Altis</h3></a></div>
+				<div class="cell small-6 index-choice-info__cont-box">
+				<ul class="choice-year">
+					<li class="choice-year__item">
+					<div class="choice-year__circle">
+						<div class="choice-year__num">1</div>
+					</div>
+					<div class="choice-year__unit">year</div>
+					</li>
+					<li class="choice-year__item is-active">
+					<div class="choice-year__circle">
+						<div class="choice-year__num">3</div>
+					</div>
+					<div class="choice-year__unit">years</div>
+					</li>
+					<li class="choice-year__item">
+					<div class="choice-year__circle">
+						<div class="choice-year__num">7</div>
+					</div>
+					<div class="choice-year__unit">years</div>
+					</li>
+				</ul>
+				</div>
+				<div class="cell small-6 index-choice-info__cont-box">
+				<div class="index-choice-info__price">$ 1,280</div>
+				<div class="index-choice-info__tip">per month</div>
+				</div>
+			</div>
+			<div class="button-box text-center"><a class="button" href="javascript:;">Apply Now</a></div>
+        </div>
+	</section>
+	<div class="sec-deco-line center hide-for-large" ></div>
+	<!-- [END] Key Banner-->
+
+
+
+
+
+
+
+
+
+
+
+	<!-- [START] Reasons-->
+	<section class="sec sec-index-reasons js-ani" #jsAni>
+		<div class="radius-bar-deco top-right">
+			<div class="radius-bar-group">
+			<div class="radius-bar size-l opacity-20"></div>
+			<div class="radius-bar size-m opacity-25 offset-left-10"></div>
+			</div>
+		</div>
+		<div class="radius-bar-deco bottom-left">
+			<div class="radius-bar-group">
+			<div class="radius-bar size-m opacity-10"></div>
+			<div class="radius-bar size-s opacity-10 offset-right-10"></div>
+			<div class="radius-bar size-xs opacity-10 offset-right-5"></div>
+			</div>
+		</div>
+		<div class="grid-container">
+			<div class="sec-title text-center">
+			<h2 class="sec-title__title">5 Reasons to choose <span class="em">KINTO ONE</span></h2>
+			<p class="sec-title__desc">Sub Title reference text Sub Title reference text</p>
+			</div>
+			
+			<!-- data-break-destroy: [medium|large] 螢幕寬時多少 destroy
+			medium: 640+ 破壞輪播，639-執行輪播
+			large: 1024+ 破壞輪播，1023-執行輪播
+			★提醒：「.circle-icon-box」的 Swiper JS 在 js/all.js -->
+			
+			<div class="circle-icon-box digital swiper-box index-reasons col-medium-3 col-large-5" data-destroy-break="medium">
+				<div class="swiper-container" id="reasons-carousel" #reasonsSwiperContainer>
+					<div class="swiper-wrapper circle-icon-box__cont">
+						<!-- [Start] FAQ Array Data -->
+						<div *ngFor="let reason of fiveReasons; let i = index" class="swiper-slide circle-icon-box__item" data-css-index="i">
+							<div class="circle-icon-box__icon-box">
+								<i class="be-icon absolute-center" aria-hidden="true" [ngClass]="{'be-icon-service': i === 0, 'be-icon-payment': i === 1, 'be-icon-time-cost': i === 2, 'be-icon-tool': i === 3, 'be-icon-car': i === 4 }"></i>
+							</div>
+							<h4 class="circle-icon-box__title">{{reason.title}}</h4>
+							<div class="circle-icon-box__desc">{{reason.shortDescription}}</div>
+						</div>
+						<!-- [End] FAQ Array Data -->
+					</div>
+				</div>
+				<div class="swiper-pagination" #reasonsSwiperPagination></div>
+			</div>
+		</div>
+		<!-- 線段計算高要JS，寫於index.js-->
+		<div class="sec-deco-line right cont js-ani" #jsAni #reasonsLine></div>
+	</section>
+	<div class="sec-deco-line center js-ani" #jsAni></div>
+	<!-- [END] Reasons-->
+
+
+
+
+
+
+
+
+	<!-- [START] Top Choices-->
+	<section class="sec sec-index-choice js-ani" #jsAni #choiceSection>
+		<!-- <div class="sec-title text-center">
+			<h2 class="sec-title__title">Top Choices</h2>
+		</div> -->
+
+		<div class="swiper-box index-choice">
+			<!--
+			↓因為要正確顯示視覺稿的層級，Hover操作按鈕視覺上的正常，而設置的 *-hover-mask
+			流程：點擊觸發 Swiper 切換
+			-->
+			<div class="swiper-button-prev-hover-mask" (click)="onChoicePrev()"></div>
+			<div class="swiper-button-next-hover-mask" (click)="onChoiceNext()"></div>
+			<div class="swiper-container" id="choice-carousel" #choiceSwiperContainer>
+				<div class="car-diffuse-glow"></div>
+				<div class="swiper-wrapper">
+					<!-- [Start] Top Choices Array Data -->
+					<div *ngFor="let choice of topChoices; let i = index" class="swiper-slide index-choice__item">
+						<a href="javascript:;" title="{{choice.vehicle.name}} - Model detail">
+							<img class="swiper-lazy" src="{{choice.vehicle.primaryImageUrl}}" alt="{{choice.vehicle.name}}"/>
+						</a>
+					</div>
+					<!-- [End] Top Choices Array Data -->
+					<div class="swiper-slide index-choice__item"><a href="javascript:;" title="Camry - Model detail"><img class="swiper-lazy" src="assets/images/products/car_02.png" alt="Camry"/></a></div>
+					<div class="swiper-slide index-choice__item"><a href="javascript:;" title="Camry - Model detail"><img class="swiper-lazy" src="assets/images/products/car_03.png" alt="Camry"/></a></div>
+					<div class="swiper-slide index-choice__item"><a href="javascript:;" title="Camry - Model detail"><img class="swiper-lazy" src="assets/images/products/car_04.png" alt="Camry"/></a></div>
+				</div>
+			</div>
+			<div class="swiper-button-prev" #choiceSwiperPrev>
+				<div class="index-choice__nav-bg"></div>
+				<div class="index-choice__nav-text text-center">
+					<div class="name">C-HR</div>
+					<div class="price">from $ <span>1,220</span> per month</div>
+					<div class="tip">(with COE)</div>
+				</div>
+			</div>
+			<div class="swiper-button-next" #choiceSwiperNext>
+			<div class="index-choice__nav-bg"></div>
+			<div class="index-choice__nav-text text-center">
+				<div class="name">Rav4</div>
+				<div class="price">from $ <span>1,220</span> per month</div>
+				<div class="tip">(with COE)</div>
+			</div>
+			</div>
+		</div>
+		<div class="grid-container text-center full" #choiceGridContainer>
+			<div class="grid-x grid-padding-x index-choice-info" >
+				<div class="cell index-choice-info__title-box" #choiceTitleBox><a class="index-choice-info__title-link" href="javascript:;">
+					<div class="index-choice-info__brand">Toyota</div>
+					<h3 class="index-choice-info__name">Camry</h3></a></div>
+				<div class="cell small-6 index-choice-info__cont-box">
+					<ul class="choice-year">
+					<li class="choice-year__item">
+						<div class="choice-year__circle">
+						<div class="choice-year__num">1</div>
+						</div>
+						<div class="choice-year__unit">year</div>
+					</li>
+					<li class="choice-year__item is-active">
+						<div class="choice-year__circle">
+						<div class="choice-year__num">3</div>
+						</div>
+						<div class="choice-year__unit">years</div>
+					</li>
+					<li class="choice-year__item">
+						<div class="choice-year__circle">
+						<div class="choice-year__num">7</div>
+						</div>
+						<div class="choice-year__unit">years</div>
+					</li>
+					</ul>
+				</div>
+				<div class="cell small-6 index-choice-info__cont-box">
+					<div class="index-choice-info__price">$ 1,280</div>
+					<div class="index-choice-info__tip">per month</div>
+				</div>
+			</div>
+			<div class="button-box text-center"><a class="button" href="javascript:;">All Models</a></div>
+		</div>
+	</section>
+	<div class="sec-deco-line center hide-for-large js-ani" #jsAni></div>
+	<!-- [END] Top Choices-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- [START] FAQ-->
+	<section class="sec sec-index-faq js-ani" #jsAni>
+		<div class="radius-bar-deco top-right">
+			<div class="radius-bar-group">
+			<div class="radius-bar size-l opacity-20"></div>
+			<div class="radius-bar size-m opacity-25 offset-left-10"></div>
+			</div>
+		</div>
+		<div class="radius-bar-deco bottom-left">
+			<div class="radius-bar-group">
+			<div class="radius-bar size-m opacity-10"></div>
+			<div class="radius-bar size-s opacity-10 offset-right-10"></div>
+			<div class="radius-bar size-xs opacity-10 offset-right-5"></div>
+			</div>
+		</div>
+		<div class="grid-container">
+			<div class="sec-title text-center">
+			<h2 class="sec-title__title">Frequently Asked Questions</h2>
+			<p class="sec-title__desc">Sub Title reference text Sub Title reference text</p>
+			</div>
+			<div class="swiper-box index-faq">
+				<div class="swiper-container" id="faq-carousel" #faqSwiperContainer>
+					<div class="swiper-wrapper">
+						<!-- [Start] FAQ Array Data -->
+						<div *ngFor="let item of FAQs; let i = index" class="swiper-slide index-faq__item" #faqSwiperSlide><a class="card-box" href="javascript:;" title="{{item.title}}">
+							<div class="hover-refl"><span class="hover-refl__light"></span></div>
+							<div class="card-box__img-box object-fit"><img class="swiper-lazy" src='assets/images/index/faq_{{i+1}}.jpg' alt="{{item.title}}"/></div>
+							<div class="card-box__text-box indent">
+								<h3 class="card-box__title clamp-3">{{item.title}}</h3>
+								<p class="clamp-4">{{item.content}}</p>
+							</div></a>
+						</div>
+						<!-- [End] FAQ Array Data -->
+					</div>
+				</div>
+				<div class="swiper-pagination" #faqSwiperPagination></div>
+				<div class="swiper-button-prev" #faqSwiperPrev></div>
+				<div class="swiper-button-next" #faqSwiperNext></div>
+			</div>
+			<div class="button-box text-center"><a class="button" href="javascript:;">All FAQs</a></div>
+		</div>
+		<!-- 線段計算高要JS，寫於index.js-->
+		<div class="sec-deco-line right js-ani" #jsAni #faqLine></div>
+	</section>
+	<div class="sec-deco-line center js-ani" #jsAni></div>
+	<!-- [END] FAQ-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- [START] Promotion-->
+	<section class="sec sec-index-promotion js-ani" #jsAni>
+		<div class="radius-bar-deco top-right">
+			<div class="radius-bar-group">
+			<div class="radius-bar size-l opacity-20"></div>
+			<div class="radius-bar size-m opacity-25 offset-left-10"></div>
+			</div>
+		</div>
+		<div class="radius-bar-deco bottom-left">
+			<div class="radius-bar-group">
+			<div class="radius-bar size-m opacity-10"></div>
+			<div class="radius-bar size-s opacity-10 offset-right-10"></div>
+			<div class="radius-bar size-xs opacity-10 offset-right-5"></div>
+			</div>
+		</div>
+		<div class="grid-container">
+			<div class="sec-title text-center">
+			<h2 class="sec-title__title">Latest Promotion</h2>
+			</div>
+			<div class="swiper-box index-promotion">
+			<div class="swiper-container" id="promotion-carousel" #promotionSwiperContainer>
+				<div class="swiper-wrapper">
+					<!-- [START] Promotion Array Data-->
+					<div *ngFor="let promotion of promotions; let i = index" class="swiper-slide index-promotion__item">
+						<a class="index-promotion__img-box object-fit" href="javascript:;" title="{{promotion.title}}">
+							<div class="hover-refl">
+								<span class="hover-refl__light"></span>
+							</div>
+							<img class="swiper-lazy" src="{{promotion.detailBannerImageUrl}}" alt="{{promotion.title}}"/>
+						</a>
+					</div>
+					<!-- [END] Promotion Array Data-->
+				</div>
+			</div>
+			<div class="swiper-pagination" #promotionSwiperPagination></div>
+			<div class="swiper-button-prev" #promotionSwiperPrev></div>
+			<div class="swiper-button-next" #promotionSwiperNext></div>
+			</div>
+		</div>
+	</section>
+	<div class="sec-deco-line center js-ani" #jsAni></div>
+	<!-- [END] Promotion-->
+	  
+
+
+
+
+
+	<!-- [START] Last Section-->
+	<section class="sec sec-index-last js-ani" #jsAni>
+		<div class="radius-bar-deco top-right">
+			<div class="radius-bar-group">
+			<div class="radius-bar size-l opacity-20"></div>
+			<div class="radius-bar size-m opacity-25 offset-left-10"></div>
+			</div>
+		</div>
+		<div class="radius-bar-deco bottom-left">
+			<div class="radius-bar-group">
+			<div class="radius-bar size-m opacity-10"></div>
+			<div class="radius-bar size-s opacity-10 offset-right-10"></div>
+			<div class="radius-bar size-xs opacity-10 offset-right-5"></div>
+			</div>
+		</div>
+		<div class="grid-container">
+			<div class="grid-x grid-margin-x">
+			<div class="cell medium-6 last-img-box-wrapper">
+				<div class="last-img-box img-ref">
+				<!-- [START] 背景插圖--><img class="lazyload img-deco last-img-box__bg img" src="assets/images/index/last_deco.png" alt="">
+				<div class="img-deco last-img-box__bg">
+					<!-- 圖片在 images/index/last_deco.svg ，有需要使用 inline SVG 可使用-->
+					<svg class="last-img-box__bg__svg" xmlns="http://www.w3.org/2000/svg" width="991" height="658" viewBox="0 0 991 658">
+						<defs>
+							<mask id="last-img-box__bg__mask">
+							<path fill="#fff" d="M606.589 312.91c-33.481-25.89-86.843-31.99-133.499-.189-63.98 43.584-70.825 123.675-36.228 185.607 34.225 61.417 98.902 82.648 172.8 75.992 83.629-7.544 150.541-53.409 189.562-106.632 35.11-47.869 72.826-163.72-1.91-274.171-56.946-84.094-131.217-111.101-210.748-111.009-87.632.049-148.026 65.843-189.888 115.342-65.002 76.921-94.618 93.917-150.587 98.575-55.876 4.703-107.796-19.185-133.499-45.634-25.75-26.446-40.092-46.19-40.092-46.19s31.152 58.065 73.013 92.802c45.026 37.388 114.499 55.691 188.723 28.869 88.238-31.848 136.572-86.283 166.046-103.138 60.161-34.365 142.021-6.38 159.39 55.364 20.161 71.614-18.58 119.947-18.58 119.947s13.319-48.659-34.503-85.535"></path>
+							</mask>
+							<lineargradient id="last-img-box__bg__gradient" x1="0%" y1="0%" x2="57.735%" y2="100%">
+								<stop offset="0%" stop-color="#a6cdd7"></stop>
+								<stop offset="100%" stop-color="#59a2b5"></stop>
+							</lineargradient>
+						</defs>
+						<path class="last-img-box__bg__line line-1" fill="none" stroke="#59a2b5" stroke-miterlimit="10" d="M72.5 204.601s14.342 19.744 40.092 46.19c25.703 26.45 77.623 50.337 133.499 45.634 55.969-4.658 85.585-21.653 150.587-98.575C438.54 148.352 498.934 82.557 586.566 82.508c79.531-.093 153.802 26.915 210.748 111.009 74.736 110.451 37.021 226.302 1.91 274.171-39.021 53.223-105.933 99.088-189.562 106.632-73.897 6.656-138.575-14.575-172.8-75.992-34.598-61.933-27.752-142.023 36.228-185.607 46.656-31.801 100.018-25.701 133.499.189 47.821 36.876 34.503 85.536 34.503 85.536"></path>
+						<path class="last-img-box__bg__line line-2" fill="none" stroke="#59a2b5" stroke-miterlimit="10" d="M72.5 204.601s31.152 58.065 73.013 92.802c45.026 37.388 114.499 55.691 188.723 28.869 88.238-31.848 136.572-86.283 166.046-103.138 60.161-34.365 142.021-6.38 159.39 55.364 20.161 71.614-18.58 119.947-18.58 119.947"></path>
+						<g mask="url(#last-img-box__bg__mask)" fill="url(#last-img-box__bg__gradient)">
+							<path class="last-img-box__bg__rect" d="M69.159 77.032h774v502h-774z" transform="translate(0, 658)"></path>
+						</g>
+					</svg>
+				</div>
+				<!-- [END] 背景插圖-->
+				<!-- 車--><img class="lazyload img-deco last-img-box__car" src="assets/images/index/last_car.png" alt="">
+				</div>
+			</div>
+			<div class="cell medium-auto">
+				<h3 class="sec-index-last__title">Simple &amp;<br>Smart Mobility: <br><span>that's KINTO.</span></h3>
+				<div class="sec-index-last__btn-box button-box"><a class="button" href="javascript:;">All Models</a></div>
+			</div>
+			</div>
+		</div>
+	</section>
+	<!-- [END] Last Section-->
+
+
+	<!-- [END] Page Content-->
+</main>

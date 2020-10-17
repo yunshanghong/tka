@@ -1,0 +1,48 @@
+<!-- [START] Header-->
+<!--流程： window 下滑 >= 200 ，#header 增加 class 'is-collapse'
+-->
+<header class="hd" id="header" [ngClass]="{'is-collapse' : MenusIsCollapse}">
+    <div class="hd-cont">
+		<!-- Logo：首頁使用<h1>，非首頁使用<a>-->
+			<h1 class="hd-logo kinto-logo"><img src="assets/images/logo_kintoone_line.svg" alt="KINTO ONE"></h1>
+			<!--<a class="hd-logo kinto-logo" href="/"><img src="images/logo_kintoone_line.svg" alt="KINTO ONE"></a>-->
+		<!-- 漢堡-->
+		<!--
+		流程：點擊 button#hamburger
+		1. button#hamburger toggleClass 'is-active'
+		2. nav#hd-menu toggleClass 'is-open'
+		-->
+		<button class="hd-hamburger" [ngClass]="{'is-active' : HamburgerIsActive}" id="hamburger" type="button" aria-label="Menu" (click)="onToggleHamberguer()" >
+			<svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="60" height="60" viewBox="0 0 60 60">
+				<path class="hd-hamburger__line hd-hamburger__line--1" d="M55 20H10l-21.145 21.047"></path>
+				<path class="hd-hamburger__line hd-hamburger__line--2" d="M55 30h-75"></path>
+				<path class="hd-hamburger__line hd-hamburger__line--3" d="M55 40H10l-21.145-21.047"></path>
+			</svg>
+		</button>
+		<!-- 主選單-->
+		<!-- 
+		流程1：點擊 a.hd-menu__link → 外層 li.hd-menu__item 增加 class 'is-open' ，並消除其它的 'is-open'
+		流程2：點擊 div.hd-menu__bg → 動作同上
+		NOTE 流程3：data-href 在 Mobile 的時候使用空值href javascript:; ，一般PC的時候使用data-href值（Detect Device to change href）
+		NOTE Menu 大小有點變
+		NOTE 缺流程一的動畫
+		-->
+		<nav class="hd-menu" [ngClass]="{'is-open' : HamburgerIsActive}" id="hd-menu">
+			<div class="hd-menu__bg" (click)="onToggleHamberguer()"></div>
+			<ul class="hd-menu__list">
+				<li class="hd-menu__item dark hide-for-large"><a class="hd-menu__link js-detect-for-link" href="javascript:;" data-href="models.html">ALL MODELS</a></li>
+				
+				<li *ngFor="let menu of Menus; let i = index" class="hd-menu__item" [ngClass]="{'has-sec': menu.children !== undefined, 'is-open': menu.isOpen }" >
+					<a class="hd-menu__link js-detect-for-link" href="javascript:;" data-href="about.html" (click)="onToggleMenu(i)">{{menu.title}}</a>
+					<ul class="hd-menu__sec" *ngIf="menu.children !== undefined">
+						<li *ngFor="let item of menu.children" class="hd-menu__sec__item">
+							<a class="hd-menu__sec__link" href="javascript:;">{{item.title}}</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+		<a class="button hd-btn" href="javascript:;">All Models</a>
+    </div>
+</header>
+<!-- [END] header-->
