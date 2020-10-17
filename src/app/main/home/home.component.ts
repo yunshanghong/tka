@@ -3,9 +3,6 @@ import { DOCUMENT } from '@angular/common';
 
 // import Swiper JS
 import Swiper from 'swiper';
-// import Swiper styles
-import 'swiper/swiper-bundle.css';
-
 import { InfoService } from '../../services/info.service';
 
 interface rgbInterface {
@@ -22,19 +19,18 @@ interface rgbInterface {
 export class HomeComponent implements OnInit {
 
     // 2. Five Reasons
-    fiveReasons: Array<Object> = [];
+    fiveReasons: Array<Object>;
 
     // 3. Choice Carousel
-    topChoices: Array<Object> = [];
+    topChoices: Array<Object>;
     choiceSwiper: Swiper;
 
     // 4. FAQ Carousel
-    FAQs: Array<Object> = [];
-    faqSwiper: Swiper;
+    FAQs: Array<Object>;
+    faqSwiper: Swiper
 
     // 5. Latest Promotion
-    promotionSwiper: Swiper;
-    promotions: Array<Object> = [];
+    promotions: Array<Object>;
 
     @ViewChildren('jsAni') sections: QueryList<ElementRef>;
     // 1. Banner
@@ -63,32 +59,63 @@ export class HomeComponent implements OnInit {
     @ViewChildren('faqSwiperSlide') faqSwiperSlides: QueryList<ElementRef>;
     @ViewChild('faqLine') faqLine: ElementRef;
     // 5. Latest Promotion
-    @ViewChild('promotionSwiperContainer') promotionSwiperContainer: ElementRef;
+    @ViewChild('promotionSC') promotionSC: ElementRef;
     @ViewChild('promotionSwiperPagination') promotionSwiperPagination: ElementRef;
     @ViewChild('promotionSwiperPrev') promotionSwiperPrev: ElementRef;
     @ViewChild('promotionSwiperNext') promotionSwiperNext: ElementRef;
 
-    constructor(private infoService: InfoService, @Inject(DOCUMENT) private document: Document, private renderer: Renderer2) {
-
-    }
+    constructor(private infoService: InfoService, @Inject(DOCUMENT) private document: Document, private renderer: Renderer2) { }
 
     ngOnInit() {
         //#region load data before render
         // 1. Banner
-        this.infoService.getBanner();
+        this.infoService.getBanner().subscribe(
+            response => { console.log(response) },
+            error => console.error(error),
+            () => { this.onBuildBannerCarousel(); }
+        );
         // 2. Five Reasons
-        this.infoService.getFiveReasons().then(response => this.fiveReasons = response.data);
+        this.infoService.getFiveReasons().subscribe(
+            (response: Array<Object>) => this.fiveReasons = response,
+            error => console.error(error),
+            () => {
+                this.onBuildCircleIconBox();
+                this.onLineCalcReason();
+            }
+        );
 
         // 3. Top Choices
-        this.infoService.getTopChoices().then(response => this.topChoices = response.data);
+        this.infoService.getTopChoices().subscribe(
+            (response: Array<Object>) => { console.log(response); this.topChoices = response },
+            error => console.error(error),
+            () => { this.onBuildChoiceCarousel(); }
+        );
 
         // 4. FAQ
-        this.infoService.getFAQ().then(response => this.FAQs = response.data);
+        this.infoService.getFAQ().subscribe(
+            (response: Array<Object>) => this.FAQs = response,
+            error => console.error(error),
+            () => {
+                this.onBuildFaq();
+                this.onLineCalcFaq();
+            }
+        );
+
 
         // 5. Latest Promotion
-        this.infoService.getLatestPromotion().then(response => this.promotions = response.data);
+        this.infoService.getLatestPromotion().subscribe(
+            (response: Array<Object>) => this.promotions = response,
+            error => console.error(error),
+            () => {
+                this.onBuildPromotionCarousel()
+            }
+        );
+        
 
-        this.infoService.getHomeImageUrl();
+        this.infoService.getHomeImageUrl().subscribe(
+            response => { console.log(response) },
+            error => console.error(error)
+        );
         //#endregion
         this.onAddIsAnimated();
     }
@@ -96,18 +123,6 @@ export class HomeComponent implements OnInit {
     @HostListener('window:load', [])
     onWindowLoaded() {
         this.onAddIsAnimated();
-        // 1. Banner
-        this.onBuildBannerCarousel();
-        // 2. Five Reasons
-        this.onBuildCircleIconBox();
-        this.onLineCalcReason();
-        // 3. Choice Carousel
-        this.onBuildChoiceCarousel();
-        // 4. FAQ Carousel
-        this.onBuildFaq();
-        this.onLineCalcFaq();
-        // 5. Latest Promotion
-        this.onBuildPromotionCarousel();
     }
 
     @HostListener('window:scroll', [])
@@ -428,20 +443,19 @@ export class HomeComponent implements OnInit {
 
     //#region Section5. Latest Promotion
     onBuildPromotionCarousel(): void {
-        console.log("Start")
-        var swiperTarget = this.promotionSwiperContainer.nativeElement ;
+        var swiperTarget = this.promotionSC.nativeElement as HTMLElement;
         var swiperPageEl = this.promotionSwiperPagination.nativeElement as HTMLElement;
         var swiperNextEl = this.promotionSwiperNext.nativeElement as HTMLElement;
         var swiperPrevEl = this.promotionSwiperPrev.nativeElement as HTMLElement;
-        console.log(swiperTarget)
-        this.promotionSwiper = new Swiper(swiperTarget, {
+        new Swiper(swiperTarget, {
             effect: 'coverflow',
             grabCursor: true,
             centeredSlides: true,
             slidesPerView: 'auto',
-            slideToClickedSlide: true,
             loop: true,
             preloadImages: false,
+            autoHeight: true,
+            loopedSlides: 3,
             lazy: {
                 loadPrevNext: true
             },

@@ -21,7 +21,6 @@
     "@angular/router": "~10.1.5",
     "@types/swiper": "^5.4.0",
     "axios": "^0.20.0",
-    "express": "^4.17.1",
     "lazyload": "^2.0.0-rc.2",
     "ngx-useful-swiper": "^10.0.1",
     "rxjs": "~6.6.0",

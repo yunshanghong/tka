@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './main/home/home.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule,
     NgxUsefulSwiperModule,
     RouterModule.forRoot(routes),
   ],
