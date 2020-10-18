@@ -1,6 +1,5 @@
 export const defaultNavigationConfig = [{
     title: 'WHAT IS KINTO ONE',
-    isOpen: false,
     children: [
         {
             title: 'About KINTO',
@@ -14,7 +13,6 @@ export const defaultNavigationConfig = [{
 },
 {
     title: 'NEW & PROMOTION',
-    isOpen: false,
     children: [
         {
             title: 'Promotion',
@@ -32,7 +30,6 @@ export const defaultNavigationConfig = [{
 },
 {
     title: 'FAQ',
-    isOpen: false,
     children: [
         {
             title: 'Accessories',

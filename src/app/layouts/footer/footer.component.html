@@ -13,7 +13,7 @@
             <div class="ft__cell ft-sitemap-wrapper">
      	        <!-- Start Footer Array Data -->
 				<div *ngFor="let menu of Menus; let i = index" class="ft-sitemap" (click)="onToggleMenu(i)">
-					<div class="ft-sitemap__cont" [ngClass]="{'is-open': menu.isOpen }">
+					<div class="ft-sitemap__cont" #menu>
 						<h5 class="ft-subtitle ft-sitemap__title">{{menu.title}}</h5>
 						<ul class="ft-sitemap__list">
 							<li *ngFor="let item of menu.children" class="ft-sitemap__item"><a class="ft-sitemap__link" href="javascript:;">{{item.title}}</a></li>

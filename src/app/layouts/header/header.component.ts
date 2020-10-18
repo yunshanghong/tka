@@ -1,10 +1,9 @@
-import { Component, HostListener, Inject } from '@angular/core';
+import { Component, HostListener, Inject, ViewChildren, ElementRef, QueryList, Renderer2 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { defaultNavigationConfig } from '../layoutConfig';
 
 export interface MenuFirstLayer {
     title: string;
-    isOpen: boolean ;
     children: Array<object>;
     url: string;
 }
@@ -20,19 +19,26 @@ export class HeaderComponent {
     MenusIsCollapse: boolean = false;
     HamburgerIsActive: boolean = false;
 
-    constructor(@Inject(DOCUMENT) private document: Document) { }
-    
+    @ViewChildren('menu') menu: QueryList<ElementRef>;
+
+    constructor(@Inject(DOCUMENT) private document: Document, private renderer: Renderer2) { }
+
     // 監控頁面滾動
     @HostListener('window:scroll', [])
     onWindowScroll() {
         this.MenusIsCollapse = this.document.documentElement.scrollTop >= 200 ? true : false;
     }
 
-    onToggleHamberguer(){
+    onToggleHamberguer() {
         this.HamburgerIsActive = !this.HamburgerIsActive;
     }
 
-    onToggleMenu(inputIndex: number){
-        this.Menus = this.Menus.map((item: MenuFirstLayer, index)=> (index === inputIndex) ? {...item, isOpen: !item.isOpen} : {...item} )
+    onToggleMenu(inputIndex: number) {
+        this.menu.map((item, index) => {
+            if (index === inputIndex) {
+                const clickedEl = item.nativeElement as HTMLElement;
+                this.renderer[clickedEl.classList.contains('is-open') ? 'removeClass' : 'addClass'](item.nativeElement, 'is-open');
+            }
+        })
     }
 }
