@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         //#region load data before render
         // 1. Banner
         this.infoService.getBanner().subscribe(
-            response => { },
+            (response: Array<Object>) => { console.log(response) },
             error => console.error(error)
         );
         // 2. Five Reasons
@@ -97,11 +97,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
         );
 
         this.infoService.getHomeImageUrl().subscribe(
-            response => { },
+            (response: any) => { console.log(response) },
             error => console.error(error)
         );
         //#endregion
     }
+    // execute after getting ViewChild
     ngAfterViewInit() {
         this.onAddIsAnimated();
     }

@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "db-for-angular"
+    "default": "toyota-kinto-angular",
+    "staging": "toyota-kinto-angular"
   }
 }

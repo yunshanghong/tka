@@ -13,7 +13,8 @@ import { FooterComponent } from './layouts/footer/footer.component';
 
 // Routes Path and Components
 const routes: Routes = [
-  { path: '', component: HomeComponent }
+  { path: '', component: HomeComponent },
+  { path: '**', redirectTo: "/"},
 ];
 
 @NgModule({
