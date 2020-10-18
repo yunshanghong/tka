@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         //#region load data before render
         // 1. Banner
         this.infoService.getBanner().subscribe(
-            (response: Array<Object>) => { console.log(response) },
+            (response: Array<Object>) => { },
             error => console.error(error)
         );
         // 2. Five Reasons
@@ -97,20 +97,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
         );
 
         this.infoService.getHomeImageUrl().subscribe(
-            (response: any) => { console.log(response) },
+            (response: any) => { },
             error => console.error(error)
         );
         //#endregion
     }
     // execute after getting ViewChild
     ngAfterViewInit() {
-        this.onAddIsAnimated();
-    }
-
-    @HostListener('window:load', [])
-    onWindowLoaded() {
-        console.log("【Loaded】");
-
         // 1. Banner
         this.onBuildBannerCarousel();
 
@@ -129,17 +122,20 @@ export class HomeComponent implements OnInit, AfterViewInit {
         this.onBuildPromotionCarousel();
     }
 
+    @HostListener('window:load', [])
+    onWindowLoaded() {
+        this.onAddIsAnimated();
+    }
+
     @HostListener('window:scroll', [])
     onWindowScroll() {
-        console.log("【Scroll】");
         this.onAddIsAnimated();
     }
 
     @HostListener('window:resize', [])
     onWindowResize() {
-        console.log("【resize】");
         // 2. Five Reasons
-        this.onLineCalcReason();
+        this.onLineCalcReason()
         // 4. FAQ Carousel
         this.onLineCalcFaq();
     }
@@ -283,6 +279,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
         if (swiperTarget !== null) {
             // 建立
             mySwiper = new Swiper(swiperTarget, {
+                observer: true,
+                observeParents: true,
                 spaceBetween: 20,
                 slidesPerView: 1,
                 loop: true,

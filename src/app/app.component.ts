@@ -1,16 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: []
+	selector: 'app-root',
+	templateUrl: './app.component.html',
+	styleUrls: []
 })
 export class AppComponent {
-  title = 'toyota-kinto-angular';
+	title = 'toyota-kinto-angular';
 
-  IsLoaderShowed: boolean = true;
+	@ViewChild('loader') loader: ElementRef;
 
-  constructor() {
-    setTimeout(() => { this.IsLoaderShowed = false; }, 2000);
-  }
+	constructor() { }
+
+	@HostListener('window:load', [])
+	onWindowLoaded() {
+		this.loader.nativeElement.className += ' loaded'
+		setTimeout(() => {
+			this.loader.nativeElement.remove();
+		}, 2000);
+
+	}
 }
