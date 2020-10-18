@@ -375,23 +375,23 @@
 			<h2 class="sec-title__title">Latest Promotion</h2>
 			</div>
 			<div class="swiper-box index-promotion">
-			<div class="swiper-container" id="promotion-carousel" #promotionSC>
-				<div class="swiper-wrapper">
-					<!-- [START] Promotion Array Data-->
-					<div *ngFor="let promotion of promotions; let i = index" class="swiper-slide index-promotion__item">
-						<a class="index-promotion__img-box object-fit" href="javascript:;" title="{{promotion.title}}">
-							<div class="hover-refl">
-								<span class="hover-refl__light"></span>
-							</div>
-							<img class="swiper-lazy" src="{{promotion.detailBannerImageUrl}}" alt="{{promotion.title}}"/>
-						</a>
+				<div class="swiper-container" id="promotion-carousel" #promotionSC>
+					<div class="swiper-wrapper">
+						<!-- [START] Promotion Array Data-->
+						<div *ngFor="let promotion of promotions; let i = index" class="swiper-slide index-promotion__item">
+							<a class="index-promotion__img-box object-fit" href="javascript:;" title="{{promotion.title}}">
+								<div class="hover-refl">
+									<span class="hover-refl__light"></span>
+								</div>
+								<img class="swiper-lazy" src="{{promotion.detailBannerImageUrl}}" alt="{{promotion.title}}"/>
+							</a>
+						</div>
+						<!-- [END] Promotion Array Data-->
 					</div>
-					<!-- [END] Promotion Array Data-->
 				</div>
-			</div>
-			<div class="swiper-pagination" #promotionSwiperPagination></div>
-			<div class="swiper-button-prev" #promotionSwiperPrev></div>
-			<div class="swiper-button-next" #promotionSwiperNext></div>
+				<div class="swiper-pagination" #promotionSwiperPagination></div>
+				<div class="swiper-button-prev" #promotionSwiperPrev></div>
+				<div class="swiper-button-next" #promotionSwiperNext></div>
 			</div>
 		</div>
 	</section>

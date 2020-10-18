@@ -27,6 +27,7 @@ const routes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    NgxUsefulSwiperModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
   ],

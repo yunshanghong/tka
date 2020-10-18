@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, Inject, ElementRef, ViewChildren, ViewChild, QueryList, Renderer2 } from '@angular/core';
+import { Component, OnInit, HostListener, Inject, ElementRef, ViewChildren, ViewChild, QueryList, Renderer2, AfterViewInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 // import Swiper JS
@@ -16,7 +16,7 @@ interface rgbInterface {
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
 
     // 2. Five Reasons
     fiveReasons: Array<Object>;
@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit {
 
     // 4. FAQ Carousel
     FAQs: Array<Object>;
-    faqSwiper: Swiper
 
     // 5. Latest Promotion
     promotions: Array<Object>;
@@ -70,77 +69,78 @@ export class HomeComponent implements OnInit {
         //#region load data before render
         // 1. Banner
         this.infoService.getBanner().subscribe(
-            response => { console.log(response) },
-            error => console.error(error),
-            () => { this.onBuildBannerCarousel(); }
+            response => { },
+            error => console.error(error)
         );
         // 2. Five Reasons
         this.infoService.getFiveReasons().subscribe(
             (response: Array<Object>) => this.fiveReasons = response,
-            error => console.error(error),
-            () => {
-                this.onBuildCircleIconBox();
-                this.onLineCalcReason();
-            }
+            error => console.error(error)
         );
 
         // 3. Top Choices
         this.infoService.getTopChoices().subscribe(
-            (response: Array<Object>) => { console.log(response); this.topChoices = response },
-            error => console.error(error),
-            () => { this.onBuildChoiceCarousel(); }
+            (response: Array<Object>) => { this.topChoices = response },
+            error => console.error(error)
         );
 
         // 4. FAQ
         this.infoService.getFAQ().subscribe(
             (response: Array<Object>) => this.FAQs = response,
-            error => console.error(error),
-            () => {
-                this.onBuildFaq();
-                this.onLineCalcFaq();
-            }
+            error => console.error(error)
         );
-
 
         // 5. Latest Promotion
         this.infoService.getLatestPromotion().subscribe(
             (response: Array<Object>) => this.promotions = response,
-            error => console.error(error),
-            () => {
-            }
+            error => console.error(error)
         );
 
-
         this.infoService.getHomeImageUrl().subscribe(
-            response => { console.log(response) },
+            response => { },
             error => console.error(error)
         );
         //#endregion
-        this.onAddIsAnimated();
     }
     ngAfterViewInit() {
-        this.onBuildPromotionCarousel()
-
+        this.onAddIsAnimated();
     }
 
     @HostListener('window:load', [])
     onWindowLoaded() {
-        console.log("Loaded");
-        this.onAddIsAnimated();
+        console.log("【Loaded】");
+
+        // 1. Banner
+        this.onBuildBannerCarousel();
+
+        // 2. Five Reasons
+        this.onBuildCircleIconBox();
+        this.onLineCalcReason();
+
+        // 3. Top Choices
+        this.onBuildChoiceCarousel();
+
+        // 4. FAQ
+        this.onBuildFaq();
+        this.onLineCalcFaq();
+
+        // 5. Latest Promotion
+        this.onBuildPromotionCarousel();
     }
 
     @HostListener('window:scroll', [])
     onWindowScroll() {
-        console.log("Scroll");
+        console.log("【Scroll】");
         this.onAddIsAnimated();
     }
 
     @HostListener('window:resize', [])
     onWindowResize() {
+        console.log("【resize】");
         // 2. Five Reasons
-        // this.onLineCalcReason();
+        this.onLineCalcReason();
         // 4. FAQ Carousel
-        // this.onLineCalcFaq();
+        this.onLineCalcFaq();
     }
 
     // 滑動到該區增加class "is-animated"
@@ -188,6 +188,8 @@ export class HomeComponent implements OnInit {
             text: 'Silver Metallic'
         }];
         new Swiper(swiperTarget, {
+            observer: true,
+            observeParents: true,
             spaceBetween: 60,
             effect: 'fade',
             loop: true,
@@ -306,6 +308,8 @@ export class HomeComponent implements OnInit {
     onBuildChoiceCarousel(): void {
         var swiperTarget = this.choiceSwiperContainer.nativeElement as HTMLElement;
         this.choiceSwiper = new Swiper(swiperTarget, {
+            observer: true,
+            observeParents: true,
             grabCursor: true,
             centeredSlides: true,
             slidesPerView: 'auto',
@@ -392,6 +396,8 @@ export class HomeComponent implements OnInit {
         }
 
         var mySwiper = new Swiper(swiperTarget, {
+            observer: true,
+            observeParents: true,
             spaceBetween: 20,
             grabCursor: true,
             slidesPerView: 'auto',
@@ -454,6 +460,8 @@ export class HomeComponent implements OnInit {
         var swiperNextEl = this.promotionSwiperNext.nativeElement as HTMLElement;
         var swiperPrevEl = this.promotionSwiperPrev.nativeElement as HTMLElement;
         new Swiper(swiperTarget, {
+            observer: true,
+            observeParents: true,
             // spaceBetween: 20,
             effect: 'coverflow',
             grabCursor: true,
