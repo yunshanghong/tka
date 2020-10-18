@@ -1,74 +1,54 @@
 <footer class="ft" id="footer">
-      <div class="ft__top-box">
-        <div class="ft__cont">
-          <div class="ft__row">
-            <div class="ft__cell">
-              <div class="ft-logo kinto-logo text-center"><img src="/assets/images/logo_kintoone_line_white.svg" alt="KINTO ONE"></div>
-              <ul class="ft-info no-bullet">
-                <li class="ft-info__item"><a href="mailto:kinto@tfssg.sg" title="Send email to KINTO">kinto@tfssg.sg</a></li>
-                <li class="ft-info__item"><a href="tel:69782388" title="Call KINTO">69782388</a></li>
-                <li class="ft-info__item">33 Leng Kee Road, #02-00,<br class="show-for-small-only">Singapore 159102</li>
-              </ul>
-            </div>
+	<div class="ft__top-box">
+		<div class="ft__cont">
+			<div class="ft__row">
+			<div class="ft__cell">
+				<div class="ft-logo kinto-logo text-center"><img src="/assets/images/logo_kintoone_line_white.svg" alt="KINTO ONE"></div>
+				<ul class="ft-info no-bullet">
+				<li class="ft-info__item"><a href="mailto:kinto@tfssg.sg" title="Send email to KINTO">kinto@tfssg.sg</a></li>
+				<li class="ft-info__item"><a href="tel:69782388" title="Call KINTO">69782388</a></li>
+				<li class="ft-info__item">33 Leng Kee Road, #02-00,<br class="show-for-small-only">Singapore 159102</li>
+				</ul>
+			</div>
             <div class="ft__cell ft-sitemap-wrapper">
-              <div class="ft-sitemap">
-                <div class="ft-sitemap__cont">
-                  <h5 class="ft-subtitle ft-sitemap__title">WHAT IS KINTO ONE</h5>
-                  <ul class="ft-sitemap__list">
-                    <li class="ft-sitemap__item"><a class="ft-sitemap__link" href="javascript:;">About KINTO</a></li>
-                    <li class="ft-sitemap__item"><a class="ft-sitemap__link" href="javascript:;">How to apply</a></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="ft-sitemap">
-                <div class="ft-sitemap__cont">
-                  <h5 class="ft-subtitle ft-sitemap__title">NEWS</h5>
-                  <ul class="ft-sitemap__list">
-                    <li class="ft-sitemap__item"><a class="ft-sitemap__link" href="javascript:;">Promotion</a></li>
-                    <li class="ft-sitemap__item"><a class="ft-sitemap__link" href="javascript:;">Press release</a></li>
-                    <li class="ft-sitemap__item"><a class="ft-sitemap__link" href="javascript:;">News category</a></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="ft-sitemap">
-                <div class="ft-sitemap__cont">
-                  <h5 class="ft-subtitle ft-sitemap__title">FAQ</h5>
-                  <ul class="ft-sitemap__list">
-                    <li class="ft-sitemap__item"><a class="ft-sitemap__link" href="javascript:;">Accessories</a></li>
-                    <li class="ft-sitemap__item"><a class="ft-sitemap__link" href="javascript:;">Insurance &amp; Maintenance</a></li>
-                    <li class="ft-sitemap__item"><a class="ft-sitemap__link" href="javascript:;">Payment</a></li>
-                    <li class="ft-sitemap__item"><a class="ft-sitemap__link" href="javascript:;">Others</a></li>
-                  </ul>
-                </div>
-              </div>
+     	        <!-- Start Footer Array Data -->
+				<div *ngFor="let menu of Menus; let i = index" class="ft-sitemap" (click)="onToggleMenu(i)">
+					<div class="ft-sitemap__cont" [ngClass]="{'is-open': menu.isOpen }">
+						<h5 class="ft-subtitle ft-sitemap__title">{{menu.title}}</h5>
+						<ul class="ft-sitemap__list">
+							<li *ngFor="let item of menu.children" class="ft-sitemap__item"><a class="ft-sitemap__link" href="javascript:;">{{item.title}}</a></li>
+						</ul>
+					</div>
+				</div>
+     	        <!-- End Footer Array Data -->
             </div>
-            <div class="ft__cell">
-              <div class="ft-contact-wrapper">
-                <div class="ft-contact">
-                  <h5 class="ft-subtitle">CONTACT US</h5>
-                  <ul class="ft-contact__list">
-                    <li class="ft-contact__item"><a href="javascript:;">Drop a message</a></li>
-                  </ul>
-                </div>
-                <div class="ft-sns">
-                  <h5 class="ft-subtitle">FOLLOW US</h5>
-                  <ul class="sns-list">
-                    <li class="sns-list__item"><a class="sns-list__link" href="javascript:;" title="KINTO Facebook Fan Page"><i class="be-icon be-icon-fb" aria-hidden="true"></i></a></li>
-                    <li class="sns-list__item"><a class="sns-list__link" href="javascript:;" title="KINTO Instagram"><i class="be-icon be-icon-ig" aria-hidden="true"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="ft__bottom-box">
-        <div class="ft__cont">
-          <ul class="ft-other">
-            <li class="ft-other__item"><a class="ft-other__link" href="javascript:;">Privacy policy</a></li>
-            <li class="ft-other__item"><a class="ft-other__link" href="javascript:;">Terms of service</a></li>
-          </ul>
-          <div class="ft-copyright">© KINTO Corporation. All rights reserved.</div>
-        </div>
-      </div>
-    </footer>
+			<div class="ft__cell">
+				<div class="ft-contact-wrapper">
+				<div class="ft-contact">
+					<h5 class="ft-subtitle">CONTACT US</h5>
+					<ul class="ft-contact__list">
+					<li class="ft-contact__item"><a href="javascript:;">Drop a message</a></li>
+					</ul>
+				</div>
+				<div class="ft-sns">
+					<h5 class="ft-subtitle">FOLLOW US</h5>
+					<ul class="sns-list">
+					<li class="sns-list__item"><a class="sns-list__link" href="javascript:;" title="KINTO Facebook Fan Page"><i class="be-icon be-icon-fb" aria-hidden="true"></i></a></li>
+					<li class="sns-list__item"><a class="sns-list__link" href="javascript:;" title="KINTO Instagram"><i class="be-icon be-icon-ig" aria-hidden="true"></i></a></li>
+					</ul>
+				</div>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+	<div class="ft__bottom-box">
+		<div class="ft__cont">
+			<ul class="ft-other">
+			<li class="ft-other__item"><a class="ft-other__link" href="javascript:;">Privacy policy</a></li>
+			<li class="ft-other__item"><a class="ft-other__link" href="javascript:;">Terms of service</a></li>
+			</ul>
+			<div class="ft-copyright">© KINTO Corporation. All rights reserved.</div>
+		</div>
+	</div>
+</footer>

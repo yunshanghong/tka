@@ -107,10 +107,9 @@ export class HomeComponent implements OnInit {
             (response: Array<Object>) => this.promotions = response,
             error => console.error(error),
             () => {
-                this.onBuildPromotionCarousel()
             }
         );
-        
+
 
         this.infoService.getHomeImageUrl().subscribe(
             response => { console.log(response) },
@@ -119,23 +118,29 @@ export class HomeComponent implements OnInit {
         //#endregion
         this.onAddIsAnimated();
     }
+    ngAfterViewInit() {
+        this.onBuildPromotionCarousel()
+
+    }
 
     @HostListener('window:load', [])
     onWindowLoaded() {
+        console.log("Loaded");
         this.onAddIsAnimated();
     }
 
     @HostListener('window:scroll', [])
     onWindowScroll() {
+        console.log("Scroll");
         this.onAddIsAnimated();
     }
 
     @HostListener('window:resize', [])
     onWindowResize() {
         // 2. Five Reasons
-        this.onLineCalcReason();
+        // this.onLineCalcReason();
         // 4. FAQ Carousel
-        this.onLineCalcFaq();
+        // this.onLineCalcFaq();
     }
 
     // 滑動到該區增加class "is-animated"
@@ -313,7 +318,7 @@ export class HomeComponent implements OnInit {
             },
             effect: 'coverflow',
             coverflowEffect: {
-                modifier: 0.4,
+                scale: 0.4,
                 rotate: 0,
                 depth: 400,
                 slideShadows: false
@@ -326,7 +331,7 @@ export class HomeComponent implements OnInit {
                 // when window width is >= 1440px
                 1440: {
                     coverflowEffect: {
-                        modifier: 0.7,
+                        scale: 0.7,
                         rotate: 0,
                         depth: 400,
                         slideShadows: false
@@ -362,7 +367,7 @@ export class HomeComponent implements OnInit {
         breakpoint.addEventListener('change', breakpointChecker); // 監聽
     }
 
-    onBuildFaqCarousel(): void {
+    onBuildFaqCarousel(): Swiper {
         var swiperTarget = this.faqSwiperContainer.nativeElement as HTMLElement;
         var swiperPageEl = this.faqSwiperPagination.nativeElement as HTMLElement;
         var swiperNextEl = this.faqSwiperNext.nativeElement as HTMLElement;
@@ -386,7 +391,7 @@ export class HomeComponent implements OnInit {
             swiperPrevEl.classList.remove('hide');
         }
 
-        this.faqSwiper = new Swiper(swiperTarget, {
+        var mySwiper = new Swiper(swiperTarget, {
             spaceBetween: 20,
             grabCursor: true,
             slidesPerView: 'auto',
@@ -428,6 +433,7 @@ export class HomeComponent implements OnInit {
                 }
             }
         });
+        return mySwiper;
     }
 
     onLineCalcFaq() {
@@ -448,10 +454,12 @@ export class HomeComponent implements OnInit {
         var swiperNextEl = this.promotionSwiperNext.nativeElement as HTMLElement;
         var swiperPrevEl = this.promotionSwiperPrev.nativeElement as HTMLElement;
         new Swiper(swiperTarget, {
+            // spaceBetween: 20,
             effect: 'coverflow',
             grabCursor: true,
             centeredSlides: true,
             slidesPerView: 'auto',
+            slideToClickedSlide: true,
             loop: true,
             preloadImages: false,
             autoHeight: true,
