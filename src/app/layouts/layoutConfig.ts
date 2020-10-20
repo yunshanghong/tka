@@ -50,10 +50,6 @@ export const defaultNavigationConfig = [{
     ]
 },
 {
-    title: 'MY ORDER',
-    uel: '/'
-},
-{
     title: 'CONTACT US',
     url: '/'
 }];
