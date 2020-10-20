@@ -1561,6 +1561,10 @@ screen and (min-width: 64em) {
 }
 
 /* Top Choices - Swiper */
+.index-choice {
+  max-width: 1920px;
+}
+
 @media print,
 screen and (max-width: 63.99875em) {
   .index-choice {
@@ -1582,6 +1586,13 @@ screen and (max-width: 63.99875em) {
   .index-choice .swiper-container:hover .car-diffuse-glow::before {
     -webkit-animation-play-state: running;
     animation-play-state: running;
+  }
+}
+
+@media screen and (min-width: 120em) {
+  .index-choice .swiper-container {
+    -webkit-mask-image: -webkit-gradient(linear, left top, right top, color-stop(0, rgba(0, 0, 0, 0)), color-stop(0.05, black), color-stop(0.95, black), color-stop(1, rgba(0, 0, 0, 0)));
+    mask-image: -webkit-gradient(linear, left top, right top, color-stop(0, rgba(0, 0, 0, 0)), color-stop(0.05, black), color-stop(0.95, black), color-stop(1, rgba(0, 0, 0, 0)));
   }
 }
 
@@ -1658,6 +1669,12 @@ screen and (min-width: 64em) {
   .index-choice .swiper-slide.swiper-slide-duplicate-active img {
     -webkit-transform: translateY(0);
     transform: translateY(0);
+  }
+}
+
+@media screen and (min-width: 120em) {
+  .index-choice .swiper-slide {
+    width: 960px;
   }
 }
 
