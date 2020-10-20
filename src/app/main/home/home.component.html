@@ -56,18 +56,10 @@
 					<div class="swiper-container" id="banner-carousel" #bannerSwiperContainer>
 						<div class="car-diffuse-glow"></div>
 						<div class="swiper-wrapper">
-							<div class="swiper-slide index-banner__item"><a class="index-banner__link" href="javascript:;" title="Red Mica Metallic - Model detail">
-								<div class="index-banner__cont"><img class="swiper-lazy" src="assets/images/products/corolla_altis_red.png" alt="Red Mica Metallic"/></div></a></div>
-							<div class="swiper-slide index-banner__item"><a class="index-banner__link" href="javascript:;" title="Phantom Brown Metallic - Model detail">
-								<div class="index-banner__cont"><img class="swiper-lazy" src="assets/images/products/corolla_altis_brown.png" alt="Phantom Brown Metallic"/></div></a></div>
-							<div class="swiper-slide index-banner__item"><a class="index-banner__link" href="javascript:;" title="Attitude Black Mica - Model detail">
-								<div class="index-banner__cont"><img class="swiper-lazy" src="assets/images/products/corolla_altis_black.png" alt="Attitude Black Mica"/></div></a></div>
-							<div class="swiper-slide index-banner__item"><a class="index-banner__link" href="javascript:;" title="White Pearl Crystal Shine - Model detail">
-								<div class="index-banner__cont"><img class="swiper-lazy" src="assets/images/products/corolla_altis_white.png" alt="White Pearl Crystal Shine"/></div></a></div>
-							<div class="swiper-slide index-banner__item"><a class="index-banner__link" href="javascript:;" title="Celestite Gray Metallic - Model detail">
-								<div class="index-banner__cont"><img class="swiper-lazy" src="assets/images/products/corolla_altis_gray.png" alt="Celestite Gray Metallic"/></div></a></div>
-							<div class="swiper-slide index-banner__item"><a class="index-banner__link" href="javascript:;" title="Silver Metallic - Model detail">
-								<div class="index-banner__cont"><img class="swiper-lazy" src="assets/images/products/corolla_altis_silver.png" alt="Silver Metallic"/></div></a></div>
+							<!-- [Start] Banner Array Data -->
+							<div *ngFor="let banner of banners; let i = index" class="swiper-slide index-banner__item"><a class="index-banner__link" href="javascript:;" title="Red Mica Metallic - Model detail">
+								<div class="index-banner__cont"><img class="swiper-lazy" src="{{banner.imageUrl}}" alt="Red Mica Metallic"/></div></a></div>
+							<!-- [End] Banner Array Data -->
 						</div>
 					</div>
 					<div class="swiper-ctrl no-selection">
@@ -181,7 +173,7 @@
 					<!-- [Start] Top Choices Array Data -->
 					<div *ngFor="let choice of topChoices; let i = index" class="swiper-slide index-choice__item">
 						<a href="javascript:;" title="{{choice.vehicle.name}} - Model detail">
-							<img class="swiper-lazy" src="{{choice.vehicle.primaryImageUrl}}" alt="{{choice.vehicle.name}}"/>
+							<img class="swiper-lazy" src="{{choice.vehicle.secondaryImageUrl}}" alt="{{choice.vehicle.name}}"/>
 						</a>
 					</div>
 					<!-- [End] Top Choices Array Data -->
@@ -196,19 +188,20 @@
 				</div>
 			</div>
 			<div class="swiper-button-next" #choiceSwiperNext>
-			<div class="index-choice__nav-bg"></div>
-			<div class="index-choice__nav-text text-center">
-				<div class="name">Rav4</div>
-				<div class="price">from $ <span>1,220</span> per month</div>
-				<div class="tip">(with COE)</div>
-			</div>
+				<div class="index-choice__nav-bg"></div>
+				<div class="index-choice__nav-text text-center">
+					<div class="name">Rav4</div>
+					<div class="price">from $ <span>1,220</span> per month</div>
+					<div class="tip">(with COE)</div>
+				</div>
 			</div>
 		</div>
 		<div class="grid-container text-center full" #choiceGridContainer>
 			<div class="grid-x grid-padding-x index-choice-info" >
 				<div class="cell index-choice-info__title-box" #choiceTitleBox><a class="index-choice-info__title-link" href="javascript:;">
 					<div class="index-choice-info__brand">Toyota</div>
-					<h3 class="index-choice-info__name">Camry</h3></a></div>
+					<h3 class="index-choice-info__name">Camry</h3></a>
+				</div>
 				<div class="cell small-6 index-choice-info__cont-box">
 					<ul class="choice-year">
 					<li class="choice-year__item">

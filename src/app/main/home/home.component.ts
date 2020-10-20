@@ -1,35 +1,54 @@
-import { Component, OnInit, HostListener, Inject, ElementRef, ViewChildren, ViewChild, QueryList, Renderer2, AfterViewInit } from '@angular/core';
+import { Component, OnInit, HostListener, Inject, ElementRef, ViewChildren, ViewChild, QueryList, Renderer2, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 // import Swiper JS
 import Swiper from 'swiper';
 import { InfoService } from '../../services/info.service';
+import { i18nMetaToJSDoc } from '@angular/compiler/src/render3/view/i18n/meta';
 
-interface rgbInterface {
+export interface rgbInterface {
     r: number;
     g: number;
     b: number;
 };
+
+export interface bannerInterface {
+    vehicle: {
+        variants: Array<{ vehicleConfigItems: Array<Object> }>
+    }
+}
+
+export interface bulletDataInterface {
+    color: string;
+    text: string;
+}
 
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements OnInit, AfterViewChecked {
+    // 1. Banner
+    banners: Array<Object>;
+    renderBanner: boolean = false;
 
     // 2. Five Reasons
     fiveReasons: Array<Object>;
+    renderReasons: boolean = true;
 
     // 3. Choice Carousel
     topChoices: Array<Object>;
     choiceSwiper: Swiper;
+    renderChoice: boolean = false;
 
     // 4. FAQ Carousel
     FAQs: Array<Object>;
+    renderFAQ: boolean = false;
 
     // 5. Latest Promotion
     promotions: Array<Object>;
+    renderPromotion: boolean = false;
 
     @ViewChildren('jsAni') sections: QueryList<ElementRef>;
     // 1. Banner
@@ -69,31 +88,36 @@ export class HomeComponent implements OnInit, AfterViewInit {
         //#region load data before render
         // 1. Banner
         this.infoService.getBanner().subscribe(
-            (response: Array<Object>) => { },
-            error => console.error(error)
+            (response: Array<bannerInterface>) => this.banners = response[0].vehicle.variants[0].vehicleConfigItems,
+            error => console.error(error),
+            () => { this.renderBanner = true; }
         );
         // 2. Five Reasons
         this.infoService.getFiveReasons().subscribe(
             (response: Array<Object>) => this.fiveReasons = response,
-            error => console.error(error)
+            error => console.error(error),
+            () => { this.renderReasons = true; }
         );
 
         // 3. Top Choices
         this.infoService.getTopChoices().subscribe(
-            (response: Array<Object>) => { this.topChoices = response },
-            error => console.error(error)
+            (response: Array<Object>) => this.topChoices = response,
+            error => console.error(error),
+            () => { this.renderChoice = true; console.log(this.topChoices) }
         );
 
         // 4. FAQ
         this.infoService.getFAQ().subscribe(
             (response: Array<Object>) => this.FAQs = response,
-            error => console.error(error)
+            error => console.error(error),
+            () => { this.renderFAQ = true; }
         );
 
         // 5. Latest Promotion
         this.infoService.getLatestPromotion().subscribe(
             (response: Array<Object>) => this.promotions = response,
-            error => console.error(error)
+            error => console.error(error),
+            () => { this.renderPromotion = true; }
         );
 
         this.infoService.getHomeImageUrl().subscribe(
@@ -103,23 +127,27 @@ export class HomeComponent implements OnInit, AfterViewInit {
         //#endregion
     }
     // execute after getting ViewChild
-    ngAfterViewInit() {
+    ngAfterViewChecked() {
         // 1. Banner
-        this.onBuildBannerCarousel();
+        this.renderBanner && this.onBuildBannerCarousel();
 
         // 2. Five Reasons
-        this.onBuildCircleIconBox();
-        this.onLineCalcReason();
+        if (this.renderReasons) {
+            this.onBuildCircleIconBox();
+            this.onLineCalcReason();
+        }
 
         // 3. Top Choices
-        this.onBuildChoiceCarousel();
+        this.renderChoice && this.onBuildChoiceCarousel();
 
         // 4. FAQ
-        this.onBuildFaq();
-        this.onLineCalcFaq();
+        if (this.renderFAQ) {
+            this.onBuildFaq();
+            this.onLineCalcFaq();
+        }
 
         // 5. Latest Promotion
-        this.onBuildPromotionCarousel();
+        this.renderPromotion && this.onBuildPromotionCarousel();
     }
 
     @HostListener('window:load', [])
@@ -162,28 +190,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     //#region Section1. Banner Section
     onBuildBannerCarousel() {
+        this.renderBanner = false;
         var swiperTarget = this.bannerSwiperContainer.nativeElement as HTMLElement;
         var swiperPageEl = this.bannerSwiperPagination.nativeElement as HTMLElement;// 點的資料（接API）
+        var bulletData: Array<bulletDataInterface> = [];
+        this.banners.map((item: { iconColorCode: string, name: string }) => bulletData.push({ color: item.iconColorCode || "#ffffff", text: item.name || "TOYOTA" }));
 
-        var bulletData = [{
-            color: '#eb0a1e',
-            text: 'Red Mica Metallic'
-        }, {
-            color: '#745645',
-            text: 'Phantom Brown Metallic'
-        }, {
-            color: '#000000',
-            text: 'Attitude Black Mica'
-        }, {
-            color: '#ffffff',
-            text: 'White Pearl Crystal Shine'
-        }, {
-            color: '#525355',
-            text: 'Celestite Gray Metallic'
-        }, {
-            color: '#c6c6c6',
-            text: 'Silver Metallic'
-        }];
         new Swiper(swiperTarget, {
             observer: true,
             observeParents: true,
@@ -204,7 +216,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
                     var currentData = bulletData[index]; // 計算文字顏色
 
                     var rgb = this.onHexToRgb(currentData.color);
-                    var textColor = this.onGetReverseColor(rgb);
+                    var textColor = rgb && this.onGetReverseColor(rgb);
                     return "\n\t\t\t\t\t\t<span class=\"".concat(className, " text-").concat(textColor, "\" style=\"color:").concat(currentData.color, "\"><span class=\"text\" aria-label=\"").concat(currentData.text, "\" data-text=\"").concat(currentData.text, "\"></span></span>\n\t\t\t\t\t");
                 }
             },
@@ -254,6 +266,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     //#region Section2. Five Reasons Section
     onBuildCircleIconBox() {
+        this.renderReasons = false
         var mySwiper = null;
         var breakpoint = window.matchMedia('(min-width: 640px)');
 
@@ -305,6 +318,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     //#region Section3. Choice Carousel
     // 建立carousel實體
     onBuildChoiceCarousel(): void {
+        this.renderChoice = false;
         var swiperTarget = this.choiceSwiperContainer.nativeElement as HTMLElement;
         this.choiceSwiper = new Swiper(swiperTarget, {
             observer: true,
@@ -356,6 +370,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     //#region Section4. FAQ
     onBuildFaq() {
+        this.renderFAQ = false;
         var mySwiper = null;
         var breakpoint = window.matchMedia('(min-width: 1024px)');
 
@@ -454,6 +469,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     //#region Section5. Latest Promotion
     onBuildPromotionCarousel(): void {
+        this.renderPromotion = false;
         var swiperTarget = this.promotionSC.nativeElement as HTMLElement;
         var swiperPageEl = this.promotionSwiperPagination.nativeElement as HTMLElement;
         var swiperNextEl = this.promotionSwiperNext.nativeElement as HTMLElement;
