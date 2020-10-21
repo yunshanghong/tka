@@ -75,29 +75,29 @@
 					<h3 class="index-choice-info__name">Corolla Altis</h3></a></div>
 				<div class="cell small-6 index-choice-info__cont-box">
 				<ul class="choice-year">
-					<li class="choice-year__item">
-					<div class="choice-year__circle">
-						<div class="choice-year__num">1</div>
-					</div>
-					<div class="choice-year__unit">year</div>
+					<li class="choice-year__item " [ngClass]="{'is-active': bannerShow === 'minInfo'}" (click)="onToggleTerm('minInfo')">
+						<div class="choice-year__circle">
+							<div class="choice-year__num " *ngIf="bannerInfos !== undefined">{{bannerInfos.minInfo.term}}</div>
+						</div>
+						<div class="choice-year__unit">year</div>
 					</li>
-					<li class="choice-year__item is-active">
-					<div class="choice-year__circle">
-						<div class="choice-year__num">3</div>
-					</div>
-					<div class="choice-year__unit">years</div>
+					<li class="choice-year__item is-active" [ngClass]="{'is-active': bannerShow === 'defaultInfo'}" (click)="onToggleTerm('defaultInfo')">
+						<div class="choice-year__circle">
+							<div class="choice-year__num" *ngIf="bannerInfos !== undefined">{{bannerInfos.defaultInfo.term}}</div>
+						</div>
+						<div class="choice-year__unit">years</div>
 					</li>
-					<li class="choice-year__item">
-					<div class="choice-year__circle">
-						<div class="choice-year__num">7</div>
-					</div>
-					<div class="choice-year__unit">years</div>
+					<li class="choice-year__item" [ngClass]="{'is-active': bannerShow === 'maxInfo'}" (click)="onToggleTerm('maxInfo')">
+						<div class="choice-year__circle">
+							<div class="choice-year__num" *ngIf="bannerInfos !== undefined">{{bannerInfos.maxInfo.term}}</div>
+						</div>
+						<div class="choice-year__unit">years</div>
 					</li>
 				</ul>
 				</div>
 				<div class="cell small-6 index-choice-info__cont-box">
-				<div class="index-choice-info__price">$ 1,280</div>
-				<div class="index-choice-info__tip">per month</div>
+					<div class="index-choice-info__price" *ngIf="bannerInfos !== undefined" >$ {{ bannerInfos[bannerShow].monthlyPaymentAmount | number: '2.' }}</div>
+					<div class="index-choice-info__tip">per month</div>
 				</div>
 			</div>
 			<div class="button-box text-center"><a class="button" href="javascript:;">Apply Now</a></div>

@@ -15,11 +15,29 @@ export class InfoService {
 		'Content-Type': 'application/json',
 	})
 
-	getBanner() {
-		return this.http.get(basicUrl + 'Vehicle/GetVariantDetailByGlobalCodeCategory', {
+	async getBanner() {
+
+		const banner = await this.http.get(basicUrl + 'Vehicle/GetVariantDetailByGlobalCodeCategory', {
 			headers: this.headers,
 			params: { globalCodeCategoryName: 'Vehicle.BannerVehicle' },
-		})
+		}).toPromise();
+
+		const id = banner[0].financialProducts.leasing.id;
+		const variantId = banner[0].vehicle.variants[0].id;
+		const leasing = banner[0].financialProducts.leasing;
+		const newBanners = {
+			minTerm: { id: id, variantId: variantId, term: leasing.minTerm / 12 },
+			defaultTerm: { id: id, variantId: variantId, term: leasing.defaultTerm / 12 },
+			maxTerm: { id: id, variantId: variantId, term: leasing.maxTerm / 12 }
+		}
+
+		const result = { ...newBanners, displayCarInfos: [ ...banner[0].vehicle.variants[0].vehicleConfigItems ] };
+		for (var key in newBanners) {
+			const item = newBanners[key];
+			const tempResult: any = await this.getFinance(item.id, item.variantId, item.term * 12).toPromise();
+			result[key].monthlyPaymentAmount = tempResult.monthlyPaymentAmount;
+		}
+		return result;
 	}
 	getFiveReasons() {
 		return this.http.get(basicUrl + 'DynamicContent/GetDynamicContentByType', {
@@ -53,7 +71,6 @@ export class InfoService {
 
 		const result = choices.pipe(map(data => {
 			const newResult = [...data];
-
 			for (const key in data) {
 				const item = data[key];
 				this.getFinance(item.id, item.variantId, item.defaultTerm).subscribe((res: { monthlyPaymentAmount: number, securityDepositAmount: number }) => {

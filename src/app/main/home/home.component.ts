@@ -12,9 +12,10 @@ export interface rgbInterface {
 };
 
 export interface bannerInterface {
-    vehicle: {
-        variants: Array<{ vehicleConfigItems: Array<Object> }>
-    }
+    displayCarInfos: Array<Object>;
+    minTerm: Object;
+    defaultTerm: Object;
+    maxTerm: Object;
 }
 
 export interface bulletDataInterface {
@@ -24,6 +25,14 @@ export interface bulletDataInterface {
 
 export interface choiceInterface {
     index: number;
+    displayCarImg: string;
+    id: number;
+    tenure: number;
+    defaultTerm: number;
+    maxTerm: number;
+    minTerm: number;
+    variantId: number;
+    name: string;
 }
 
 @Component({
@@ -35,16 +44,18 @@ export class HomeComponent implements OnInit, AfterViewChecked {
     // 1. Banner
     banners: Array<Object>;
     renderBanner: boolean = false;
+    bannerInfos: { minInfo: Object, defaultInfo: Object, maxInfo: Object };
+    bannerShow: string = 'defaultInfo';
 
     // 2. Five Reasons
     fiveReasons: Array<Object>;
     renderReasons: boolean = true;
 
     // 3. Choice Carousel
-    topChoices: Array<Object>;
-    prevChoice: any;
-    currentChoice: any;
-    nextChoice: any;
+    topChoices: Array<choiceInterface>;
+    prevChoice: choiceInterface;
+    currentChoice: choiceInterface;
+    nextChoice: choiceInterface;
     choiceSwiper: Swiper;
     renderChoice: boolean = false;
 
@@ -93,11 +104,15 @@ export class HomeComponent implements OnInit, AfterViewChecked {
     ngOnInit() {
         //#region load data before render
         // 1. Banner
-        this.infoService.getBanner().subscribe(
-            (response: Array<bannerInterface>) => this.banners = response[0].vehicle.variants[0].vehicleConfigItems,
-            error => console.error(error),
-            () => { this.renderBanner = true; }
-        );
+        this.infoService.getBanner().then(
+            (response: bannerInterface) => {
+                this.banners = response.displayCarInfos;
+                this.bannerInfos = { minInfo: response.minTerm, defaultInfo: response.defaultTerm, maxInfo: response.maxTerm }
+            }
+        )
+            .catch(error => console.log(error))
+            .finally(() => { this.renderBanner = true; });
+
         // 2. Five Reasons
         this.infoService.getFiveReasons().subscribe(
             (response: Array<Object>) => this.fiveReasons = response,
@@ -107,7 +122,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
 
         // 3. Top Choices
         this.infoService.getTopChoices().subscribe(
-            (response: Array<Object>) => {
+            (response: Array<choiceInterface>) => {
                 this.topChoices = response;
                 this.prevChoice = this.topChoices[this.topChoices.length - 1];
                 this.currentChoice = this.topChoices[0];
@@ -272,6 +287,10 @@ export class HomeComponent implements OnInit, AfterViewChecked {
     onGetReverseColor(rgb: rgbInterface) {
         var c = this.onGetCloseWhiteOrBlack(rgb);
         return c === 'dark' ? 'white' : 'dark';
+    }
+
+    onToggleTerm(showItem: string) {
+        this.bannerShow = showItem;
     }
     //#endregion
 
