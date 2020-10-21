@@ -4,7 +4,6 @@ import { DOCUMENT } from '@angular/common';
 // import Swiper JS
 import Swiper from 'swiper';
 import { InfoService } from '../../services/info.service';
-import { i18nMetaToJSDoc } from '@angular/compiler/src/render3/view/i18n/meta';
 
 export interface rgbInterface {
     r: number;
@@ -23,6 +22,10 @@ export interface bulletDataInterface {
     text: string;
 }
 
+export interface choiceInterface {
+    index: number;
+}
+
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -39,6 +42,9 @@ export class HomeComponent implements OnInit, AfterViewChecked {
 
     // 3. Choice Carousel
     topChoices: Array<Object>;
+    prevChoice: any;
+    currentChoice: any;
+    nextChoice: any;
     choiceSwiper: Swiper;
     renderChoice: boolean = false;
 
@@ -101,9 +107,14 @@ export class HomeComponent implements OnInit, AfterViewChecked {
 
         // 3. Top Choices
         this.infoService.getTopChoices().subscribe(
-            (response: Array<Object>) => this.topChoices = response,
+            (response: Array<Object>) => {
+                this.topChoices = response;
+                this.prevChoice = this.topChoices[this.topChoices.length - 1];
+                this.currentChoice = this.topChoices[0];
+                this.nextChoice = this.topChoices[1];
+            },
             error => console.error(error),
-            () => { this.renderChoice = true; console.log(this.topChoices) }
+            () => { this.renderChoice = true; }
         );
 
         // 4. FAQ
@@ -361,10 +372,23 @@ export class HomeComponent implements OnInit, AfterViewChecked {
     // Carousel 下一項
     onChoiceNext(): void {
         this.choiceSwiper.slideNext();
+
+        this.prevChoice = this.currentChoice;
+        this.currentChoice = this.nextChoice;
+
+        const nextId = this.currentChoice.index === this.topChoices.length - 1 ? 0 : this.currentChoice.index + 1;
+        this.nextChoice = this.topChoices[nextId];
+
     }
     // Carousel 前一項
     onChoicePrev(): void {
         this.choiceSwiper.slidePrev();
+
+        this.nextChoice = this.currentChoice;
+        this.currentChoice = this.prevChoice;
+
+        const prevId = this.currentChoice.index === 0 ? this.topChoices.length - 1 : this.currentChoice.index - 1;
+        this.prevChoice = this.topChoices[prevId];
     }
     //#endregion
 
