@@ -9,9 +9,10 @@ export class InfoService {
 	constructor(private http: HttpClient) { }
 
 	headers = new HttpHeaders({
-		'Access-Control-Allow-Origin': 'https://api-uat.kinto-sg.com',
-		'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS',
-		'Access-Control-Max-Age': '86400'
+		'Access-Control-Allow-Origin': '*',
+		'Access-Control-Allow-Methods': 'GET, POST',
+		'Access-Control-Allow-Headers': 'Content-Type',
+		'Content-Type': 'application/json',
 	})
 
 	getBanner() {
