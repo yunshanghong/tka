@@ -1,5 +1,4 @@
-import { Component, OnInit, HostListener, Inject, ElementRef, ViewChildren, ViewChild, QueryList, Renderer2, AfterViewInit, AfterViewChecked } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, OnInit, HostListener, ElementRef, ViewChildren, ViewChild, QueryList, Renderer2, AfterViewChecked } from '@angular/core';
 
 // import Swiper JS
 import Swiper from 'swiper';
@@ -43,13 +42,13 @@ export interface choiceInterface {
 export class HomeComponent implements OnInit, AfterViewChecked {
     // 1. Banner
     banners: Array<Object>;
-    renderBanner: boolean = false;
+    renderBanner: boolean;
     bannerInfos: { minInfo: Object, defaultInfo: Object, maxInfo: Object };
     bannerShow: string = 'defaultInfo';
 
     // 2. Five Reasons
     fiveReasons: Array<Object>;
-    renderReasons: boolean = true;
+    renderReasons: boolean;
 
     // 3. Choice Carousel
     topChoices: Array<choiceInterface>;
@@ -57,16 +56,16 @@ export class HomeComponent implements OnInit, AfterViewChecked {
     currentChoice: choiceInterface;
     nextChoice: choiceInterface;
     choiceSwiper: Swiper;
-    renderChoice: boolean = false;
+    renderChoice: boolean;
     choiceYearShow: string = 'defaultTerm';
 
     // 4. FAQ Carousel
     FAQs: Array<Object>;
-    renderFAQ: boolean = false;
+    renderFAQ: boolean;
 
     // 5. Latest Promotion
     promotions: Array<Object>;
-    renderPromotion: boolean = false;
+    renderPromotion: boolean;
 
     // 1. Banner
     @ViewChild('bannersection') bannersection: ElementRef;
@@ -99,7 +98,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
     @ViewChild('promotionSwiperPrev') promotionSwiperPrev: ElementRef;
     @ViewChild('promotionSwiperNext') promotionSwiperNext: ElementRef;
 
-    constructor(private infoService: InfoService, @Inject(DOCUMENT) private document: Document, private renderer: Renderer2) { }
+    constructor(private infoService: InfoService, private renderer: Renderer2) { }
 
     ngOnInit() {
         //#region load data before render

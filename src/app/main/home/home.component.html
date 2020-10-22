@@ -8,7 +8,7 @@
 
 
 	<!-- [START] Key Banner-->
-	<section class="sec sec-index-banner js-ani" #bannersection appIsAni>
+	<section class="sec sec-index-banner js-ani" [ngClass]="{'ready': renderBanner !== undefined}" #bannersection appIsAni>
         <!-- [START] 背景插圖-->
         <div class="banner-patten-bg top-right img-deco"></div>
         <div class="banner-patten-bg bottom-left img-deco"></div>
@@ -77,26 +77,26 @@
 				<ul class="choice-year">
 					<li class="choice-year__item " [ngClass]="{'is-active': bannerShow === 'minInfo'}" (click)="onToggleTerm('minInfo')">
 						<div class="choice-year__circle">
-							<div class="choice-year__num " *ngIf="bannerInfos !== undefined">{{bannerInfos.minInfo.term}}</div>
+							<div class="choice-year__num " *ngIf="bannerInfos">{{bannerInfos.minInfo.term}}</div>
 						</div>
 						<div class="choice-year__unit">year</div>
 					</li>
 					<li class="choice-year__item is-active" [ngClass]="{'is-active': bannerShow === 'defaultInfo'}" (click)="onToggleTerm('defaultInfo')">
 						<div class="choice-year__circle">
-							<div class="choice-year__num" *ngIf="bannerInfos !== undefined">{{bannerInfos.defaultInfo.term}}</div>
+							<div class="choice-year__num" *ngIf="bannerInfos">{{bannerInfos.defaultInfo.term}}</div>
 						</div>
 						<div class="choice-year__unit">years</div>
 					</li>
 					<li class="choice-year__item" [ngClass]="{'is-active': bannerShow === 'maxInfo'}" (click)="onToggleTerm('maxInfo')">
 						<div class="choice-year__circle">
-							<div class="choice-year__num" *ngIf="bannerInfos !== undefined">{{bannerInfos.maxInfo.term}}</div>
+							<div class="choice-year__num" *ngIf="bannerInfos">{{bannerInfos.maxInfo.term}}</div>
 						</div>
 						<div class="choice-year__unit">years</div>
 					</li>
 				</ul>
 				</div>
 				<div class="cell small-6 index-choice-info__cont-box">
-					<div class="index-choice-info__price" *ngIf="bannerInfos !== undefined" >$ {{ bannerInfos[bannerShow].monthlyPaymentAmount | number: '2.' }}</div>
+					<div class="index-choice-info__price" *ngIf="bannerInfos" >$ {{ bannerInfos[bannerShow].monthlyPaymentAmount | number: '2.' }}</div>
 					<div class="index-choice-info__tip">per month</div>
 				</div>
 			</div>
@@ -108,7 +108,7 @@
 
 
 	<!-- [START] Reasons-->
-	<section class="sec sec-index-reasons js-ani" appIsAni> 
+	<section class="sec sec-index-reasons js-ani" [ngClass]="{'ready': renderReasons !== undefined}" appIsAni> 
 		<div class="radius-bar-deco top-right">
 			<div class="radius-bar-group">
 			<div class="radius-bar size-l opacity-20"></div>
@@ -156,7 +156,7 @@
 
 
 	<!-- [START] Top Choices-->
-	<section class="sec sec-index-choice js-ani" #choiceSection appIsAni>
+	<section class="sec sec-index-choice js-ani" [ngClass]="{'ready': renderChoice !== undefined}" #choiceSection appIsAni>
 		<div class="sec-title text-center">
 			<h2 class="sec-title__title">Top Choices</h2>
 		</div>
@@ -180,16 +180,16 @@
 				</div>
 			</div>
 			<div class="swiper-button-prev" #choiceSwiperPrev>
-				<div class="index-choice__nav-bg"></div>
-				<div class="index-choice__nav-text text-center" *ngIf="prevChoice !== undefined">
+				<div class="index-choice__nav-bg" (click)="onChoicePrev()"></div>
+				<div class="index-choice__nav-text text-center" *ngIf="prevChoice">
 					<div class="name">{{prevChoice.name}}</div>
 					<div class="price">from $ <span>{{prevChoice.maxTerm.monthlyPaymentAmount | number: '2.'}}</span> per month</div>
 					<div class="tip">(with COE)</div>
 				</div>
 			</div>
 			<div class="swiper-button-next" #choiceSwiperNext>
-				<div class="index-choice__nav-bg"></div>
-				<div class="index-choice__nav-text text-center" *ngIf="nextChoice !== undefined">
+				<div class="index-choice__nav-bg" (click)="onChoicePrev()"></div>
+				<div class="index-choice__nav-text text-center" *ngIf="nextChoice">
 					<div class="name">{{nextChoice.name}}</div>
 					<div class="price">from $ <span>{{nextChoice.maxTerm.monthlyPaymentAmount | number: '2.'}}</span> per month</div>
 					<div class="tip">(with COE)</div>
@@ -200,9 +200,9 @@
 			<div class="grid-x grid-padding-x index-choice-info" >
 				<div class="cell index-choice-info__title-box" #choiceTitleBox><a class="index-choice-info__title-link" href="javascript:;">
 					<div class="index-choice-info__brand">Toyota</div>
-					<h3 class="index-choice-info__name" *ngIf="currentChoice !== undefined">{{currentChoice.name}}</h3></a>
+					<h3 class="index-choice-info__name" *ngIf="currentChoice">{{currentChoice.name}}</h3></a>
 				</div>
-				<div class="cell small-6 index-choice-info__cont-box" *ngIf="currentChoice !== undefined">
+				<div class="cell small-6 index-choice-info__cont-box" *ngIf="currentChoice">
 					<ul class="choice-year">
 					<li class="choice-year__item" [ngClass]="{'is-active': choiceYearShow === 'minTerm'}" (click)="onToggleChoiceTerm('minTerm')">
 						<div class="choice-year__circle">
@@ -225,7 +225,7 @@
 					</ul>
 				</div>
 				<div class="cell small-6 index-choice-info__cont-box" >
-					<div class="index-choice-info__price" *ngIf="currentChoice !== undefined">$ {{currentChoice[choiceYearShow].monthlyPaymentAmount | number: '2.'}}</div>
+					<div class="index-choice-info__price" *ngIf="currentChoice">$ {{currentChoice[choiceYearShow].monthlyPaymentAmount | number: '2.'}}</div>
 					<div class="index-choice-info__tip">per month</div>
 				</div>
 			</div>
@@ -237,7 +237,7 @@
 
 
 	<!-- [START] FAQ-->
-	<section class="sec sec-index-faq js-ani" appIsAni>
+	<section class="sec sec-index-faq js-ani" [ngClass]="{'ready': renderFAQ !== undefined}" appIsAni>
 		<div class="radius-bar-deco top-right">
 			<div class="radius-bar-group">
 			<div class="radius-bar size-l opacity-20"></div>
@@ -285,7 +285,7 @@
 
 
 	<!-- [START] Promotion-->
-	<section class="sec sec-index-promotion js-ani" appIsAni>
+	<section class="sec sec-index-promotion js-ani" [ngClass]="{'ready': renderPromotion !== undefined}" appIsAni>
 		<div class="radius-bar-deco top-right">
 			<div class="radius-bar-group">
 			<div class="radius-bar size-l opacity-20"></div>
@@ -329,7 +329,7 @@
 	  
 
 	<!-- [START] Last Section-->
-	<section class="sec sec-index-last js-ani" appIsAni>
+	<section class="sec sec-index-last js-ani ready" appIsAni>
 		<div class="radius-bar-deco top-right">
 			<div class="radius-bar-group">
 			<div class="radius-bar size-l opacity-20"></div>
