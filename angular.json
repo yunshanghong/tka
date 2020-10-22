@@ -28,7 +28,8 @@
               "src/styles/vendor/swiper/custom.css",
               "src/styles/style.css",
               "src/styles/index.css",
-              "src/styles/model.css"
+              "src/styles/model.css",
+              "src/styles/term.css"
             ],
             "scripts": []
           },

@@ -1,0 +1,377 @@
+@charset "UTF-8";
+
+/**
+ * Foundation for Sites
+ * Version 6.6.3
+ * https://get.foundation
+ * Licensed under MIT Open Source
+ */
+.sec-term {
+  position: relative;
+  padding-bottom: 4.6875rem;
+}
+
+@media print,
+screen and (min-width: 64em) {
+  .sec-term {
+    padding-bottom: 9.375rem;
+  }
+}
+
+.sec-term.js-ani .goback {
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+  transform: translateY(50px);
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: opacity, transform;
+  transition-property: opacity, transform, -webkit-transform;
+  -webkit-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+
+.sec-term.js-ani .step {
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+  transform: translateY(50px);
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: opacity, transform;
+  transition-property: opacity, transform, -webkit-transform;
+  -webkit-transition-delay: 0.6s;
+  transition-delay: 0.6s;
+}
+
+.sec-term.js-ani .term {
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+  transform: translateY(50px);
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: opacity, transform;
+  transition-property: opacity, transform, -webkit-transform;
+  -webkit-transition-delay: 0.9s;
+  transition-delay: 0.9s;
+}
+
+.sec-term.js-ani.is-animated .goback {
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none;
+}
+
+.sec-term.js-ani.is-animated .step {
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none;
+}
+
+.sec-term.js-ani.is-animated .term {
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none;
+}
+
+.term__str {
+  font-size: 0.875rem;
+}
+
+@media print,
+screen and (min-width: 40em) {
+  .term__str {
+    font-size: 1.125rem;
+  }
+}
+
+.term__ctrl {
+  text-align: center;
+}
+
+.term__ctrl .button {
+  outline: 0;
+  margin-right: 0.625rem;
+  margin-bottom: 0;
+}
+
+@media print,
+screen and (min-width: 40em) {
+  .term__ctrl .button {
+    margin-right: 1.875rem;
+  }
+}
+
+@media print,
+screen and (min-width: 64em) {
+  .term__ctrl .button {
+    margin-right: 6.25rem;
+  }
+}
+
+.term__ctrl .button:last-child {
+  margin-right: 0;
+}
+
+.term-condition__wrap {
+  margin-top: 1.5625rem;
+  margin-bottom: 2.1875rem;
+  padding: 0.625rem;
+  background-color: #ffffff;
+  border: solid 2px #59a2b5;
+  border-radius: 0.625rem;
+  -webkit-box-shadow: inset 0 0 1.5625rem rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 1.5625rem rgba(0, 0, 0, 0.1);
+}
+
+@media print,
+screen and (min-width: 64em) {
+  .term-condition__wrap {
+    margin-top: 4.0625rem;
+    margin-bottom: 4.6875rem;
+    padding: 0.9375rem 0.625rem;
+  }
+}
+
+.term-condition__inner {
+  overflow-y: auto;
+  padding: 0.625rem 0.9375rem;
+  height: 18.75rem;
+}
+
+@media print,
+screen and (min-width: 64em) {
+  .term-condition__inner {
+    padding: 2.1875rem;
+    padding-right: 2.5rem;
+    height: 40.625rem;
+  }
+}
+
+.term-condition__cont {
+  font-size: 0.875rem;
+  line-height: 1.61;
+}
+
+@media print,
+screen and (min-width: 40em) {
+  .term-condition__cont {
+    font-size: 1.125rem;
+  }
+}
+
+.application-form__wrap {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 69.5rem;
+}
+
+.application-form__wrap .term__str {
+  margin-bottom: 2.375rem;
+}
+
+.application-form__form {
+  margin-bottom: 3.125rem;
+}
+
+.application-form__title {
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 0.9375rem;
+}
+
+@media print,
+screen and (min-width: 64em) {
+  .application-form__title {
+    font-size: 2.25rem;
+  }
+}
+
+@media print,
+screen and (min-width: 64em) {
+  .application-form .application-form__form {
+    margin-bottom: 4.6875rem;
+  }
+}
+
+.application-submitted .term__icon {
+  margin-bottom: 0.625rem;
+  color: #ffffff;
+  text-shadow: 0 0 15px #99edf1;
+}
+
+@media print,
+screen and (min-width: 40em) {
+  .application-submitted .term__icon {
+    margin-top: 4.75rem;
+    margin-bottom: 3.125rem;
+  }
+
+  .application-submitted .term__icon .be-icon {
+    font-size: 12.5rem;
+  }
+}
+
+.application-submitted .term__icon .be-icon {
+  font-size: 7.5rem;
+  line-height: 1;
+}
+
+.application-submitted .term__title {
+  margin-bottom: 0.9375rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+@media print,
+screen and (min-width: 64em) {
+  .application-submitted .term__title {
+    font-size: 2.25rem;
+  }
+}
+
+.application-submitted .term__str {
+  margin-bottom: 0;
+}
+
+.application-submitted__box {
+  margin: 1.875rem auto 2.5rem;
+  padding: 1.875rem 1.25rem 2.5rem;
+  width: 100%;
+  max-width: 34.125rem;
+  border-radius: 1.875rem;
+  background-color: rgba(240, 246, 248, 0.3);
+  -webkit-box-shadow: 0 20px 30px rgba(122, 135, 172, 0.4);
+  box-shadow: 0 20px 30px rgba(122, 135, 172, 0.4);
+}
+
+@media print,
+screen and (min-width: 40em) {
+  .application-submitted__box {
+    margin: 4.375rem auto 6.25rem;
+  }
+}
+
+.application-submitted__title {
+  font-weight: 600;
+  margin-bottom: 1.0625rem;
+}
+
+.application-submitted__code {
+  margin-right: auto;
+  margin-left: auto;
+  height: 3.125rem;
+  line-height: 3.125rem;
+  max-width: 17.875rem;
+  font-size: 0.875rem;
+  text-align: center;
+  color: #59a2b5;
+}
+
+@media print,
+screen and (min-width: 40em) {
+  .application-submitted__code {
+    font-size: 1.125rem;
+  }
+}
+
+.application-form .divide--top,
+.application-submitted .divide--top {
+  margin: 1.875rem 0;
+}
+
+.application-form .divide--bottom,
+.application-submitted .divide--bottom {
+  margin: 1.875rem 0;
+}
+
+@media print,
+screen and (min-width: 64em) {
+
+  .application-form .divide--top,
+  .application-submitted .divide--top {
+    margin: 4.375rem 0 2.5rem;
+  }
+
+  .application-form .divide--bottom,
+  .application-submitted .divide--bottom {
+    margin: 4.6875rem 0;
+  }
+}
+
+/* model__box */
+/* model-cotent 與 application-form 共用寫在 common */
+.model__box {
+  padding: 1.6875rem 1.875rem;
+}
+
+.model__box .model__config__item {
+  margin-bottom: 1.5625rem;
+}
+
+.model__box .model__config__label {
+  margin-bottom: 0.4375rem;
+  color: #59a2b5;
+}
+
+.model__box .model__config__notice {
+  color: #00708d;
+}
+
+@media print,
+screen and (max-width: 39.99875em) {
+  .model__box {
+    padding: 1.25rem;
+  }
+}
+
+@media screen and (min-width: 48em) {
+  .model__box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  .model__box .model__cover {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 calc(100% - 20.625rem);
+    flex: 0 0 calc(100% - 20.625rem);
+    margin-right: 1.875rem;
+  }
+
+  .model__box .model__box__inner {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 18.75rem;
+    flex: 0 0 18.75rem;
+  }
+}
+
+@media print,
+screen and (min-width: 64em) {
+  .model__box {
+    padding: 3.375rem 3.75rem;
+  }
+
+  .model__box .model__cover {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 calc(100% - 25rem);
+    flex: 0 0 calc(100% - 25rem);
+    margin-right: 3.75rem;
+  }
+
+  .model__box .model__box__inner {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 21.25rem;
+    flex: 0 0 21.25rem;
+  }
+}
