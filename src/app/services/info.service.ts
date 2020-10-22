@@ -31,7 +31,7 @@ export class InfoService {
 			maxTerm: { id: id, variantId: variantId, term: leasing.maxTerm / 12 }
 		}
 
-		const result = { ...newBanners, displayCarInfos: [ ...banner[0].vehicle.variants[0].vehicleConfigItems ] };
+		const result = { ...newBanners, displayCarInfos: [...banner[0].vehicle.variants[0].vehicleConfigItems] };
 		for (var key in newBanners) {
 			const item = newBanners[key];
 			const tempResult: any = await this.getFinance(item.id, item.variantId, item.term * 12).toPromise();
@@ -45,41 +45,29 @@ export class InfoService {
 			params: { Type: 'Kinto.Reasons', ShowOnHomePage: 'true' }
 		})
 	}
-	getTopChoices() {
-		const choices = this.http.get(basicUrl + 'Vehicle/GetVariantDetailByGlobalCodeCategory', {
+	async getTopChoices() {
+		const choices: any = await this.http.get(basicUrl + 'Vehicle/GetVariantDetailByGlobalCodeCategory', {
 			headers: this.headers,
 			params: { globalCodeCategoryName: 'Vehicle.TopChoices' }
-		}).pipe(map(data => {
-			const newChoices = [];
-			for (const key in data) {
-				if (data.hasOwnProperty(key)) {
-					newChoices.push({
-						index: Number(key),
-						displayCarImg: data[key].vehicle.secondaryImageUrl,
-						id: data[key].financialProducts.leasing.id,
-						tenure: data[key].financialProducts.leasing.defaultTerm,
-						defaultTerm: data[key].financialProducts.leasing.defaultTerm / 12,
-						maxTerm: data[key].financialProducts.leasing.maxTerm / 12,
-						minTerm: data[key].financialProducts.leasing.minTerm / 12,
-						variantId: data[key].vehicle.variants[0].id,
-						name: data[key].vehicle.name
-					});
-				}
-			}
-			return newChoices
-		}))
+		}).toPromise();
 
-		const result = choices.pipe(map(data => {
-			const newResult = [...data];
-			for (const key in data) {
-				const item = data[key];
-				this.getFinance(item.id, item.variantId, item.defaultTerm).subscribe((res: { monthlyPaymentAmount: number, securityDepositAmount: number }) => {
-					newResult[key].monthlyPaymentAmount = res.monthlyPaymentAmount;
-				});
-			}
-			return newResult;
-		}))
-
+		const result = [];
+		for (var key in choices) {
+			const id = choices[key].financialProducts.leasing.id;
+			const variantId = choices[key].vehicle.variants[0].id;
+			const leasing = choices[key].financialProducts.leasing;
+			const minAmount: any = await this.getFinance(id, variantId, leasing.minTerm).toPromise();
+			const defaultAmount: any = await this.getFinance(id, variantId, leasing.defaultTerm).toPromise();
+			const maxAmount: any = await this.getFinance(id, variantId, leasing.maxTerm).toPromise();
+			result.push({
+				index: Number(key),
+				displayCarImg: choices[key].vehicle.secondaryImageUrl,
+				minTerm: { id: id, variantId: variantId, term: leasing.minTerm / 12, monthlyPaymentAmount: minAmount.monthlyPaymentAmount },
+				defaultTerm: { id: id, variantId: variantId, term: leasing.defaultTerm / 12, monthlyPaymentAmount: defaultAmount.monthlyPaymentAmount },
+				maxTerm: { id: id, variantId: variantId, term: leasing.maxTerm / 12, monthlyPaymentAmount: maxAmount.monthlyPaymentAmount },
+				name: choices[key].vehicle.name
+			})
+		}
 		return result;
 	}
 	getFAQ() {
@@ -91,7 +79,7 @@ export class InfoService {
 	getLatestPromotion() {
 		return this.http.get(basicUrl + 'DynamicContent/GetDynamicContentByType', {
 			headers: this.headers,
-			params: { Type: "Kinto.PromotionalContent" }
+			params: { Type: "Kinto.PromotionalContent", ShowOnHomePage: 'true' }
 		})
 	}
 	getHomeImageUrl() {

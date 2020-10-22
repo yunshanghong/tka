@@ -58,6 +58,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
     nextChoice: choiceInterface;
     choiceSwiper: Swiper;
     renderChoice: boolean = false;
+    choiceYearShow: string = 'defaultTerm';
 
     // 4. FAQ Carousel
     FAQs: Array<Object>;
@@ -109,7 +110,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
                 this.bannerInfos = { minInfo: response.minTerm, defaultInfo: response.defaultTerm, maxInfo: response.maxTerm }
             }
         )
-            .catch(error => console.log(error))
+            .catch(error => console.error(error))
             .finally(() => { this.renderBanner = true; });
 
         // 2. Five Reasons
@@ -120,16 +121,16 @@ export class HomeComponent implements OnInit, AfterViewChecked {
         );
 
         // 3. Top Choices
-        this.infoService.getTopChoices().subscribe(
+        this.infoService.getTopChoices().then(
             (response: Array<choiceInterface>) => {
                 this.topChoices = response;
                 this.prevChoice = this.topChoices[this.topChoices.length - 1];
                 this.currentChoice = this.topChoices[0];
                 this.nextChoice = this.topChoices[1];
-            },
-            error => console.error(error),
-            () => { this.renderChoice = true; }
-        );
+            }
+        )
+            .catch(error => console.error(error))
+            .finally(() => { this.renderChoice = true; });
 
         // 4. FAQ
         this.infoService.getFAQ().subscribe(
@@ -258,7 +259,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
         return c === 'dark' ? 'white' : 'dark';
     }
 
-    onToggleTerm(showItem: string) {
+    onToggleTerm(showItem: string): void {
         this.bannerShow = showItem;
     }
     //#endregion
@@ -377,6 +378,9 @@ export class HomeComponent implements OnInit, AfterViewChecked {
 
         const prevId = this.currentChoice.index === 0 ? this.topChoices.length - 1 : this.currentChoice.index - 1;
         this.prevChoice = this.topChoices[prevId];
+    }
+    onToggleChoiceTerm(showTerm: string): void {
+        this.choiceYearShow = showTerm;
     }
     //#endregion
 
