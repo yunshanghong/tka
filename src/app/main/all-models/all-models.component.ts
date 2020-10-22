@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChildren, QueryList, ElementRef, Inject, HostListener } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-all-models',

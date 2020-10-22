@@ -36,7 +36,7 @@ export const defaultNavigationConfig = [{
             url: '/'
         },
         {
-            title: 'Insurance and Maintenance',
+            title: 'Insurance & Maintenance',
             url: '/'
         },
         {
@@ -99,7 +99,7 @@ export const defaultFooterConfig = [{
             url: '/'
         },
         {
-            title: 'Insurance and Maintenance',
+            title: 'Insurance & Maintenance',
             url: '/'
         },
         {

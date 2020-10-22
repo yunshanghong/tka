@@ -9,6 +9,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './main/home/home.component';
 import { AllModelsComponent } from './main/all-models/all-models.component';
+import { ModelContentComponent } from './main/model-content/model-content.component';
+import { TermConditionComponent } from './main/term-condition/term-condition.component';
+import { ApplicationFormComponent } from './main/application-form/application-form.component';
+import { ApplicationSubmittedComponent } from './main/application-submitted/application-submitted.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { IsAniDirective } from './shared/is-amimated.directive';
@@ -17,6 +21,10 @@ import { IsAniDirective } from './shared/is-amimated.directive';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'models', component: AllModelsComponent },
+  { path: 'model-content/:id', component: ModelContentComponent },
+  { path: 'term-condition', component: TermConditionComponent },
+  { path: 'application-form', component: ApplicationFormComponent },
+  { path: 'application-submitted', component: ApplicationSubmittedComponent},
   { path: '**', redirectTo: "/" },
 ];
 
@@ -27,6 +35,10 @@ const routes: Routes = [
     FooterComponent,
     HomeComponent,
     AllModelsComponent,
+    ModelContentComponent,
+    TermConditionComponent,
+    ApplicationFormComponent,
+    ApplicationSubmittedComponent,
     IsAniDirective
   ],
   imports: [
