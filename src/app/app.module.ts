@@ -8,13 +8,16 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './main/home/home.component';
+import { AllModelsComponent } from './main/all-models/all-models.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
+import { IsAniDirective } from './shared/is-amimated.directive';
 
 // Routes Path and Components
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: '**', redirectTo: "/"},
+  { path: 'models', component: AllModelsComponent },
+  { path: '**', redirectTo: "/" },
 ];
 
 @NgModule({
@@ -23,6 +26,8 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     HomeComponent,
+    AllModelsComponent,
+    IsAniDirective
   ],
   imports: [
     BrowserModule,

@@ -67,7 +67,6 @@ export class HomeComponent implements OnInit, AfterViewChecked {
     promotions: Array<Object>;
     renderPromotion: boolean = false;
 
-    @ViewChildren('jsAni') sections: QueryList<ElementRef>;
     // 1. Banner
     @ViewChild('bannersection') bannersection: ElementRef;
     @ViewChild('bannaerGridContainer') bannaerGridContainer: ElementRef;
@@ -176,42 +175,12 @@ export class HomeComponent implements OnInit, AfterViewChecked {
         this.renderPromotion && this.onBuildPromotionCarousel();
     }
 
-    @HostListener('window:load', [])
-    onWindowLoaded() {
-        this.onAddIsAnimated();
-    }
-
-    @HostListener('window:scroll', [])
-    onWindowScroll() {
-        this.onAddIsAnimated();
-    }
-
     @HostListener('window:resize', [])
     onWindowResize() {
         // 2. Five Reasons
         this.onLineCalcReason()
         // 4. FAQ Carousel
         this.onLineCalcFaq();
-    }
-
-    // 滑動到該區增加class "is-animated"
-    onAddIsAnimated(): void {
-        this.sections && this.sections.map((element) => {
-            const htmlEl = element.nativeElement as HTMLElement;
-            const isInView = this.onCheckInViewport(htmlEl);
-            const newElement = element;
-            if (isInView && !htmlEl.classList.contains('is-animated')) {
-                newElement.nativeElement.className += ' is-animated'
-            }
-            return newElement;
-        })
-    }
-
-    // 確認元件是否在視窗內
-    onCheckInViewport(el: HTMLElement): boolean {
-        var rect = el.getBoundingClientRect();
-        var isVisible = el.offsetHeight !== 0;
-        return isVisible && rect.bottom >= 0 && rect.right >= 0 && rect.top <= (window.innerHeight || this.document.documentElement.clientHeight) && rect.left <= (window.innerWidth || document.documentElement.clientWidth);
     }
 
     //#region Section1. Banner Section
