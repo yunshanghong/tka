@@ -42,7 +42,7 @@ export class InfoService {
 	getFiveReasons() {
 		return this.http.get(basicUrl + 'DynamicContent/GetDynamicContentByType', {
 			headers: this.headers,
-			params: { Type: 'Kinto.Services', ShowOnHomePage: 'false' }
+			params: { Type: 'Kinto.Reasons', ShowOnHomePage: 'true' }
 		})
 	}
 	getTopChoices() {
