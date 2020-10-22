@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { InfoService } from '../../services/info.service';
+
+export interface termInterface {
+    content: string;
+}
 
 @Component({
     selector: 'app-term-condition',
@@ -7,8 +12,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TermConditionComponent implements OnInit {
 
-    constructor() { }
+    termAndCondition: string;
 
-    ngOnInit() { }
+    constructor(private infoService: InfoService) { }
+
+    ngOnInit() {
+        // Term & Conditions
+        this.infoService.getTermCondition().subscribe(
+            (response: termInterface) => this.termAndCondition = response.content,
+            error => console.error(error)
+        );
+    }
 
 }

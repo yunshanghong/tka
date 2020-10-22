@@ -15,6 +15,7 @@ export class InfoService {
 		'Content-Type': 'application/json',
 	})
 
+	//#region 1. Home
 	async getBanner() {
 
 		const banner = await this.http.get(basicUrl + 'Vehicle/GetVariantDetailByGlobalCodeCategory', {
@@ -96,4 +97,27 @@ export class InfoService {
 			"tenure": defaultTerm
 		}, { headers: this.headers })
 	}
+	//#endregion
+
+	//#region 2.1 All Models
+	//#endregion
+
+	//#region 2.3 Term & Condition
+	getTermCondition() {
+		return this.http.get(basicUrl + 'LookUp/GetTermsAndCondition', {
+			headers: this.headers,
+			params: { BrandCode: '0001', Name: 'PrivacyPolicy' }
+		})
+	}
+	//#endregion
+
+	//#region 2.5 Application Submitted
+	postAppNumber() {
+		return this.http.post(basicUrl + 'QuoteRequest/LogQuoteRequest', {
+			"financialProductId": "id",
+			"variantId": "variantId",
+			"tenure": "defaultTerm"
+		}, { headers: this.headers })
+	}
+	//#endregion
 }
