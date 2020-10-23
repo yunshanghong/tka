@@ -15,7 +15,11 @@ export class AppComponent {
 
 	@HostListener('window:load', [])
 	onWindowLoaded() {
-		this.loader.nativeElement.className += ' loaded';
-		this.eventEmitterService.loadingEmitter.subscribe(() => { this.loader.nativeElement.remove(); })
+		this.eventEmitterService.loadingEmitter.subscribe(() => {
+			this.loader.nativeElement.className += ' loaded';
+			setTimeout(() => {
+				this.loader.nativeElement.remove();
+			}, 2000);
+		})
 	}
 }
