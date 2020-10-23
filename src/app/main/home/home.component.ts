@@ -3,6 +3,7 @@ import { Component, OnInit, HostListener, ElementRef, ViewChildren, ViewChild, Q
 // import Swiper JS
 import Swiper from 'swiper';
 import { InfoService } from '../../services/info.service';
+import { EventEmitterService } from '../../services/eventEmitter.service';
 
 export interface rgbInterface {
     r: number;
@@ -40,6 +41,8 @@ export interface choiceInterface {
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, AfterViewChecked {
+    loadedItems: number = 0;
+
     // 1. Banner
     banners: Array<Object>;
     renderBanner: boolean;
@@ -98,7 +101,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
     @ViewChild('promotionSwiperPrev') promotionSwiperPrev: ElementRef;
     @ViewChild('promotionSwiperNext') promotionSwiperNext: ElementRef;
 
-    constructor(private infoService: InfoService, private renderer: Renderer2) { }
+    constructor(private infoService: InfoService, private renderer: Renderer2, private eventEmitterService: EventEmitterService) { }
 
     ngOnInit() {
         //#region load data before render
@@ -107,17 +110,21 @@ export class HomeComponent implements OnInit, AfterViewChecked {
             (response: bannerInterface) => {
                 this.banners = response.displayCarInfos;
                 this.bannerInfos = { minInfo: response.minTerm, defaultInfo: response.defaultTerm, maxInfo: response.maxTerm }
-            }
-        )
+            })
             .catch(error => console.error(error))
-            .finally(() => { this.renderBanner = true; });
+            .finally(() => {
+                this.renderBanner = true;
+                this.loadedItems += 1;
+            });
 
         // 2. Five Reasons
         this.infoService.getFiveReasons().subscribe(
             (response: Array<Object>) => this.fiveReasons = response,
             error => console.error(error),
-            () => { this.renderReasons = true; }
-        );
+            () => {
+                this.renderReasons = true;
+                this.loadedItems += 1;
+            });
 
         // 3. Top Choices
         this.infoService.getTopChoices().then(
@@ -126,24 +133,30 @@ export class HomeComponent implements OnInit, AfterViewChecked {
                 this.prevChoice = this.topChoices[this.topChoices.length - 1];
                 this.currentChoice = this.topChoices[0];
                 this.nextChoice = this.topChoices[1];
-            }
-        )
+            })
             .catch(error => console.error(error))
-            .finally(() => { this.renderChoice = true; });
+            .finally(() => {
+                this.renderChoice = true;
+                this.loadedItems += 1;
+            });
 
         // 4. FAQ
         this.infoService.getFAQ().subscribe(
             (response: Array<Object>) => this.FAQs = response,
             error => console.error(error),
-            () => { this.renderFAQ = true; }
-        );
+            () => {
+                this.renderFAQ = true;
+                this.loadedItems += 1;
+            });
 
         // 5. Latest Promotion
         this.infoService.getLatestPromotion().subscribe(
             (response: Array<Object>) => this.promotions = response,
             error => console.error(error),
-            () => { this.renderPromotion = true; }
-        );
+            () => {
+                this.renderPromotion = true;
+                this.loadedItems += 1;
+            });
 
         this.infoService.getHomeImageUrl().subscribe(
             (response: any) => { },
@@ -173,6 +186,12 @@ export class HomeComponent implements OnInit, AfterViewChecked {
 
         // 5. Latest Promotion
         this.renderPromotion && this.onBuildPromotionCarousel();
+
+        // emitt loading complete
+        if (this.loadedItems === 5) {
+            this.eventEmitterService.onLoadingComplete();
+            this.loadedItems = 0;
+        }
     }
 
     @HostListener('window:resize', [])
