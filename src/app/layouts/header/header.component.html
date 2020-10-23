@@ -30,7 +30,7 @@
 		<nav class="hd-menu" [ngClass]="{'is-open' : HamburgerIsActive}" id="hd-menu">
 			<div class="hd-menu__bg" (click)="onToggleHamberguer()"></div>
 			<ul class="hd-menu__list">
-				<li class="hd-menu__item dark hide-for-large"><a class="hd-menu__link js-detect-for-link" href="javascript:;" data-href="models.html">ALL MODELS</a></li>
+				<li class="hd-menu__item dark hide-for-large"><a class="hd-menu__link js-detect-for-link" href="/models" data-href="/models">ALL MODELS</a></li>
 				
 				<li *ngFor="let menu of Menus; let i = index" class="hd-menu__item" [ngClass]="{'has-sec': menu.children !== undefined}" #menu>
 					<a class="hd-menu__link js-detect-for-link" href="javascript:;" data-href="about.html" (click)="onToggleMenu(i)">{{menu.title}}</a>
@@ -42,7 +42,7 @@
 				</li>
 			</ul>
 		</nav>
-		<a class="button hd-btn" href="javascript:;">All Models</a>
+		<a class="button hd-btn" href="/models">All Models</a>
     </div>
 </header>
 <!-- [END] header-->

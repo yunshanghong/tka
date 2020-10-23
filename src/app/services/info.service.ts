@@ -100,6 +100,29 @@ export class InfoService {
 	//#endregion
 
 	//#region 2.1 All Models
+	getBrandMenu() {
+		return this.http.get(basicUrl + 'LookUp/GetGlobalCodesByCategoryName', {
+			headers: this.headers,
+			params: { CategoryName: 'Vehicle.AvailableBrand' }
+		})
+	}
+
+	getCateMenu() {
+		return this.http.get(basicUrl + 'LookUp/GetVehicleCategoriesByBrand', {
+			headers: this.headers,
+			params: { BrandCode: '0001' }
+		})
+	}
+
+	getAllModels() {
+		return this.http.get(basicUrl + 'LookUp/GetVehicleCategoriesByBrand', {
+			headers: this.headers,
+		})
+	}
+	//#endregion
+
+	//#region 2.2 Models Content
+
 	//#endregion
 
 	//#region 2.3 Term & Condition
