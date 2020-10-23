@@ -135,7 +135,7 @@
 				<div class="swiper-container" id="reasons-carousel" #reasonsSwiperContainer>
 					<div class="swiper-wrapper circle-icon-box__cont">
 						<!-- [Start] FAQ Array Data -->
-						<div *ngFor="let reason of fiveReasons; let i = index" class="swiper-slide circle-icon-box__item" data-css-index="i">
+						<div *ngFor="let reason of fiveReasons; let i = index" class="swiper-slide circle-icon-box__item" [attr.data-css-index]="i+1">
 							<div class="circle-icon-box__icon-box">
 								<i class="be-icon absolute-center" aria-hidden="true" [ngClass]="{'be-icon-service': i === 0, 'be-icon-payment': i === 1, 'be-icon-time-cost': i === 2, 'be-icon-tool': i === 3, 'be-icon-car': i === 4 }"></i>
 							</div>
