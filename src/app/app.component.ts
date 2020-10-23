@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { EventEmitterService } from './services/eventEmitter.service';
 
 @Component({
@@ -6,15 +6,14 @@ import { EventEmitterService } from './services/eventEmitter.service';
 	templateUrl: './app.component.html',
 	styleUrls: []
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 	title = 'toyota-kinto-angular';
 
 	@ViewChild('loader') loader: ElementRef;
 
 	constructor(public eventEmitterService: EventEmitterService) { }
 
-	@HostListener('window:load', [])
-	onWindowLoaded() {
+	ngOnInit() {
 		this.eventEmitterService.loadingEmitter.subscribe(() => {
 			this.loader.nativeElement.className += ' loaded';
 			setTimeout(() => {
