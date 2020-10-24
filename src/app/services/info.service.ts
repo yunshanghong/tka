@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+
 const basicUrl = "https://api-uat.kinto-sg.com/kinto-api/api/";
 
 
@@ -13,6 +14,7 @@ export class InfoService {
 		'Access-Control-Allow-Methods': 'GET, POST',
 		'Access-Control-Allow-Headers': 'Content-Type',
 		'Content-Type': 'application/json',
+		'accept': 'text/plain'
 	})
 
 	//#region 1. Home
@@ -114,15 +116,108 @@ export class InfoService {
 		})
 	}
 
-	getAllModels() {
-		return this.http.get(basicUrl + 'LookUp/GetVehicleCategoriesByBrand', {
+	async getAllModels() {
+		const allModels = await this.http.get(basicUrl + 'LookUp/GetVehicleCategoriesByBrand', {
 			headers: this.headers,
-		})
+		}).toPromise();
+
+		const newAllModels = [];
+		for (var i in allModels) {
+			if (allModels[i].category.order === 0) {
+				const vehicles = allModels[i].vehicles
+				for (var j in vehicles) {
+					const first = vehicles[j];
+					for (var k in first.variants) {
+						const second = first.variants[k];
+						newAllModels.push({
+							id: first.id,
+							name: first.name,
+							category: first.category,
+							primaryImageUrl: first.primaryImageUrl,
+							secondaryImageUrl: first.secondaryImageUrl,
+							assetCondition: second.assetCondition,
+							capacity: second.capacity,
+							code: second.code,
+							fuelConsumptions: second.fuelConsumptions,
+							variantId: second.id,
+							maxPower: second.maxPower,
+							omv: second.omv,
+							price: second.price,
+							price1: second.price1
+						})
+					}
+				}
+			}
+		}
+
+		return newAllModels;
 	}
+
+	async postModelsSearch(searchStr: String) {
+
+		const searchModels = await this.http.post(basicUrl + 'Search/SearchModelByKeyword',
+			{ "keyword": searchStr },
+			{ headers: this.headers }
+		).toPromise();
+
+		const newSearchModels = [];
+
+		for (var i in searchModels) {
+			const first = searchModels[i];
+			for (var j in first.variants) {
+				const second = first.variants[j];
+				newSearchModels.push({
+					id: first.id,
+					name: first.name,
+					category: first.category,
+					primaryImageUrl: first.primaryImageUrl,
+					secondaryImageUrl: first.secondaryImageUrl,
+					assetCondition: second.assetCondition,
+					capacity: second.capacity,
+					code: second.code,
+					fuelConsumptions: second.fuelConsumptions,
+					variantId: second.id,
+					maxPower: second.maxPower,
+					omv: second.omv,
+					price: second.price,
+					price1: second.price1
+				})
+			}
+		}
+		return newSearchModels;
+	}
+
 	//#endregion
 
 	//#region 2.2 Models Content
 
+	getCarInfo(carId: string) {
+		return this.http.get(basicUrl + 'Vehicle/GetDetails', {
+			headers: this.headers,
+			params: { Id: carId }
+		})
+	}
+
+	getMonthlyAmount(carVariantId: string) {
+		return this.http.get(basicUrl + 'Finance/GetAvailableFinancialProducts', {
+			headers: this.headers,
+			params: { VehicleVariantId: carVariantId }
+		})
+	}
+
+	postCalcDeposit(carId: number, carVariantId: number, period: number) {
+		return this.http.post(basicUrl + 'Finance/CalculateSecurityDeposit',
+			{ "financialProductId": carId, "variantId": carVariantId, "tenure": period },
+			{ headers: this.headers }
+		);
+	}
+
+	getContentServices() {
+		return this.http.get(basicUrl + 'DynamicContent/GetDynamicContentByType', {
+			headers: this.headers,
+			params: { Type: 'Kinto.Services' }
+		})
+	}
 	//#endregion
 
 	//#region 2.3 Term & Condition
@@ -133,6 +228,14 @@ export class InfoService {
 		})
 	}
 	//#endregion
+
+	//#region 2.4 Application form
+	postSubmit(postBody: Object) {
+		const searchModels = this.http.post(basicUrl + 'QuoteRequest/LogQuoteRequest',
+			postBody,
+			{ headers: this.headers }
+		).toPromise();
+	}
 
 	//#region 2.5 Application Submitted
 	postAppNumber() {
