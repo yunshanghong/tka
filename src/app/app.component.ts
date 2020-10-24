@@ -9,16 +9,9 @@ import { EventEmitterService } from './services/eventEmitter.service';
 export class AppComponent implements OnInit {
 	title = 'toyota-kinto-angular';
 
-	@ViewChild('loader') loader: ElementRef;
-
 	constructor(public eventEmitterService: EventEmitterService) { }
 
 	ngOnInit() {
-		this.eventEmitterService.loadingEmitter.subscribe(() => {
-			this.loader.nativeElement.className += ' loaded';
-			setTimeout(() => {
-				this.loader.nativeElement.remove();
-			}, 2000);
-		})
+		console.log("app init");
 	}
 }

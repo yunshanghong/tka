@@ -15,22 +15,24 @@ import { ApplicationFormComponent } from './main/application-form/application-fo
 import { ApplicationSubmittedComponent } from './main/application-submitted/application-submitted.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
+import { LoaderComponent } from './layouts/loader/loader.component';
 import { IsAniDirective } from './shared/is-amimated.directive';
 
 // Routes Path and Components
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'models', component: AllModelsComponent },
-  { path: 'models-content/:id', component: ModelContentComponent },
+  { path: 'models-content', component: ModelContentComponent },
   { path: 'term-condition', component: TermConditionComponent },
   { path: 'application-form', component: ApplicationFormComponent },
-  { path: 'application-submitted', component: ApplicationSubmittedComponent},
+  { path: 'application-submitted', component: ApplicationSubmittedComponent },
   { path: '**', redirectTo: "/" },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoaderComponent,
     HeaderComponent,
     FooterComponent,
     HomeComponent,
