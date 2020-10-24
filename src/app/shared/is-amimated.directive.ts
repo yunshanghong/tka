@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Inject, OnInit, HostListener } from '@angular/core';
+import { Directive, ElementRef, Inject, OnInit, HostListener, Renderer2, AfterViewInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { EventEmitterService } from '../services/eventEmitter.service';
 
@@ -8,15 +8,23 @@ import { EventEmitterService } from '../services/eventEmitter.service';
 
 export class IsAniDirective implements OnInit {
 
-    constructor(private elementRef: ElementRef, @Inject(DOCUMENT) private document: Document, public eventEmitterService: EventEmitterService) { }
+    loadingCompleted: boolean = false;
+
+    constructor(private elementRef: ElementRef, @Inject(DOCUMENT) private document: Document, public eventEmitterService: EventEmitterService, private renderer: Renderer2) { }
 
     ngOnInit() {
-        this.eventEmitterService.loadingEmitter.subscribe(() => { this.onAddIsAnimated() });
+        console.log("is animate init")
+        // page reload 
+        this.eventEmitterService.loadingEmitter.subscribe(() => {
+            console.log("is-animated receive event")
+            this.loadingCompleted = true;
+            this.onAddIsAnimated()
+        });
     }
 
     @HostListener('window:scroll', [])
     onWindowScroll() {
-        this.eventEmitterService.loadingCompleted && this.onAddIsAnimated();
+        this.loadingCompleted && this.onAddIsAnimated();
     }
 
     // 滑動到該區增加class "is-animated"
@@ -24,7 +32,7 @@ export class IsAniDirective implements OnInit {
         const htmlEl = this.elementRef.nativeElement as HTMLElement;
         const isInView = this.onCheckInViewport(htmlEl);
         if (isInView && !htmlEl.classList.contains('is-animated')) {
-            this.elementRef.nativeElement.className += ' is-animated'
+            this.renderer['addClass'](this.elementRef.nativeElement, 'is-animated');
         }
     }
 
@@ -32,6 +40,6 @@ export class IsAniDirective implements OnInit {
     onCheckInViewport(el: HTMLElement): boolean {
         var rect = el.getBoundingClientRect();
         var isVisible = el.offsetHeight !== 0;
-        return isVisible && rect.bottom >= 0 && rect.right >= 0 && rect.top <= (window.innerHeight || this.document.documentElement.clientHeight) && rect.left <= (window.innerWidth || document.documentElement.clientWidth);
+        return isVisible && rect.bottom >= 0 && rect.right >= 0 && rect.top <= (window.innerHeight || this.document.documentElement.clientHeight) && rect.left <= (window.innerWidth || this.document.documentElement.clientWidth);
     }
 }
