@@ -1,5 +1,5 @@
-import { isNgTemplate } from '@angular/compiler';
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { EventEmitterService } from 'src/app/services/eventEmitter.service';
 import { InfoService } from '../../services/info.service';
 
@@ -8,17 +8,14 @@ export interface brandCateInterface {
     name: string;
     order: number;
 }
-export interface allModelInterface {
-    category: brandCateInterface
-    vehicles: Array<Object>
-}
-
 @Component({
     selector: 'app-all-models',
     templateUrl: './all-models.component.html',
     styleUrls: ['./all-models.component.css']
 })
-export class AllModelsComponent implements OnInit, AfterViewInit {
+export class AllModelsComponent implements OnInit, AfterViewInit, OnDestroy {
+
+    @ViewChild('modelsComponent') modelsComponent: ElementRef;
 
     // 1. Brand Menu
     brandOpen: boolean = false;
@@ -28,11 +25,16 @@ export class AllModelsComponent implements OnInit, AfterViewInit {
     cateOpen: boolean = false;
     cateList: Array<brandCateInterface> = [{ code: "0000", name: "All", order: 0 }]
 
-    // 3. All Models
+    // 3. All Models 
+    // NOTE 先把所有models抓到allList，等Brand/Category menu 去查
     allList: Array<Object>;
     showList: Array<Object>;
 
-    constructor(private infoService: InfoService, private eventEmitterService: EventEmitterService) { }
+    // 4. Search String 
+    // NOTE 直接去post查
+    searchString: String = "";
+
+    constructor(private infoService: InfoService, private eventEmitterService: EventEmitterService, private router: Router) { }
 
     ngOnInit() {
         console.log("models init")
@@ -51,19 +53,29 @@ export class AllModelsComponent implements OnInit, AfterViewInit {
         );
 
         // 3. All Models
-        this.infoService.getAllModels().subscribe(
-            (response: Array<allModelInterface>) => response.map(item => {
-                if (item.category.order === 0) {
-                    this.allList = this.showList = item.vehicles;
-                }
-            }),
-            error => console.error(error),
-            () => { console.log(this.showList) }
-        )
+        this.infoService.getAllModels().then(
+            (response: Array<Object>) => {
+                this.allList = this.showList = response;
+            })
+            .catch(error => console.error(error))
+            .finally(() => { console.log(this.showList) })
     }
 
     ngAfterViewInit() {
+        console.log("models emitter launch")
         this.eventEmitterService.onLoadingComplete();
     }
 
+    ngOnDestroy() {
+        this.modelsComponent.nativeElement.remove();
+    }
+
+    onModelsSearch(searchString: String) {
+        this.infoService.postModelsSearch(searchString).then(
+            (response: Array<Object>) => {
+                this.showList = response;
+            })
+            .catch(error => console.error(error))
+            .finally(() => { console.log(this.showList) })
+    }
 }

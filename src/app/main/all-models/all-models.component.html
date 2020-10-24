@@ -1,4 +1,5 @@
-<main class="main-wrapper">
+<app-loader></app-loader>
+<main class="main-wrapper" #modelsComponent>
     <!-- [START] Page Content-->
     <div class="grid-container js-ani" appIsAni>
         <div class="top-banner top-banner--models" [ngStyle]="{backgroundImage:'url(assets/images/banner/models.jpg)'}"></div>
@@ -6,7 +7,7 @@
     <nav class="grid-container js-ani" aria-label="You are here:" appIsAni>
         <ol class="breadcrumbs" itemscope="itemscope" itemtype="http://schema.org/BreadcrumbList">
             <li class="breadcrumb_item" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem">
-                <a itemprop="item" href="/">
+                <a itemprop="item" routerLink="/">
                     <span itemprop="name">Home</span>
                 </a>
                 <i class="be-icon be-icon-arrow-right" aria-hidden="true"></i>
@@ -37,7 +38,7 @@
         <h2 class="sec-title__title text-center">All Models</h2>
         <div class="search__wrapper">
         <div class="search__group">
-            <input class="search__input" type="text" value="Search" placeholder="Search"/><i class="be-icon be-icon-search" aria-hidden="true"></i>
+            <input class="search__input" type="text" placeholder="Search" [(ngModel)]="searchString" (ngModelChange)="onModelsSearch($event)"/><i class="be-icon be-icon-search" aria-hidden="true"></i>
         </div>
         </div>
         <div class="sort__wrapper">
@@ -69,186 +70,31 @@
         <div class="cart__box">
             <!-- [Start] AllModels Array Data -->
             <div class="cart__item" *ngFor="let item of showList; let i = index">
-                <a class="cart__item__link" href="/models-content/{{item.id}}" title="{{item.name}}">
+                <a class="cart__item__link" routerLink="/models-content?id={{item.id}}&variantId={{item.variantId}}" title="{{item.name}}">
                     <div class="hover-refl"><span class="hover-refl__light"></span></div>
                     <h2 class="cart__item__type">{{item.name}}</h2>
                     <div class="cart__item__cover object-fit-contain"><img class="cart__item__cover-img lazyload" src="{{item.secondaryImageUrl}}" alt="{{item.name}}"/></div>
                     <div class="cart__item__briefs text-center">
                         <p class="cart__item__brief">5 Seater Compact Sedan</p>
                         <p class="cart__item__brief">
-                            from $<span class="cart__item__price">1,220</span>per month</p>
+                            from $<span class="cart__item__price">{{ item.price | number: '2.' }}</span>per month</p>
                         <p class="cart__item__brief">(with COE)</p>
                     </div>
                     <div class="cart__item__divide"></div>
                     <div class="cart__item__wrap text-center">
                         <div class="cart__item__info">Capacity (cc): 
-                        <h3 class="highlight">1496 </h3>
+                        <h3 class="highlight">{{ item.capacity | number: '2.' }} </h3>
                         </div>
                         <div class="cart__item__info">Max Power (KW (bhp)/ rpm):
-                        <h3 class="highlight">79 (105) / 6,000 </h3>
+                        <h3 class="highlight">{{ item.maxPower }} </h3>
                         </div>
                         <div class="cart__item__info">Fuel consumption (L/100KM):
-                        <h3 class="highlight">5.8</h3>
+                        <h3 class="highlight">{{ item.fuelConsumptions }}</h3>
                         </div>
                     </div>
                 </a>
             </div>
             <!-- [End] AllModels Array Data -->
-
-        <!-- <div class="cart__item"><a class="cart__item__link" href="/models-content" title="C-HR">
-            <div class="hover-refl"><span class="hover-refl__light"></span></div>
-            <h2 class="cart__item__type">C-HR</h2>
-            <div class="cart__item__cover object-fit-contain"><img class="cart__item__cover-img lazyload" src="assets/images/products/car_01.png" alt="C-HR"/></div>
-            <div class="cart__item__briefs text-center">
-                <p class="cart__item__brief">5 Seater Compact Sedan</p>
-                <p class="cart__item__brief">
-                    from $<span class="cart__item__price">1,220</span>per month</p>
-                <p class="cart__item__brief">(with COE)</p>
-            </div>
-            <div class="cart__item__divide"></div>
-            <div class="cart__item__wrap text-center">
-                <div class="cart__item__info">Capacity (cc): 
-                <h3 class="highlight">1496 </h3>
-                </div>
-                <div class="cart__item__info">Max Power (KW (bhp)/ rpm):
-                <h3 class="highlight">79 (105) / 6,000 </h3>
-                </div>
-                <div class="cart__item__info">Fuel consumption (L/100KM):
-                <h3 class="highlight">5.8</h3>
-                </div>
-            </div></a></div>
-        <div class="cart__item"><a class="cart__item__link" href="/models-content" title="Vios">
-            <div class="hover-refl"><span class="hover-refl__light"></span></div>
-            <h2 class="cart__item__type">Vios</h2>
-            <div class="cart__item__cover object-fit-contain"><img class="cart__item__cover-img lazyload" src="assets/images/products/car_02.png" alt="Vios"/></div>
-            <div class="cart__item__briefs text-center">
-                <p class="cart__item__brief">5 Seater Compact Sedan</p>
-                <p class="cart__item__brief">
-                    from $<span class="cart__item__price">1,220</span>per month</p>
-                <p class="cart__item__brief">(with COE)</p>
-            </div>
-            <div class="cart__item__divide"></div>
-            <div class="cart__item__wrap text-center">
-                <div class="cart__item__info">Capacity (cc): 
-                <h3 class="highlight">1496 </h3>
-                </div>
-                <div class="cart__item__info">Max Power (KW (bhp)/ rpm):
-                <h3 class="highlight">79 (105) / 6,000 </h3>
-                </div>
-                <div class="cart__item__info">Fuel consumption (L/100KM):
-                <h3 class="highlight">5.8</h3>
-                </div>
-            </div></a></div>
-        <div class="cart__item"><a class="cart__item__link" href="/models-content" title="Previa Aeras">
-            <div class="hover-refl"><span class="hover-refl__light"></span></div>
-            <h2 class="cart__item__type">Previa Aeras</h2>
-            <div class="cart__item__cover object-fit-contain"><img class="cart__item__cover-img lazyload" src="assets/images/products/car_03.png" alt="Previa Aeras"/></div>
-            <div class="cart__item__briefs text-center">
-                <p class="cart__item__brief">5 Seater Compact Sedan</p>
-                <p class="cart__item__brief">
-                    from $<span class="cart__item__price">1,220</span>per month</p>
-                <p class="cart__item__brief">(with COE)</p>
-            </div>
-            <div class="cart__item__divide"></div>
-            <div class="cart__item__wrap text-center">
-                <div class="cart__item__info">Capacity (cc): 
-                <h3 class="highlight">1496 </h3>
-                </div>
-                <div class="cart__item__info">Max Power (KW (bhp)/ rpm):
-                <h3 class="highlight">79 (105) / 6,000 </h3>
-                </div>
-                <div class="cart__item__info">Fuel consumption (L/100KM):
-                <h3 class="highlight">5.8</h3>
-                </div>
-            </div></a></div>
-        <div class="cart__item"><a class="cart__item__link" href="/models-content" title="C-HR">
-            <div class="hover-refl"><span class="hover-refl__light"></span></div>
-            <h2 class="cart__item__type">C-HR</h2>
-            <div class="cart__item__cover object-fit-contain"><img class="cart__item__cover-img lazyload" src="assets/images/products/car_01.png" alt="C-HR"/></div>
-            <div class="cart__item__briefs text-center">
-                <p class="cart__item__brief">5 Seater Compact Sedan</p>
-                <p class="cart__item__brief">
-                    from $<span class="cart__item__price">1,220</span>per month</p>
-                <p class="cart__item__brief">(with COE)</p>
-            </div>
-            <div class="cart__item__divide"></div>
-            <div class="cart__item__wrap text-center">
-                <div class="cart__item__info">Capacity (cc): 
-                <h3 class="highlight">1496 </h3>
-                </div>
-                <div class="cart__item__info">Max Power (KW (bhp)/ rpm):
-                <h3 class="highlight">79 (105) / 6,000 </h3>
-                </div>
-                <div class="cart__item__info">Fuel consumption (L/100KM):
-                <h3 class="highlight">5.8</h3>
-                </div>
-            </div></a></div>
-        <div class="cart__item"><a class="cart__item__link" href="/models-content" title="Vios">
-            <div class="hover-refl"><span class="hover-refl__light"></span></div>
-            <h2 class="cart__item__type">Vios</h2>
-            <div class="cart__item__cover object-fit-contain"><img class="cart__item__cover-img lazyload" src="assets/images/products/car_02.png" alt="Vios"/></div>
-            <div class="cart__item__briefs text-center">
-                <p class="cart__item__brief">5 Seater Compact Sedan</p>
-                <p class="cart__item__brief">
-                    from $<span class="cart__item__price">1,220</span>per month</p>
-                <p class="cart__item__brief">(with COE)</p>
-            </div>
-            <div class="cart__item__divide"></div>
-            <div class="cart__item__wrap text-center">
-                <div class="cart__item__info">Capacity (cc): 
-                <h3 class="highlight">1496 </h3>
-                </div>
-                <div class="cart__item__info">Max Power (KW (bhp)/ rpm):
-                <h3 class="highlight">79 (105) / 6,000 </h3>
-                </div>
-                <div class="cart__item__info">Fuel consumption (L/100KM):
-                <h3 class="highlight">5.8</h3>
-                </div>
-            </div></a></div>
-        <div class="cart__item"><a class="cart__item__link" href="/models-content" title="C-HR">
-            <div class="hover-refl"><span class="hover-refl__light"></span></div>
-            <h2 class="cart__item__type">C-HR</h2>
-            <div class="cart__item__cover object-fit-contain"><img class="cart__item__cover-img lazyload" src="assets/images/products/car_01.png" alt="C-HR"/></div>
-            <div class="cart__item__briefs text-center">
-                <p class="cart__item__brief">5 Seater Compact Sedan</p>
-                <p class="cart__item__brief">
-                    from $<span class="cart__item__price">1,220</span>per month</p>
-                <p class="cart__item__brief">(with COE)</p>
-            </div>
-            <div class="cart__item__divide"></div>
-            <div class="cart__item__wrap text-center">
-                <div class="cart__item__info">Capacity (cc): 
-                <h3 class="highlight">1496 </h3>
-                </div>
-                <div class="cart__item__info">Max Power (KW (bhp)/ rpm):
-                <h3 class="highlight">79 (105) / 6,000 </h3>
-                </div>
-                <div class="cart__item__info">Fuel consumption (L/100KM):
-                <h3 class="highlight">5.8</h3>
-                </div>
-            </div></a></div>
-        <div class="cart__item"><a class="cart__item__link" href="/models-content" title="Previa Aeras">
-            <div class="hover-refl"><span class="hover-refl__light"></span></div>
-            <h2 class="cart__item__type">Previa Aeras</h2>
-            <div class="cart__item__cover object-fit-contain"><img class="cart__item__cover-img lazyload" src="https://ipsumimage.appspot.com/792x560" alt="Previa Aeras"/></div>
-            <div class="cart__item__briefs text-center">
-                <p class="cart__item__brief">5 Seater Compact Sedan</p>
-                <p class="cart__item__brief">
-                    from $<span class="cart__item__price">1,220</span>per month</p>
-                <p class="cart__item__brief">(with COE)</p>
-            </div>
-            <div class="cart__item__divide"></div>
-            <div class="cart__item__wrap text-center">
-                <div class="cart__item__info">Capacity (cc): 
-                <h3 class="highlight">1496 </h3>
-                </div>
-                <div class="cart__item__info">Max Power (KW (bhp)/ rpm):
-                <h3 class="highlight">79 (105) / 6,000 </h3>
-                </div>
-                <div class="cart__item__info">Fuel consumption (L/100KM):
-                <h3 class="highlight">5.8</h3>
-                </div>
-            </div></a></div> -->
         </div>
         <div class="loading">
         <div class="loading__dot"></div>
