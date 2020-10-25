@@ -166,8 +166,8 @@
 			↓因為要正確顯示視覺稿的層級，Hover操作按鈕視覺上的正常，而設置的 *-hover-mask
 			流程：點擊觸發 Swiper 切換
 			-->
-			<div class="swiper-button-prev-hover-mask" (click)="onChoicePrev()"></div>
-			<div class="swiper-button-next-hover-mask" (click)="onChoiceNext()"></div>
+			<div class="swiper-button-prev-hover-mask" (click)="choiceSwiper.slidePrev()"></div>
+			<div class="swiper-button-next-hover-mask" (click)="choiceSwiper.slideNext()"></div>
 			<div class="swiper-container" id="choice-carousel" #choiceSwiperContainer>
 				<div class="car-diffuse-glow"></div>
 				<div class="swiper-wrapper">
@@ -181,7 +181,7 @@
 				</div>
 			</div>
 			<div class="swiper-button-prev" #choiceSwiperPrev>
-				<div class="index-choice__nav-bg" (click)="onChoicePrev()"></div>
+				<div class="index-choice__nav-bg" (click)="choiceSwiper.slidePrev()"></div>
 				<div class="index-choice__nav-text text-center" *ngIf="prevChoice">
 					<div class="name">{{prevChoice.name}}</div>
 					<div class="price">from $ <span>{{prevChoice.maxTerm.monthlyPaymentAmount | number: '2.'}}</span> per month</div>
@@ -189,7 +189,7 @@
 				</div>
 			</div>
 			<div class="swiper-button-next" #choiceSwiperNext>
-				<div class="index-choice__nav-bg" (click)="onChoicePrev()"></div>
+				<div class="index-choice__nav-bg" (click)="choiceSwiper.slideNext()"></div>
 				<div class="index-choice__nav-text text-center" *ngIf="nextChoice">
 					<div class="name">{{nextChoice.name}}</div>
 					<div class="price">from $ <span>{{nextChoice.maxTerm.monthlyPaymentAmount | number: '2.'}}</span> per month</div>

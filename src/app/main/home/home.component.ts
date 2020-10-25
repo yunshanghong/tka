@@ -387,12 +387,18 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
                 }
             }
         });
+
+        this.choiceSwiper.on('slideNextTransitionStart', (swiper) => {
+            this.onChoiceNext();
+        });
+
+        this.choiceSwiper.on('slidePrevTransitionStart', (swiper) => {
+            this.onChoicePrev();
+        });
     }
 
     // Carousel 下一項
     onChoiceNext(): void {
-        this.choiceSwiper.slideNext();
-
         this.prevChoice = this.currentChoice;
         this.currentChoice = this.nextChoice;
 
@@ -402,8 +408,6 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
     }
     // Carousel 前一項
     onChoicePrev(): void {
-        this.choiceSwiper.slidePrev();
-
         this.nextChoice = this.currentChoice;
         this.currentChoice = this.prevChoice;
 
