@@ -1,14 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { EventEmitterService } from 'src/app/services/eventEmitter.service';
+import { InfoService } from 'src/app/services/info.service';
 
 @Component({
     selector: 'app-application-submitted',
     templateUrl: './application-submitted.component.html',
     styleUrls: ['./application-submitted.component.css']
 })
-export class ApplicationSubmittedComponent implements OnInit {
+export class ApplicationSubmittedComponent implements OnInit, OnDestroy {
 
-    constructor() { }
+    @ViewChild('submittedComponent') submittedComponent: ElementRef;
 
-    ngOnInit() { }
+    constructor(private infoService: InfoService, private eventEmitterService: EventEmitterService) { }
+
+    ngOnInit() {
+        this.infoService.postAppNumber({}).subscribe(
+            (response: any) => { console.log(response) },
+            (error) => console.error(error),
+            () => { this.eventEmitterService.onLoadingComplete() }
+        )
+    }
+
+    ngOnDestroy() {
+        this.submittedComponent.nativeElement.remove();
+    }
 
 }

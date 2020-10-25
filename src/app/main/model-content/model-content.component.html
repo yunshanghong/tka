@@ -1,14 +1,15 @@
-<main class="main-wrapper">
+<main class="main-wrapper" #contentComponent>
+    <app-loader></app-loader>
     <!-- [START] Page Content-->
     <nav class="grid-container js-ani" aria-label="You are here:" appIsAni>
     <ol class="breadcrumbs" itemscope="itemscope" itemtype="http://schema.org/BreadcrumbList">
-        <li class="breadcrumb_item" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><a itemprop="item" href="/"><span itemprop="name">Home</span></a><i class="be-icon be-icon-arrow-right" aria-hidden="true"></i>
+        <li class="breadcrumb_item" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><a itemprop="item" routerLink="/"><span itemprop="name">Home</span></a><i class="be-icon be-icon-arrow-right" aria-hidden="true"></i>
         <meta itemprop="position" content="1"/>
         </li>
-        <li class="breadcrumb_item" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><a itemprop="item" href="models.html"><span itemprop="name">All Models</span></a><i class="be-icon be-icon-arrow-right" aria-hidden="true"></i>
+        <li class="breadcrumb_item" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><a itemprop="item" routerLink="/models"><span itemprop="name">All Models</span></a><i class="be-icon be-icon-arrow-right" aria-hidden="true"></i>
         <meta itemprop="position" content="2"/>
         </li>
-        <li class="breadcrumb_item" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><span class="show-for-sr" aria-current="page">Now Page：</span><span itemprop="name">Corolla Altis</span>
+        <li class="breadcrumb_item" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><span class="show-for-sr" aria-current="page">Now Page：</span><span itemprop="name">{{ carName }}</span>
         <meta itemprop="position" content="3"/>
         </li>
     </ol>
@@ -28,58 +29,67 @@
             <div class="radius-bar size-xs opacity-10 offset-right-5"></div>
         </div>
         </div>
-        <h2 class="sec-title__title text-center">Corolla Altis</h2>
+        <h2 class="sec-title__title text-center">{{ carName }}</h2>
         <h3 class="sec-title__subtitle text-center"> <span class="left">Compact Sedan</span><span class="sec-title__divide">|</span><span class="right">Sleek, sporty, spacious. The perfect city car.</span></h3>
         <div class="model__wrap">
         <div class="model__head js-ani" appIsAni>
-            <div class="model__cover object-fit"><img class="cart__item__cover-img lazyload" src="assets/images/products/car_01.png" alt="Corolla Altis"></div>
+            <div class="model__cover object-fit"><img class="cart__item__cover-img lazyload" src="assets/images/products/car_01.png" alt="{{ carName }}"></div>
             <div class="model__config">
             <div class="model__config__item">
                 <div class="model__config__label text-center">Exterior color</div>
                 <h3 class="model__config__title text-center">Attitude Black Mica</h3>
                 <div class="model__config__txt palette">
-                <div class="palette__item">
-                    <label class="palette__icon">
-                    <input class="palette__icon__input" type="radio" name="exterior" value="Red"/>
-                    <div class="palette__icon__label" style="color: #eb0a1e;"><span class="palette__icon__label-item" style="background-color: #eb0a1e;"></span>
+                    <!-- [START] Colorful Car Content -->
+                    <!-- <div class="palette__item" *ngFor="let carColor of carExterior; let i = index">
+                        <label class="palette__icon">
+                        <input class="palette__icon__input" type="radio" name="exterior" value="Brown"/>
+                        <div class="palette__icon__label" [ngStyle]="{ 'color': carColor.iconColorCode }"><span class="palette__icon__label-item" [ngStyle]="{ 'background-color': carColor.iconColorCode }" ></span>
+                        </div>
+                        </label>
+                    </div> -->
+                    <!-- [END] Colorful Car Content -->
+                    <div class="palette__item">
+                        <label class="palette__icon">
+                        <input class="palette__icon__input" type="radio" name="exterior" value="Red"/>
+                        <div class="palette__icon__label" style="color: #eb0a1e;"><span class="palette__icon__label-item" style="background-color: #eb0a1e;"></span>
+                        </div>
+                        </label>
                     </div>
-                    </label>
-                </div>
-                <div class="palette__item">
-                    <label class="palette__icon">
-                    <input class="palette__icon__input" type="radio" name="exterior" value="Brown"/>
-                    <div class="palette__icon__label" style="color: #745645;"><span class="palette__icon__label-item" style="background-color: #745645;"></span>
+                    <div class="palette__item">
+                        <label class="palette__icon">
+                        <input class="palette__icon__input" type="radio" name="exterior" value="Brown"/>
+                        <div class="palette__icon__label" style="color: #745645;"><span class="palette__icon__label-item" style="background-color: #745645;"></span>
+                        </div>
+                        </label>
                     </div>
-                    </label>
-                </div>
-                <div class="palette__item">
-                    <label class="palette__icon">
-                    <input class="palette__icon__input" type="radio" name="exterior" value="Black" checked="checked"/>
-                    <div class="palette__icon__label" style="color: #000000;"><span class="palette__icon__label-item" style="background-color: #000000;"></span>
+                    <div class="palette__item">
+                        <label class="palette__icon">
+                        <input class="palette__icon__input" type="radio" name="exterior" value="Black" checked="checked"/>
+                        <div class="palette__icon__label" style="color: #000000;"><span class="palette__icon__label-item" style="background-color: #000000;"></span>
+                        </div>
+                        </label>
                     </div>
-                    </label>
-                </div>
-                <div class="palette__item">
-                    <label class="palette__icon">
-                    <input class="palette__icon__input" type="radio" name="exterior" value="White"/>
-                    <div class="palette__icon__label" style="color: #ffffff;"><span class="palette__icon__label-item" style="background-color: #ffffff;"></span>
+                    <div class="palette__item">
+                        <label class="palette__icon">
+                        <input class="palette__icon__input" type="radio" name="exterior" value="White"/>
+                        <div class="palette__icon__label" style="color: #ffffff;"><span class="palette__icon__label-item" style="background-color: #ffffff;"></span>
+                        </div>
+                        </label>
                     </div>
-                    </label>
-                </div>
-                <div class="palette__item">
-                    <label class="palette__icon">
-                    <input class="palette__icon__input" type="radio" name="exterior" value="Grey"/>
-                    <div class="palette__icon__label" style="color: #525355;"><span class="palette__icon__label-item" style="background-color: #525355;"></span>
+                    <div class="palette__item">
+                        <label class="palette__icon">
+                        <input class="palette__icon__input" type="radio" name="exterior" value="Grey"/>
+                        <div class="palette__icon__label" style="color: #525355;"><span class="palette__icon__label-item" style="background-color: #525355;"></span>
+                        </div>
+                        </label>
                     </div>
-                    </label>
-                </div>
-                <div class="palette__item">
-                    <label class="palette__icon">
-                    <input class="palette__icon__input" type="radio" name="exterior" value="Light-Grey"/>
-                    <div class="palette__icon__label" style="color: #c6c6c6;"><span class="palette__icon__label-item" style="background-color: #c6c6c6;"></span>
+                    <div class="palette__item">
+                        <label class="palette__icon">
+                        <input class="palette__icon__input" type="radio" name="exterior" value="Light-Grey"/>
+                        <div class="palette__icon__label" style="color: #c6c6c6;"><span class="palette__icon__label-item" style="background-color: #c6c6c6;"></span>
+                        </div>
+                        </label>
                     </div>
-                    </label>
-                </div>
                 </div>
             </div>
             <div class="model__config__item">
@@ -124,42 +134,14 @@
         <div class="model__sec kinto-one js-ani" appIsAni>
             <h3 class="model__sec__title text-center">KINTO ONE will include</h3>
             <div class="model__sec__circle-icon circle-icon-box">
-            <div class="circle-icon-box__item">
-                <div class="circle-icon-box__icon-box"><i class="be-icon absolute-center be-icon-maintenance" aria-hidden="true"></i></div>
-                <h4 class="circle-icon-box__title">Full Maintenance Program including pick up and return service</h4>
-                <div class="circle-icon-box__desc">
+                <!-- [Start] Services Array Data -->
+                <div class="circle-icon-box__item" *ngFor="let service of serviceList; let i = index">
+                    <div class="circle-icon-box__icon-box"><i class="be-icon absolute-center be-icon-insurance" aria-hidden="true"></i></div>
+                    <h4 class="circle-icon-box__title">{{ service.shortDescription }}</h4>
+                    <div class="circle-icon-box__desc">
+                    </div>
                 </div>
-            </div>
-            <div class="circle-icon-box__item">
-                <div class="circle-icon-box__icon-box"><i class="be-icon absolute-center be-icon-insurance" aria-hidden="true"></i></div>
-                <h4 class="circle-icon-box__title">Annual renewal of road tax and comprehensive insurance coverage (lessee liable for excess stipulated)</h4>
-                <div class="circle-icon-box__desc">
-                </div>
-            </div>
-            <div class="circle-icon-box__item">
-                <div class="circle-icon-box__icon-box"><i class="be-icon absolute-center be-icon-road-assistance" aria-hidden="true"></i></div>
-                <h4 class="circle-icon-box__title">24/7 roadside auto assistance</h4>
-                <div class="circle-icon-box__desc">
-                </div>
-            </div>
-            <div class="circle-icon-box__item">
-                <div class="circle-icon-box__icon-box"><i class="be-icon absolute-center be-icon-unlimited" aria-hidden="true"></i></div>
-                <h4 class="circle-icon-box__title">Unlimited Mileage</h4>
-                <div class="circle-icon-box__desc">
-                </div>
-            </div>
-            <div class="circle-icon-box__item">
-                <div class="circle-icon-box__icon-box"><i class="be-icon absolute-center be-icon-backup-cart" aria-hidden="true"></i></div>
-                <h4 class="circle-icon-box__title">Replacement vehicle for the vehicle's down time for servicing or accidents</h4>
-                <div class="circle-icon-box__desc">
-                </div>
-            </div>
-            <div class="circle-icon-box__item">
-                <div class="circle-icon-box__icon-box"><i class="be-icon absolute-center be-icon-cart-camera" aria-hidden="true"></i></div>
-                <h4 class="circle-icon-box__title">Solar film and In-car camera</h4>
-                <div class="circle-icon-box__desc">
-                </div>
-            </div>
+                <!-- [End] Services Array Data -->
             </div>
         </div>
         <div class="model__sec js-ani" appIsAni>
@@ -277,11 +259,11 @@
             </div>
             </div>
         </div>
-        <div class="model__ctrl text-center"><a class="button" href="term-condition.html" title="Book Now">Book Now</a></div>
+        <div class="model__ctrl text-center"><a class="button" title="Book Now" (click)="onBookNow()">Book Now</a></div>
         </div>
         <div class="model__ctrl--mb">
         <!-- Back 請關掉 aside-->
-        <button class="btn-lightest button">Back</button><a class="button" href="term-condition.html" title="Book Now">Next</a>
+        <button class="btn-lightest button">Back</button><a class="button" title="Book Now" (click)="onBookNow()">Next</a>
         </div>
     </aside>
     <!-- 手機版-->

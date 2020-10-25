@@ -236,14 +236,13 @@ export class InfoService {
 			{ headers: this.headers }
 		).toPromise();
 	}
+	//#endregion
 
 	//#region 2.5 Application Submitted
-	postAppNumber() {
-		return this.http.post(basicUrl + 'QuoteRequest/LogQuoteRequest', {
-			"financialProductId": "id",
-			"variantId": "variantId",
-			"tenure": "defaultTerm"
-		}, { headers: this.headers })
+	postAppNumber(postBody: Object) {
+		return this.http.post(basicUrl + 'QuoteRequest/LogQuoteRequest',
+			postBody,
+			{ headers: this.headers })
 	}
 	//#endregion
 }

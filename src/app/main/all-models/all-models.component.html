@@ -1,5 +1,5 @@
-<app-loader></app-loader>
 <main class="main-wrapper" #modelsComponent>
+    <app-loader></app-loader>
     <!-- [START] Page Content-->
     <div class="grid-container js-ani" appIsAni>
         <div class="top-banner top-banner--models" [ngStyle]="{backgroundImage:'url(assets/images/banner/models.jpg)'}"></div>
@@ -70,7 +70,7 @@
         <div class="cart__box">
             <!-- [Start] AllModels Array Data -->
             <div class="cart__item" *ngFor="let item of showList; let i = index">
-                <a class="cart__item__link" routerLink="/models-content?id={{item.id}}&variantId={{item.variantId}}" title="{{item.name}}">
+                <a class="cart__item__link" [routerLink]="['/models-content']" [queryParams]="{id: [item.id], variantId: [item.variantId] }"  title="{{item.name}}">
                     <div class="hover-refl"><span class="hover-refl__light"></span></div>
                     <h2 class="cart__item__type">{{item.name}}</h2>
                     <div class="cart__item__cover object-fit-contain"><img class="cart__item__cover-img lazyload" src="{{item.secondaryImageUrl}}" alt="{{item.name}}"/></div>

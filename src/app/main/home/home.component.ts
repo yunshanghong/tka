@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, ElementRef, ViewChildren, ViewChild, QueryList, Renderer2, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, HostListener, ElementRef, ViewChildren, ViewChild, QueryList, Renderer2, AfterViewChecked, OnDestroy } from '@angular/core';
 
 // import Swiper JS
 import Swiper from 'swiper';
@@ -40,7 +40,7 @@ export interface choiceInterface {
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, AfterViewChecked {
+export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
     loadedItems: number = 0;
 
     // 1. Banner
@@ -70,6 +70,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
     promotions: Array<Object>;
     renderPromotion: boolean;
 
+    @ViewChild('homeComponent') homeComponent: ElementRef;
     // 1. Banner
     @ViewChild('bannersection') bannersection: ElementRef;
     @ViewChild('bannaerGridContainer') bannaerGridContainer: ElementRef;
@@ -104,6 +105,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
     constructor(private infoService: InfoService, private renderer: Renderer2, private eventEmitterService: EventEmitterService) { }
 
     ngOnInit() {
+        console.log("home init");
         //#region load data before render
         // 1. Banner
         this.infoService.getBanner().then(
@@ -113,6 +115,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
             })
             .catch(error => console.error(error))
             .finally(() => {
+                console.log("got banners")
                 this.renderBanner = true;
                 this.loadedItems += 1;
             });
@@ -122,6 +125,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
             (response: Array<Object>) => this.fiveReasons = response,
             error => console.error(error),
             () => {
+                console.log("got Reasons")
                 this.renderReasons = true;
                 this.loadedItems += 1;
             });
@@ -136,6 +140,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
             })
             .catch(error => console.error(error))
             .finally(() => {
+                console.log("got Choices")
                 this.renderChoice = true;
                 this.loadedItems += 1;
             });
@@ -145,6 +150,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
             (response: Array<Object>) => this.FAQs = response,
             error => console.error(error),
             () => {
+                console.log("got FAQ")
                 this.renderFAQ = true;
                 this.loadedItems += 1;
             });
@@ -154,6 +160,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
             (response: Array<Object>) => this.promotions = response,
             error => console.error(error),
             () => {
+                console.log("got Promotion")
                 this.renderPromotion = true;
                 this.loadedItems += 1;
             });
@@ -170,7 +177,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
         this.renderBanner && this.onBuildBannerCarousel();
 
         // 2. Five Reasons
-        if (this.renderReasons) {
+        if (this.renderReasons && this.renderBanner) {
             this.onBuildCircleIconBox();
             this.onLineCalcReason();
         }
@@ -189,6 +196,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
 
         // emitt loading complete
         if (this.loadedItems === 5) {
+            console.log("Emit launch")
             this.eventEmitterService.onLoadingComplete();
             this.loadedItems = 0;
         }
@@ -200,6 +208,11 @@ export class HomeComponent implements OnInit, AfterViewChecked {
         this.onLineCalcReason()
         // 4. FAQ Carousel
         this.onLineCalcFaq();
+    }
+
+    ngOnDestroy() {
+        console.log("home destroy")
+        this.homeComponent.nativeElement.remove();
     }
 
     //#region Section1. Banner Section

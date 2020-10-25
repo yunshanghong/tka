@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Location } from '@angular/common';
+
+
+import { EventEmitterService } from 'src/app/services/eventEmitter.service';
 import { InfoService } from '../../services/info.service';
+import { Router } from '@angular/router';
+import { OrderService } from 'src/app/services/order.service';
 
 export interface termInterface {
     content: string;
@@ -10,18 +16,36 @@ export interface termInterface {
     templateUrl: './term-condition.component.html',
     styleUrls: ['./term-condition.component.css']
 })
-export class TermConditionComponent implements OnInit {
+export class TermConditionComponent implements OnInit, OnDestroy {
 
     termAndCondition: string;
 
-    constructor(private infoService: InfoService) { }
+    @ViewChild('termComponent') termComponent: ElementRef;
+
+    constructor(
+        private infoService: InfoService,
+        private eventEmitterService: EventEmitterService,
+        private router: Router,
+        private orderService: OrderService) { }
 
     ngOnInit() {
         // Term & Conditions
         this.infoService.getTermCondition().subscribe(
             (response: termInterface) => this.termAndCondition = response.content,
-            error => console.error(error)
+            error => console.error(error),
+            () => { console.log(this.termAndCondition); this.eventEmitterService.onLoadingComplete() }
         );
     }
 
+    ngOnDestroy() {
+        this.termComponent.nativeElement.remove();
+    }
+
+    onNextPage() {
+        this.router.navigate(["/application-form"]);
+    }
+
+    onPrevPage() {
+        this.router.navigate(['/models-content'])
+    }
 }

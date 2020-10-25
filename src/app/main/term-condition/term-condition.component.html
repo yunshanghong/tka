@@ -1,4 +1,5 @@
-<main class="main-wrapper">
+<main class="main-wrapper" #termComponent>
+    <app-loader></app-loader>
     <!-- [START] Page Content-->
     <div class="radius-bar-deco top-right">
     <div class="radius-bar-group">
@@ -14,7 +15,7 @@
         <div class="radius-bar size-xs opacity-10 offset-right-5"></div>
         </div>
     </div>
-    <div class="grid-container"><a class="goback" href="javascript:;"><i class="be-icon be-icon-arrow-left" aria-hidden="true"></i><span class="goback__txt">Start again</span></a>
+    <div class="grid-container"><a class="goback" (click)="onPrevPage()"><i class="be-icon be-icon-arrow-left" aria-hidden="true"></i><span class="goback__txt">Start again</span></a>
         <div class="step">
         <div class="step-item is-active">
             <div class="step-item__num">1</div>
@@ -29,16 +30,15 @@
             <h3 class="step-item__title">Application <br class="large-down">Submitted</h3>
         </div>
         </div>
-        <form class="form" id="termCondition" action="application-form.html">
-        <div class="term">
-            <div class="term-condition__wrap">
-                <div class="term-condition__inner scrollbar-ver" *ngIf="termAndCondition" [innerHTML]="termAndCondition">
+        <form class="form" id="termCondition">
+            <div class="term">
+                <div class="term-condition__wrap">
+                    <div class="term-condition__inner scrollbar-ver" *ngIf="termAndCondition" [innerHTML]="termAndCondition"></div>
+                </div>
+                <div class="term__ctrl"><a class="button btn-lightest" title="Decline" (click)="onPrevPage()">Decline</a>
+                <button class="button" (click)="onNextPage()">Accept</button>
+                </div>
             </div>
-            </div>
-            <div class="term__ctrl"><a class="button btn-lightest" href="javascript:;" title="Decline">Decline</a>
-            <button class="button">Accept</button>
-            </div>
-        </div>
         </form>
     </div>
     </section>
