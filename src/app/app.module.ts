@@ -21,6 +21,7 @@ import { IsAniDirective } from './shared/is-amimated.directive';
 import { NewsContentComponent } from './main/news-content/news-content.component';
 import { AboutComponent } from './main/about/about.component';
 import { ApplyComponent } from './main/apply/apply.component';
+import { FAQComponent } from './main/faq/faq.component';
 
 // Routes Path and Components
 const routes: Routes = [
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'news-content', component: NewsContentComponent },
   { path: 'about', component: AboutComponent },
   { path: 'apply', component: ApplyComponent },
+  { path: 'faq', component: FAQComponent },
   { path: '**', redirectTo: "/" },
 ];
 
@@ -54,6 +56,7 @@ const routes: Routes = [
     NewsContentComponent,
     AboutComponent,
     ApplyComponent,
+    FAQComponent,
   ],
   imports: [
     BrowserModule,

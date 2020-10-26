@@ -32,7 +32,7 @@ export const defaultNavigationConfig = [{
 },
 {
     title: 'FAQ',
-    url: '/',
+    url: '/faq',
     children: [
         {
             title: 'Accessories',
