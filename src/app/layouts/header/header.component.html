@@ -33,7 +33,7 @@
 				<li class="hd-menu__item dark hide-for-large"><a class="hd-menu__link js-detect-for-link" routerLink="/models" data-href="/models">ALL MODELS</a></li>
 				
 				<li *ngFor="let menu of Menus; let i = index" class="hd-menu__item" [ngClass]="{'has-sec': menu.children !== undefined}" #menu>
-					<a class="hd-menu__link js-detect-for-link" href="javascript:;" data-href="about.html" (click)="onToggleMenu(i)">{{menu.title}}</a>
+					<a class="hd-menu__link js-detect-for-link" routerLink="/{{menu.url}}" data-href="about.html" (click)="onToggleMenu(i)">{{menu.title}}</a>
 					<ul class="hd-menu__sec" *ngIf="menu.children !== undefined">
 						<li *ngFor="let item of menu.children" class="hd-menu__sec__item">
 							<a class="hd-menu__sec__link" href="javascript:;">{{item.title}}</a>

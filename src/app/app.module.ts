@@ -13,6 +13,7 @@ import { ModelContentComponent } from './main/model-content/model-content.compon
 import { TermConditionComponent } from './main/term-condition/term-condition.component';
 import { ApplicationFormComponent } from './main/application-form/application-form.component';
 import { ApplicationSubmittedComponent } from './main/application-submitted/application-submitted.component';
+import { NewsComponent } from './main/news/news.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { LoaderComponent } from './layouts/loader/loader.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'term-condition', component: TermConditionComponent },
   { path: 'application-form', component: ApplicationFormComponent },
   { path: 'application-submitted', component: ApplicationSubmittedComponent },
+  { path: 'news', component: NewsComponent },
   { path: '**', redirectTo: "/" },
 ];
 
@@ -41,6 +43,7 @@ const routes: Routes = [
     TermConditionComponent,
     ApplicationFormComponent,
     ApplicationSubmittedComponent,
+    NewsComponent,
     IsAniDirective
   ],
   imports: [
