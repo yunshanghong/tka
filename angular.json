@@ -29,7 +29,12 @@
               "src/styles/style.css",
               "src/styles/index.css",
               "src/styles/model.css",
-              "src/styles/term.css"
+              "src/styles/term.css",
+              "src/styles/about.css",
+              "src/styles/apply.css",
+              "src/styles/contact.css",
+              "src/styles/faq.css",
+              "src/styles/news.css"
             ],
             "scripts": []
           },

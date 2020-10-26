@@ -8,7 +8,7 @@
  */
 .sec-term {
   position: relative;
-  padding-bottom: 4.6875rem;
+  padding-bottom: 3.125rem;
 }
 
 @media print,
@@ -79,7 +79,7 @@ screen and (min-width: 64em) {
 }
 
 .term__str {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
 }
 
 @media print,
@@ -153,7 +153,7 @@ screen and (min-width: 64em) {
 }
 
 .term-condition__cont {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   line-height: 1.61;
 }
 
@@ -179,7 +179,7 @@ screen and (min-width: 40em) {
 }
 
 .application-form__title {
-  font-weight: bold;
+  font-weight: 500;
   font-size: 1.5rem;
   margin-bottom: 0.9375rem;
 }
@@ -223,7 +223,7 @@ screen and (min-width: 40em) {
 
 .application-submitted .term__title {
   margin-bottom: 0.9375rem;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 1.5rem;
 }
 
@@ -239,7 +239,7 @@ screen and (min-width: 64em) {
 }
 
 .application-submitted__box {
-  margin: 1.875rem auto 2.5rem;
+  margin: 1.875rem auto 1.875rem;
   padding: 1.875rem 1.25rem 2.5rem;
   width: 100%;
   max-width: 34.125rem;
@@ -257,7 +257,7 @@ screen and (min-width: 40em) {
 }
 
 .application-submitted__title {
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 1.0625rem;
 }
 
@@ -316,6 +316,14 @@ screen and (min-width: 64em) {
 .model__box .model__config__label {
   margin-bottom: 0.4375rem;
   color: #59a2b5;
+  font-size: 0.875rem;
+}
+
+@media print,
+screen and (min-width: 40em) {
+  .model__box .model__config__label {
+    font-size: 1rem;
+  }
 }
 
 .model__box .model__config__notice {

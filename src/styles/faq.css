@@ -1,0 +1,400 @@
+/**
+ * Foundation for Sites
+ * Version 6.6.3
+ * https://get.foundation
+ * Licensed under MIT Open Source
+ */
+.sec-faq {
+  position: relative;
+  margin-bottom: 3.125rem;
+}
+
+@media print, screen and (min-width: 64em) {
+  .sec-faq {
+    margin-bottom: 7.5rem;
+  }
+}
+
+.sec-faq.js-ani .breadcrumbs {
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+          transform: translateY(50px);
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: opacity, transform;
+  transition-property: opacity, transform, -webkit-transform;
+  -webkit-transition-delay: 0.3s;
+          transition-delay: 0.3s;
+}
+
+.sec-faq.js-ani .sec-title__title {
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+          transform: translateY(50px);
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: opacity, transform;
+  transition-property: opacity, transform, -webkit-transform;
+  -webkit-transition-delay: 0.6s;
+          transition-delay: 0.6s;
+}
+
+.sec-faq.js-ani .search__wrapper {
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+          transform: translateY(50px);
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: opacity, transform;
+  transition-property: opacity, transform, -webkit-transform;
+  -webkit-transition-delay: 0.9s;
+          transition-delay: 0.9s;
+}
+
+.sec-faq.js-ani .faq__wrapper {
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+          transform: translateY(50px);
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: opacity, transform;
+  transition-property: opacity, transform, -webkit-transform;
+  -webkit-transition-delay: 1.2s;
+          transition-delay: 1.2s;
+}
+
+.sec-faq.js-ani.is-animated .breadcrumbs {
+  opacity: 1;
+  -webkit-transform: none;
+          transform: none;
+}
+
+.sec-faq.js-ani.is-animated .sec-title__title {
+  opacity: 1;
+  -webkit-transform: none;
+          transform: none;
+}
+
+.sec-faq.js-ani.is-animated .search__wrapper {
+  opacity: 1;
+  -webkit-transform: none;
+          transform: none;
+}
+
+.sec-faq.js-ani.is-animated .faq__wrapper {
+  opacity: 1;
+  -webkit-transform: none;
+          transform: none;
+}
+
+@media print, screen and (min-width: 64em) {
+  .faq-search .search__wrapper {
+    margin-bottom: 2.25rem;
+  }
+}
+
+.faq-search .search__group {
+  margin-bottom: 2.5rem;
+}
+
+@media print, screen and (min-width: 64em) {
+  .faq-search .search__group {
+    margin-bottom: 5.9375rem;
+  }
+}
+
+.faq-search .faq__box {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media print, screen and (min-width: 64em) {
+  .search__wrapper {
+    margin-bottom: 6.25rem;
+  }
+}
+
+.search__result {
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: #00495c;
+}
+
+.search__result .highlight {
+  color: #00708d;
+}
+
+.sort__wrapper {
+  margin-bottom: 1.875rem;
+}
+
+.sort__wrapper .sort__select {
+  width: 100%;
+  max-width: 20rem;
+}
+
+.sort__wrapper .sort__item {
+  margin-bottom: 0;
+}
+
+@media print, screen and (min-width: 40em) {
+  .sort__wrapper .sort__item {
+    width: 100%;
+    max-width: 20rem;
+  }
+}
+
+.sort__wrapper .sort__select-list__link {
+  color: #00708d;
+}
+
+@media print, screen and (min-width: 64em) {
+  .sort__wrapper {
+    margin-top: 0;
+  }
+  .sort__wrapper .sort__select {
+    background-color: transparent;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  .sort__wrapper .sort__select.is-open .sort__select-list {
+    -webkit-animation: none;
+            animation: none;
+  }
+  .sort__wrapper .sort__select-list {
+    position: relative;
+    max-height: none;
+    background-color: transparent;
+    border: 0;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  .sort__wrapper .sort__select-selected {
+    display: none;
+  }
+  .sort__wrapper .sort__select-list__item {
+    padding: 0;
+    font-weight: bold;
+    color: #00708d;
+    background: transparent;
+  }
+  .sort__wrapper .sort__select-list__item.is-active .sort__select-list__link {
+    color: #59a2b5;
+    background-color: transparent;
+  }
+  .sort__wrapper .sort__select-list__link {
+    line-height: 3;
+    padding: 0;
+  }
+  .sort__wrapper .sort__select-list__link::before {
+    background-color: transparent;
+  }
+  .sort__wrapper .sort__select-list__link:hover, .sort__wrapper .sort__select-list__link:focus {
+    color: #59a2b5;
+    background-color: transparent;
+  }
+}
+
+.faq__wrapper {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 72.125rem;
+}
+
+@media print, screen and (min-width: 64em) {
+  .faq__wrapper {
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+  }
+}
+
+.faq__aside {
+  position: relative;
+  z-index: 5;
+  margin: 0;
+}
+
+@media print, screen and (min-width: 64em) {
+  .faq__aside {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 16.25rem;
+            flex: 0 0 16.25rem;
+  }
+}
+
+@media print, screen and (min-width: 64em) {
+  .faq__aside__menu {
+    margin-right: 1.875rem;
+  }
+}
+
+@media screen and (min-width: 75em) {
+  .faq__aside__menu {
+    margin-right: 3.75rem;
+  }
+}
+
+@media print, screen and (min-width: 64em) {
+  .faq__aside__menu.is-fixed {
+    position: fixed;
+    top: 5rem;
+    width: 22.5rem;
+  }
+}
+
+@media screen and (min-width: 100em) {
+  .faq__aside__menu.is-fixed {
+    width: 25.3125rem;
+  }
+}
+
+.faq__box {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+@media print, screen and (min-width: 64em) {
+  .faq__box {
+    max-width: 48.75rem;
+  }
+}
+
+.faq__item {
+  --padding: 1.5625rem 1.25rem;
+  --border-radius: 1.25rem;
+  margin-bottom: 1.875rem;
+  -webkit-box-shadow: 0px 10px 30px 0 rgba(122, 135, 172, 0.3);
+          box-shadow: 0px 10px 30px 0 rgba(122, 135, 172, 0.3);
+}
+
+@media print, screen and (min-width: 40em) {
+  .faq__item {
+    --padding: 1.875rem 2.5rem;
+  }
+}
+
+@media screen and (min-width: 75em) {
+  .faq__item {
+    margin-bottom: 3.125rem;
+  }
+}
+
+.faq__item:last-child {
+  margin-bottom: 0;
+}
+
+.faq__item.is-open .faq__item__body {
+  max-height: 40rem;
+  overflow-y: auto;
+}
+
+.faq__item.is-open .faq__item__ctrl::after {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+
+.faq__item__head {
+  position: relative;
+  z-index: 1;
+}
+
+.faq__item__type {
+  display: inline-block;
+  margin-bottom: 0.875rem;
+  padding: 0.125rem 1rem;
+  font-size: 0.9375rem;
+  color: #ffffff;
+  background-color: #59a2b5;
+  border-radius: 0.8125rem;
+}
+
+.faq__item__title {
+  font-weight: bold;
+}
+
+.faq__item__title .highlight {
+  color: #049ec6;
+}
+
+.faq__item__ctrl {
+  cursor: pointer;
+  position: absolute;
+  z-index: 3;
+  top: 1.5625rem;
+  right: 1.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (min-width: 75em) {
+  .faq__item__ctrl {
+    top: 1.875rem;
+    right: 2.5rem;
+  }
+}
+
+.faq__item__ctrl::before, .faq__item__ctrl::after {
+  content: '';
+  display: block;
+  width: 1.125rem;
+  height: 0.125rem;
+  background-color: #a6cdd7;
+}
+
+.faq__item__ctrl::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.faq__item__ctrl::after {
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+  -webkit-transition: 0.5s -webkit-transform;
+  transition: 0.5s -webkit-transform;
+  transition: 0.5s transform;
+  transition: 0.5s transform, 0.5s -webkit-transform;
+}
+
+.faq__item__body {
+  overflow: hidden;
+  max-height: 0;
+  -webkit-transition: 0.5s max-height;
+  transition: 0.5s max-height;
+  padding-right: 10px;
+  margin-right: -10px;
+}
+
+.cont-editor {
+  font-size: 0.875rem;
+}
+
+@media print, screen and (min-width: 40em) {
+  .cont-editor {
+    font-size: 1.125rem;
+  }
+}
+
+.cont-editor__table {
+  font-size: 1rem;
+}

@@ -1,0 +1,407 @@
+/**
+ * Foundation for Sites
+ * Version 6.6.3
+ * https://get.foundation
+ * Licensed under MIT Open Source
+ */
+.sec-apply {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 3.125rem;
+}
+
+@media print, screen and (min-width: 64em) {
+  .sec-apply {
+    margin-bottom: 7.5rem;
+  }
+}
+
+.sec-apply .grid-container {
+  position: relative;
+  z-index: 1;
+}
+
+.sec-apply.js-ani .breadcrumbs {
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+          transform: translateY(50px);
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: opacity, transform;
+  transition-property: opacity, transform, -webkit-transform;
+  -webkit-transition-delay: 0.3s;
+          transition-delay: 0.3s;
+}
+
+.sec-apply.js-ani .sec-title__title {
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+          transform: translateY(50px);
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: opacity, transform;
+  transition-property: opacity, transform, -webkit-transform;
+  -webkit-transition-delay: 0.6s;
+          transition-delay: 0.6s;
+}
+
+.sec-apply.js-ani .sec-title__desc {
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+          transform: translateY(50px);
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: opacity, transform;
+  transition-property: opacity, transform, -webkit-transform;
+  -webkit-transition-delay: 0.9s;
+          transition-delay: 0.9s;
+}
+
+.sec-apply.js-ani .apply__box {
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+          transform: translateY(50px);
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: opacity, transform;
+  transition-property: opacity, transform, -webkit-transform;
+  -webkit-transition-delay: 0.3s;
+          transition-delay: 0.3s;
+}
+
+.sec-apply.js-ani.is-animated .breadcrumbs {
+  opacity: 1;
+  -webkit-transform: none;
+          transform: none;
+}
+
+.sec-apply.js-ani.is-animated .sec-title__title {
+  opacity: 1;
+  -webkit-transform: none;
+          transform: none;
+}
+
+.sec-apply.js-ani.is-animated .sec-title__desc {
+  opacity: 1;
+  -webkit-transform: none;
+          transform: none;
+}
+
+.sec-apply .apply__step.js-ani .circle-icon-box__item {
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+          transform: translateY(50px);
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: opacity, transform;
+  transition-property: opacity, transform, -webkit-transform;
+  -webkit-transition-delay: 0.3s;
+          transition-delay: 0.3s;
+}
+
+.sec-apply .apply__step.js-ani .circle-icon-box__item:nth-child(1) {
+  -webkit-transition-delay: 1.2s;
+          transition-delay: 1.2s;
+}
+
+.sec-apply .apply__step.js-ani .circle-icon-box__item:nth-child(1)::after {
+  -webkit-transition-delay: 1.5s;
+          transition-delay: 1.5s;
+}
+
+.sec-apply .apply__step.js-ani .circle-icon-box__item:nth-child(2) {
+  -webkit-transition-delay: 1.5s;
+          transition-delay: 1.5s;
+}
+
+.sec-apply .apply__step.js-ani .circle-icon-box__item:nth-child(2)::after {
+  -webkit-transition-delay: 1.8s;
+          transition-delay: 1.8s;
+}
+
+.sec-apply .apply__step.js-ani .circle-icon-box__item:nth-child(3) {
+  -webkit-transition-delay: 1.8s;
+          transition-delay: 1.8s;
+}
+
+.sec-apply .apply__step.js-ani .circle-icon-box__item:nth-child(3)::after {
+  -webkit-transition-delay: 2.1s;
+          transition-delay: 2.1s;
+}
+
+.sec-apply .apply__step.js-ani .circle-icon-box__item:nth-child(4) {
+  -webkit-transition-delay: 2.1s;
+          transition-delay: 2.1s;
+}
+
+.sec-apply .apply__step.js-ani .circle-icon-box__item:nth-child(4)::after {
+  -webkit-transition-delay: 2.4s;
+          transition-delay: 2.4s;
+}
+
+.sec-apply .apply__step.js-ani.is-animated .circle-icon-box__item {
+  opacity: 1;
+  -webkit-transform: none;
+          transform: none;
+}
+
+.sec-apply .apply__step.js-ani.is-animated .circle-icon-box__item::after {
+  bottom: auto;
+  top: 8.75rem;
+  height: calc(100% - 140px);
+}
+
+@media print, screen and (max-width: 63.99875em) {
+  .sec-apply .apply__step.js-ani.is-animated .circle-icon-box__item::after {
+    top: 6.25rem;
+    height: calc(100% - 100px);
+  }
+}
+
+@media print, screen and (max-width: 39.99875em) {
+  .sec-apply .apply__step.js-ani.is-animated .circle-icon-box__item::after {
+    top: 5rem;
+    height: calc(100% - 80px);
+  }
+}
+
+.sec-apply .apply__step.js-ani.is-animated + .apply__box {
+  -webkit-transition-delay: 2.7s;
+          transition-delay: 2.7s;
+}
+
+.sec-apply .apply__step.js-ani.is-animated + .apply__box {
+  opacity: 1;
+  -webkit-transform: none;
+          transform: none;
+}
+
+.apply__step {
+  margin: 2.5rem auto 3.125rem;
+  max-width: 49.625rem;
+}
+
+@media print, screen and (min-width: 40em) {
+  .apply__step {
+    margin-top: 5rem;
+    margin-bottom: 6.25rem;
+  }
+}
+
+@media print, screen and (min-width: 64em) {
+  .apply__step {
+    margin-top: 6.75rem;
+    margin-bottom: 10.9375rem;
+  }
+}
+
+.apply__step .circle-icon-box__wrap {
+  margin-left: 2.75rem;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+@media print, screen and (max-width: 39.99875em) {
+  .apply__step .circle-icon-box__wrap {
+    margin-left: 1.875rem;
+  }
+}
+
+.apply__step .circle-icon-box__item {
+  position: relative;
+  -webkit-box-orient: inherit;
+  -webkit-box-direction: inherit;
+      -ms-flex-direction: inherit;
+          flex-direction: inherit;
+  padding: 0;
+  margin: 0 0 1.875rem;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding-bottom: 6.25rem;
+}
+
+@media print, screen and (min-width: 64em) {
+  .apply__step .circle-icon-box__item {
+    padding-bottom: 10.75rem;
+  }
+  .apply__step .circle-icon-box__item:last-child {
+    padding-bottom: 0;
+  }
+}
+
+@media print, screen and (max-width: 63.99875em) {
+  .apply__step .circle-icon-box__item {
+    padding-bottom: 3.75rem;
+  }
+}
+
+@media print, screen and (max-width: 39.99875em) {
+  .apply__step .circle-icon-box__item {
+    padding-left: 1.875rem;
+    padding-right: 1.25rem;
+    padding-bottom: 2.5rem;
+    margin-bottom: 1.25rem;
+  }
+}
+
+.apply__step .circle-icon-box__item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.apply__step .circle-icon-box__item:last-child::after {
+  content: none;
+}
+
+.apply__step .circle-icon-box__item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 3.4375rem;
+  display: block;
+  width: 0.0625rem;
+  height: 0;
+  background-color: #59a2b5;
+  -webkit-transition: 0.7s height;
+  transition: 0.7s height;
+}
+
+@media print, screen and (max-width: 63.99875em) {
+  .apply__step .circle-icon-box__item::after {
+    left: 2.5rem;
+  }
+}
+
+@media print, screen and (max-width: 39.99875em) {
+  .apply__step .circle-icon-box__item::after {
+    left: 3.75rem;
+  }
+}
+
+.apply__step .circle-icon-box__icon-box.is-number {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+}
+
+@media print, screen and (max-width: 63.99875em) {
+  .apply__step .circle-icon-box__icon-box.is-number {
+    --size: 5rem;
+    --outSize: 6.875rem;
+    font-size: 2.25rem;
+  }
+}
+
+@media print, screen and (max-width: 39.99875em) {
+  .apply__step .circle-icon-box__icon-box.is-number {
+    --size: 3.75rem;
+    --outSize: 5rem;
+    font-size: 1.875rem;
+  }
+}
+
+.apply__step .circle-icon-box__icon-box.is-number .circle-icon-box__icon-num {
+  position: relative;
+  top: -0.1em;
+  line-height: 1;
+}
+
+.apply__step .circle-icon-box__icon-box.is-number::before {
+  -webkit-box-shadow: 0 -20px 30px #314273;
+          box-shadow: 0 -20px 30px #314273;
+}
+
+.apply__step .circle-icon-box__title {
+  text-align: left;
+  font-size: 1.1875rem;
+}
+
+@media print, screen and (min-width: 40em) {
+  .apply__step .circle-icon-box__title {
+    font-size: 1.375rem;
+  }
+}
+
+.apply__step .circle-icon-box__desc {
+  font-size: 0.75rem;
+}
+
+@media print, screen and (min-width: 40em) {
+  .apply__step .circle-icon-box__desc {
+    font-size: 1.125rem;
+  }
+}
+
+.apply__box {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 81.875rem;
+}
+
+.apply__box .apply__item {
+  --padding: 1.25rem 1.25rem;
+  --border-radius: 1.25rem;
+  margin-bottom: 1.875rem;
+}
+
+@media print, screen and (min-width: 40em) {
+  .apply__box .apply__item {
+    --padding: 1.875rem 1.875rem;
+  }
+}
+
+@media print, screen and (min-width: 64em) {
+  .apply__box .apply__item {
+    margin: 0 0.625rem 0;
+    --padding: 2.5rem 3.125rem;
+  }
+}
+
+.apply__box .apply__item:last-child {
+  margin-bottom: 0;
+}
+
+.apply__box .apply__item__title {
+  font-size: 1.5rem;
+}
+
+@media print, screen and (min-width: 40em) {
+  .apply__box .apply__item__title {
+    font-size: 2.1875rem;
+  }
+}
+
+.apply__box .apply__item__txt {
+  font-size: 0.75rem;
+}
+
+@media print, screen and (min-width: 40em) {
+  .apply__box .apply__item__txt {
+    font-size: 1.125rem;
+  }
+}
+
+.apply__box .button {
+  width: 12.375rem;
+  margin-bottom: 0;
+  min-width: 0;
+}
