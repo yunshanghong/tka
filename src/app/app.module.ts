@@ -22,6 +22,7 @@ import { NewsContentComponent } from './main/news-content/news-content.component
 import { AboutComponent } from './main/about/about.component';
 import { ApplyComponent } from './main/apply/apply.component';
 import { FAQComponent } from './main/faq/faq.component';
+import { ContactComponent } from './main/contact/contact.component';
 
 // Routes Path and Components
 const routes: Routes = [
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'apply', component: ApplyComponent },
   { path: 'faq', component: FAQComponent },
+  { path: 'contact', component: ContactComponent },
   { path: '**', redirectTo: "/" },
 ];
 
@@ -57,6 +59,7 @@ const routes: Routes = [
     AboutComponent,
     ApplyComponent,
     FAQComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,

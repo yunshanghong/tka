@@ -58,7 +58,7 @@ export const defaultNavigationConfig = [{
 },
 {
     title: 'CONTACT US',
-    url: '/'
+    url: '/contact'
 }];
 
 export const defaultFooterConfig = [{

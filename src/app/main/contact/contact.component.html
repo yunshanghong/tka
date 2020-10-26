@@ -1,0 +1,304 @@
+<main class="main-wrapper" #contactComponent>
+    <app-loader></app-loader>
+    <!-- [START] Page Content-->
+    <div class="grid-container js-ani" appIsAni>
+    <div class="top-banner top-banner--contact" [ngStyle]="{backgroundImage:'url(assets/images/banner/contact.jpg)'}" ></div>
+    </div>
+    <nav class="grid-container js-ani" aria-label="You are here:" appIsAni>
+    <ol class="breadcrumbs" itemscope="itemscope" itemtype="http://schema.org/BreadcrumbList">
+        <li class="breadcrumb_item" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><a itemprop="item" href="/"><span itemprop="name">Home</span></a><i class="be-icon be-icon-arrow-right" aria-hidden="true"></i>
+        <meta itemprop="position" content="1"/>
+        </li>
+        <li class="breadcrumb_item" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><span class="show-for-sr" aria-current="page">Now Page：</span><span itemprop="name">contact</span>
+        <meta itemprop="position" content="2"/>
+        </li>
+    </ol>
+    </nav>
+    <div class="radius-bar-deco top-right">
+    <div class="radius-bar-group">
+        <div class="radius-bar size-l opacity-20"></div>
+        <div class="radius-bar size-m opacity-25 offset-left-10"></div>
+    </div>
+    </div>
+    <section class="sec-contact js-ani" appIsAni>
+    <div class="radius-bar-deco bottom-left">
+        <div class="radius-bar-group">
+        <div class="radius-bar size-m opacity-10"></div>
+        <div class="radius-bar size-s opacity-10 offset-right-10"></div>
+        <div class="radius-bar size-xs opacity-10 offset-right-5"></div>
+        </div>
+    </div>
+    <div class="grid-container">
+        <h2 class="sec-title__title text-center">Contact Us</h2>
+        <div class="contact__info grid-x">
+        <div class="cell medium-4">
+            <div class="circle-icon-box__item">
+            <div class="circle-icon-box__icon-box"><i class="be-icon absolute-center be-icon-phone" aria-hidden="true"></i>
+            </div>
+            <div class="circle-icon-box__wrap">
+                <h4 class="circle-icon-box__title">Hotline</h4>
+                <div class="circle-icon-box__desc"><a href="tel:69782388">69782388</a>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="cell medium-4">
+            <div class="circle-icon-box__item">
+            <div class="circle-icon-box__icon-box"><i class="be-icon absolute-center be-icon-mail" aria-hidden="true"></i>
+            </div>
+            <div class="circle-icon-box__wrap">
+                <h4 class="circle-icon-box__title">Email</h4>
+                <div class="circle-icon-box__desc"><a href="mailto:kinto@tfssg.sg">kinto@tfssg.sg</a>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="cell medium-4">
+            <div class="circle-icon-box__item">
+            <div class="circle-icon-box__icon-box"><i class="be-icon absolute-center be-icon-address" aria-hidden="true"></i>
+            </div>
+            <div class="circle-icon-box__wrap">
+                <h4 class="circle-icon-box__title">Address</h4>
+                <div class="circle-icon-box__desc">33 Leng Kee Road, #02-00, Singapore 159102
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        <div class="contact__form__wrap">
+        <h3 class="contact__form__title text-center">Fill the form to contact us</h3>
+        <div class="contact__form__form">
+            <div class="form__row">
+            <div class="form__group is-error">
+                <label class="form__label">Name</label>
+                <input class="form__input" type="text" placeholder="Name" maxlength="50">
+                <p class="form__error">Error Text Error Text Error Text Error Text.</p>
+            </div>
+            <div class="form__group">
+                <label class="form__label">Contact Number</label>
+                <div class="select__group">
+                <div class="sort__item">
+                    <!-- 點擊時 .sort__select，請加上 is-open 打開下拉選單-->
+                    <!-- 再次點擊 .sort__select，請移除 is-open 收起下拉選單-->
+                    <div class="sort__select">
+                    <div class="sort__select-selected"> +65<i class="be-icon be-icon-arrow-down" aria-hidden="true"></i>
+                    </div>
+                    <ul class="sort__select-list scrollbar-ver is-thin">
+                        <!-- 當前項目請加上 .is-active，當點擊項目後，移除 .sort__select 的 .is-open-->
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+1</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+1809</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+20</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+212</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+213</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+216</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+218</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+220</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+221</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+222</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+223</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+224</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+225</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+226</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+227</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+228</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+229</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+230</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+231</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+232</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+233</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+234</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+235</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+236</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+237</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+238</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+239</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+240</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+241</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+242</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+244</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+245</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+248</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+249</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+250</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+251</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+252</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+253</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+254</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+255</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+256</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+257</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+258</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+260</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+261</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+262</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+263</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+264</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+265</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+266</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+267</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+268</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+269</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+27</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+290</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+291</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+297</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+298</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+299</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+30</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+31</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+32</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+33</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+34</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+350</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+351</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+352</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+353</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+354</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+355</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+356</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+357</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+358</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+359</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+36</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+370</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+371</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+372</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+373</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+374</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+375</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+380</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+385</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+386</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+387</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+389</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+39</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+40</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+41</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+4175</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+42</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+43</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+44</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+45</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+46</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+47</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+48</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+49</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+500</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+501</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+502</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+503</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+504</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+505</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+506</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+507</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+508</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+509</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+51</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+52</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+53</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+54</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+55</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+56</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+57</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+58</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+591</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+592</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+593</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+594</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+595</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+596</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+597</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+598</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+599</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+6</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+60</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+61</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+62</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+63</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+64</a></li>
+                        <li class="sort__select-list__item is-active"><a class="sort__select-list__link" href="javascript:;">+65</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+66</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+670</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+671</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+672</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+6723</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+673</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+674</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+675</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+676</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+677</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+678</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+679</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+682</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+684</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+685</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+686</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+687</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+689</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+691</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+692</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+7</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+81</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+82</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+84</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+850</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+852</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+853</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+855</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+856</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+86</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+880</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+886</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+90</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+91</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+92</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+94</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+95</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+960</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+961</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+962</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+963</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+964</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+965</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+966</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+967</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+968</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+971</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+972</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+973</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+974</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+976</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+977</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+98</a></li>
+                        <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">+994</a></li>
+                    </ul>
+                    </div>
+                </div>
+                <input class="form__input" type="text" placeholder="Contact Number" maxlength="8">
+                </div>
+                <p class="form__error">Error Text Error Text Error Text Error Text.</p>
+            </div>
+            </div>
+            <div class="form__row">
+            <div class="form__group">
+                <label class="form__label">Email</label>
+                <input class="form__input" type="text" placeholder="Email" maxlength="250">
+                <p class="form__error">Error Text Error Text Error Text Error Text.</p>
+            </div>
+            </div>
+            <div class="form__row">
+            <div class="form__group">
+                <label class="form__label">How can we help you ?<span class="form__label__txt">Your word limit : 0/2000</span></label>
+                <textarea class="form__textarea" placeholder="Describe your problem …" maxlength="2000"></textarea>
+                <p class="form__error">Error Text Error Text Error Text Error Text.</p>
+            </div>
+            </div>
+        </div>
+        <div class="contact__form__ctrl text-center">
+            <button class="button">Submit</button>
+        </div>
+        </div>
+    </div>
+    </section>
+    <!-- [END] Page Content-->
+</main>
