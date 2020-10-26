@@ -1,6 +1,6 @@
 export const defaultNavigationConfig = [{
     title: 'WHAT IS KINTO ONE',
-    url:'/',
+    url: '/about',
     children: [
         {
             title: 'About KINTO',

@@ -19,6 +19,7 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { LoaderComponent } from './layouts/loader/loader.component';
 import { IsAniDirective } from './shared/is-amimated.directive';
 import { NewsContentComponent } from './main/news-content/news-content.component';
+import { AboutComponent } from './main/about/about.component';
 
 // Routes Path and Components
 const routes: Routes = [
@@ -30,11 +31,13 @@ const routes: Routes = [
   { path: 'application-submitted', component: ApplicationSubmittedComponent },
   { path: 'news', component: NewsComponent },
   { path: 'news-content', component: NewsContentComponent },
+  { path: 'about', component: AboutComponent },
   { path: '**', redirectTo: "/" },
 ];
 
 @NgModule({
   declarations: [
+    IsAniDirective,
     AppComponent,
     LoaderComponent,
     HeaderComponent,
@@ -47,7 +50,7 @@ const routes: Routes = [
     ApplicationSubmittedComponent,
     NewsComponent,
     NewsContentComponent,
-    IsAniDirective
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
