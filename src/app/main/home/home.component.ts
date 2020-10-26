@@ -52,6 +52,7 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
     // 2. Five Reasons
     fiveReasons: Array<Object>;
     renderReasons: boolean;
+    renderReasonLine: number = 0;
 
     // 3. Choice Carousel
     topChoices: Array<choiceInterface>;
@@ -65,6 +66,7 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
     // 4. FAQ Carousel
     FAQs: Array<Object>;
     renderFAQ: boolean;
+    renderFAQLine: number = 0;
 
     // 5. Latest Promotion
     promotions: Array<Object>;
@@ -118,6 +120,7 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
                 console.log("got banners")
                 this.renderBanner = true;
                 this.loadedItems += 1;
+                this.renderReasonLine += 1;
             });
 
         // 2. Five Reasons
@@ -128,6 +131,7 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
                 console.log("got Reasons")
                 this.renderReasons = true;
                 this.loadedItems += 1;
+                this.renderReasonLine += 1;
             });
 
         // 3. Top Choices
@@ -143,6 +147,7 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
                 console.log("got Choices")
                 this.renderChoice = true;
                 this.loadedItems += 1;
+                this.renderFAQLine += 1;
             });
 
         // 4. FAQ
@@ -153,6 +158,7 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
                 console.log("got FAQ")
                 this.renderFAQ = true;
                 this.loadedItems += 1;
+                this.renderFAQLine += 1;
             });
 
         // 5. Latest Promotion
@@ -177,19 +183,15 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
         this.renderBanner && this.onBuildBannerCarousel();
 
         // 2. Five Reasons
-        if (this.renderReasons && this.renderBanner) {
-            this.onBuildCircleIconBox();
-            this.onLineCalcReason();
-        }
+        this.renderReasons && this.onBuildCircleIconBox();
+        this.renderReasonLine === 2 && this.onLineCalcReason();
 
         // 3. Top Choices
         this.renderChoice && this.onBuildChoiceCarousel();
 
         // 4. FAQ
-        if (this.renderFAQ) {
-            this.onBuildFaq();
-            this.onLineCalcFaq();
-        }
+        this.renderFAQ && this.onBuildFaq();
+        this.renderFAQLine === 2 && this.onLineCalcFaq();
 
         // 5. Latest Promotion
         this.renderPromotion && this.onBuildPromotionCarousel();
@@ -297,7 +299,7 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
 
     //#region Section2. Five Reasons Section
     onBuildCircleIconBox() {
-        this.renderReasons = false
+        this.renderReasons = false;
         var mySwiper = null;
         var breakpoint = window.matchMedia('(min-width: 640px)');
 
@@ -337,6 +339,7 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
     }
 
     onLineCalcReason() {
+        this.renderReasonLine = 0;
         var line = this.reasonsLine.nativeElement as HTMLElement;
         var preSec = this.bannersection.nativeElement as HTMLElement;
         var bannerPreSec = this.bannaerGridContainer.nativeElement;
@@ -508,6 +511,7 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
     }
 
     onLineCalcFaq() {
+        this.renderFAQLine = 0;
         var line = this.faqLine.nativeElement as HTMLElement;
         var preSec = this.choiceSection.nativeElement as HTMLElement;
         var gridPreSec = this.choiceGridContainer.nativeElement;
