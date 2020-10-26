@@ -18,6 +18,7 @@ import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { LoaderComponent } from './layouts/loader/loader.component';
 import { IsAniDirective } from './shared/is-amimated.directive';
+import { NewsContentComponent } from './main/news-content/news-content.component';
 
 // Routes Path and Components
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'application-form', component: ApplicationFormComponent },
   { path: 'application-submitted', component: ApplicationSubmittedComponent },
   { path: 'news', component: NewsComponent },
+  { path: 'news-content', component: NewsContentComponent },
   { path: '**', redirectTo: "/" },
 ];
 
@@ -44,6 +46,7 @@ const routes: Routes = [
     ApplicationFormComponent,
     ApplicationSubmittedComponent,
     NewsComponent,
+    NewsContentComponent,
     IsAniDirective
   ],
   imports: [
