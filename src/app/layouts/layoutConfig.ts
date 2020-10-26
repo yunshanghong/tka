@@ -4,11 +4,11 @@ export const defaultNavigationConfig = [{
     children: [
         {
             title: 'About KINTO',
-            url: '/'
+            url: '/about'
         },
         {
             title: 'How to apply',
-            url: '/'
+            url: '/apply'
         }
     ]
 },

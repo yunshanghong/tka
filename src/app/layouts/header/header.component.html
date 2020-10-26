@@ -36,7 +36,7 @@
 					<a class="hd-menu__link js-detect-for-link" routerLink="/{{menu.url}}" data-href="about.html" (click)="onToggleMenu(i)">{{menu.title}}</a>
 					<ul class="hd-menu__sec" *ngIf="menu.children !== undefined">
 						<li *ngFor="let item of menu.children" class="hd-menu__sec__item">
-							<a class="hd-menu__sec__link" href="javascript:;">{{item.title}}</a>
+							<a class="hd-menu__sec__link" routerLink="/{{item.url}}">{{item.title}}</a>
 						</li>
 					</ul>
 				</li>
