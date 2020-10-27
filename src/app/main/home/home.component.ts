@@ -12,7 +12,7 @@ export interface rgbInterface {
 };
 
 export interface bannerInterface {
-    displayCarInfos: Array<Object>;
+    displayCarInfos: Array<{ itemType: String, imageUrl: String, imageContent: String }>;
     minTerm: Object;
     defaultTerm: Object;
     maxTerm: Object;
@@ -112,11 +112,12 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
         // 1. Banner
         this.infoService.getBanner().then(
             (response: bannerInterface) => {
-                this.banners = response.displayCarInfos;
+                this.banners = response.displayCarInfos.map(item => item.itemType === 'Color' ? { ...item } : { ...item, imageUrl: "data:image/jpeg;base64," + item.imageContent })
                 this.bannerInfos = { minInfo: response.minTerm, defaultInfo: response.defaultTerm, maxInfo: response.maxTerm }
             })
             .catch(error => console.error(error))
             .finally(() => {
+                console.log(this.banners);
                 console.log("got banners")
                 this.renderBanner = true;
                 this.loadedItems += 1;
