@@ -15,7 +15,11 @@
         <div class="radius-bar size-xs opacity-10 offset-right-5"></div>
         </div>
     </div>
-    <div class="grid-container"><a class="goback" href="javascript:;"><i class="be-icon be-icon-arrow-left" aria-hidden="true"></i><span class="goback__txt">Start again</span></a>
+    <div class="grid-container">
+        <a class="goback" (click)="onStartAgain()">
+            <i class="be-icon be-icon-arrow-left" aria-hidden="true"></i>
+            <span class="goback__txt">Start again</span>
+        </a>
         <div class="step">
         <div class="step-item">
             <div class="step-item__num">1</div>
@@ -70,7 +74,7 @@
                 </div>
                 <h3 class="application-form__title text-center">Rental Details</h3>
                 <div class="model__box card-box">
-                    <div class="model__cover object-fit-contain"><img class="cart__item__cover-img lazyload" src="images/1x1.gif" data-src="images/products/car_01.png" alt="Corolla Altis"></div>
+                    <div class="model__cover object-fit-contain"><img class="cart__item__cover-img lazyload" [src]="orderModel.colorImage" alt="{{ orderModel.carName }}"></div>
                     <div class="model__box__inner">
                     <div class="model__config model__config--detial scrollbar-model is-thin">
                         <div class="model__config__item">
@@ -78,10 +82,10 @@
                         <div class="model__config__info palette">
                             <div class="palette__item">
                             <label class="palette__icon">
-                                <div class="palette__icon__label"><span class="palette__icon__label-item" style="background-color: #c6c6c6;"></span>
+                                <div class="palette__icon__label"><span class="palette__icon__label-item" [ngStyle]="{ 'background-color': orderModel.colorNumber }"></span>
                                 </div>
                             </label>
-                            <h3 class="model__config__info-title">Attitude Black Mica</h3>
+                            <h3 class="model__config__info-title">{{ orderModel.colorName }}</h3>
                             </div>
                         </div>
                         </div>
@@ -90,24 +94,26 @@
                         <div class="model__config__info palette">
                             <div class="palette__item">
                             <label class="palette__icon">
-                                <div class="palette__icon__label"><span class="palette__icon__label-item" style="background-color: #313131;"></span><span class="palette__icon__label-item" style="background-color: #626262;"></span>
+                                <div class="palette__icon__label">
+                                    <span class="palette__icon__label-item" style="background-color: #313131;"></span>
+                                    <span class="palette__icon__label-item" style="background-color: #626262;"></span>
                                 </div>
                             </label>
-                            <h3 class="model__config__info-title">Standard</h3>
+                            <h3 class="model__config__info-title">{{ orderModel.interiorName }}</h3>
                             </div>
                         </div>
                         </div>
                         <div class="model__config__item model__config__item--variant">
                         <div class="model__config__label">Variant</div>
                         <div class="model__config__info">
-                            <h3 class="model__config__info-title">1.2 LUXURY (MONO)</h3>
+                            <h3 class="model__config__info-title">{{ orderModel.variantName }}</h3>
                         </div>
                         </div>
                         <div class="model__config__item model__config__item--tenure">
                         <div class="model__config__label">
                             Tenure</div>
                         <div class="model__config__info">
-                            <h3 class="model__config__info-title">3 Years</h3>
+                            <h3 class="model__config__info-title">{{ orderModel.tenure }} Years</h3>
                         </div>
                         </div>
                     </div>
@@ -121,7 +127,7 @@
                             </div>
                         </div>
                         <div class="model__config__info">
-                            <h3 class="model__config__info-title">$ 5,560</h3>
+                            <h3 class="model__config__info-title">$ {{ orderModel.securityDeposit | number: '2.' }}</h3>
                         </div>
                         </div>
                         <div class="model__config__item model__config__item--rental">
@@ -133,7 +139,7 @@
                             </div>
                         </div>
                         <div class="model__config__info">
-                            <h3 class="model__config__info-title highlight">$ 2,780</h3>/ month
+                            <h3 class="model__config__info-title highlight">$ {{ orderModel.monthlyAmount | number: '2.' }}</h3>/ month
                         </div>
                         <p class="model__config__notice">* Rate shown is subjected to 7% GST.</p>
                         </div>
@@ -142,7 +148,7 @@
                 </div>
                 </div>
                 <hr class="sec-divide divide--bottom">
-                <div class="term__ctrl"><a class="button btn-lightest" href="term-condition.html" title="Cancel">Cancel</a>
+                <div class="term__ctrl"><a class="button btn-lightest" title="Cancel" (click)="onStartAgain()">Cancel</a>
                 <button class="button" type="submit" [disabled]="!f.valid">Submit</button>
                 </div>
             </div>

@@ -22,7 +22,7 @@ export class ModelContentComponent implements OnInit, AfterViewInit, OnDestroy {
     currentInteriorId: number = 0;
     tenures: Array<number>;
     currentTenureId: number = 1;
-    financialProductId: number;
+    leasingInfo: any;
     amountInfo: any;
 
     // 4. Content Services
@@ -106,9 +106,10 @@ export class ModelContentComponent implements OnInit, AfterViewInit, OnDestroy {
     onGetTenure(variantId) {
         this.infoService.getMonthlyAmount(variantId).subscribe(
             (response: any) => {
+                console.log(response);
                 const leasing = response.leasing;
                 this.tenures = [leasing.minTerm / 12, leasing.defaultTerm / 12, leasing.maxTerm / 12];
-                this.financialProductId = leasing.id;
+                this.leasingInfo = leasing;
             },
             (error) => { console.error(error) },
             () => { this.onGetDeposit() }
@@ -120,7 +121,7 @@ export class ModelContentComponent implements OnInit, AfterViewInit, OnDestroy {
         console.log(variantId);
         const tenure = this.tenures[this.currentTenureId] * 12;
         console.log(tenure);
-        this.infoService.postCalcDeposit(this.financialProductId, variantId, tenure).subscribe(
+        this.infoService.postCalcDeposit(this.leasingInfo.id, variantId, tenure).subscribe(
             (response: any) => this.amountInfo = response,
             (error) => { console.error(error) },
             () => { console.log(this.amountInfo) }
@@ -128,8 +129,28 @@ export class ModelContentComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     onBookNow() {
-        this.orderService.orderModel.id = this.id;
-        this.orderService.orderModel.variantId = "0";
+        const selectedVariant = this.carInfo.vehicle.variants[this.currentVariantId]
+        this.orderService.orderModel = {
+            carName: this.carInfo.vehicle.name,
+            id: this.id,
+            variantId: selectedVariant.id,
+            financialProductId: this.leasingInfo.id,
+            colorName: selectedVariant.vehicleConfigItems[this.currentColorId].name,
+            colorNumber: selectedVariant.vehicleConfigItems[this.currentColorId].iconColorCode,
+            colorImage: selectedVariant.vehicleConfigItems[this.currentColorId].imageUrl,
+            interiorName: selectedVariant.vehicleConfigItems[this.currentInteriorId].name,
+            interiorNumber: selectedVariant.vehicleConfigItems[this.currentInteriorId].imageContent,
+            variantName: selectedVariant.name,
+            tenure: this.tenures[this.currentTenureId],
+            securityDeposit: this.amountInfo.securityDepositAmount,
+            monthlyAmount: this.amountInfo.monthlyPaymentAmount,
+            internalModelCode: selectedVariant.internalModelCode,
+            variantCode: selectedVariant.code,
+            financialProductCode: this.leasingInfo.financialProductCode,
+            exteriorColorConfigItemCode: selectedVariant.vehicleConfigItems[this.currentColorId].vehicleConfigItemCode,
+            interiorColorConfigItemCode: selectedVariant.vehicleConfigItems[this.currentInteriorId].vehicleConfigItemCode,
+        };
+
         this.router.navigate(["/term-condition"]);
     }
 }

@@ -29,6 +29,11 @@ export class TermConditionComponent implements OnInit, OnDestroy {
         private orderService: OrderService) { }
 
     ngOnInit() {
+        // not follow the path then navigate to models
+        if (!this.orderService.orderModel) {
+            this.router.navigate(["/models"]);
+        }
+
         // Term & Conditions
         this.infoService.getTermCondition().subscribe(
             (response: termInterface) => this.termAndCondition = response.content,
@@ -46,6 +51,6 @@ export class TermConditionComponent implements OnInit, OnDestroy {
     }
 
     onPrevPage() {
-        this.router.navigate(['/models-content'])
+        this.router.navigate(['/models-content', this.orderService.orderModel.id])
     }
 }
