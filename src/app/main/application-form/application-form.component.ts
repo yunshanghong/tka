@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'app-application-form',
     templateUrl: './application-form.component.html',
-    styleUrls: ['./application-form.component.css']
+    styleUrls: ["../../../styles/term.css"]
 })
 export class ApplicationFormComponent implements OnInit, AfterViewInit, OnDestroy {
 

@@ -11,7 +11,7 @@ export interface brandCateInterface {
 @Component({
     selector: 'app-all-models',
     templateUrl: './all-models.component.html',
-    styleUrls: ['./all-models.component.css']
+    styleUrls: ["../../../styles/model.css"]
 })
 export class AllModelsComponent implements OnInit, AfterViewInit, OnDestroy {
 
@@ -39,14 +39,14 @@ export class AllModelsComponent implements OnInit, AfterViewInit, OnDestroy {
     ngOnInit() {
         console.log("models init")
         // 1. Brand Menu
-        this.infoService.getBrandMenu().subscribe(
+        this.infoService.getMenu({ CategoryName: 'Vehicle.AvailableBrand' }).subscribe(
             (response: Array<brandCateInterface>) => response.map(item => this.brandList.push(item)),
             error => console.error(error),
             () => { console.log(this.brandList) }
         );
 
         // 2. Category Menu
-        this.infoService.getCateMenu().subscribe(
+        this.infoService.getMenu({ BrandCode: 'TOYOTA' }).subscribe(
             (response: Array<{ category: brandCateInterface, vehicles: Object }>) => response.map(item => this.cateList.push(item.category)),
             error => console.error(error),
             () => { console.log(this.cateList) }
@@ -55,6 +55,7 @@ export class AllModelsComponent implements OnInit, AfterViewInit, OnDestroy {
         // 3. All Models
         this.infoService.getAllModels().then(
             (response: Array<Object>) => {
+                console.log(response);
                 this.allList = this.showList = response;
             })
             .catch(error => console.error(error))
@@ -72,9 +73,7 @@ export class AllModelsComponent implements OnInit, AfterViewInit, OnDestroy {
 
     onModelsSearch(searchString: String) {
         this.infoService.postModelsSearch(searchString).then(
-            (response: Array<Object>) => {
-                this.showList = response;
-            })
+            (response: Array<Object>) => this.showList = response)
             .catch(error => console.error(error))
             .finally(() => { console.log(this.showList) })
     }

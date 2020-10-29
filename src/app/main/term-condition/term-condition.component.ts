@@ -14,7 +14,7 @@ export interface termInterface {
 @Component({
     selector: 'app-term-condition',
     templateUrl: './term-condition.component.html',
-    styleUrls: ['./term-condition.component.css']
+    styleUrls: ["../../../styles/term.css"]
 })
 export class TermConditionComponent implements OnInit, OnDestroy {
 

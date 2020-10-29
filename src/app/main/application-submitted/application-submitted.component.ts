@@ -5,7 +5,7 @@ import { InfoService } from 'src/app/services/info.service';
 @Component({
     selector: 'app-application-submitted',
     templateUrl: './application-submitted.component.html',
-    styleUrls: ['./application-submitted.component.css']
+    styleUrls: ["../../../styles/term.css"]
 })
 export class ApplicationSubmittedComponent implements OnInit, OnDestroy {
 

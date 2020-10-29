@@ -7,7 +7,7 @@ import { OrderService } from 'src/app/services/order.service';
 @Component({
     selector: 'app-model-content',
     templateUrl: './model-content.component.html',
-    styleUrls: ['./model-content.component.css']
+    styleUrls: ["../../../styles/model.css"]
 })
 export class ModelContentComponent implements OnInit, AfterViewInit, OnDestroy {
 
