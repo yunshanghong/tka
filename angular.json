@@ -24,10 +24,9 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/swiper/swiper-bundle.css",
-              "src/styles/vendor/swiper/custom.css",
               "src/styles/style.css",
-              "src/styles/index.css"
+              "node_modules/swiper/swiper-bundle.css",
+              "src/styles/vendor/swiper/custom.css"
             ],
             "scripts": []
           },

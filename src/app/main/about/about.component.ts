@@ -5,7 +5,7 @@ import { InfoService } from 'src/app/services/info.service';
 @Component({
     selector: 'app-about',
     templateUrl: './about.component.html',
-    styleUrls: ['./about.component.css']
+    styleUrls: ["../../../styles/about.css"]
 })
 export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
 

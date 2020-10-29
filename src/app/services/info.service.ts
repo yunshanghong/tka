@@ -17,6 +17,15 @@ export class InfoService {
 		'accept': 'text/plain'
 	})
 
+	//#region public methods
+	getDynamicContentByType(paramsObj: any) {
+		return this.http.get(basicUrl + 'DynamicContent/GetDynamicContentByType', {
+			headers: this.headers,
+			params: paramsObj
+		})
+	}
+	//#endregion
+
 	//#region 1. Home
 	async getBanner() {
 
@@ -42,12 +51,7 @@ export class InfoService {
 		}
 		return result;
 	}
-	getFiveReasons() {
-		return this.http.get(basicUrl + 'DynamicContent/GetDynamicContentByType', {
-			headers: this.headers,
-			params: { Type: 'Kinto.Reasons', ShowOnHomePage: 'true' }
-		})
-	}
+
 	async getTopChoices() {
 		const choices: any = await this.http.get(basicUrl + 'Vehicle/GetVariantDetailByGlobalCodeCategory', {
 			headers: this.headers,
@@ -79,12 +83,7 @@ export class InfoService {
 			params: { ShowOnHomePage: 'true' }
 		})
 	}
-	getLatestPromotion() {
-		return this.http.get(basicUrl + 'DynamicContent/GetDynamicContentByType', {
-			headers: this.headers,
-			params: { Type: "Kinto.PromotionalContent", ShowOnHomePage: 'true' }
-		})
-	}
+
 	getHomeImageUrl() {
 		return this.http.get(basicUrl + 'LookUp/GetGlobalCodesByCategoryName', {
 			headers: this.headers,
@@ -102,17 +101,10 @@ export class InfoService {
 	//#endregion
 
 	//#region 2.1 All Models
-	getBrandMenu() {
+	getMenu(paramsObj) {
 		return this.http.get(basicUrl + 'LookUp/GetGlobalCodesByCategoryName', {
 			headers: this.headers,
-			params: { CategoryName: 'Vehicle.AvailableBrand' }
-		})
-	}
-
-	getCateMenu() {
-		return this.http.get(basicUrl + 'LookUp/GetVehicleCategoriesByBrand', {
-			headers: this.headers,
-			params: { BrandCode: '0001' }
+			params: paramsObj
 		})
 	}
 
@@ -121,35 +113,17 @@ export class InfoService {
 			headers: this.headers,
 		}).toPromise();
 
-		const newAllModels = [];
+		var newAllModels = [];
+		console.log(allModels);
 		for (var i in allModels) {
 			if (allModels[i].category.order === 0) {
-				const vehicles = allModels[i].vehicles
+				const vehicles = allModels[i].vehicles;
 				for (var j in vehicles) {
-					const first = vehicles[j];
-					for (var k in first.variants) {
-						const second = first.variants[k];
-						newAllModels.push({
-							id: first.id,
-							name: first.name,
-							category: first.category,
-							primaryImageUrl: first.primaryImageUrl,
-							secondaryImageUrl: first.secondaryImageUrl,
-							assetCondition: second.assetCondition,
-							capacity: second.capacity,
-							code: second.code,
-							fuelConsumptions: second.fuelConsumptions,
-							variantId: second.id,
-							maxPower: second.maxPower,
-							omv: second.omv,
-							price: second.price,
-							price1: second.price1
-						})
-					}
+					vehicles[j].variants.sort((a: any, b: any) => (a.itemOrder > b.itemOrder) ? 1 : ((b.itemOrder > a.itemOrder) ? -1 : 0));
 				}
+				newAllModels = vehicles;
 			}
 		}
-
 		return newAllModels;
 	}
 
@@ -160,31 +134,10 @@ export class InfoService {
 			{ headers: this.headers }
 		).toPromise();
 
-		const newSearchModels = [];
-
 		for (var i in searchModels) {
-			const first = searchModels[i];
-			for (var j in first.variants) {
-				const second = first.variants[j];
-				newSearchModels.push({
-					id: first.id,
-					name: first.name,
-					category: first.category,
-					primaryImageUrl: first.primaryImageUrl,
-					secondaryImageUrl: first.secondaryImageUrl,
-					assetCondition: second.assetCondition,
-					capacity: second.capacity,
-					code: second.code,
-					fuelConsumptions: second.fuelConsumptions,
-					variantId: second.id,
-					maxPower: second.maxPower,
-					omv: second.omv,
-					price: second.price,
-					price1: second.price1
-				})
-			}
+			searchModels[i].variants.sort((a: any, b: any) => (a.itemOrder > b.itemOrder) ? 1 : ((b.itemOrder > a.itemOrder) ? -1 : 0));
 		}
-		return newSearchModels;
+		return searchModels;
 	}
 
 	//#endregion
@@ -195,10 +148,13 @@ export class InfoService {
 		return this.http.get(basicUrl + 'Vehicle/GetDetails', {
 			headers: this.headers,
 			params: { Id: carId }
-		})
+		}).pipe(map((data: any) => {
+			data.vehicle.variants.sort((a: any, b: any) => (a.itemOrder > b.itemOrder) ? 1 : ((b.itemOrder > a.itemOrder) ? -1 : 0));
+			return data;
+		}))
 	}
 
-	getMonthlyAmount(carVariantId: string) {
+	getMonthlyAmount(carVariantId) {
 		return this.http.get(basicUrl + 'Finance/GetAvailableFinancialProducts', {
 			headers: this.headers,
 			params: { VehicleVariantId: carVariantId }
@@ -212,12 +168,6 @@ export class InfoService {
 		);
 	}
 
-	getContentServices() {
-		return this.http.get(basicUrl + 'DynamicContent/GetDynamicContentByType', {
-			headers: this.headers,
-			params: { Type: 'Kinto.Services' }
-		})
-	}
 	//#endregion
 
 	//#region 2.3 Term & Condition
@@ -244,5 +194,9 @@ export class InfoService {
 			postBody,
 			{ headers: this.headers })
 	}
+	//#endregion
+
+	//#region 3.1 News List
+
 	//#endregion
 }

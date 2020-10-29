@@ -4,7 +4,7 @@ import { EventEmitterService } from 'src/app/services/eventEmitter.service';
 @Component({
     selector: 'app-apply',
     templateUrl: './apply.component.html',
-    styleUrls: ['./apply.component.css']
+    styleUrls: ["../../../styles/apply.css"]
 })
 export class ApplyComponent implements OnInit, AfterViewInit, OnDestroy {
 

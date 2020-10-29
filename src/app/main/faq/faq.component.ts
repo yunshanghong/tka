@@ -4,7 +4,7 @@ import { EventEmitterService } from 'src/app/services/eventEmitter.service';
 @Component({
     selector: 'app-faq',
     templateUrl: './faq.component.html',
-    styleUrls: ['./faq.component.css']
+    styleUrls: ["../../../styles/faq.css"]
 })
 export class FAQComponent implements OnInit, AfterViewInit, OnDestroy {
 

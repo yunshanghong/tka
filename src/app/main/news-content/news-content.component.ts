@@ -4,7 +4,7 @@ import { EventEmitterService } from 'src/app/services/eventEmitter.service';
 @Component({
     selector: 'app-news-content',
     templateUrl: './news-content.component.html',
-    styleUrls: ['./news-content.component.css']
+    styleUrls: ["../../../styles/index.css"]
 })
 export class NewsContentComponent implements OnInit, AfterViewInit, OnDestroy {
 

@@ -4,7 +4,7 @@ import { EventEmitterService } from 'src/app/services/eventEmitter.service';
 @Component({
     selector: 'app-contact',
     templateUrl: './contact.component.html',
-    styleUrls: ['./contact.component.css']
+    styleUrls: ["../../../styles/contact.css"]
 })
 export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
 
