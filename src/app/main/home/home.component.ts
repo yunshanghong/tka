@@ -112,7 +112,7 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
         // 1. Banner
         this.infoService.getBanner().then(
             (response: bannerInterface) => {
-                this.banners = response.displayCarInfos.map(item => item.itemType === 'Color' ? { ...item } : { ...item, imageUrl: "data:image/jpeg;base64," + item.imageContent })
+                this.banners = response.displayCarInfos.filter(item => item.itemType === 'Color')
                 this.bannerInfos = { minInfo: response.minTerm, defaultInfo: response.defaultTerm, maxInfo: response.maxTerm }
             })
             .catch(error => console.error(error))
@@ -125,7 +125,7 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
             });
 
         // 2. Five Reasons
-        this.infoService.getFiveReasons().subscribe(
+        this.infoService.getDynamicContentByType({ Type: 'Kinto.Reasons', ShowOnHomePage: 'true' }).subscribe(
             (response: Array<Object>) => this.fiveReasons = response,
             error => console.error(error),
             () => {
@@ -163,7 +163,7 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
             });
 
         // 5. Latest Promotion
-        this.infoService.getLatestPromotion().subscribe(
+        this.infoService.getDynamicContentByType({ Type: "Kinto.PromotionalContent", ShowOnHomePage: 'true' }).subscribe(
             (response: Array<Object>) => this.promotions = response,
             error => console.error(error),
             () => {
