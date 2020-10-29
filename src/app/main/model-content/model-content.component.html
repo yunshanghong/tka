@@ -9,7 +9,7 @@
         <li class="breadcrumb_item" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><a itemprop="item" routerLink="/models"><span itemprop="name">All Models</span></a><i class="be-icon be-icon-arrow-right" aria-hidden="true"></i>
         <meta itemprop="position" content="2"/>
         </li>
-        <li class="breadcrumb_item" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"><span class="show-for-sr" aria-current="page">Now Page：</span><span itemprop="name">{{ carName }}</span>
+        <li class="breadcrumb_item" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem" *ngIf="carInfo"><span class="show-for-sr" aria-current="page">Now Page：</span><span itemprop="name">{{ carInfo.vehicle.name }}</span>
         <meta itemprop="position" content="3"/>
         </li>
     </ol>
@@ -21,133 +21,97 @@
     </div>
     </div>
     <div class="grid-container flex-container js-ani" appIsAni>
-    <section class="sec-models models-content flex-content">
+    <section class="sec-models models-content flex-content" >
         <div class="radius-bar-deco bottom-left">
-        <div class="radius-bar-group">
-            <div class="radius-bar size-m opacity-10"></div>
-            <div class="radius-bar size-s opacity-10 offset-right-10"></div>
-            <div class="radius-bar size-xs opacity-10 offset-right-5"></div>
+            <div class="radius-bar-group">
+                <div class="radius-bar size-m opacity-10"></div>
+                <div class="radius-bar size-s opacity-10 offset-right-10"></div>
+                <div class="radius-bar size-xs opacity-10 offset-right-5"></div>
+            </div>
         </div>
-        </div>
-        <h2 class="sec-title__title text-center">{{ carName }}</h2>
-        <h3 class="sec-title__subtitle text-center"> <span class="left">Compact Sedan</span><span class="sec-title__divide">|</span><span class="right">Sleek, sporty, spacious. The perfect city car.</span></h3>
+        <h2 class="sec-title__title text-center" *ngIf="carInfo">{{ carInfo.vehicle.name }}</h2>
+        <h3 class="sec-title__subtitle text-center" *ngIf="carInfo"> 
+            <span class="left">{{ carInfo.vehicle.category }}</span>
+            <span class="sec-title__divide">|</span>
+            <span class="right">{{ carInfo.vehicle.variants[currentVariantId].description }}</span>
+        </h3>
         <div class="model__wrap">
-        <div class="model__head js-ani" appIsAni>
-            <div class="model__cover object-fit"><img class="cart__item__cover-img lazyload" src="assets/images/products/car_01.png" alt="{{ carName }}"></div>
-            <div class="model__config">
-            <div class="model__config__item">
-                <div class="model__config__label text-center">Exterior color</div>
-                <h3 class="model__config__title text-center">Attitude Black Mica</h3>
-                <div class="model__config__txt palette">
-                    <!-- [START] Colorful Car Content -->
-                    <!-- <div class="palette__item" *ngFor="let carColor of carExterior; let i = index">
-                        <label class="palette__icon">
-                        <input class="palette__icon__input" type="radio" name="exterior" value="Brown"/>
-                        <div class="palette__icon__label" [ngStyle]="{ 'color': carColor.iconColorCode }"><span class="palette__icon__label-item" [ngStyle]="{ 'background-color': carColor.iconColorCode }" ></span>
+            <div class="model__head js-ani" appIsAni>
+                <div class="model__cover object-fit" *ngIf="carInfo">
+                    <img class="cart__item__cover-img lazyload" src="{{carInfo.vehicle.variants[currentVariantId].vehicleConfigItems[currentColorId].imageUrl}}" alt="{{ carInfo.vehicle.name }}">
+                </div>
+                <div class="model__config" *ngIf="carInfo">
+                    <div class="model__config__item">
+                        <div class="model__config__label text-center">Exterior color</div>
+                        <h3 class="model__config__title text-center">{{ carInfo.vehicle.variants[currentVariantId].vehicleConfigItems[currentColorId].name }}</h3>
+                        <div class="model__config__txt palette">
+                            <!-- [START] Colorful Car Content -->
+                            <div [ngClass]="{'palette__item': carItem.itemType === 'Color'}" *ngFor="let carItem of carInfo.vehicle.variants[currentVariantId].vehicleConfigItems; let i = index" (click)="currentColorId = i">
+                                <label class="palette__icon" *ngIf="carItem.itemType === 'Color' ">
+                                    <input class="palette__icon__input" type="radio" name="exterior" value="{{ carItem.name }}" [checked]="i === currentColorId"/>
+                                    <div class="palette__icon__label" [ngStyle]="{ 'color': carItem.iconColorCode }">
+                                        <span class="palette__icon__label-item" [ngStyle]="{ 'background-color': carItem.iconColorCode }" ></span>
+                                    </div>
+                                </label>
+                            </div>
+                            <!-- [END] Colorful Car Content -->
                         </div>
-                        </label>
-                    </div> -->
-                    <!-- [END] Colorful Car Content -->
-                    <div class="palette__item">
-                        <label class="palette__icon">
-                        <input class="palette__icon__input" type="radio" name="exterior" value="Red"/>
-                        <div class="palette__icon__label" style="color: #eb0a1e;"><span class="palette__icon__label-item" style="background-color: #eb0a1e;"></span>
-                        </div>
-                        </label>
                     </div>
-                    <div class="palette__item">
-                        <label class="palette__icon">
-                        <input class="palette__icon__input" type="radio" name="exterior" value="Brown"/>
-                        <div class="palette__icon__label" style="color: #745645;"><span class="palette__icon__label-item" style="background-color: #745645;"></span>
+                    <div class="model__config__item" >
+                        <div class="model__config__label text-center">Interior</div>
+                        <h3 class="model__config__title text-center">{{ carInfo.vehicle.variants[currentVariantId].vehicleConfigItems[currentInteriorId].name}}</h3>
+                        <div class="model__config__txt palette">
+                            <!-- [START] Interior Car Content -->
+                            <div [ngClass]="{'palette__item': carItem.itemType === 'Interior'}" *ngFor="let carItem of carInfo.vehicle.variants[currentVariantId].vehicleConfigItems; let i = index" (click)="currentInteriorId = i">
+                                <label class="palette__icon" *ngIf="carItem.itemType === 'Interior' ">
+                                    <input class="palette__icon__input" type="radio" name="interior" value="{{ carItem.name }}" [checked]="i === currentInteriorId"/>
+                                    <div class="palette__icon__label" style="color: #313131;">
+                                        <span class="palette__icon__label-item" style="background-color: #313131;"></span>
+                                        <span class="palette__icon__label-item" style="background-color: #626262;"></span>
+                                    </div>
+                                </label>
+                            </div>
+                            <!-- [End] Interior Car Content -->
                         </div>
-                        </label>
-                    </div>
-                    <div class="palette__item">
-                        <label class="palette__icon">
-                        <input class="palette__icon__input" type="radio" name="exterior" value="Black" checked="checked"/>
-                        <div class="palette__icon__label" style="color: #000000;"><span class="palette__icon__label-item" style="background-color: #000000;"></span>
-                        </div>
-                        </label>
-                    </div>
-                    <div class="palette__item">
-                        <label class="palette__icon">
-                        <input class="palette__icon__input" type="radio" name="exterior" value="White"/>
-                        <div class="palette__icon__label" style="color: #ffffff;"><span class="palette__icon__label-item" style="background-color: #ffffff;"></span>
-                        </div>
-                        </label>
-                    </div>
-                    <div class="palette__item">
-                        <label class="palette__icon">
-                        <input class="palette__icon__input" type="radio" name="exterior" value="Grey"/>
-                        <div class="palette__icon__label" style="color: #525355;"><span class="palette__icon__label-item" style="background-color: #525355;"></span>
-                        </div>
-                        </label>
-                    </div>
-                    <div class="palette__item">
-                        <label class="palette__icon">
-                        <input class="palette__icon__input" type="radio" name="exterior" value="Light-Grey"/>
-                        <div class="palette__icon__label" style="color: #c6c6c6;"><span class="palette__icon__label-item" style="background-color: #c6c6c6;"></span>
-                        </div>
-                        </label>
                     </div>
                 </div>
             </div>
-            <div class="model__config__item">
-                <div class="model__config__label text-center">Interior</div>
-                <h3 class="model__config__title text-center">Standard</h3>
-                <div class="model__config__txt palette">
-                <div class="palette__item">
-                    <label class="palette__icon">
-                    <input class="palette__icon__input" type="radio" name="interior" value="Grey__Light-Grey" checked="checked"/>
-                    <div class="palette__icon__label" style="color: #313131;"><span class="palette__icon__label-item" style="background-color: #313131;"></span><span class="palette__icon__label-item" style="background-color: #626262;"></span>
+            <div class="model__sec js-ani" appIsAni >
+                <h3 class="model__sec__title text-center">Specs</h3>
+                <div class="model__sec__specs" *ngIf="carInfo">
+                    <div class="model__sec__specs-item text-center"><span class="highlight">{{ carInfo.vehicle.variants[currentVariantId].seats }}</span>Seats
                     </div>
-                    </label>
-                </div>
-                </div>
-            </div>
-            </div>
-        </div>
-        <div class="model__sec js-ani" appIsAni>
-            <h3 class="model__sec__title text-center">Specs</h3>
-            <div class="model__sec__specs">
-            <div class="model__sec__specs-item text-center"><span class="highlight">5</span>Seats
-            </div>
-            <div class="model__sec__specs-item text-center"><span class="highlight">1,798</span>Capacity<br>(cc)
-            </div>
-            <div class="model__sec__specs-item text-center"><span class="highlight">79(105)/6,000</span>Max Power<br>(KW(bhp)/rpm)
-            </div>
-            <div class="model__sec__specs-item text-center"><span class="highlight">3.9</span>Fuel consumption<br>(L/100KM)
-            </div>
-            </div>
-        </div>
-        <div class="model__sec js-ani" appIsAni>
-            <h3 class="model__sec__title text-center">Feature</h3>
-            <div class="flex-center">
-            <ul class="model__sec__list">
-                <li class="model__sec__list-item">Asean NCAP</li>
-                <li class="model__sec__list-item">7SRS Airbags</li>
-                <li class="model__sec__list-item">Best in Class Cabin Space</li>
-                <li class="model__sec__list-item">Smart Entry & Push Start</li>
-            </ul>
-            </div>
-        </div>
-        <div class="model__sec kinto-one js-ani" appIsAni>
-            <h3 class="model__sec__title text-center">KINTO ONE will include</h3>
-            <div class="model__sec__circle-icon circle-icon-box">
-                <!-- [Start] Services Array Data -->
-                <div class="circle-icon-box__item" *ngFor="let service of serviceList; let i = index">
-                    <div class="circle-icon-box__icon-box"><i class="be-icon absolute-center be-icon-insurance" aria-hidden="true"></i></div>
-                    <h4 class="circle-icon-box__title">{{ service.shortDescription }}</h4>
-                    <div class="circle-icon-box__desc">
+                    <div class="model__sec__specs-item text-center"><span class="highlight">{{ carInfo.vehicle.variants[currentVariantId].capacity }}</span>Capacity<br>(cc)
+                    </div>
+                    <div class="model__sec__specs-item text-center"><span class="highlight">{{ carInfo.vehicle.variants[currentVariantId].maxPower }}</span>Max Power<br>(KW(bhp)/rpm)
+                    </div>
+                    <div class="model__sec__specs-item text-center"><span class="highlight">{{ carInfo.vehicle.variants[currentVariantId].fuelConsumptions }}</span>Fuel consumption<br>(L/100KM)
                     </div>
                 </div>
-                <!-- [End] Services Array Data -->
             </div>
-        </div>
-        <div class="model__sec js-ani" appIsAni>
-            <h3 class="model__sec__title text-center">Notice</h3>
-            <p class="model__sec__notice">All pictures contained herein are for advertising purpose only, therefore, the actual colors and specifications of vehicles may differ from those contained in this Website due to the different display resolution of each device. The Company reserves the right to make changes to models, colors, specifications, and accessories of the vehicle, without prior notice, as deemed appropriate by the Company. Terms and conditions apply.</p>
-        </div>
+            <div class="model__sec js-ani" appIsAni>
+                <h3 class="model__sec__title text-center">Feature</h3>
+                <div class="flex-center">
+                    <ul class="model__sec__list" *ngIf="carInfo" [innerHTML]="carInfo.vehicle.variants[currentVariantId].feature"></ul>
+                </div>
+            </div>
+            <div class="model__sec kinto-one js-ani" appIsAni>
+                <h3 class="model__sec__title text-center">KINTO ONE will include</h3>
+                <div class="model__sec__circle-icon circle-icon-box">
+                    <!-- [Start] Services Array Data -->
+                    <div class="circle-icon-box__item" *ngFor="let service of serviceList; let i = index">
+                        <div class="circle-icon-box__icon-box"><i class="be-icon absolute-center be-icon-insurance" aria-hidden="true"></i></div>
+                        <h4 class="circle-icon-box__title">{{ service.shortDescription }}</h4>
+                        <div class="circle-icon-box__desc">
+                        </div>
+                    </div>
+                    <!-- [End] Services Array Data -->
+                </div>
+            </div>
+            <div class="model__sec js-ani" appIsAni>
+                <h3 class="model__sec__title text-center">Notice</h3>
+                <p class="model__sec__notice">All pictures contained herein are for advertising purpose only, therefore, the actual colors and specifications of vehicles may differ from those contained in this Website due to the different display resolution of each device. The Company reserves the right to make changes to models, colors, specifications, and accessories of the vehicle, without prior notice, as deemed appropriate by the Company. Terms and conditions apply.</p>
+            </div>
         </div>
     </section>
     <!-- 1024 以下，變成 fixed 樣式，點擊黑色遮罩與Back按鍵，要移除 .is-open class-->
@@ -162,78 +126,65 @@
         <div class="model__divide"></div>
         <div class="model__config model__config--detial scrollbar-model is-thin">
             <div class="model__config__item">
-            <div class="model__config__label">Exterior color</div>
-            <div class="model__config__info palette">
-                <div class="palette__item">
-                <label class="palette__icon">
-                    <div class="palette__icon__label"><span class="palette__icon__label-item" style="background-color: #c6c6c6;"></span>
+                <div class="model__config__label">Exterior color</div>
+                <div class="model__config__info palette">
+                    <div class="palette__item" *ngIf="carInfo">
+                        <label class="palette__icon">
+                            <div class="palette__icon__label"><span class="palette__icon__label-item" [ngStyle]="{ 'background-color': carInfo.vehicle.variants[currentVariantId].vehicleConfigItems[currentColorId].iconColorCode }"></span>
+                            </div>
+                        </label>
+                        <h3 class="model__config__info-title">{{ carInfo.vehicle.variants[currentVariantId].vehicleConfigItems[currentColorId].name }}</h3>
                     </div>
-                </label>
-                <h3 class="model__config__info-title">Attitude Black Mica</h3>
                 </div>
-            </div>
             </div>
             <div class="model__config__item">
-            <div class="model__config__label">Interior</div>
-            <div class="model__config__info palette">
-                <div class="palette__item">
-                <label class="palette__icon">
-                    <div class="palette__icon__label"><span class="palette__icon__label-item" style="background-color: #313131;"></span><span class="palette__icon__label-item" style="background-color: #626262;"></span>
+                <div class="model__config__label">Interior</div>
+                <div class="model__config__info palette">
+                    <div class="palette__item" *ngIf="carInfo">
+                        <label class="palette__icon">
+                            <div class="palette__icon__label">
+                                <span class="palette__icon__label-item" style="background-color: #313131;"></span>
+                                <span class="palette__icon__label-item" style="background-color: #626262;"></span>
+                            </div>
+                        </label>
+                        <h3 class="model__config__info-title">{{ carInfo.vehicle.variants[currentVariantId].vehicleConfigItems[currentInteriorId].name }}</h3>
                     </div>
-                </label>
-                <h3 class="model__config__info-title">Standard</h3>
                 </div>
-            </div>
             </div>
             <div class="model__config__item model__config__item--variant">
-            <div class="model__config__label">Variant<span class="badge">6</span></div>
-            <div class="sort__item">
-                <!-- 打開請加上 is-open-->
-                <div class="sort__select">
-                <div class="sort__select-selected"> 1.2 LUXURY (MONO)<i class="be-icon be-icon-arrow-down" aria-hidden="true"></i></div>
-                <ul class="sort__select-list scrollbar-ver is-thin">
-                    <li class="sort__select-list__item">1.2 LUXURY (MONO)</li>
-                    <li class="sort__select-list__item">1.2 LUXURY (MONO)</li>
-                    <li class="sort__select-list__item">1.2 LUXURY (MONO)</li>
-                    <li class="sort__select-list__item">1.2 LUXURY (MONO)</li>
-                </ul>
+                <div class="model__config__label">Variant</div>
+                <div class="sort__item" *ngIf="carInfo">
+                    <!-- 打開請加上 is-open-->
+                    <div class="sort__select" [ngClass]="{'is-open' : isOpenVariantSelector === true}" (click)="isOpenVariantSelector = !isOpenVariantSelector">
+                        <div class="sort__select-selected"> 
+                            {{ carInfo.vehicle.variants[currentVariantId].name }}<i class="be-icon be-icon-arrow-down" aria-hidden="true"></i>
+                        </div>
+                        <ul class="sort__select-list scrollbar-ver is-thin">
+                            <li class="sort__select-list__item" *ngFor="let variant of carInfo.vehicle.variants ; let i = index" (click)="onChangeVariant(i)">{{ variant.name }}</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
             </div>
             <div class="model__config__item model__config__item--tenure">
             <div class="model__config__label">
                 Tenure</div>
             <div class="model__config__info tenure">
-                <div class="tenure__item">
-                <label class="tenure__icon">
-                    <input class="tenure__icon__input" type="radio" name="tenure"/>
-                    <div class="tenure__icon__label">
-                    <div class="tenure__icon__label-year">3</div><span class="tenure__icon__label-txt">years</span>
-                    </div>
-                </label>
+                <!-- [Start] tenures Array Data -->
+                <div class="tenure__item" *ngFor="let tenure of tenures; let i = index ">
+                    <label class="tenure__icon">
+                        <input class="tenure__icon__input" type="radio" name="tenure" [checked]="i === currentTenureId" (click)="onChangeTenure(i)"/>
+                        <div class="tenure__icon__label">
+                        <div class="tenure__icon__label-year">{{ tenure }}</div><span class="tenure__icon__label-txt">years</span>
+                        </div>
+                    </label>
                 </div>
-                <div class="tenure__item">
-                <label class="tenure__icon">
-                    <input class="tenure__icon__input" type="radio" name="tenure" checked="checked"/>
-                    <div class="tenure__icon__label">
-                    <div class="tenure__icon__label-year">4</div><span class="tenure__icon__label-txt">years</span>
-                    </div>
-                </label>
-                </div>
-                <div class="tenure__item">
-                <label class="tenure__icon">
-                    <input class="tenure__icon__input" type="radio" name="tenure"/>
-                    <div class="tenure__icon__label">
-                    <div class="tenure__icon__label-year">5</div><span class="tenure__icon__label-txt">years</span>
-                    </div>
-                </label>
-                </div>
+                <!-- [End] tenures Array Data -->
             </div>
             </div>
             <p class="model__config__notice">* Delivery timeframe (Fastest delivery after 1st COE bid). Car will be delivered at your preferred location.</p>
         </div>
         <div class="model__divide"></div>
-        <div class="model__config model__config--price">
+        <div class="model__config model__config--price" *ngIf="amountInfo">
             <div class="model__config__item">
             <div class="model__config__label">Monthly Rental Amount
                 <div class="tooltip-wrapper"><span class="tooltip__icon" data-toggle="tooltip-rental"><i class="be-icon be-icon-notice-circle"></i></span>
@@ -243,7 +194,7 @@
                 </div>
             </div>
             <div class="model__config__info">
-                <h3 class="model__config__info__title highlight">$ 2,780</h3>/ month
+                <h3 class="model__config__info__title highlight">$ {{ amountInfo.monthlyPaymentAmount | number: '2.'}}</h3>/ month
             </div>
             </div>
             <div class="model__config__item">
@@ -255,7 +206,7 @@
                 </div>
             </div>
             <div class="model__config__info">
-                <h3 class="model__config__info__title">$ 5,560</h3>
+                <h3 class="model__config__info__title">$ {{ amountInfo.securityDepositAmount | number: '2.' }}</h3>
             </div>
             </div>
         </div>

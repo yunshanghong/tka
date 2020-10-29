@@ -28,7 +28,7 @@ import { ContactComponent } from './main/contact/contact.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'models', component: AllModelsComponent },
-  { path: 'models-content', component: ModelContentComponent },
+  { path: 'models-content/:id', component: ModelContentComponent },
   { path: 'term-condition', component: TermConditionComponent },
   { path: 'application-form', component: ApplicationFormComponent },
   { path: 'application-submitted', component: ApplicationSubmittedComponent },
