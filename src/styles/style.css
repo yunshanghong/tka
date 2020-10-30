@@ -58,12 +58,12 @@
 
 @font-face {
   font-family: icon;
-  src: url(../assets/fonts/icons/icon.eot?1603358438574);
-  src: url(../assets/fonts/icons/icon.eot?#iefix-1603358438574) format("embedded-opentype"),
-    url(../assets/fonts/icons/icon.woff2?1603358438574) format("woff2"),
-    url(../assets/fonts/icons/icon.woff?1603358438574) format("woff"),
-    url(../assets/fonts/icons/icon.ttf?1603358438574) format("truetype"),
-    url(../assets/fonts/icons/icon.svg?1603358438574#icon) format("svg");
+  src: url(../assets/fonts/icons/icon.eot?1603880274087);
+  src: url(../assets/fonts/icons/icon.eot?#iefix-1603880274087) format("embedded-opentype"),
+    url(../assets/fonts/icons/icon.woff2?1603880274087) format("woff2"),
+    url(../assets/fonts/icons/icon.woff?1603880274087) format("woff"),
+    url(../assets/fonts/icons/icon.ttf?1603880274087) format("truetype"),
+    url(../assets/fonts/icons/icon.svg?1603880274087#icon) format("svg");
   font-display: block;
   unicode-range: U+EA01-EA1A
 }
@@ -8412,6 +8412,58 @@ screen and (max-width:39.99875em) {
   margin-bottom: 0;
   font-size: .8125rem;
   text-align: center
+}
+
+.gotop {
+  position: fixed;
+  z-index: 100;
+  bottom: 3.75rem;
+  right: -100%;
+  width: 3.75rem;
+  height: 3.75rem;
+  border-top-left-radius: 1.875rem;
+  border-bottom-left-radius: 1.875rem;
+  font-size: .75rem;
+  text-align: center;
+  color: #fff;
+  background-color: #59a2b5;
+  -webkit-transition: 2s right, .5s background-color;
+  transition: 2s right, .5s background-color;
+  -webkit-box-shadow: 0 9px 39.2px .8px rgba(0, 0, 0, .1);
+  box-shadow: 0 9px 39.2px .8px rgba(0, 0, 0, .1)
+}
+
+@media print,
+screen and (max-width:63.99875em) {
+  .gotop {
+    border-top-left-radius: 3.75rem;
+    border-bottom-left-radius: 3.75rem
+  }
+}
+
+.gotop .be-icon {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 52%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-style: initial
+}
+
+.gotop.is-show {
+  right: 0
+}
+
+.gotop:focus,
+.gotop:hover {
+  color: #fff
+}
+
+@media screen and (min-width:75em) {
+  .gotop:hover {
+    background-color: #14586a
+  }
 }
 
 .loader {

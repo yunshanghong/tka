@@ -17,6 +17,7 @@ import { NewsComponent } from './main/news/news.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { LoaderComponent } from './layouts/loader/loader.component';
+import { GoTopComponent } from './layouts/goTop/goTop.component';
 import { IsAniDirective } from './shared/is-amimated.directive';
 import { NewsContentComponent } from './main/news-content/news-content.component';
 import { AboutComponent } from './main/about/about.component';
@@ -49,6 +50,7 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     HomeComponent,
+    GoTopComponent,
     AllModelsComponent,
     ModelContentComponent,
     TermConditionComponent,
