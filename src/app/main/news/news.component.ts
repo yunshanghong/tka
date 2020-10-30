@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { EventEmitterService } from 'src/app/services/eventEmitter.service';
 import { InfoService } from 'src/app/services/info.service';
 import Swiper from 'swiper';
@@ -8,20 +8,26 @@ import Swiper from 'swiper';
     templateUrl: './news.component.html',
     styleUrls: ["../../../styles/news.css"]
 })
-export class NewsComponent implements OnInit, OnDestroy {
+export class NewsComponent implements AfterViewInit, OnDestroy {
+
+    newsList: Array<Object>;
 
     @ViewChild('newsComponent') newsComponent: ElementRef;
     @ViewChild('newsSwiperPagination') newsSwiperPagination: ElementRef;
+    @ViewChild('newsCarousel') newsCarousel: ElementRef;
 
     constructor(private infoService: InfoService, private eventEmitterService: EventEmitterService) { }
 
-    ngOnInit() {
+    ngAfterViewInit() {
+        console.log("After View Init")
         this.infoService.getDynamicContentByType({ Type: "Kinto.PromotionalContent" }).subscribe(
-            (response: any) => { console.log(response) },
+            (response: any) => { this.newsList = response; console.log(response) },
             (error) => { console.error(error) },
-            () => { this.eventEmitterService.onLoadingComplete() }
+            () => {
+                this.onBuildFaq();
+                this.eventEmitterService.onLoadingComplete()
+            }
         )
-        console.log("news init")
     }
 
     ngOnDestroy() {
@@ -29,14 +35,14 @@ export class NewsComponent implements OnInit, OnDestroy {
         this.newsComponent.nativeElement.remove();
     }
 
-    buildFaq() {
+    onBuildFaq() {
         var mySwiper = null;
         var breakpoint = window.matchMedia('(min-width: 1024px)');
 
         var breakpointChecker = () => {
             mySwiper && mySwiper.destroy(true, true); // 如果不是 null 則 Destroy Swiper
 
-            mySwiper = this.buildFaqCarousel(); // mySwiper 由 buildFaqCarousel return 出來，改成Angular應該會不相同
+            mySwiper = this.onBuildFaqCarousel(); // mySwiper 由 buildFaqCarousel return 出來，改成Angular應該會不相同
         };
 
         breakpointChecker(); // 一開始就執行
@@ -44,20 +50,14 @@ export class NewsComponent implements OnInit, OnDestroy {
         breakpoint.addEventListener('change', breakpointChecker); // 監聽
     }
 
-    buildFaqCarousel() {
-        var swiperTarget = '#news-carousel';
-        var swiperEl = document.querySelector(swiperTarget).parentElement;
+    onBuildFaqCarousel() {
+        var swiperTarget = this.newsCarousel.nativeElement as HTMLElement;
         var swiperPageEl = this.newsSwiperPagination.nativeElement as HTMLElement;
 
-
-        var swiperSlideEls = swiperEl.querySelectorAll('.swiper-slide');
-        /* Loop 計算 */
-
-        var loop = swiperSlideEls.length > 1;
-
+        var loop = this.newsList.length > 1;
         if (window.innerWidth >= 1024) {
             // 1024+
-            loop = swiperSlideEls.length > 3;
+            loop = this.newsList.length > 3;
         }
         /* 隱藏操作鍵 */
 
@@ -71,8 +71,9 @@ export class NewsComponent implements OnInit, OnDestroy {
         }
         /* 建立 */
 
-
         var mySwiper = new Swiper(swiperTarget, {
+            observer: true,
+            observeParents: true,
             spaceBetween: 20,
             grabCursor: true,
             slidesPerView: 'auto',
@@ -87,9 +88,7 @@ export class NewsComponent implements OnInit, OnDestroy {
             pagination: {
                 el: swiperPageEl
             },
-            navigation: {// nextEl: swiperNextEl,
-                // prevEl: swiperPrevEl
-            },
+            navigation: {},
             breakpoints: {
                 // when window width is >= 640px
                 640: {

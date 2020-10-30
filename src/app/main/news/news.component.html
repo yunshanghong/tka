@@ -31,41 +31,27 @@
     <div class="grid-container">
         <h2 class="sec-title__title text-center">News</h2>
         <div class="swiper-box news-swiper">
-        <div class="swiper-container" id="news-carousel">
-            <div class="swiper-wrapper">
-            <div class="swiper-slide news__item"><a class="card-box" href="news-content.html" title="News title news title news title news title news title news title">
-                <div class="hover-refl"><span class="hover-refl__light"></span></div>
-                <div class="card-box__img-box object-fit"><img class="cart__item__cover-img lazyload" src="assets/images/index/faq_1.jpg" alt="News title news title news title news title news title news title"/>
+            <div class="swiper-container" id="news-carousel" #newsCarousel>
+                <div class="swiper-wrapper" >
+                    <!-- [Start] newList Array Data -->
+                    <div class="swiper-slide news__item" *ngFor="let news of newsList; let i = index">
+                        <a class="card-box" routerLink="/news-content.html" title="{{ news.title }}">
+                            <div class="hover-refl"><span class="hover-refl__light"></span></div>
+                            <div class="card-box__img-box object-fit">
+                                <img class="cart__item__cover-img lazyload" [src]="news.listingImageUrl" alt="{{ news.title }}"/>
+                            </div>
+                            <div class="card-box__text-box indent">
+                                <p class="card-box__type">{{ news.typeName }}</p>
+                                <h3 class="card-box__title"><span class="clamp-3">{{ news.title }}</span></h3>
+                                <p class="card-box__date">{{ news.displayDate | date}}</p>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- [End] newList Array Data -->
+                    
                 </div>
-                <div class="card-box__text-box indent">
-                    <p class="card-box__type">Promotion</p>
-                    <h3 class="card-box__title"><span class="clamp-3">News title news title news title news title news title news title</span></h3>
-                    <p class="card-box__date">9th. Nov, 2020</p>
-                </div></a>
             </div>
-            <div class="swiper-slide news__item"><a class="card-box" href="news-content.html" title="News title news title news title news title news title news title">
-                <div class="hover-refl"><span class="hover-refl__light"></span></div>
-                <div class="card-box__img-box object-fit"><img class="cart__item__cover-img lazyload" src="assets/images/index/faq_2.jpg" alt="News title news title news title news title news title news title"/>
-                </div>
-                <div class="card-box__text-box indent">
-                    <p class="card-box__type">Promotion</p>
-                    <h3 class="card-box__title"><span class="clamp-3">News title news title news title news title news title news title</span></h3>
-                    <p class="card-box__date">9th. Nov, 2020</p>
-                </div></a>
-            </div>
-            <div class="swiper-slide news__item"><a class="card-box" href="news-content.html" title="News title news title news title news title news title news title">
-                <div class="hover-refl"><span class="hover-refl__light"></span></div>
-                <div class="card-box__img-box object-fit"><img class="cart__item__cover-img lazyload" src="assets/images/index/faq_3.jpg" alt="News title news title news title news title news title news title"/>
-                </div>
-                <div class="card-box__text-box indent">
-                    <p class="card-box__type">Promotion</p>
-                    <h3 class="card-box__title"><span class="clamp-3">News title news title news title news title news title news title</span></h3>
-                    <p class="card-box__date">9th. Nov, 2020</p>
-                </div></a>
-            </div>
-            </div>
-        </div>
-        <div class="swiper-pagination" #newsSwiperPagination></div>
+            <div class="swiper-pagination" #newsSwiperPagination></div>
         </div>
         <div class="news-list__box js-ani" appIsAni><a class="card-box" href="news-content.html" title="News title news title news title news title news title news title">
             <div class="hover-refl"><span class="hover-refl__light"></span></div>
