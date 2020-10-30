@@ -26,7 +26,7 @@ export class OrderService {
 
     orderModel: orderModelInterface;
 
-    constructor() { console.log("orderService init") }
+    constructor() { }
 
 
 }

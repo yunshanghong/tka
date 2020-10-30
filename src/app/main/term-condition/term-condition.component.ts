@@ -38,7 +38,7 @@ export class TermConditionComponent implements OnInit, OnDestroy {
         this.infoService.getTermCondition().subscribe(
             (response: termInterface) => this.termAndCondition = response.content,
             error => console.error(error),
-            () => { console.log(this.termAndCondition); this.eventEmitterService.onLoadingComplete() }
+            () => { this.eventEmitterService.onLoadingComplete() }
         );
     }
 

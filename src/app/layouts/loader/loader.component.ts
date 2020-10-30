@@ -13,9 +13,7 @@ export class LoaderComponent {
     constructor(public eventEmitterService: EventEmitterService) { }
 
     ngOnInit() {
-        console.log("loader init")
         this.eventEmitterService.loadingEmitter.subscribe(() => {
-            console.log("appLoader receive event")
             this.loader.nativeElement.className += ' loaded';
             setTimeout(() => {
                 this.loader.nativeElement.remove();

@@ -13,7 +13,6 @@ export class AppComponent implements OnInit {
 	constructor(public eventEmitterService: EventEmitterService, public orderService: OrderService) { }
 
 	ngOnInit() {
-		console.log("app init");
 	}
 
 	onActivate(event: Component) {

@@ -13,10 +13,8 @@ export class IsAniDirective implements OnInit {
     constructor(private elementRef: ElementRef, @Inject(DOCUMENT) private document: Document, public eventEmitterService: EventEmitterService, private renderer: Renderer2) { }
 
     ngOnInit() {
-        console.log("is animate init")
         // page reload 
         this.eventEmitterService.loadingEmitter.subscribe(() => {
-            console.log("is-animated receive event")
             this.loadingCompleted = true;
             this.onAddIsAnimated()
         });

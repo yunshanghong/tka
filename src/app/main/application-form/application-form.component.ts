@@ -32,8 +32,6 @@ export class ApplicationFormComponent implements OnInit, AfterViewInit, OnDestro
         }
 
         this.orderModel = this.orderService.orderModel;
-
-        console.log(this.orderModel);
     }
 
     ngAfterViewInit() {
@@ -49,8 +47,6 @@ export class ApplicationFormComponent implements OnInit, AfterViewInit, OnDestro
     }
 
     onSubmit(form: NgForm) {
-        console.log(form.value);
-        console.log("submit")
         this.infoService.postPreSubmit({
             salutation: "",
             firstName: form.value.FirstName,

@@ -20,19 +20,18 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
     constructor(private infoService: InfoService, private eventEmitterService: EventEmitterService) { }
 
     ngOnInit() {
-        console.log("about init");
         // 1. Reasons
         this.infoService.getDynamicContentByType({ Type: "Kinto.Reasons" }).subscribe(
             (response: any) => this.reasons = response,
             (error) => { console.error(error) },
-            () => { console.log(this.reasons) }
+            () => { }
         )
 
         // 2. Services
         this.infoService.getDynamicContentByType({ Type: "Kinto.Services" }).subscribe(
             (response: Array<Object>) => this.services = response,
             (error) => { console.error(error) },
-            () => { console.log(this.services) }
+            () => { }
         )
     }
 

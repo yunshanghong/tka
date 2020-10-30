@@ -107,7 +107,6 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
     constructor(private infoService: InfoService, private renderer: Renderer2, private eventEmitterService: EventEmitterService) { }
 
     ngOnInit() {
-        console.log("home init");
         //#region load data before render
         // 1. Banner
         this.infoService.getBanner().then(
@@ -117,8 +116,6 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
             })
             .catch(error => console.error(error))
             .finally(() => {
-                console.log(this.banners);
-                console.log("got banners")
                 this.renderBanner = true;
                 this.loadedItems += 1;
                 this.renderReasonLine += 1;
@@ -129,7 +126,6 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
             (response: Array<Object>) => this.fiveReasons = response,
             error => console.error(error),
             () => {
-                console.log("got Reasons")
                 this.renderReasons = true;
                 this.loadedItems += 1;
                 this.renderReasonLine += 1;
@@ -145,7 +141,6 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
             })
             .catch(error => console.error(error))
             .finally(() => {
-                console.log("got Choices")
                 this.renderChoice = true;
                 this.loadedItems += 1;
                 this.renderFAQLine += 1;
@@ -156,7 +151,6 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
             (response: Array<Object>) => this.FAQs = response,
             error => console.error(error),
             () => {
-                console.log("got FAQ")
                 this.renderFAQ = true;
                 this.loadedItems += 1;
                 this.renderFAQLine += 1;
@@ -167,7 +161,6 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
             (response: Array<Object>) => this.promotions = response,
             error => console.error(error),
             () => {
-                console.log("got Promotion")
                 this.renderPromotion = true;
                 this.loadedItems += 1;
             });
@@ -199,7 +192,6 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
 
         // emitt loading complete
         if (this.loadedItems === 5) {
-            console.log("Emit launch")
             this.eventEmitterService.onLoadingComplete();
             this.loadedItems = 0;
         }
@@ -214,7 +206,6 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
     }
 
     ngOnDestroy() {
-        console.log("home destroy")
         this.homeComponent.nativeElement.remove();
     }
 

@@ -48,7 +48,6 @@ export class ModelContentComponent implements OnInit, AfterViewInit, OnDestroy {
         // 1. Car Info 
         this.infoService.getCarInfo(this.id).subscribe(
             (response: any) => {
-                console.log(response);
                 this.carInfo = response;
                 const configItems = response.vehicle.variants[this.currentVariantId].vehicleConfigItems;
                 this.currentColorId = configItems.findIndex(item => item.itemType === 'Color');
@@ -59,31 +58,22 @@ export class ModelContentComponent implements OnInit, AfterViewInit, OnDestroy {
                 console.error(error);
                 this.router.navigate(['/models']);
             },
-            () => {
-                console.log(this.currentColorId)
-                console.log(this.currentInteriorId);
-
-                this.carInfoEmitter.emit(true);
-            }
+            () => { this.carInfoEmitter.emit(true); }
         )
 
         // 4. Content Services
         this.infoService.getDynamicContentByType({ Type: 'Kinto.Services' }).subscribe(
             (response: any) => this.serviceList = response,
             error => console.error(error),
-            () => {
-                console.log("got serviceList")
-            }
+            () => { }
         )
     }
 
     ngAfterViewInit() {
-        console.log("content emitter launch")
         this.eventEmitterService.onLoadingComplete();
     }
 
     ngOnDestroy() {
-        console.log('model content destroy');
         this.contentComponent.nativeElement.remove();
     }
 
@@ -106,7 +96,6 @@ export class ModelContentComponent implements OnInit, AfterViewInit, OnDestroy {
     onGetTenure(variantId) {
         this.infoService.getMonthlyAmount(variantId).subscribe(
             (response: any) => {
-                console.log(response);
                 const leasing = response.leasing;
                 this.tenures = [leasing.minTerm / 12, leasing.defaultTerm / 12, leasing.maxTerm / 12];
                 this.leasingInfo = leasing;
@@ -118,13 +107,11 @@ export class ModelContentComponent implements OnInit, AfterViewInit, OnDestroy {
 
     onGetDeposit() {
         const variantId = this.carInfo.vehicle.variants[this.currentVariantId].id;
-        console.log(variantId);
         const tenure = this.tenures[this.currentTenureId] * 12;
-        console.log(tenure);
         this.infoService.postCalcDeposit(this.leasingInfo.id, variantId, tenure).subscribe(
             (response: any) => this.amountInfo = response,
             (error) => { console.error(error) },
-            () => { console.log(this.amountInfo) }
+            () => { }
         )
     }
 

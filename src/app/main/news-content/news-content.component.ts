@@ -23,13 +23,10 @@ export class NewsContentComponent implements OnInit, AfterViewChecked, OnDestroy
         private router: Router) { }
 
     ngOnInit() {
-        console.log("news content init")
-
         this.id = this.route.snapshot.params["id"];
 
         this.infoService.getNewsContent(this.id).subscribe(
             (response: Object) => {
-                console.log(response);
                 this.contentInfo = response;
             },
             error => {

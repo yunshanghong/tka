@@ -12,7 +12,7 @@ export class FAQComponent implements OnInit, AfterViewInit, OnDestroy {
 
     constructor(private eventEmitterService: EventEmitterService) { }
 
-    ngOnInit() { console.log("faq init") }
+    ngOnInit() {  }
 
     ngAfterViewInit() { this.eventEmitterService.onLoadingComplete() }
 

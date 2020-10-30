@@ -37,33 +37,30 @@ export class AllModelsComponent implements OnInit, AfterViewInit, OnDestroy {
     constructor(private infoService: InfoService, private eventEmitterService: EventEmitterService, private router: Router) { }
 
     ngOnInit() {
-        console.log("models init")
         // 1. Brand Menu
         this.infoService.getBrandMenu({ CategoryName: 'Vehicle.AvailableBrand' }).subscribe(
             (response: Array<brandCateInterface>) => response.map(item => this.brandList.push(item)),
             error => console.error(error),
-            () => { console.log(this.brandList) }
+            () => { }
         );
 
         // 2. Category Menu
         this.infoService.getCateMenu({ BrandCode: 'TOYOTA' }).subscribe(
             (response: Array<{ category: brandCateInterface, vehicles: Object }>) => response.map(item => this.cateList.push(item.category)),
             error => console.error(error),
-            () => { console.log(this.cateList) }
+            () => { }
         );
 
         // 3. All Models
-        this.infoService.getAllModels().then(
-            (response: Array<Object>) => {
-                console.log(response);
-                this.allList = this.showList = response;
-            })
+        this.infoService.getAllModels()
+            .then(
+                (response: Array<Object>) => this.allList = this.showList = response
+            )
             .catch(error => console.error(error))
-            .finally(() => { console.log(this.showList) })
+            .finally(() => { })
     }
 
     ngAfterViewInit() {
-        console.log("models emitter launch")
         this.eventEmitterService.onLoadingComplete();
     }
 
@@ -75,6 +72,6 @@ export class AllModelsComponent implements OnInit, AfterViewInit, OnDestroy {
         this.infoService.postModelsSearch(searchString).then(
             (response: Array<Object>) => this.showList = response)
             .catch(error => console.error(error))
-            .finally(() => { console.log(this.showList) })
+            .finally(() => { })
     }
 }

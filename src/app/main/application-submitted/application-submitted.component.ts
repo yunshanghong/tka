@@ -15,7 +15,7 @@ export class ApplicationSubmittedComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.infoService.postAppNumber({}).subscribe(
-            (response: any) => { console.log(response) },
+            (response: any) => {  },
             (error) => console.error(error),
             () => { this.eventEmitterService.onLoadingComplete() }
         )

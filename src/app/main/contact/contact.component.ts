@@ -12,7 +12,7 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
 
     constructor(private eventEmitterService: EventEmitterService) { }
 
-    ngOnInit() { console.log("contact init") }
+    ngOnInit() { }
 
     ngAfterViewInit() { this.eventEmitterService.onLoadingComplete() }
 

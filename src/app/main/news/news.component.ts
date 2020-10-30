@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import { AfterContentChecked, AfterViewChecked, AfterViewInit, Component, ElementRef, OnDestroy, Renderer2, ViewChild } from '@angular/core';
 import { EventEmitterService } from 'src/app/services/eventEmitter.service';
 import { InfoService } from 'src/app/services/info.service';
 import Swiper from 'swiper';
@@ -8,26 +8,34 @@ import Swiper from 'swiper';
     templateUrl: './news.component.html',
     styleUrls: ["../../../styles/news.css"]
 })
-export class NewsComponent implements AfterViewInit, OnDestroy {
+export class NewsComponent implements AfterViewInit, OnDestroy, AfterViewChecked {
 
-    newsList: Array<Object>;
+    topList: Array<Object>;
+    downList: Array<Object>;
+    renderList: boolean;
 
     @ViewChild('newsComponent') newsComponent: ElementRef;
     @ViewChild('newsSwiperPagination') newsSwiperPagination: ElementRef;
     @ViewChild('newsCarousel') newsCarousel: ElementRef;
 
-    constructor(private infoService: InfoService, private eventEmitterService: EventEmitterService) { }
+    constructor(private infoService: InfoService, private eventEmitterService: EventEmitterService, private renderer: Renderer2) { }
 
     ngAfterViewInit() {
-        console.log("After View Init")
         this.infoService.getDynamicContentByType({ Type: "Kinto.PromotionalContent" }).subscribe(
-            (response: any) => { this.newsList = response; console.log(response) },
+            (response: any) => {
+                this.topList = response.splice(0, 3);
+                this.downList = response;
+            },
             (error) => { console.error(error) },
             () => {
-                this.onBuildFaq();
+                this.renderList = true;
                 this.eventEmitterService.onLoadingComplete()
             }
         )
+    }
+
+    ngAfterViewChecked() {
+        this.renderList && this.onBuildFaq();
     }
 
     ngOnDestroy() {
@@ -35,6 +43,7 @@ export class NewsComponent implements AfterViewInit, OnDestroy {
     }
 
     onBuildFaq() {
+        this.renderList = false;
         var mySwiper = null;
         var breakpoint = window.matchMedia('(min-width: 1024px)');
 
@@ -52,21 +61,18 @@ export class NewsComponent implements AfterViewInit, OnDestroy {
     onBuildFaqCarousel() {
         var swiperTarget = this.newsCarousel.nativeElement as HTMLElement;
         var swiperPageEl = this.newsSwiperPagination.nativeElement as HTMLElement;
-
-        var loop = this.newsList.length > 1;
+        var loop = this.topList.length > 1;
         if (window.innerWidth >= 1024) {
             // 1024+
-            loop = this.newsList.length > 3;
+            loop = this.topList.length > 3;
         }
         /* 隱藏操作鍵 */
 
 
         if (!loop) {
-            swiperPageEl.classList.add('hide'); // swiperNextEl.classList.add('hide');
-            // swiperPrevEl.classList.add('hide');
+            this.renderer['addClass'](this.newsSwiperPagination.nativeElement, 'hide');
         } else {
-            swiperPageEl.classList.remove('hide'); // swiperNextEl.classList.remove('hide');
-            // swiperPrevEl.classList.remove('hide');
+            this.renderer['removeClass'](this.newsSwiperPagination.nativeElement, 'hide');
         }
         /* 建立 */
 

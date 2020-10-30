@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { EventEmitterService } from 'src/app/services/eventEmitter.service';
 
 @Component({
@@ -6,13 +6,11 @@ import { EventEmitterService } from 'src/app/services/eventEmitter.service';
     templateUrl: './apply.component.html',
     styleUrls: ["../../../styles/apply.css"]
 })
-export class ApplyComponent implements OnInit, AfterViewInit, OnDestroy {
+export class ApplyComponent implements AfterViewInit, OnDestroy {
 
     @ViewChild('applyComponent') applyComponent: ElementRef;
 
     constructor(private eventEmitterService: EventEmitterService) { }
-
-    ngOnInit() { console.log("apply init") }
 
     ngAfterViewInit() { this.eventEmitterService.onLoadingComplete() }
 

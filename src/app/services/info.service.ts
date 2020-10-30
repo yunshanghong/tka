@@ -121,7 +121,6 @@ export class InfoService {
 		}).toPromise();
 
 		var newAllModels = [];
-		console.log(allModels);
 		for (var i in allModels) {
 			if (allModels[i].category.order === 0) {
 				const vehicles = allModels[i].vehicles;
