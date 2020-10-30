@@ -21,7 +21,7 @@ export interface orderModelInterface {
     interiorColorConfigItemCode: string;
 
     // response 
-    quoteRequestId: number; // 387
+    quoteRequestId?: number; // 387
 }
 
 @Injectable({ providedIn: 'root' })

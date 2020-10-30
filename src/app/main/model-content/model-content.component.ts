@@ -12,6 +12,7 @@ import { OrderService } from 'src/app/services/order.service';
 export class ModelContentComponent implements OnInit, AfterViewInit, OnDestroy {
 
     id: string;
+    openAside: boolean = false;
     carInfoEmitter: EventEmitter<boolean> = new EventEmitter()
 
     // 1. Car Information

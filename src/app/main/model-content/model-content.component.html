@@ -116,7 +116,7 @@
     </section>
     <!-- 1024 以下，變成 fixed 樣式，點擊黑色遮罩與Back按鍵，要移除 .is-open class-->
     <!-- 1024 (含)以上，請移除 is-open-->
-    <aside class="sec__aside model__box flex-aside">
+    <aside class="sec__aside model__box flex-aside" [ngClass]="{'is-open': openAside}">
         <!-- 1024 (含)以上，請判斷以下兩點：-->
         <!-- 1. 請判斷頁面滑到 aside底下10px 的地方，.sec__aside__inner 加上 is-fixed class-->
         <!-- 2. 不會壓在 footer 上面，請判斷頁面滑到 footer 上方 10px 的位置，移除 is-fixed class，並把當前的 scroll 位置加上去，ex: position: relative top: xxx;。請注意讓這個區塊在「aside底下10px」至「footer 上方 10px 的位置」要能 fixed 住。頁面 onload 高度在這區塊時也要加入判斷。-->
@@ -214,12 +214,13 @@
         </div>
         <div class="model__ctrl--mb">
         <!-- Back 請關掉 aside-->
-        <button class="btn-lightest button">Back</button><a class="button" title="Book Now" (click)="onBookNow()">Next</a>
+        <button class="btn-lightest button" (click)="openAside = false">Back</button>
+        <a class="button" title="Book Now" (click)="onBookNow()">Next</a>
         </div>
     </aside>
     <!-- 手機版-->
     <!-- 點擊後，aside.sec__aside.flex-aside 請加上 is-open class-->
-    <div class="fixed-bottom-nav">
+    <div class="fixed-bottom-nav" (click)="openAside = true">
         <button class="button">Book Now</button>
     </div>
     </div>
