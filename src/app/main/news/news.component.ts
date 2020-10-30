@@ -31,7 +31,6 @@ export class NewsComponent implements AfterViewInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        console.log("news destroy")
         this.newsComponent.nativeElement.remove();
     }
 

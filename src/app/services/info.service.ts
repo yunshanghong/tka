@@ -211,7 +211,12 @@ export class InfoService {
 	}
 	//#endregion
 
-	//#region 3.1 News List
-
+	//#region 3.2 News Content
+	getNewsContent(inputId: number) {
+		return this.http.get(basicUrl + 'DynamicContent/GetDynamicContentById', {
+			headers: this.headers,
+			params: { Id: inputId.toString() }
+		})
+	}
 	//#endregion
 }

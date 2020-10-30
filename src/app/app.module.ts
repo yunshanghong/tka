@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'application-form', component: ApplicationFormComponent },
   { path: 'application-submitted', component: ApplicationSubmittedComponent },
   { path: 'news', component: NewsComponent },
-  { path: 'news-content', component: NewsContentComponent },
+  { path: 'news-content/:id', component: NewsContentComponent },
   { path: 'about', component: AboutComponent },
   { path: 'apply', component: ApplyComponent },
   { path: 'faq', component: FAQComponent },
