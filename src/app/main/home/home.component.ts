@@ -38,7 +38,7 @@ export interface choiceInterface {
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
-    styleUrls: ["../../../styles/index.css"]
+    styleUrls: []
 })
 export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
     loadedItems: number = 0;

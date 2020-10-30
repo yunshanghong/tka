@@ -1,371 +1,374 @@
-/**
- * Foundation for Sites
- * Version 6.6.3
- * https://get.foundation
- * Licensed under MIT Open Source
- */
 .sec-about {
   position: relative;
   margin-right: auto;
   margin-bottom: 3.125rem;
   margin-left: auto;
-  max-width: 81.25rem;
+  max-width: 81.25rem
 }
 
-@media print, screen and (min-width: 64em) {
+@media print,
+screen and (min-width:64em) {
   .sec-about {
-    margin-bottom: 7.5rem;
+    margin-bottom: 7.5rem
   }
 }
 
 .sec-about.js-ani .breadcrumbs {
   opacity: 0;
   -webkit-transform: translateY(50px);
-          transform: translateY(50px);
+  transform: translateY(50px);
   -webkit-transition-duration: 1s;
-          transition-duration: 1s;
+  transition-duration: 1s;
   -webkit-transition-property: opacity, -webkit-transform;
   transition-property: opacity, -webkit-transform;
   transition-property: opacity, transform;
   transition-property: opacity, transform, -webkit-transform;
-  -webkit-transition-delay: 0.3s;
-          transition-delay: 0.3s;
+  -webkit-transition-delay: .3s;
+  transition-delay: .3s
 }
 
 .sec-about.js-ani .sec-title__title {
   opacity: 0;
   -webkit-transform: translateY(50px);
-          transform: translateY(50px);
+  transform: translateY(50px);
   -webkit-transition-duration: 1s;
-          transition-duration: 1s;
+  transition-duration: 1s;
   -webkit-transition-property: opacity, -webkit-transform;
   transition-property: opacity, -webkit-transform;
   transition-property: opacity, transform;
   transition-property: opacity, transform, -webkit-transform;
-  -webkit-transition-delay: 0.6s;
-          transition-delay: 0.6s;
+  -webkit-transition-delay: .6s;
+  transition-delay: .6s
 }
 
 .sec-about.js-ani .sec-title__desc {
   opacity: 0;
   -webkit-transform: translateY(50px);
-          transform: translateY(50px);
+  transform: translateY(50px);
   -webkit-transition-duration: 1s;
-          transition-duration: 1s;
+  transition-duration: 1s;
   -webkit-transition-property: opacity, -webkit-transform;
   transition-property: opacity, -webkit-transform;
   transition-property: opacity, transform;
   transition-property: opacity, transform, -webkit-transform;
-  -webkit-transition-delay: 0.9s;
-          transition-delay: 0.9s;
+  -webkit-transition-delay: .9s;
+  transition-delay: .9s
 }
 
 .sec-about.js-ani.is-animated .breadcrumbs {
   opacity: 1;
   -webkit-transform: none;
-          transform: none;
+  transform: none
 }
 
 .sec-about.js-ani.is-animated .sec-title__title {
   opacity: 1;
   -webkit-transform: none;
-          transform: none;
+  transform: none
 }
 
 .sec-about.js-ani.is-animated .sec-title__desc {
   opacity: 1;
   -webkit-transform: none;
-          transform: none;
+  transform: none
 }
 
 .sec-about .about__service.js-ani .about__service__item {
   opacity: 0;
   -webkit-transform: translateY(50px);
-          transform: translateY(50px);
+  transform: translateY(50px);
   -webkit-transition-duration: 1s;
-          transition-duration: 1s;
+  transition-duration: 1s;
   -webkit-transition-property: opacity, -webkit-transform;
   transition-property: opacity, -webkit-transform;
   transition-property: opacity, transform;
   transition-property: opacity, transform, -webkit-transform;
-  -webkit-transition-delay: 0.3s;
-          transition-delay: 0.3s;
+  -webkit-transition-delay: .3s;
+  transition-delay: .3s
 }
 
 .sec-about .about__service.js-ani .about__service__item:nth-child(1) {
   -webkit-transition-delay: 1.2s;
-          transition-delay: 1.2s;
+  transition-delay: 1.2s
 }
 
 .sec-about .about__service.js-ani .about__service__item:nth-child(2) {
   -webkit-transition-delay: 1.5s;
-          transition-delay: 1.5s;
+  transition-delay: 1.5s
 }
 
 .sec-about .about__service.js-ani .about__service__item:nth-child(3) {
   -webkit-transition-delay: 1.8s;
-          transition-delay: 1.8s;
+  transition-delay: 1.8s
 }
 
 .sec-about .about__service.js-ani.is-animated .about__service__item {
   opacity: 1;
   -webkit-transform: none;
-          transform: none;
+  transform: none
 }
 
 .sec-about .about__feature.js-ani .about__feature__title {
   opacity: 0;
   -webkit-transform: translateY(50px);
-          transform: translateY(50px);
+  transform: translateY(50px);
   -webkit-transition-duration: 1s;
-          transition-duration: 1s;
+  transition-duration: 1s;
   -webkit-transition-property: opacity, -webkit-transform;
   transition-property: opacity, -webkit-transform;
   transition-property: opacity, transform;
   transition-property: opacity, transform, -webkit-transform;
-  -webkit-transition-delay: 0.3s;
-          transition-delay: 0.3s;
+  -webkit-transition-delay: .3s;
+  transition-delay: .3s
 }
 
 .sec-about .about__feature.js-ani .cell {
   opacity: 0;
   -webkit-transform: translateY(50px);
-          transform: translateY(50px);
+  transform: translateY(50px);
   -webkit-transition-duration: 1s;
-          transition-duration: 1s;
+  transition-duration: 1s;
   -webkit-transition-property: opacity, -webkit-transform;
   transition-property: opacity, -webkit-transform;
   transition-property: opacity, transform;
   transition-property: opacity, transform, -webkit-transform;
-  -webkit-transition-delay: 0.6s;
-          transition-delay: 0.6s;
+  -webkit-transition-delay: .6s;
+  transition-delay: .6s
 }
 
-.sec-about .about__feature.js-ani + .about__service {
+.sec-about .about__feature.js-ani+.about__service {
   opacity: 0;
   -webkit-transform: translateY(50px);
-          transform: translateY(50px);
+  transform: translateY(50px);
   -webkit-transition-duration: 1s;
-          transition-duration: 1s;
+  transition-duration: 1s;
   -webkit-transition-property: opacity, -webkit-transform;
   transition-property: opacity, -webkit-transform;
   transition-property: opacity, transform;
   transition-property: opacity, transform, -webkit-transform;
-  -webkit-transition-delay: 0.9s;
-          transition-delay: 0.9s;
+  -webkit-transition-delay: .9s;
+  transition-delay: .9s
 }
 
 .sec-about .about__feature.js-ani .cell:nth-child(1) {
-  -webkit-transition-delay: 0.6s;
-          transition-delay: 0.6s;
+  -webkit-transition-delay: .6s;
+  transition-delay: .6s
 }
 
 .sec-about .about__feature.js-ani .cell:nth-child(2) {
-  -webkit-transition-delay: 0.9s;
-          transition-delay: 0.9s;
+  -webkit-transition-delay: .9s;
+  transition-delay: .9s
 }
 
 .sec-about .about__feature.js-ani .cell:nth-child(3) {
   -webkit-transition-delay: 1.2s;
-          transition-delay: 1.2s;
+  transition-delay: 1.2s
 }
 
 .sec-about .about__feature.js-ani .cell:nth-child(4) {
   -webkit-transition-delay: 1.5s;
-          transition-delay: 1.5s;
+  transition-delay: 1.5s
 }
 
 .sec-about .about__feature.js-ani .cell:nth-child(5) {
   -webkit-transition-delay: 1.8s;
-          transition-delay: 1.8s;
+  transition-delay: 1.8s
 }
 
 .sec-about .about__feature.js-ani .cell:nth-child(6) {
   -webkit-transition-delay: 2.1s;
-          transition-delay: 2.1s;
+  transition-delay: 2.1s
 }
 
-.sec-about .about__feature.js-ani + .about__service {
+.sec-about .about__feature.js-ani+.about__service {
   -webkit-transition-delay: 2.1s;
-          transition-delay: 2.1s;
+  transition-delay: 2.1s
 }
 
 .sec-about .about__feature.js-ani.is-animated .about__feature__title {
   opacity: 1;
   -webkit-transform: none;
-          transform: none;
+  transform: none
 }
 
 .sec-about .about__feature.js-ani.is-animated .cell {
   opacity: 1;
   -webkit-transform: none;
-          transform: none;
+  transform: none
 }
 
-.sec-about .about__feature.js-ani.is-animated + .about__service {
+.sec-about .about__feature.js-ani.is-animated+.about__service {
   opacity: 1;
   -webkit-transform: none;
-          transform: none;
+  transform: none
 }
 
-.sec-about .about__feature.js-ani.is-animated + .about__service {
+.sec-about .about__feature.js-ani.is-animated+.about__service {
   opacity: 1;
   -webkit-transform: none;
-          transform: none;
+  transform: none
 }
 
 .sec-title__desc {
-  margin-bottom: 0;
+  margin-bottom: 0
 }
 
 .about__service {
   margin-top: 2.5rem;
-  margin-bottom: 3.75rem;
+  margin-bottom: 3.75rem
 }
 
-@media print, screen and (min-width: 64em) {
+@media print,
+screen and (min-width:64em) {
   .about__service {
     margin-top: 9.125rem;
-    margin-bottom: 9.375rem;
+    margin-bottom: 9.375rem
   }
 }
 
 .about__service__item {
-  margin-bottom: 3.125rem;
+  margin-bottom: 3.125rem
 }
 
-@media screen and (min-width: 48em) {
+@media screen and (min-width:48em) {
   .about__service__item {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
     -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start
   }
 }
 
-@media print, screen and (min-width: 64em) {
+@media print,
+screen and (min-width:64em) {
   .about__service__item {
-    margin-bottom: 9.375rem;
+    margin-bottom: 9.375rem
   }
 }
 
 .about__service__item:last-child {
-  margin-bottom: 0;
+  margin-bottom: 0
 }
 
-@media screen and (min-width: 48em) {
+@media screen and (min-width:48em) {
   .about__service__item:nth-child(2n) .about__service__cover {
     -webkit-box-ordinal-group: 3;
-        -ms-flex-order: 2;
-            order: 2;
+    -ms-flex-order: 2;
+    order: 2
   }
 }
 
 .about__service__item:nth-child(2n) .about__service__info {
   margin-left: 0;
-  margin-right: 1.25rem;
+  margin-right: 1.25rem
 }
 
-@media screen and (min-width: 48em) {
+@media screen and (min-width:48em) {
   .about__service__item:nth-child(2n) .about__service__info {
-    margin-right: 3.125rem;
+    margin-right: 3.125rem
   }
 }
 
-@media print, screen and (min-width: 64em) {
+@media print,
+screen and (min-width:64em) {
   .about__service__item:nth-child(2n) .about__service__info {
-    margin-right: 4.875rem;
+    margin-right: 4.875rem
   }
 }
 
 .about__service__cover {
   -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -ms-flex: 1;
+  flex: 1
 }
 
 .about__service__cover .object-fit {
-  border-radius: 0.625rem;
+  border-radius: .625rem
 }
 
 .about__service__cover .object-fit:before {
-  padding-top: 64.57926%;
+  padding-top: 64.57926%
 }
 
 .about__service__info {
-  padding-top: 0.625rem;
+  padding-top: .625rem
 }
 
-@media screen and (min-width: 48em) {
+@media screen and (min-width:48em) {
   .about__service__info {
     margin-left: 3.125rem;
     -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
+    -ms-flex: 1;
+    flex: 1
   }
 }
 
-@media print, screen and (min-width: 64em) {
+@media print,
+screen and (min-width:64em) {
   .about__service__info {
     margin-left: 4.875rem;
-    padding-top: 3.125rem;
+    padding-top: 3.125rem
   }
 }
 
 .about__service__title {
-  font-weight: bold;
+  font-weight: 700
 }
 
 .about__service__detial {
-  margin-bottom: 0.3125rem;
-  font-size: 0.75rem;
-  line-height: 1.26;
+  margin-bottom: .3125rem;
+  font-size: .75rem;
+  line-height: 1.26
 }
 
-@media print, screen and (min-width: 40em) {
+@media print,
+screen and (min-width:40em) {
   .about__service__detial {
-    margin-bottom: 0.625rem;
-    font-size: 1.125rem;
+    margin-bottom: .625rem;
+    font-size: 1.125rem
   }
 }
 
-@media print, screen and (min-width: 64em) {
+@media print,
+screen and (min-width:64em) {
   .about__service__detial {
     margin-bottom: 2.375rem;
-    padding-right: 3.75rem;
+    padding-right: 3.75rem
   }
 }
 
 .about__service__link {
   margin-right: 1.25rem;
-  font-size: 0.75rem;
-  text-decoration: underline;
+  font-size: .75rem;
+  text-decoration: underline
 }
 
-@media print, screen and (min-width: 40em) {
+@media print,
+screen and (min-width:40em) {
   .about__service__link {
-    font-size: 1.125rem;
+    font-size: 1.125rem
   }
 }
 
-@media print, screen and (min-width: 64em) {
+@media print,
+screen and (min-width:64em) {
   .about__service__link {
-    margin-right: 3.125rem;
+    margin-right: 3.125rem
   }
 }
 
 .about__service--models .about__service__cover {
-  position: relative;
+  position: relative
 }
 
-@media screen and (max-width: 48em) {
+@media screen and (max-width:48em) {
   .about__service--models .about__service__cover {
-    margin-right: 7.04918%;
+    margin-right: 7.04918%
   }
 }
 
@@ -373,51 +376,56 @@
   position: absolute;
   bottom: 3.93939%;
   left: 31.70254%;
-  width: 76.71233%;
+  width: 76.71233%
 }
 
 .about__feature__title {
   font-size: 1.1875rem;
-  font-weight: bold;
-  margin-bottom: 3.125rem;
+  font-weight: 700;
+  margin-bottom: 3.125rem
 }
 
-@media print, screen and (min-width: 40em) {
+@media print,
+screen and (min-width:40em) {
   .about__feature__title {
     font-size: 1.375rem;
-    margin-bottom: 4.6875rem;
+    margin-bottom: 4.6875rem
   }
 }
 
 .about__feature__circle {
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap
 }
 
 .about__feature__circle .circle-icon-box__title {
   margin: 0 auto;
   max-width: 16.25rem;
-  color: #00708d;
+  color: #00708d
 }
 
-@media print, screen and (max-width: 39.99875em) {
+@media print,
+screen and (max-width:39.99875em) {
   .about__feature__circle .circle-icon-box__title {
-    font-size: 0.875rem;
+    font-size: .875rem
   }
 }
 
 .about__feature__circle .circle-icon-box__item {
-  margin-bottom: 3.125rem;
+  margin-bottom: 3.125rem
 }
 
-@media print, screen and (max-width: 39.99875em) {
+@media print,
+screen and (max-width:39.99875em) {
   .about__feature__circle .circle-icon-box__item {
     padding-right: 1.875rem;
-    padding-left: 1.875rem;
+    padding-left: 1.875rem
   }
 }
 
 .about__feature__circle .circle-icon-box__icon-box:before {
   -webkit-box-shadow: 0 -20px 30px #314273;
-          box-shadow: 0 -20px 30px #314273;
+  box-shadow: 0 -20px 30px #314273
 }
+
+/*# sourceMappingURL=maps/about.min.css.map */

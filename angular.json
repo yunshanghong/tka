@@ -26,7 +26,8 @@
             "styles": [
               "src/styles/style.css",
               "node_modules/swiper/swiper-bundle.css",
-              "src/styles/vendor/swiper/custom.css"
+              "src/styles/vendor/swiper/custom.css",
+              "src/styles/index.css"
             ],
             "scripts": []
           },
