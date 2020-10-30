@@ -101,8 +101,15 @@ export class InfoService {
 	//#endregion
 
 	//#region 2.1 All Models
-	getMenu(paramsObj) {
+	getBrandMenu(paramsObj) {
 		return this.http.get(basicUrl + 'LookUp/GetGlobalCodesByCategoryName', {
+			headers: this.headers,
+			params: paramsObj
+		})
+	}
+
+	getCateMenu(paramsObj) {
+		return this.http.get(basicUrl + 'LookUp/GetVehicleCategoriesByBrand', {
 			headers: this.headers,
 			params: paramsObj
 		})

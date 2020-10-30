@@ -39,7 +39,10 @@
         <div class="search__wrapper">
             <div class="search__group">
                 <input class="search__input" type="text" placeholder="Search" [(ngModel)]="searchString" (ngModelChange)="onModelsSearch($event)"/>
-                <i class="be-icon be-icon-search" aria-hidden="true"></i>
+                <!-- 點擊放大鏡也可以搜尋-->
+                <button class="search__search"><i class="be-icon be-icon-search" aria-hidden="true"></i></button>
+                <!-- 當 .search__input 有值時，出現 button.search__delete，點擊請刪除 .search__input 輸入的值。沒有輸入值時請隱藏 button.search__delete-->
+                <button class="search__delete"><i class="be-icon be-icon-close" aria-hidden="true"></i></button>
             </div>
         </div>
         <div class="sort__wrapper">
@@ -50,7 +53,7 @@
             <div class="sort__select-selected" (click)="brandOpen = !brandOpen"> All<i class="be-icon be-icon-arrow-down" aria-hidden="true"></i></div>
             <ul class="sort__select-list scrollbar-ver is-thin">
                 <!-- [Start] Brand Array Data -->
-                <li class="sort__select-list__item" *ngFor="let brand of brandList; let i = index">{{ brand.name }}</li>
+                <li class="sort__select-list__item" *ngFor="let brand of brandList; let i = index"><a class="sort__select-list__link" href="javascript:;">{{ brand.name }}</a></li>
                 <!-- [End] Brand Array Data -->
             </ul>
             </div>
@@ -62,7 +65,7 @@
             <div class="sort__select-selected" (click)="cateOpen = !cateOpen"> All<i class="be-icon be-icon-arrow-down" aria-hidden="true"></i></div>
             <ul class="sort__select-list scrollbar-ver is-thin">
                 <!-- [Start] Category Array Data -->
-                <li class="sort__select-list__item" *ngFor="let category of cateList; let i = index">{{ category.name }}</li>
+                <li class="sort__select-list__item" *ngFor="let category of cateList; let i = index"><a class="sort__select-list__link" href="javascript:;">{{ category.name }}</a></li>
                 <!-- [End] Category Array Data -->
             </ul>
             </div>
