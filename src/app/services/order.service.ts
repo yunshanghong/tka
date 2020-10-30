@@ -19,6 +19,9 @@ export interface orderModelInterface {
     financialProductCode: string;
     exteriorColorConfigItemCode: string;
     interiorColorConfigItemCode: string;
+
+    // response 
+    quoteRequestId: number; // 387
 }
 
 @Injectable({ providedIn: 'root' })

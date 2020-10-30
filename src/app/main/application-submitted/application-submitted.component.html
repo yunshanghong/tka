@@ -15,7 +15,8 @@
         <div class="radius-bar size-xs opacity-10 offset-right-5"></div>
         </div>
     </div>
-    <div class="grid-container"><a class="goback" href="javascript:;"><i class="be-icon be-icon-arrow-left" aria-hidden="true"></i><span class="goback__txt">Start again</span></a>
+    <div class="grid-container">
+        <a class="goback" (click)="onStartAgain()"><i class="be-icon be-icon-arrow-left" aria-hidden="true"></i><span class="goback__txt">Start again</span></a>
         <div class="step">
         <div class="step-item">
             <div class="step-item__num">1</div>
@@ -38,10 +39,10 @@
             <p class="term__str text-center">Thank you for your application. Upon confirmation of your credit approval, <br class="large">you will receive an email link to make payment for the security deposit to confirm the lease of your vehicle.</p>
             <div class="application-submitted__box">
             <h3 class="application-submitted__title text-center">Your application number</h3>
-            <p class="application-submitted__code form__input">CFWG_5862</p>
+            <p class="application-submitted__code form__input">{{ kycId }}</p>
             </div>
         </div>
-        <div class="term__ctrl"><a class="button" href="/" title="Back to Homepage">Back to Homepage</a></div>
+        <div class="term__ctrl"><a class="button" href="{{ backHomeUrl }}" title="Back to Homepage">Back to Homepage</a></div>
         </div>
     </div>
     </section>

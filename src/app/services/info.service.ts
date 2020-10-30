@@ -186,34 +186,24 @@ export class InfoService {
 	//#endregion
 
 	//#region 2.4 Application form
-	postPreSubmit(postBody: Object) {
-		const searchModels: any = this.http.post(basicUrl + 'QuoteRequest/LogQuoteRequest',
+	async postPreSubmit(postBody: Object) {
+		const searchModels: any = await this.http.post(basicUrl + 'QuoteRequest/LogQuoteRequest',
 			postBody,
 			{ headers: this.headers }
 		).toPromise();
 
-		console.log(searchModels);
-
-		const result = this.postSubmit({
-			quoteRequestId: searchModels.__zone_symbol__value.detail.quoteRequestId,
-			rcoNumber: "KT0000377",
-			salesmanCode: ""
-		})
+		return searchModels;
 	}
 
+
+	//#endregion
+
+	//#region 2.5 Application Submitted
 	postSubmit(postBody: Object) {
 		return this.http.post(basicUrl + 'Tkyc/SubmitApplication',
 			postBody,
 			{ headers: this.headers }
-		)
-	}
-	//#endregion
-
-	//#region 2.5 Application Submitted
-	postAppNumber(postBody: Object) {
-		return this.http.post(basicUrl + 'QuoteRequest/LogQuoteRequest',
-			postBody,
-			{ headers: this.headers })
+		);
 	}
 	//#endregion
 

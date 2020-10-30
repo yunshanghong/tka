@@ -160,7 +160,7 @@
                             {{ carInfo.vehicle.variants[currentVariantId].name }}<i class="be-icon be-icon-arrow-down" aria-hidden="true"></i>
                         </div>
                         <ul class="sort__select-list scrollbar-ver is-thin">
-                            <li class="sort__select-list__item" *ngFor="let variant of carInfo.vehicle.variants ; let i = index" (click)="onChangeVariant(i)">{{ variant.name }}</li>
+                            <li class="sort__select-list__item" *ngFor="let variant of carInfo.vehicle.variants ; let i = index" (click)="onChangeVariant(i)"><a class="sort__select-list__link" href="javascript:;">{{ variant.name }}</a></li>
                         </ul>
                     </div>
                 </div>

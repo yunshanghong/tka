@@ -68,7 +68,11 @@ export class ApplicationFormComponent implements OnInit, AfterViewInit, OnDestro
             downPaymentPercentage: 60,
             exteriorColorConfigItemCode: "VCI109",
             interiorColorConfigItemCode: "VCI119"
+        }).then((resposne: any) => {
+            this.orderService.orderModel.quoteRequestId = resposne.detail.quoteRequestId;
+            this.router.navigate(['/application-submitted'])
+        }).catch((error) => {
+            console.error(error);
         });
-        this.router.navigate(['/application-submitted'])
     }
 }
