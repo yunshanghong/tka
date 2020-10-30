@@ -75,7 +75,7 @@
                     <div class="hover-refl"><span class="hover-refl__light"></span></div>
                     <h2 class="cart__item__type">{{ item.name }}</h2>
                     <div class="cart__item__cover object-fit-contain"><img class="cart__item__cover-img lazyload" src="{{item.secondaryImageUrl}}" alt="{{item.name}}"/></div>
-                    <div class="cart__item__briefs text-center">
+                    <div class="cart__item__briefs text-center" *ngIf="item.variants[0].seats && item.minOlPrice">
                         <p class="cart__item__brief">{{ item.variants[0].seats }} Seater {{ item.category }}</p>
                         <p class="cart__item__brief">
                             from $<span class="cart__item__price">{{ item.minOlPrice | number: '2.' }}</span>per month</p>
