@@ -20,18 +20,17 @@ export class AllModelsComponent implements OnInit, AfterViewInit, OnDestroy {
     // 1. Brand Menu
     brandOpen: boolean = false;
     brandList: Array<brandCateInterface> = [{ code: "0000", name: "All", order: 0 }]
+    selectBrand: String = "All";
 
     // 2. Category Menu
     cateOpen: boolean = false;
     cateList: Array<brandCateInterface> = [{ code: "0000", name: "All", order: 0 }]
+    selectCate: String = "All";
 
     // 3. All Models 
-    // NOTE 先把所有models抓到allList，等Brand/Category menu 去查
-    allList: Array<Object>;
     showList: Array<Object>;
 
     // 4. Search String 
-    // NOTE 直接去post查
     searchString: String = "";
 
     constructor(private infoService: InfoService, private eventEmitterService: EventEmitterService, private router: Router) { }
@@ -54,7 +53,7 @@ export class AllModelsComponent implements OnInit, AfterViewInit, OnDestroy {
         // 3. All Models
         this.infoService.getAllModels()
             .then(
-                (response: Array<Object>) => this.allList = this.showList = response
+                (response: Array<Object>) => this.showList = response
             )
             .catch(error => console.error(error))
             .finally(() => { })

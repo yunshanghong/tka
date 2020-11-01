@@ -19,3 +19,28 @@ export class TypeFilterObjectPipe implements PipeTransform {
         return obj.filter((item: any) => item.typeName === findType);
     }
 }
+
+
+
+@Pipe({ name: 'modelFilterBrand' })
+export class ModelFilterBrandPipe implements PipeTransform {
+
+    transform(obj: any, findType: String): Object {
+        if (findType === "All") {
+            return obj;
+        }
+        return obj.filter((item: any) => item.typeName === findType);
+    }
+}
+
+
+@Pipe({ name: 'modelFilterCate' })
+export class ModelFilterCatePipe implements PipeTransform {
+
+    transform(obj: any, findType: String): Object {
+        if (findType === "All") {
+            return obj;
+        }
+        return obj.filter((item: any) => item.category === findType);
+    }
+}

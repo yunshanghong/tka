@@ -24,7 +24,7 @@ import { AboutComponent } from './main/about/about.component';
 import { ApplyComponent } from './main/apply/apply.component';
 import { FAQComponent } from './main/faq/faq.component';
 import { ContactComponent } from './main/contact/contact.component';
-import { TypeFilterLengthPipe, TypeFilterObjectPipe } from './shared/typeFilter.pipe';
+import { TypeFilterLengthPipe, TypeFilterObjectPipe, ModelFilterBrandPipe, ModelFilterCatePipe } from './shared/typeFilter.pipe';
 
 // Routes Path and Components
 const routes: Routes = [
@@ -65,6 +65,8 @@ const routes: Routes = [
     ContactComponent,
     TypeFilterLengthPipe,
     TypeFilterObjectPipe,
+    ModelFilterBrandPipe,
+    ModelFilterCatePipe,
   ],
   imports: [
     BrowserModule,

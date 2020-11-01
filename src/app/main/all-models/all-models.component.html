@@ -50,10 +50,10 @@
             <div class="sort__label">Brand</div>
             <!-- 打開請加上 is-open-->
             <div class="sort__select" [ngClass]="{'is-open': brandOpen }">
-            <div class="sort__select-selected" (click)="brandOpen = !brandOpen"> All<i class="be-icon be-icon-arrow-down" aria-hidden="true"></i></div>
+            <div class="sort__select-selected" (click)="brandOpen = !brandOpen"> {{ selectBrand }}<i class="be-icon be-icon-arrow-down" aria-hidden="true"></i></div>
             <ul class="sort__select-list scrollbar-ver is-thin">
                 <!-- [Start] Brand Array Data -->
-                <li class="sort__select-list__item" *ngFor="let brand of brandList; let i = index"><a class="sort__select-list__link" href="javascript:;">{{ brand.name }}</a></li>
+                <li class="sort__select-list__item" *ngFor="let brand of brandList; let i = index" (click)="selectBrand = brand.name; brandOpen = !brandOpen "><a class="sort__select-list__link">{{ brand.name }}</a></li>
                 <!-- [End] Brand Array Data -->
             </ul>
             </div>
@@ -62,10 +62,10 @@
             <div class="sort__label">Category</div>
             <!-- 打開請加上 is-open-->
             <div class="sort__select" [ngClass]="{'is-open': cateOpen }">
-            <div class="sort__select-selected" (click)="cateOpen = !cateOpen"> All<i class="be-icon be-icon-arrow-down" aria-hidden="true"></i></div>
+            <div class="sort__select-selected" (click)="cateOpen = !cateOpen"> {{ selectCate }}<i class="be-icon be-icon-arrow-down" aria-hidden="true"></i></div>
             <ul class="sort__select-list scrollbar-ver is-thin">
                 <!-- [Start] Category Array Data -->
-                <li class="sort__select-list__item" *ngFor="let category of cateList; let i = index"><a class="sort__select-list__link" href="javascript:;">{{ category.name }}</a></li>
+                <li class="sort__select-list__item" *ngFor="let category of cateList; let i = index" (click)="selectCate = category.name; cateOpen = !cateOpen "><a class="sort__select-list__link" href="javascript:;">{{ category.name }}</a></li>
                 <!-- [End] Category Array Data -->
             </ul>
             </div>
@@ -73,7 +73,7 @@
         </div>
         <div class="cart__box">
             <!-- [Start] AllModels Array Data -->
-            <div class="cart__item" *ngFor="let item of showList; let i = index">
+            <div class="cart__item" *ngFor="let item of showList | modelFilterCate: selectCate; let i = index ">
                 <a class="cart__item__link" [routerLink]="['/models-content', item.id ]"  title="{{item.name}}">
                     <div class="hover-refl"><span class="hover-refl__light"></span></div>
                     <h2 class="cart__item__type">{{ item.name }}</h2>
