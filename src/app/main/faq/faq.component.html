@@ -47,8 +47,8 @@
                     <div class="sort__item">
                     <!-- 點擊時 .sort__select，請加上 is-open 打開下拉選單-->
                     <!-- 再次點擊 .sort__select，請移除 is-open 收起下拉選單-->
-                    <div class="sort__select" [ngClass]="{'is-open': isSelectOpen}" (click)="isSelectOpen = !isSelectOpen">
-                        <div class="sort__select-selected"> {{ showType }} ({{ allList.length }})<i class="be-icon be-icon-arrow-down" aria-hidden="true"></i>
+                    <div class="sort__select" [ngClass]="{'is-open': isSelectOpen}" >
+                        <div class="sort__select-selected" (click)="isSelectOpen = !isSelectOpen"> {{ showType }} ({{ allList.length }})<i class="be-icon be-icon-arrow-down" aria-hidden="true"></i>
                         </div>
                         <ul class="sort__select-list scrollbar-ver is-thin">
                             <!-- 當前項目請加上 .is-active，當點擊項目後，移除 .sort__select 的 .is-open-->
