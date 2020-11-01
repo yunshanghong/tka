@@ -215,4 +215,21 @@ export class InfoService {
 		})
 	}
 	//#endregion
+
+	//#region 5.1 FAQs
+	getAllFaqs() {
+		return this.http.get(basicUrl + 'FAQ/GetFaqByType', {
+			headers: this.headers,
+			// params: { Id: inputId.toString() }
+		})
+	}
+
+	postFaqSearch(searchStr: String) {
+
+		return this.http.post(basicUrl + 'Search/SearchFAQByKeyword',
+			{ "keyword": searchStr },
+			{ headers: this.headers }
+		)
+	}
+	//#endregion
 }

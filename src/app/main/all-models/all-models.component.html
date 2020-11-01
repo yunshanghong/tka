@@ -40,9 +40,9 @@
             <div class="search__group">
                 <input class="search__input" type="text" placeholder="Search" [(ngModel)]="searchString" (ngModelChange)="onModelsSearch($event)"/>
                 <!-- 點擊放大鏡也可以搜尋-->
-                <button class="search__search"><i class="be-icon be-icon-search" aria-hidden="true"></i></button>
+                <button class="search__search"><i class="be-icon be-icon-search" aria-hidden="true" (click)="onModelsSearch(searchString)"></i></button>
                 <!-- 當 .search__input 有值時，出現 button.search__delete，點擊請刪除 .search__input 輸入的值。沒有輸入值時請隱藏 button.search__delete-->
-                <button class="search__delete"><i class="be-icon be-icon-close" aria-hidden="true"></i></button>
+                <button class="search__delete" *ngIf="searchString" (click)="searchString = ''; onModelsSearch(searchString)"><i class="be-icon be-icon-close" aria-hidden="true"></i></button>
             </div>
         </div>
         <div class="sort__wrapper">

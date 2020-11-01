@@ -12,186 +12,88 @@
     </ol>
     </nav>
     <div class="radius-bar-deco top-right">
-    <div class="radius-bar-group">
-        <div class="radius-bar size-l opacity-20"></div>
-        <div class="radius-bar size-m opacity-25 offset-left-10"></div>
-    </div>
+        <div class="radius-bar-group">
+            <div class="radius-bar size-l opacity-20"></div>
+            <div class="radius-bar size-m opacity-25 offset-left-10"></div>
+        </div>
     </div>
     <section class="sec-faq faq-list js-ani" appIsAni>
-    <div class="radius-bar-deco bottom-left">
-        <div class="radius-bar-group">
-        <div class="radius-bar size-m opacity-10"></div>
-        <div class="radius-bar size-s opacity-10 offset-right-10"></div>
-        <div class="radius-bar size-xs opacity-10 offset-right-5"></div>
+        <div class="radius-bar-deco bottom-left">
+            <div class="radius-bar-group">
+            <div class="radius-bar size-m opacity-10"></div>
+            <div class="radius-bar size-s opacity-10 offset-right-10"></div>
+            <div class="radius-bar size-xs opacity-10 offset-right-5"></div>
+            </div>
         </div>
-    </div>
-    <div class="grid-container">
-        <h2 class="sec-title__title text-center">Frequently Asked Questions</h2>
-        <div class="search__wrapper">
-        <div class="search__group">
-            <input class="search__input" type="text" value="Search" placeholder="Search"/>
-            <!-- 點擊放大鏡也可以搜尋-->
-            <button class="search__search"><i class="be-icon be-icon-search" aria-hidden="true"></i></button>
-            <!-- 當 .search__input 有值時，出現 button.search__delete，點擊請刪除 .search__input 輸入的值。沒有輸入值時請隱藏 button.search__delete-->
-            <button class="search__delete"><i class="be-icon be-icon-close" aria-hidden="true"></i></button>
-        </div>
-        </div>
-        <div class="faq__wrapper grid-x">
-        <div class="cell large-shrink">
-            <aside class="faq__aside">
-            <!-- 1024 (含)以上，請判斷以下兩點：-->
-            <!-- 1. 請判斷頁面下滑 header 出現白底樣式後，當 header的底部藍線 +10px 等於 .faq__aside__menu 高度時，請在 .faq__aside__menu 加上 is-fixed class-->
-            <!-- 2. 不會壓在 footer 上面，請判斷頁面滑到 footer 上方 10px 的位置，移除 is-fixed class，並把當前的 scroll 位置加上去，ex: position: relative top: xxx;。請注意這個區塊在「header的底部藍線 +10px」至「footer 上方 10px 的位置」要能 fixed 住。頁面 onload 高度在這區塊時也要加入判斷。-->
-            <!-- 1024以下，請移除 is-fixed-->
-            <div class="sort__wrapper faq__aside__menu">
-                <div class="sort__item">
-                <!-- 點擊時 .sort__select，請加上 is-open 打開下拉選單-->
-                <!-- 再次點擊 .sort__select，請移除 is-open 收起下拉選單-->
-                <div class="sort__select is-open">
-                    <div class="sort__select-selected"> All (38)<i class="be-icon be-icon-arrow-down" aria-hidden="true"></i>
+        <div class="grid-container">
+            <h2 class="sec-title__title text-center">Frequently Asked Questions</h2>
+            <div class="search__wrapper">
+            <div class="search__group">
+                <input class="search__input" type="text" placeholder="Search" [(ngModel)]="searchString" (ngModelChange)="onFaqSearch($event)"/>
+                <!-- 點擊放大鏡也可以搜尋-->
+                <button class="search__search"><i class="be-icon be-icon-search" aria-hidden="true" (click)="onFaqSearch(searchString)"></i></button>
+                <!-- 當 .search__input 有值時，出現 button.search__delete，點擊請刪除 .search__input 輸入的值。沒有輸入值時請隱藏 button.search__delete-->
+                <button class="search__delete" *ngIf="searchString" (click)="searchString = ''; onFaqSearch(searchString)"><i class="be-icon be-icon-close" aria-hidden="true"></i></button>
+            </div>
+            </div>
+            <div class="faq__wrapper grid-x">
+            <div class="cell large-shrink">
+                <aside class="faq__aside">
+                <!-- 1024 (含)以上，請判斷以下兩點：-->
+                <!-- 1. 請判斷頁面下滑 header 出現白底樣式後，當 header的底部藍線 +10px 等於 .faq__aside__menu 高度時，請在 .faq__aside__menu 加上 is-fixed class-->
+                <!-- 2. 不會壓在 footer 上面，請判斷頁面滑到 footer 上方 10px 的位置，移除 is-fixed class，並把當前的 scroll 位置加上去，ex: position: relative top: xxx;。請注意這個區塊在「header的底部藍線 +10px」至「footer 上方 10px 的位置」要能 fixed 住。頁面 onload 高度在這區塊時也要加入判斷。-->
+                <!-- 1024以下，請移除 is-fixed-->
+                <div class="sort__wrapper faq__aside__menu" *ngIf="allList">
+                    <div class="sort__item">
+                    <!-- 點擊時 .sort__select，請加上 is-open 打開下拉選單-->
+                    <!-- 再次點擊 .sort__select，請移除 is-open 收起下拉選單-->
+                    <div class="sort__select is-open">
+                        <div class="sort__select-selected"> All ({{ allList.length }})<i class="be-icon be-icon-arrow-down" aria-hidden="true"></i>
+                        </div>
+                        <ul class="sort__select-list scrollbar-ver is-thin">
+                            <!-- 當前項目請加上 .is-active，當點擊項目後，移除 .sort__select 的 .is-open-->
+                            <li class="sort__select-list__item" [ngClass]="{'is-active': showType === 'All' }" (click)="showType = 'All'"><a class="sort__select-list__link" >All ({{ allList.length }})</a></li>
+                            <!-- <li class="sort__select-list__item" [ngClass]="{'is-active': showType === type }" *ngFor="let type of typeList; let i = index" (click)="showType = type">
+                                <a class="sort__select-list__link" >{{ type }} ({{ allList | typeFilterLength: type }})</a>
+                            </li> -->
+                            
+                            <li class="sort__select-list__item" [ngClass]="{'is-active': showType === 'Accessories' }" (click)="showType = 'Accessories'"><a class="sort__select-list__link" href="javascript:;">Accessories ({{ allList | typeFilterLength: 'Accessories' }})</a></li>
+                            <li class="sort__select-list__item" [ngClass]="{'is-active': showType === 'Insurance & Claim Service' }" (click)="showType = 'Insurance & Claim Service'"><a class="sort__select-list__link" href="javascript:;">Insurance &amp; Claim Service ({{ allList | typeFilterLength: 'Insurance & Claim Service' }})</a></li>
+                            <li class="sort__select-list__item" [ngClass]="{'is-active': showType === 'Payment' }" (click)="showType = 'Payment'"><a class="sort__select-list__link" href="javascript:;">Payment ({{ allList | typeFilterLength: 'Payment' }})</a></li>
+                            <li class="sort__select-list__item" [ngClass]="{'is-active': showType === 'Others' }" (click)="showType = 'Others'"><a class="sort__select-list__link" href="javascript:;">Others ({{ allList | typeFilterLength: 'Others' }})</a></li>
+                        </ul>
                     </div>
-                    <ul class="sort__select-list scrollbar-ver is-thin">
-                    <!-- 當前項目請加上 .is-active，當點擊項目後，移除 .sort__select 的 .is-open-->
-                    <li class="sort__select-list__item is-active"><a class="sort__select-list__link" href="javascript:;">All (38)</a></li>
-                    <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">Accessories (2)</a></li>
-                    <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">Insurance &amp; Claim Service (16)</a></li>
-                    <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">Payment (3)</a></li>
-                    <li class="sort__select-list__item"><a class="sort__select-list__link" href="javascript:;">Others (17)</a></li>
-                    </ul>
-                </div>
-                </div>
-            </div>
-            </aside>
-        </div>
-        <div class="cell large-auto">
-            <div class="faq__box">
-            <div class="faq__item card-box is-open">
-                <div class="faq__item__head"><span class="faq__item__type">Accessories</span>
-                <h4 class="faq__item__title">
-                    Can <span class="highlight">KINTO</span> cars be modified according to customer wishes?</h4>
-                </div>
-                <div class="faq__item__body scrollbar-ver is-thin">
-                <div class="cont-editor">
-                    <p class="cnt__txt">The unit cannot be modified to prevent void of manufacturer warranty.</p>
-                </div>
-                </div>
-                <!-- 點擊 .faq__item__ctrl 展開，請 .faq__item 加上 is-open；再次點擊會收起，請移除 .faq__item 上的 is-open-->
-                <div class="faq__item__ctrl"></div>
-            </div>
-            <div class="faq__item card-box">
-                <div class="faq__item__head"><span class="faq__item__type">Accessories</span>
-                <h4 class="faq__item__title">
-                    Can <span class="highlight">KINTO</span> cars be modified according to customer wishes?</h4>
-                </div>
-                <div class="faq__item__body scrollbar-ver is-thin">
-                <div class="cont-editor">
-                    <p class="cnt__txt">The unit cannot be modified to prevent void of manufacturer warranty.</p>
-                </div>
-                </div>
-                <!-- 點擊 .faq__item__ctrl 展開，請 .faq__item 加上 is-open；再次點擊會收起，請移除 .faq__item 上的 is-open-->
-                <div class="faq__item__ctrl"></div>
-            </div>
-            <div class="faq__item card-box is-open">
-                <div class="faq__item__head"><span class="faq__item__type">Insurance &amp; Claim Service</span>
-                <h4 class="faq__item__title">
-                    Can <span class="highlight">KINTO</span> cars be modified according to customer wishes?</h4>
-                </div>
-                <div class="faq__item__body scrollbar-ver is-thin">
-                <div class="cont-editor">
-                    <p class="cnt__txt">The amount the lessee is required to pay when a claim is made on your policy is limited by the insurance excess in Kinto. The excess will vary from $700 to $1700, depending on the location of the accident and vehicle engine capacity.</p>
-                    <div class="cnt__table__wrap">
-                    <table class="table-rwd">
-                        <thead>
-                        <tr>
-                            <th>Engine Capacity Range</th>
-                            <th>Age 23-65 (with >1yr driving experience)</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td data-title="Engine Capacity Range">Below 1600</td>
-                            <td data-title="Age 23-65 (with &gt;1yr driving experience)">$700</td>
-                        </tr>
-                        <tr>
-                            <td data-title="Engine Capacity Range">1601-2000</td>
-                            <td data-title="Age 23-65 (with &gt;1yr driving experience)">$1,000</td>
-                        </tr>
-                        <tr>
-                            <td data-title="Engine Capacity Range">2001-3000</td>
-                            <td data-title="Age 23-65 (with &gt;1yr driving experience)">$1,200</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <p class="cnt__table-note">(Form1) Toyota Engine Capacity Range</p>
                     </div>
-                    <div class="cnt__table__wrap">
-                    <table class="table-rwd">
-                        <thead>
-                        <tr>
-                            <th>Engine Capacity Range</th>
-                            <th>Age 23-65 (with >1yr driving experience)</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td data-title="Engine Capacity Range">Below 1600</td>
-                            <td data-title="Age 23-65 (with &gt;1yr driving experience)">$700</td>
-                        </tr>
-                        <tr>
-                            <td data-title="Engine Capacity Range">1601-2000</td>
-                            <td data-title="Age 23-65 (with &gt;1yr driving experience)">$1,000</td>
-                        </tr>
-                        <tr>
-                            <td data-title="Engine Capacity Range">2001-3000</td>
-                            <td data-title="Age 23-65 (with &gt;1yr driving experience)">$1,200</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <p class="cnt__table-note">(Form2) Lexus Engine Capacity Range</p>
+                </div>
+                </aside>
+            </div>
+            <div class="cell large-auto">
+                <div class="faq__box" *ngIf="allList">
+                    <!-- [Start] allList Array Data -->
+                    <div class="faq__item card-box" [ngClass]="{'is-open': item.open }" *ngFor="let item of allList | typeFilterObject: showType ">
+                        <div class="faq__item__head">
+                            <span class="faq__item__type">{{ item.typeName }}</span>
+                            <h4 class="faq__item__title">{{ item.title }}</h4>
+                        </div>
+                        <div class="faq__item__body scrollbar-ver is-thin">
+                            <div class="cont-editor">
+                                <p class="cnt__txt">{{ item.content }}</p>
+                            </div>
+                        </div>
+                        <!-- 點擊 .faq__item__ctrl 展開，請 .faq__item 加上 is-open；再次點擊會收起，請移除 .faq__item 上的 is-open-->
+                        <div class="faq__item__ctrl" (click)="item.open = !item.open"></div>
                     </div>
-                    <p class="cnt__txt">The amount the lessee is required to pay when a claim is made on your policy is limited by the insurance excess in Kinto. The excess will vary from $700 to $1700, depending on the location of the accident and vehicle engine capacity.</p>
-                    <h3 class="cnt__title">Notice</h3>
-                    <ul class="cnt__list">
-                    <li class="cnt__list-item">Cars participating Yaris Ativ 2 and C-HR Hybrid test drive a car like the quality of the new model car.</li>
-                    <li class="cnt__list-item">If the car is returned prematurely without reasonable cause, the Company charges 40% of the remaining rental fee.</li>
-                    <li class="cnt__list-item">3 months contract, total usage mileage 10,000 km / 3 months</li>
-                    <li class="cnt__list-item">1 year lease agreement, total distance 25,000 km / year</li>
-                    <li class="cnt__list-item">If using more than the selected number of kilometers The company charges 3 baht per kilometer.</li>
-                    <li class="cnt__list-item">Free additional car replacement service, used during repair throughout the contract period</li>
-                    <li class="cnt__list-item">1st class insurance Toyota Care throughout the contract period</li>
-                    <li class="cnt__list-item">24-hour emergency assistance service</li>
-                    <li class="cnt__list-item">Pick up and return the car at Toyota Body Service Bangna only.</li>
-                    <li class="cnt__list-item">For more information, please contact KINTO ONE Call Center 02-386-3888 or apply for the service. <a class="cnt__link" href="https://www.kinto-th.com" title="">https://www.kinto-th.com</a></li>
-                    <li class="cnt__list-item">Conditions are as specified by the company.</li>
-                    </ul>
+                    <!-- [End] allList Array Data -->
+                    <div class="loading">
+                        <div class="loading__dot"></div>
+                        <div class="loading__dot"></div>
+                        <div class="loading__dot"></div>
+                        <div class="loading__dot move"></div>
+                    </div>
                 </div>
-                </div>
-                <!-- 點擊 .faq__item__ctrl 展開，請 .faq__item 加上 is-open；再次點擊會收起，請移除 .faq__item 上的 is-open-->
-                <div class="faq__item__ctrl"></div>
-            </div>
-            <div class="faq__item card-box is-open">
-                <div class="faq__item__head"><span class="faq__item__type">Payment</span>
-                <h4 class="faq__item__title">
-                    Can <span class="highlight">KINTO</span> cars be modified according to customer wishes?</h4>
-                </div>
-                <div class="faq__item__body scrollbar-ver is-thin">
-                <div class="cont-editor">
-                    <p class="cnt__txt">We recommend that regular vehicle servicing is carried out at any Borneo Motors Service Centre. You may book your vehicle servicing appointment online at <a class="cnt__link" href="https://servicebooking.borneomotors.com.sg/lexus/" title="">https://servicebooking.borneomotors.com.sg/lexus/ </a>or call 6631 1388 to contact any of the Service Centres.</p>
-                </div>
-                </div>
-                <!-- 點擊 .faq__item__ctrl 展開，請 .faq__item 加上 is-open；再次點擊會收起，請移除 .faq__item 上的 is-open-->
-                <div class="faq__item__ctrl"></div>
-            </div>
-            <div class="loading">
-                <div class="loading__dot"></div>
-                <div class="loading__dot"></div>
-                <div class="loading__dot"></div>
-                <div class="loading__dot move"></div>
             </div>
             </div>
         </div>
-        </div>
-    </div>
     </section>
     <!-- [END] Page Content-->
 </main>
