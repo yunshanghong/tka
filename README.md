@@ -3,6 +3,11 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.6.
 
 ## Development server
+*******Run `npm instll` for node_modules
+
+*******Add `scale?: number;` in `node_modules/swiper/types/components/effect-coverflow.d.ts` inside `interface CoverflowEffectOptions{}`
+
+*******Change `:root { --swiper-theme-color: #007aff; }` to `:root { --swiper-theme-color: #00708d; }` in `node_modules/swiper/swiper-bundle.css`
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
@@ -25,3 +30,5 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
