@@ -45,7 +45,7 @@ export const defaultNavigationConfig = [{
         {
             title: 'Insurance & Maintenance',
             url: '/faq',
-            queryParams: { type: 'Insurance & Maintenance' }
+            queryParams: { type: 'Insurance & Claim Service' }
         },
         {
             title: 'Payment',
@@ -115,7 +115,7 @@ export const defaultFooterConfig = [{
         {
             title: 'Insurance & Maintenance',
             url: '/faq',
-            queryParams: { type: 'Insurance & Maintenance' }
+            queryParams: { type: "Insurance & Claim Service" }
         },
         {
             title: 'Payment',

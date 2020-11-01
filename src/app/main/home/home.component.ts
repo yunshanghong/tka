@@ -4,6 +4,7 @@ import { Component, OnInit, HostListener, ElementRef, ViewChildren, ViewChild, Q
 import Swiper from 'swiper';
 import { InfoService } from '../../services/info.service';
 import { EventEmitterService } from '../../services/eventEmitter.service';
+import { Router } from '@angular/router';
 
 export interface rgbInterface {
     r: number;
@@ -104,7 +105,11 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
     @ViewChild('promotionSwiperPrev') promotionSwiperPrev: ElementRef;
     @ViewChild('promotionSwiperNext') promotionSwiperNext: ElementRef;
 
-    constructor(private infoService: InfoService, private renderer: Renderer2, private eventEmitterService: EventEmitterService) { }
+    constructor(
+        private infoService: InfoService,
+        private renderer: Renderer2,
+        private eventEmitterService: EventEmitterService,
+        private router: Router) { }
 
     ngOnInit() {
         //#region load data before render
@@ -511,6 +516,10 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
         var preSecPlusHeight = gridPreSec.offsetHeight - titleBoxPreSec.offsetHeight + parseInt(preSec.style['paddingBottom'] || '0');
         this.renderer.setStyle(line, "top", "".concat((preSecPlusHeight * -1).toString(), "px"))
         this.renderer.setStyle(line, "height", "calc(100% + ".concat(preSecPlusHeight.toString(), "px)"))
+    }
+
+    onNavPage(item: any) {
+        this.router.navigate(['/faq'], { queryParams: { type: item.typeName } });
     }
     //#endregion
 

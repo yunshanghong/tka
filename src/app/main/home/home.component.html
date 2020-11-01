@@ -266,7 +266,7 @@
 				<div class="swiper-container" id="faq-carousel" #faqSwiperContainer>
 					<div class="swiper-wrapper">
 						<!-- [Start] FAQ Array Data -->
-						<div *ngFor="let item of FAQs; let i = index" class="swiper-slide index-faq__item" #faqSwiperSlide><a class="card-box" href="javascript:;" title="{{item.title}}">
+						<div *ngFor="let item of FAQs; let i = index" class="swiper-slide index-faq__item" #faqSwiperSlide><a class="card-box" (click)="onNavPage(item)" title="{{item.title}}">
 							<div class="hover-refl"><span class="hover-refl__light"></span></div>
 							<div class="card-box__img-box object-fit"><img class="swiper-lazy" src='assets/images/index/faq_{{i+1}}.jpg' alt="{{item.title}}"/></div>
 							<div class="card-box__text-box indent">
