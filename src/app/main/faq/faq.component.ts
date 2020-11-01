@@ -14,6 +14,7 @@ export class FAQComponent implements OnInit, OnDestroy {
     typeList: Array<String> = [];
     showType: String = "All";
     searchString: String = "";
+    isSelectOpen: boolean = true;
 
     @ViewChild('faqComponent') faqComponent: ElementRef;
 

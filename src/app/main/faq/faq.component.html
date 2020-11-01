@@ -47,16 +47,12 @@
                     <div class="sort__item">
                     <!-- 點擊時 .sort__select，請加上 is-open 打開下拉選單-->
                     <!-- 再次點擊 .sort__select，請移除 is-open 收起下拉選單-->
-                    <div class="sort__select is-open">
-                        <div class="sort__select-selected"> All ({{ allList.length }})<i class="be-icon be-icon-arrow-down" aria-hidden="true"></i>
+                    <div class="sort__select" [ngClass]="{'is-open': isSelectOpen}" (click)="isSelectOpen = !isSelectOpen">
+                        <div class="sort__select-selected"> {{ showType }} ({{ allList.length }})<i class="be-icon be-icon-arrow-down" aria-hidden="true"></i>
                         </div>
                         <ul class="sort__select-list scrollbar-ver is-thin">
                             <!-- 當前項目請加上 .is-active，當點擊項目後，移除 .sort__select 的 .is-open-->
                             <li class="sort__select-list__item" [ngClass]="{'is-active': showType === 'All' }" (click)="showType = 'All'"><a class="sort__select-list__link" >All ({{ allList.length }})</a></li>
-                            <!-- <li class="sort__select-list__item" [ngClass]="{'is-active': showType === type }" *ngFor="let type of typeList; let i = index" (click)="showType = type">
-                                <a class="sort__select-list__link" >{{ type }} ({{ allList | typeFilterLength: type }})</a>
-                            </li> -->
-                            
                             <li class="sort__select-list__item" [ngClass]="{'is-active': showType === 'Accessories' }" (click)="showType = 'Accessories'"><a class="sort__select-list__link" href="javascript:;">Accessories ({{ allList | typeFilterLength: 'Accessories' }})</a></li>
                             <li class="sort__select-list__item" [ngClass]="{'is-active': showType === 'Insurance & Claim Service' }" (click)="showType = 'Insurance & Claim Service'"><a class="sort__select-list__link" href="javascript:;">Insurance &amp; Claim Service ({{ allList | typeFilterLength: 'Insurance & Claim Service' }})</a></li>
                             <li class="sort__select-list__item" [ngClass]="{'is-active': showType === 'Payment' }" (click)="showType = 'Payment'"><a class="sort__select-list__link" href="javascript:;">Payment ({{ allList | typeFilterLength: 'Payment' }})</a></li>

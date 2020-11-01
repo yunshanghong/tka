@@ -16,7 +16,7 @@
 					<div class="ft-sitemap__cont" [ngClass]="{'is-open': menu.isOpen}">
 						<h5 class="ft-subtitle ft-sitemap__title">{{menu.title}}</h5>
 						<ul class="ft-sitemap__list">
-							<li *ngFor="let item of menu.children" class="ft-sitemap__item"><a class="ft-sitemap__link" href="javascript:;">{{item.title}}</a></li>
+							<li *ngFor="let item of menu.children; let j = index" class="ft-sitemap__item" (click)="onNavPage(i, j)"><a class="ft-sitemap__link" href="javascript:;">{{item.title}}</a></li>
 						</ul>
 					</div>
 				</div>

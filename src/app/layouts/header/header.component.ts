@@ -1,6 +1,7 @@
 import { Component, HostListener, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { defaultNavigationConfig } from '../layoutConfig';
+import { Router } from '@angular/router';
 
 export interface MenuFirstLayer {
     title: string;
@@ -15,11 +16,11 @@ export interface MenuFirstLayer {
 })
 export class HeaderComponent {
 
-    Menus: Array<object> = defaultNavigationConfig;
+    Menus: Array<any> = defaultNavigationConfig;
     MenusIsCollapse: boolean = false;
     HamburgerIsActive: boolean = false;
 
-    constructor(@Inject(DOCUMENT) private document: Document) { }
+    constructor(@Inject(DOCUMENT) private document: Document, private router: Router) { }
 
     // 監控頁面滾動
     @HostListener('window:scroll', [])
@@ -27,4 +28,12 @@ export class HeaderComponent {
         this.MenusIsCollapse = this.document.documentElement.scrollTop >= 200 ? true : false;
     }
 
+    onNavPage(i: number, j: number) {
+        const target = this.Menus[i].children[j];
+        if (target.queryParams) {
+            this.router.navigate([target.url], { queryParams: target.queryParams });
+        } else {
+            this.router.navigate([target.url]);
+        }
+    }
 }
