@@ -13,7 +13,7 @@ export const defaultNavigationConfig = [{
     ]
 },
 {
-    title: 'NEW & PROMOTION',
+    title: 'NEWS & PROMOTION',
     url: '/news',
     children: [
         {
