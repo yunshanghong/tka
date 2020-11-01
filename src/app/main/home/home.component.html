@@ -22,11 +22,11 @@
             <defs>
               <mask id="banner-patten-main__mask">
                 <g class="banner-patten-main__mask__clouds" fill="#fff">
-                  <path class="left" d="M522.5 159.5c0 11.046-8.954 20-20 20h-360c-11.046 0-20-8.954-20-20s8.954-20 20-20h360c11.046 0 20 8.954 20 20z"></path>
+                  <!-- <path class="left" d="M522.5 159.5c0 11.046-8.954 20-20 20h-360c-11.046 0-20-8.954-20-20s8.954-20 20-20h360c11.046 0 20 8.954 20 20z"></path>
                   <path class="left" d="M428.5 311.5c0 19.33-15.67 35-35 35h-330c-19.33 0-35-15.67-35-35s15.67-35 35-35h330c19.33 0 35 15.67 35 35z"></path>
                   <path class="left" d="M409.5 463c0 4.143-3.358 7.5-7.5 7.5H217c-4.142 0-7.5-3.357-7.5-7.5s3.358-7.5 7.5-7.5h185c4.142 0 7.5 3.357 7.5 7.5z"></path>
                   <path class="right" d="M1060.5 255c0 12.426-10.073 22.5-22.5 22.5H683c-12.426 0-22.5-10.074-22.5-22.5s10.074-22.5 22.5-22.5h355c12.427 0 22.5 10.074 22.5 22.5z"></path>
-                  <path class="right" d="M992.5 383.5c0 8.284-6.716 15-15 15h-170c-8.284 0-15-6.716-15-15 0-8.284 6.716-15 15-15h170c8.284 0 15 6.716 15 15z"></path>
+                  <path class="right" d="M992.5 383.5c0 8.284-6.716 15-15 15h-170c-8.284 0-15-6.716-15-15 0-8.284 6.716-15 15-15h170c8.284 0 15 6.716 15 15z"></path> -->
                 </g>
                 <circle class="banner-patten-main__mask__circle" fill="#000" stroke-miterlimit="10" cx="565" cy="319.915" r="294.782"></circle>
               </mask>
@@ -281,7 +281,7 @@
 				<div class="swiper-button-prev" #faqSwiperPrev></div>
 				<div class="swiper-button-next" #faqSwiperNext></div>
 			</div>
-			<div class="button-box text-center"><a class="button" href="javascript:;">All FAQs</a></div>
+			<div class="button-box text-center"><a class="button" routerLink="/faq">All FAQs</a></div>
 		</div>
 		<!-- 線段計算高要JS，寫於index.js-->
 		<div class="sec-deco-line right js-ani" #faqLine appIsAni></div>
@@ -314,7 +314,7 @@
 					<div class="swiper-wrapper">
 						<!-- [START] Promotion Array Data-->
 						<div *ngFor="let promotion of promotions; let i = index" class="swiper-slide index-promotion__item">
-							<a class="index-promotion__img-box object-fit" href="javascript:;" title="{{promotion.title}}">
+							<a class="index-promotion__img-box object-fit" [routerLink]="['/news-content', promotion.id ]" title="{{promotion.title}}">
 								<div class="hover-refl">
 									<span class="hover-refl__light"></span>
 								</div>
