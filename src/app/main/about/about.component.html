@@ -36,15 +36,15 @@
                 <div class="about__service__item grid-x" *ngFor="let reason of reasons; let i = index">
                     <div class="about__service__cover">
                         <div class="object-fit">
-                            <img class="about__service__cover-img lazyload" src="assets/images/about/img-0{{i+1}}.jpg" alt="{{reason.title}}"/>
+                            <img class="about__service__cover-img lazyload" [src]="reasons.listingImageUrl" alt="{{reason.title}}"/>
                         </div>
                     </div>
                     <div class="about__service__info">
                         <h3 class="about__service__title">{{ reason.title }}</h3>
                         <p class="about__service__detial">{{ reason.shortDescription }}</p>
                         <div class="about__service__links">
-                            <a class="about__service__link" href="javascript:;">How to Apply</a>
-                            <a class="about__service__link" href="javascript:;">All Models</a>
+                            <!-- <a class="about__service__link" href="javascript:;">How to Apply</a>
+                            <a class="about__service__link" href="javascript:;">All Models</a> -->
                         </div>
                     </div>
                 </div>

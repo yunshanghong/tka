@@ -181,7 +181,7 @@ export class InfoService {
 	getTermCondition() {
 		return this.http.get(basicUrl + 'LookUp/GetTermsAndCondition', {
 			headers: this.headers,
-			params: { BrandCode: '0001', Name: 'PrivacyPolicy' }
+			params: { BrandCode: 'TOYOTA', Name: 'PrivacyPolicy' }
 		})
 	}
 	//#endregion
