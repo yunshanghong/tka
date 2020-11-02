@@ -72,7 +72,8 @@ export class InfoService {
 				minTerm: { id: id, variantId: variantId, term: leasing.minTerm / 12, monthlyPaymentAmount: minAmount.monthlyPaymentAmount },
 				defaultTerm: { id: id, variantId: variantId, term: leasing.defaultTerm / 12, monthlyPaymentAmount: defaultAmount.monthlyPaymentAmount },
 				maxTerm: { id: id, variantId: variantId, term: leasing.maxTerm / 12, monthlyPaymentAmount: maxAmount.monthlyPaymentAmount },
-				name: choices[key].vehicle.name
+				name: choices[key].vehicle.name,
+				carId: choices[key].vehicle.id,
 			})
 		}
 		return result;

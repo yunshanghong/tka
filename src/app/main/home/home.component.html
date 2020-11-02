@@ -178,7 +178,7 @@
 				<div class="swiper-wrapper">
 					<!-- [Start] Top Choices Array Data -->
 					<div *ngFor="let choice of topChoices; let i = index" class="swiper-slide index-choice__item">
-						<a href="javascript:;" title="{{choice.name}} - Model detail">
+						<a [routerLink]="['models-content', choice.carId ]" title="{{choice.name}} - Model detail">
 							<img class="swiper-lazy" src="{{choice.displayCarImg}}" alt="{{choice.name}}"/>
 						</a>
 					</div>
