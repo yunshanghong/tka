@@ -58,12 +58,12 @@
 
 @font-face {
   font-family: icon;
-  src: url(../assets/fonts/icons/icon.eot?1603880274087);
-  src: url(../assets/fonts/icons/icon.eot?#iefix-1603880274087) format("embedded-opentype"),
-    url(../assets/fonts/icons/icon.woff2?1603880274087) format("woff2"),
-    url(../assets/fonts/icons/icon.woff?1603880274087) format("woff"),
-    url(../assets/fonts/icons/icon.ttf?1603880274087) format("truetype"),
-    url(../assets/fonts/icons/icon.svg?1603880274087#icon) format("svg");
+  src: url(../assets/fonts/icons/icon.eot?1604309638543);
+  src: url(../assets/fonts/icons/icon.eot?#iefix-1604309638543) format("embedded-opentype"),
+    url(../assets/fonts/icons/icon.woff2?1604309638543) format("woff2"),
+    url(../assets/fonts/icons/icon.woff?1604309638543) format("woff"),
+    url(../assets/fonts/icons/icon.ttf?1604309638543) format("truetype"),
+    url(../assets/fonts/icons/icon.svg?1604309638543#icon) format("svg");
   font-display: block;
   unicode-range: U+EA01-EA1A
 }
@@ -7583,6 +7583,7 @@ screen and (min-width:40em) {
 
 .sort__select {
   position: relative;
+  z-index: 1;
   width: calc(100% - 6rem);
   font-size: .875rem;
   background-color: #fff;
@@ -7595,6 +7596,10 @@ screen and (min-width:40em) {
   .sort__select {
     font-size: 1.125rem
   }
+}
+
+.sort__select.is-open {
+  z-index: 2
 }
 
 .sort__select.is-open .sort__select-list {

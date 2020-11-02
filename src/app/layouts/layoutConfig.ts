@@ -25,10 +25,6 @@ export const defaultNavigationConfig = [{
         {
             title: 'Press release',
             url: '/news'
-        },
-        {
-            title: 'News category',
-            url: '/news'
         }
     ]
 },
@@ -94,10 +90,6 @@ export const defaultFooterConfig = [{
         },
         {
             title: 'Press release',
-            url: '/news'
-        },
-        {
-            title: 'News category',
             url: '/news'
         }
     ]

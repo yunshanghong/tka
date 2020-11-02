@@ -157,6 +157,14 @@ screen and (min-width:64em) {
   }
 }
 
+.sec-models.models-list .sort__item:nth-child(1) {
+  z-index: 2
+}
+
+.sec-models.models-list .sort__item:nth-child(2) {
+  z-index: 1
+}
+
 .models-content .sec-title__subtitle {
   margin-bottom: 0
 }
@@ -421,16 +429,9 @@ screen and (min-width:40em) {
 screen and (min-width:64em) {
   .model__box__inner {
     padding: 3.3125rem 2.5rem 3.75rem;
-    max-height: calc(100vh - 5.125rem);
     background: -webkit-gradient(linear, left bottom, left top, color-stop(10%, #00708d), to(rgba(166, 205, 215, .8)));
     background: linear-gradient(to top, #00708d 10%, rgba(166, 205, 215, .8) 100%);
     border-radius: 3.75rem
-  }
-}
-
-@media screen and (min-width:75em) {
-  .model__box__inner {
-    max-height: calc(100vh - 5.75rem)
   }
 }
 
@@ -540,26 +541,13 @@ screen and (min-width:64em) {
   margin-right: -.625rem;
   margin-left: -.625rem;
   padding-right: .625rem;
-  padding-left: .625rem;
-  max-height: calc(100% - 16.25rem)
+  padding-left: .625rem
 }
 
 @media print,
-screen and (min-width:64em) {
+screen and (max-width:63.99875em) {
   .model__box .model__config--detial {
-    max-height: calc(100vh - 36.625rem)
-  }
-}
-
-@media screen and (min-width:75em) {
-  .model__box .model__config--detial {
-    max-height: calc(100vh - 37.5rem)
-  }
-}
-
-@media screen and (min-width:64em) and (max-height:768px) {
-  .model__box .model__config--detial {
-    max-height: calc(100vh - 33rem)
+    max-height: calc(100% - 16.25rem)
   }
 }
 

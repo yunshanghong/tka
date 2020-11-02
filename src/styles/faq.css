@@ -180,7 +180,17 @@ screen and (min-width:64em) {
     -webkit-box-shadow: none;
     box-shadow: none
   }
+}
 
+@media print,
+screen and (min-width:64em) and (min-width:64em) {
+  .sort__wrapper .sort__select-list {
+    display: block
+  }
+}
+
+@media print,
+screen and (min-width:64em) {
   .sort__wrapper .sort__select-selected {
     display: none
   }
