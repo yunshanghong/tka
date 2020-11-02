@@ -297,6 +297,11 @@ screen and (min-width:64em) {
   }
 }
 
+.application-submitted .term__str {
+  max-width: 43.75rem;
+  margin: auto
+}
+
 .model__box {
   padding: 1.6875rem 1.875rem
 }
