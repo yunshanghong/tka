@@ -122,13 +122,20 @@ export class InfoService {
 		}).toPromise();
 
 		var newAllModels = [];
+		var brandList = {};
 		for (var i in allModels) {
-			if (allModels[i].category.order === 0) {
+			const category = allModels[i].category;
+
+			if (category.order === 0) {
 				const vehicles = allModels[i].vehicles;
 				for (var j in vehicles) {
-					vehicles[j].variants.sort((a: any, b: any) => (a.itemOrder > b.itemOrder) ? 1 : ((b.itemOrder > a.itemOrder) ? -1 : 0));
+					const vehicle = vehicles[j];
+					vehicle.brand = brandList[vehicle.category]
+					vehicle.variants.sort((a: any, b: any) => (a.itemOrder > b.itemOrder) ? 1 : ((b.itemOrder > a.itemOrder) ? -1 : 0));
 				}
 				newAllModels = vehicles;
+			} else {
+				brandList[category.code] = category.brandCode;
 			}
 		}
 		return newAllModels;

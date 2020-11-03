@@ -65,7 +65,7 @@
             <div class="sort__select-selected" (click)="cateOpen = !cateOpen"> {{ selectCate }}<i class="be-icon be-icon-arrow-down" aria-hidden="true"></i></div>
             <ul class="sort__select-list scrollbar-ver is-thin">
                 <!-- [Start] Category Array Data -->
-                <li class="sort__select-list__item" *ngFor="let category of cateList; let i = index" (click)="selectCate = category.name; cateOpen = !cateOpen "><a class="sort__select-list__link" href="javascript:;">{{ category.name }}</a></li>
+                <li class="sort__select-list__item" *ngFor="let category of cateList; let i = index" (click)="selectCate = category.name; cateOpen = !cateOpen "><a class="sort__select-list__link">{{ category.name }}</a></li>
                 <!-- [End] Category Array Data -->
             </ul>
             </div>
@@ -73,7 +73,7 @@
         </div>
         <div class="cart__box">
             <!-- [Start] AllModels Array Data -->
-            <div class="cart__item" *ngFor="let item of showList | modelFilterCate: selectCate; let i = index ">
+            <div class="cart__item" *ngFor="let item of showList | modelFilterBrand: selectBrand | modelFilterCate: selectCate; let i = index ">
                 <a class="cart__item__link" [routerLink]="['/models-content', item.id ]"  title="{{item.name}}">
                     <div class="hover-refl"><span class="hover-refl__light"></span></div>
                     <h2 class="cart__item__type">{{ item.name }}</h2>

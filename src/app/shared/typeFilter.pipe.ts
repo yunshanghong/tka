@@ -32,7 +32,7 @@ export class ModelFilterBrandPipe implements PipeTransform {
         if (findType === "All") {
             return obj;
         }
-        return obj.filter((item: any) => item.typeName === findType);
+        return obj.filter((item: any) => item.brand === findType);
     }
 }
 
