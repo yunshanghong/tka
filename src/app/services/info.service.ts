@@ -233,4 +233,13 @@ export class InfoService {
 		)
 	}
 	//#endregion
+
+	//#region 6.1 Contact
+	postContact(postBody: Object) {
+
+		return this.http.post(basicUrl + 'ContactUs/SubmitContactUs', postBody,
+			{ headers: this.headers }
+		)
+	}
+	//#endregion
 }
