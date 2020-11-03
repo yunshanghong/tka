@@ -34,7 +34,7 @@
             <h3 class="step-item__title">Application <br class="large-down">Submitted</h3>
         </div>
         </div>
-        <form class="form" id="applicationForm" (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <form class="form" id="applicationForm" [formGroup]="applyForm" (ngSubmit)="onSubmit()" *ngIf="applyForm">
             <div class="term">
                 <hr class="sec-divide divide--top">
                 <div class="application-form__wrap">
@@ -43,20 +43,20 @@
                     <div class="form__row">
                         <div class="form__group is-error">
                             <label class="form__label">First Name</label>
-                            <input class="form__input" type="text" placeholder="First Name" ngModel name="FirstName" #firstName="ngModel" required maxlength="50">
-                            <p class="form__error" *ngIf="!firstName.valid && firstName.touched">First Name is required</p>
+                            <input class="form__input" type="text" placeholder="First Name" formControlName="firstName">
+                            <p class="form__error" *ngIf="!applyForm.get('firstName').valid && applyForm.get('firstName').touched">First Name is required</p>
                         </div>
                         <div class="form__group is-error">
                             <label class="form__label">Last Name</label>
-                            <input class="form__input" type="text" placeholder="Last Name" ngModel name="LastName" #lastName="ngModel" required maxlength="50">
-                            <p class="form__error" *ngIf="!lastName.valid && lastName.touched">Last Name is required</p>
+                            <input class="form__input" type="text" placeholder="Last Name" formControlName="lastName">
+                            <p class="form__error" *ngIf="!applyForm.get('lastName').valid && applyForm.get('lastName').touched">Last Name is required</p>
                         </div>
                     </div>
                     <div class="form__row">
                         <div class="form__group is-error">
                             <label class="form__label">NRIC</label>
-                            <input class="form__input" type="text" placeholder="NRIC" ngModel name="NRIC" #NRIC="ngModel" required maxlength="9" minlength="9">
-                            <p class="form__error" *ngIf="!NRIC.valid && NRIC.touched">NRIC is not valid. Please provide a valid NRIC. Eg. S1234567A</p>
+                            <input class="form__input" type="text" placeholder="NRIC" formControlName="NRIC">
+                            <p class="form__error" *ngIf="!applyForm.get('NRIC').valid && applyForm.get('NRIC').touched">NRIC is not valid. Please provide a valid NRIC. Eg. S1234567A</p>
                         </div>
                         <div class="form__group is-error">
                             <label class="form__label">Mobile Number</label>
@@ -71,16 +71,16 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <input class="form__input" type="text" placeholder="Mobile Number" ngModel name="MobileNumber" #mobileNumber="ngModel" required maxlength="8" minlength="8">
+                                <input class="form__input" type="text" placeholder="Mobile Number" formControlName="number">
                             </div>
-                            <p class="form__error" *ngIf="!mobileNumber.valid && mobileNumber.touched">Mobile number is not valid. Please provide a valid mobile number. Eg. 98765432</p>
+                            <p class="form__error" *ngIf="!applyForm.get('number').valid && applyForm.get('number').touched">Mobile number is not valid. Please provide a valid mobile number. Eg. 98765432</p>
                         </div>
                     </div>
                     <div class="form__row">
                         <div class="form__group is-error">
                             <label class="form__label">Email</label>
-                            <input class="form__input" type="text" placeholder="Email" ngModel name="Email" required #email="ngModel" email maxlength="250">
-                            <p class="form__error" *ngIf="!email.valid && email.touched">Email address is not valid. Please provide a valid email address. Eg. xxx@123.com</p>
+                            <input class="form__input" type="text" placeholder="Email" formControlName="email">
+                            <p class="form__error" *ngIf="!applyForm.get('email').valid && applyForm.get('email').touched">Email address is not valid. Please provide a valid email address. Eg. xxx@123.com</p>
                         </div>
                     </div>
                 </div>
@@ -161,7 +161,7 @@
                 </div>
                 <hr class="sec-divide divide--bottom">
                 <div class="term__ctrl"><a class="button btn-lightest" title="Cancel" (click)="onStartAgain()">Cancel</a>
-                <button class="button" type="submit" [disabled]="!f.valid">Submit</button>
+                <button class="button" type="submit" [disabled]="!applyForm.valid">Submit</button>
                 </div>
             </div>
         </form>
