@@ -44,10 +44,11 @@ export class ApplicationFormComponent implements OnInit, AfterViewInit, OnDestro
             // ((\.|-)[A-Za-z0-9]+)*：@ 之後出現 0 個以上的「.」或是「-」配上大小寫英文及數字的組合
             // \.[A-Za-z]+$/：@ 之後出現 1 個以上的「.」配上大小寫英文及數字的組合，結尾需為大小寫英文
             const emailRule = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+            const nricRule = /^[a-zA-Z]\d{7}[a-zA-Z]$/
             this.applyForm = new FormGroup({
                 'firstName': new FormControl(null, [Validators.required, Validators.maxLength(50)]),
                 'lastName': new FormControl(null, [Validators.required, Validators.maxLength(50)]),
-                'NRIC': new FormControl(null, [Validators.required, Validators.maxLength(9), Validators.minLength(9)]),
+                'NRIC': new FormControl(null, [Validators.required, Validators.maxLength(9), Validators.minLength(9), Validators.pattern(nricRule)]),
                 'number': new FormControl(null, [Validators.required, Validators.maxLength(8), Validators.minLength(8), Validators.pattern("^[0-9]*$")]),
                 'email': new FormControl(null, [Validators.required, Validators.email, Validators.maxLength(250), Validators.pattern(emailRule)]),
             })
@@ -69,14 +70,14 @@ export class ApplicationFormComponent implements OnInit, AfterViewInit, OnDestro
         this.router.navigate(['/models-content', this.orderService.orderModel.id])
     }
 
-    onSubmit(form: NgForm) {
+    onSubmit() {
         this.infoService.postPreSubmit({
             salutation: "",
-            firstName: form.value.FirstName,
-            lastName: form.value.LastName,
-            nric: form.value.NRIC,
-            mobileNo: form.value.MobileNumber,
-            email: form.value.Email,
+            firstName: this.applyForm.get('firstName').value,
+            lastName: this.applyForm.get('lastName').value,
+            nric: this.applyForm.get('NRIC').value,
+            mobileNo: this.applyForm.get('number').value,
+            email: this.applyForm.get('email').value,
             comments: "",
             agreeSharePersonalData: true,
             receiveMarketingMaterial: false,
