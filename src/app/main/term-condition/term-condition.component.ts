@@ -35,7 +35,7 @@ export class TermConditionComponent implements OnInit, OnDestroy {
         }
 
         // Term & Conditions
-        this.infoService.getTermCondition().subscribe(
+        this.infoService.getTermCondition("TOYOTA").subscribe(
             (response: termInterface) => this.termAndCondition = response.content,
             error => console.error(error),
             () => { this.eventEmitterService.onLoadingComplete() }

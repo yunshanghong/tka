@@ -1,4 +1,5 @@
-import { AfterContentChecked, AfterViewChecked, AfterViewInit, Component, ElementRef, OnDestroy, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, ElementRef, OnDestroy, Renderer2, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { EventEmitterService } from 'src/app/services/eventEmitter.service';
 import { InfoService } from 'src/app/services/info.service';
 import Swiper from 'swiper';
@@ -13,18 +14,34 @@ export class NewsComponent implements AfterViewInit, OnDestroy, AfterViewChecked
     topList: Array<Object>;
     downList: Array<Object>;
     renderList: boolean;
+    showType: String;
+
 
     @ViewChild('newsComponent') newsComponent: ElementRef;
     @ViewChild('newsSwiperPagination') newsSwiperPagination: ElementRef;
     @ViewChild('newsCarousel') newsCarousel: ElementRef;
 
-    constructor(private infoService: InfoService, private eventEmitterService: EventEmitterService, private renderer: Renderer2) { }
+    constructor(
+        private infoService: InfoService,
+        private eventEmitterService: EventEmitterService,
+        private renderer: Renderer2,
+        private route: ActivatedRoute) { }
 
     ngAfterViewInit() {
+        if (this.route.snapshot.queryParams.type) {
+            this.showType = this.route.snapshot.queryParams.type
+        };
+
         this.infoService.getDynamicContentByType({ Type: "Kinto.PromotionalContent" }).subscribe(
             (response: any) => {
-                this.topList = response.splice(0, 3);
-                this.downList = response;
+                let result;
+                if (this.showType) {
+                    result = response.filter(item => item.typeName === this.showType);
+                } else {
+                    result = response;
+                }
+                this.topList = result.splice(0, 3);
+                this.downList = result;
             },
             (error) => { console.error(error) },
             () => {

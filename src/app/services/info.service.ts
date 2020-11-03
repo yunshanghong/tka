@@ -43,7 +43,7 @@ export class InfoService {
 			maxTerm: { id: id, variantId: variantId, term: leasing.maxTerm / 12 }
 		}
 
-		const result = { ...newBanners, displayCarInfos: [...banner[0].vehicle.variants[0].vehicleConfigItems] };
+		const result = { ...newBanners, displayCarInfos: [...banner[0].vehicle.variants[0].vehicleConfigItems], carId: banner[0].vehicle.id };
 		for (var key in newBanners) {
 			const item = newBanners[key];
 			const tempResult: any = await this.getFinance(item.id, item.variantId, item.term * 12).toPromise();
@@ -189,10 +189,10 @@ export class InfoService {
 	//#endregion
 
 	//#region 2.3 Term & Condition
-	getTermCondition() {
+	getTermCondition(brandCode: string) {
 		return this.http.get(basicUrl + 'LookUp/GetTermsAndCondition', {
 			headers: this.headers,
-			params: { BrandCode: 'TOYOTA', Name: 'PrivacyPolicy' }
+			params: { BrandCode: brandCode, Name: 'PrivacyPolicy' }
 		})
 	}
 	//#endregion

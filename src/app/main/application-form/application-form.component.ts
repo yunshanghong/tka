@@ -1,5 +1,4 @@
 import { Component, ElementRef, OnInit, AfterViewInit, ViewChild, OnDestroy } from '@angular/core';
-import { Location } from '@angular/common';
 
 import { EventEmitterService } from 'src/app/services/eventEmitter.service';
 import { NgForm } from '@angular/forms';
@@ -7,6 +6,7 @@ import { InfoService } from 'src/app/services/info.service';
 import { Router } from '@angular/router';
 import { OrderService } from 'src/app/services/order.service';
 import { orderModelInterface } from '../../services/order.service';
+import { contactNumber } from '../../shared/contactNumber';
 
 @Component({
     selector: 'app-application-form',
@@ -15,6 +15,9 @@ import { orderModelInterface } from '../../services/order.service';
 })
 export class ApplicationFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
+    numberList = contactNumber;
+    selectedNum: string = '+65'
+    isOpenNum: boolean = false;
     orderModel: orderModelInterface;
 
     @ViewChild('formComponent') formComponent: ElementRef;
@@ -28,7 +31,7 @@ export class ApplicationFormComponent implements OnInit, AfterViewInit, OnDestro
     ngOnInit() {
         // not follow the path then navigate to models
         if (!this.orderService.orderModel) {
-            this.router.navigate(["/models"]);
+            this.router.navigate(['/models']);
         }
 
         this.orderModel = this.orderService.orderModel;

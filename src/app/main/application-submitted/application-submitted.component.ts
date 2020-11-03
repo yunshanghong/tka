@@ -26,29 +26,28 @@ export class ApplicationSubmittedComponent implements OnInit, OnDestroy {
     ngOnInit() {
         // not follow the path then navigate to models
         if (!this.orderService.orderModel) {
-            this.router.navigate(["/models"]);
-        }
-
-        // preserve model content id
-        this.modelId = this.orderService.orderModel.id;
-
-        const postBody = {
-            quoteRequestId: this.orderService.orderModel.quoteRequestId,
-            rcoNumber: "KT0000377",
-            salesmanCode: ""
-        }
-
-        this.infoService.postSubmit(postBody).subscribe(
-            (response: any) => {
-                this.kycId = response.kycId;
-                this.backHomeUrl = response.redirectUrl;
-            },
-            (error) => console.error(error),
-            () => {
-                this.eventEmitterService.onLoadingComplete()
-                this.orderService.orderModel = null;
+            this.router.navigate(['/models']);
+        } else {
+            // preserve model content id
+            this.modelId = this.orderService.orderModel.id;
+            const postBody = {
+                quoteRequestId: this.orderService.orderModel.quoteRequestId,
+                rcoNumber: "KT0000377",
+                salesmanCode: ""
             }
-        )
+
+            this.infoService.postSubmit(postBody).subscribe(
+                (response: any) => {
+                    this.kycId = response.kycId;
+                    this.backHomeUrl = response.redirectUrl;
+                },
+                (error) => console.error(error),
+                () => {
+                    this.eventEmitterService.onLoadingComplete()
+                    this.orderService.orderModel = null;
+                }
+            )
+        }
     }
 
     ngOnDestroy() {

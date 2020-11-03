@@ -44,36 +44,48 @@
                         <div class="form__group is-error">
                             <label class="form__label">First Name</label>
                             <input class="form__input" type="text" placeholder="First Name" ngModel name="FirstName" #firstName="ngModel" required maxlength="50">
-                            <p class="form__error" *ngIf="!firstName.valid && firstName.touched">Error Text Error Text Error Text Error Text.</p>
+                            <p class="form__error" *ngIf="!firstName.valid && firstName.touched">First Name is required</p>
                         </div>
                         <div class="form__group is-error">
                             <label class="form__label">Last Name</label>
                             <input class="form__input" type="text" placeholder="Last Name" ngModel name="LastName" #lastName="ngModel" required maxlength="50">
-                            <p class="form__error" *ngIf="!lastName.valid && lastName.touched">Error Text Error Text Error Text Error Text.</p>
+                            <p class="form__error" *ngIf="!lastName.valid && lastName.touched">Last Name is required</p>
                         </div>
                     </div>
                     <div class="form__row">
                         <div class="form__group is-error">
                             <label class="form__label">NRIC</label>
                             <input class="form__input" type="text" placeholder="NRIC" ngModel name="NRIC" #NRIC="ngModel" required maxlength="9" minlength="9">
-                            <p class="form__error" *ngIf="!NRIC.valid && NRIC.touched">Error Text Error Text Error Text Error Text.</p>
+                            <p class="form__error" *ngIf="!NRIC.valid && NRIC.touched">NRIC is not valid. Please provide a valid NRIC. Eg. S1234567A</p>
                         </div>
                         <div class="form__group is-error">
                             <label class="form__label">Mobile Number</label>
-                            <input class="form__input" type="text" placeholder="Mobile Number" ngModel name="MobileNumber" #mobileNumber="ngModel" required maxlength="8" minlength="8">
-                            <p class="form__error" *ngIf="!mobileNumber.valid && mobileNumber.touched">Error Text Error Text Error Text Error Text.</p>
+                            <div class="select__group">
+                                <div class="sort__item">
+                                    <div class="sort__select" [ngClass]="{'is-open': isOpenNum}" (click)="isOpenNum = !isOpenNum">
+                                        <div class="sort__select-selected"> {{selectedNum}}<i class="be-icon be-icon-arrow-down" aria-hidden="true"></i>
+                                        </div>
+                                        <ul class="sort__select-list scrollbar-ver is-thin">
+                                            <!-- 當前項目請加上 .is-active，當點擊項目後，移除 .sort__select 的 .is-open-->
+                                            <li class="sort__select-list__item" *ngFor="let num of numberList; let i = index" [ngClass]="{'is-active': num === selectedNum}" (click)="selectedNum = num"><a class="sort__select-list__link" href="javascript:;">{{ num }}</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <input class="form__input" type="text" placeholder="Mobile Number" ngModel name="MobileNumber" #mobileNumber="ngModel" required maxlength="8" minlength="8">
+                            </div>
+                            <p class="form__error" *ngIf="!mobileNumber.valid && mobileNumber.touched">Mobile number is not valid. Please provide a valid mobile number. Eg. 98765432</p>
                         </div>
                     </div>
                     <div class="form__row">
                         <div class="form__group is-error">
                             <label class="form__label">Email</label>
                             <input class="form__input" type="text" placeholder="Email" ngModel name="Email" required #email="ngModel" email maxlength="250">
-                            <p class="form__error" *ngIf="!email.valid && email.touched">Error Text Error Text Error Text Error Text.</p>
+                            <p class="form__error" *ngIf="!email.valid && email.touched">Email address is not valid. Please provide a valid email address. Eg. xxx@123.com</p>
                         </div>
                     </div>
                 </div>
                 <h3 class="application-form__title text-center">Rental Details</h3>
-                <div class="model__box card-box">
+                <div class="model__box card-box" *ngIf="orderModel">
                     <div class="model__cover object-fit-contain"><img class="cart__item__cover-img lazyload" [src]="orderModel.colorImage" alt="{{ orderModel.carName }}"></div>
                     <div class="model__box__inner">
                     <div class="model__config model__config--detial scrollbar-model is-thin">
@@ -95,8 +107,7 @@
                             <div class="palette__item">
                             <label class="palette__icon">
                                 <div class="palette__icon__label">
-                                    <span class="palette__icon__label-item" style="background-color: #313131;"></span>
-                                    <span class="palette__icon__label-item" style="background-color: #626262;"></span>
+                                    <img class="palette__icon__label-item" [src]="'data:image/jpeg;base64,'+ orderModel.interiorNumber" alt="{{ orderModel.interiorName }}">
                                 </div>
                             </label>
                             <h3 class="model__config__info-title">{{ orderModel.interiorName }}</h3>

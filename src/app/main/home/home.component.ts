@@ -17,6 +17,7 @@ export interface bannerInterface {
     minTerm: Object;
     defaultTerm: Object;
     maxTerm: Object;
+    carId: number;
 }
 
 export interface bulletDataInterface {
@@ -49,6 +50,7 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
     renderBanner: boolean;
     bannerInfos: { minInfo: Object, defaultInfo: Object, maxInfo: Object };
     bannerShow: string = 'defaultInfo';
+    applyId: number;
 
     // 2. Five Reasons
     fiveReasons: Array<Object>;
@@ -116,8 +118,9 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
         // 1. Banner
         this.infoService.getBanner().then(
             (response: bannerInterface) => {
-                this.banners = response.displayCarInfos.filter(item => item.itemType === 'Color')
-                this.bannerInfos = { minInfo: response.minTerm, defaultInfo: response.defaultTerm, maxInfo: response.maxTerm }
+                this.banners = response.displayCarInfos.filter(item => item.itemType === 'Color');
+                this.bannerInfos = { minInfo: response.minTerm, defaultInfo: response.defaultTerm, maxInfo: response.maxTerm };
+                this.applyId = response.carId;
             })
             .catch(error => console.error(error))
             .finally(() => {

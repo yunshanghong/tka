@@ -106,7 +106,7 @@
 					<div class="index-choice-info__tip">per month</div>
 				</div>
 			</div>
-			<div class="button-box text-center" *ngIf="renderBanner !== undefined"><a class="button" href="javascript:;">Apply Now</a></div>
+			<div class="button-box text-center" *ngIf="renderBanner !== undefined"><a class="button" [routerLink]="['models-content', applyId]">Apply Now</a></div>
         </div>
 	</section>
 	<div class="sec-deco-line center hide-for-large" ></div>

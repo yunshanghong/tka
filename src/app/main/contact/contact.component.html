@@ -67,13 +67,13 @@
         </div>
         <div class="contact__form__wrap">
             <h3 class="contact__form__title text-center">Fill the form to contact us</h3>
-            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm" > 
                 <div class="contact__form__form">
                     <div class="form__row">
                         <div class="form__group is-error">
                             <label class="form__label">Name</label>
                             <input class="form__input" type="text" placeholder="Name" ngModel name="name" #name="ngModel" required maxlength="50">
-                            <p class="form__error" *ngIf="!name.valid && name.touched">Error Text Error Text Error Text Error Text.</p>
+                            <p class="form__error" *ngIf="!name.valid && name.touched">Name is required</p>
                         </div>
                         <div class="form__group is-error">
                             <label class="form__label">Contact Number</label>
@@ -90,23 +90,23 @@
                                 </ul>
                                 </div>
                             </div>
-                            <input class="form__input" type="text" placeholder="Contact Number" ngModel name="number" #number="ngModel" required maxlength="8">
+                            <input class="form__input" type="text" placeholder="Contact Number" ngModel name="number" #number="ngModel" required maxlength="8" minlength="8">
                             </div>
-                            <p class="form__error" *ngIf="!number.valid && number.touched">Error Text Error Text Error Text Error Text.</p>
+                            <p class="form__error" *ngIf="!number.valid && number.touched">Mobile number is not valid. Please provide a valid mobile number. Eg. 98765432</p>
                         </div>
                     </div>
                     <div class="form__row">
                         <div class="form__group is-error">
                             <label class="form__label">Email</label>
                             <input class="form__input" type="text" placeholder="Email" ngModel name="email" #email="ngModel" email required maxlength="250">
-                            <p class="form__error" *ngIf="!email.valid && email.touched">Error Text Error Text Error Text Error Text.</p>
+                            <p class="form__error" *ngIf="!email.valid && email.touched">Email address is not valid. Please provide a valid email address. Eg. xxx@123.com</p>
                         </div>
                     </div>
                     <div class="form__row">
                         <div class="form__group is-error">
                             <label class="form__label">How can we help you ?<span class="form__label__txt">Your word limit : {{ textarea.length }}/2000</span></label>
                             <textarea class="form__textarea" placeholder="Describe your problem …"  [(ngModel)]="textarea" name="problem" #problem="ngModel" required maxlength="2000"></textarea>
-                            <p class="form__error" *ngIf="!problem.valid && problem.touched">Error Text Error Text Error Text Error Text.</p>
+                            <p class="form__error" *ngIf="!problem.valid && problem.touched">The content is required</p>
                         </div>
                     </div>
                 </div>

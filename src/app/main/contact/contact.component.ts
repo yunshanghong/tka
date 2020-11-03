@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EventEmitterService } from 'src/app/services/eventEmitter.service';
 import { InfoService } from 'src/app/services/info.service';
-import { contactNumber } from './contactNumber';
+import { contactNumber } from '../../shared/contactNumber';
 
 @Component({
     selector: 'app-contact',

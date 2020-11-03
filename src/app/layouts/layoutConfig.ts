@@ -20,11 +20,13 @@ export const defaultNavigationConfig = [{
     children: [
         {
             title: 'Promotion',
-            url: '/news'
+            url: '/news',
+            queryParams: { type: 'Latest Promotion' }
         },
         {
             title: 'Press release',
-            url: '/news'
+            url: '/news',
+            queryParams: { type: 'New Releases' }
         }
     ]
 },
@@ -86,11 +88,13 @@ export const defaultFooterConfig = [{
     children: [
         {
             title: 'Promotion',
-            url: '/news'
+            url: '/news',
+            queryParams: { type: 'Latest Promotion' }
         },
         {
             title: 'Press release',
-            url: '/news'
+            url: '/news',
+            queryParams: { type: 'New Releases' }
         }
     ]
 },
