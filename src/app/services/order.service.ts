@@ -10,6 +10,7 @@ export interface orderModelInterface {
     colorImage: string; // https://...iamge
     interiorName: string; // Standard
     interiorNumber: string; // base64 data
+    interiorNumberUrl: string;
     variantName: string;  // 
     tenure: number; // 60
     securityDeposit: number; // 2000

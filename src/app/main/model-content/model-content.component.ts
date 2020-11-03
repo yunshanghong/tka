@@ -128,6 +128,7 @@ export class ModelContentComponent implements OnInit, AfterViewInit, OnDestroy {
             colorImage: selectedVariant.vehicleConfigItems[this.currentColorId].imageUrl,
             interiorName: selectedVariant.vehicleConfigItems[this.currentInteriorId].name,
             interiorNumber: selectedVariant.vehicleConfigItems[this.currentInteriorId].imageContent,
+            interiorNumberUrl: selectedVariant.vehicleConfigItems[this.currentInteriorId].imageUrl,
             variantName: selectedVariant.name,
             tenure: this.tenures[this.currentTenureId],
             securityDeposit: this.amountInfo.securityDepositAmount,

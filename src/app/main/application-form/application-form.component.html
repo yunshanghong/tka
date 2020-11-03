@@ -107,7 +107,8 @@
                             <div class="palette__item">
                             <label class="palette__icon">
                                 <div class="palette__icon__label">
-                                    <img class="palette__icon__label-item" [src]="'data:image/jpeg;base64,'+ orderModel.interiorNumber" alt="{{ orderModel.interiorName }}">
+                                    <img class="palette__icon__label-item" [src]="'data:image/jpeg;base64,'+ orderModel.interiorNumber" *ngIf="orderModel.interiorNumber" alt="{{ orderModel.interiorName }}">
+                                    <img class="palette__icon__label-item" [src]="orderModel.interiorNumberUrl" *ngIf="orderModel.interiorNumberUrl" alt="{{ orderModel.interiorName }}">
                                 </div>
                             </label>
                             <h3 class="model__config__info-title">{{ orderModel.interiorName }}</h3>
