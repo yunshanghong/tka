@@ -125,7 +125,13 @@ export class InfoService {
 		var brandList = {};
 		for (var i in allModels) {
 			const category = allModels[i].category;
+			if (category.order !== 0) {
+				brandList[category.code] = category.brandCode;
+			}
+		}
 
+		for (var i in allModels) {
+			const category = allModels[i].category;
 			if (category.order === 0) {
 				const vehicles = allModels[i].vehicles;
 				for (var j in vehicles) {
@@ -134,8 +140,6 @@ export class InfoService {
 					vehicle.variants.sort((a: any, b: any) => (a.itemOrder > b.itemOrder) ? 1 : ((b.itemOrder > a.itemOrder) ? -1 : 0));
 				}
 				newAllModels = vehicles;
-			} else {
-				brandList[category.code] = category.brandCode;
 			}
 		}
 		return newAllModels;
