@@ -4,6 +4,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TypeFilterLengthPipe implements PipeTransform {
 
     transform(obj: any, findType: String): number {
+        if (findType === 'All') {
+            return obj.length;
+        }
         return obj.filter((item: any) => item.typeName === findType).length;
     }
 }

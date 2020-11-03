@@ -151,10 +151,6 @@ screen and (min-width:40em) {
   }
 }
 
-.sort__wrapper .sort__select-list__link {
-  color: #00708d
-}
-
 @media print,
 screen and (min-width:64em) {
   .sort__wrapper {
@@ -209,7 +205,8 @@ screen and (min-width:64em) {
 
   .sort__wrapper .sort__select-list__link {
     line-height: 3;
-    padding: 0
+    padding: 0;
+    color: #00708d
   }
 
   .sort__wrapper .sort__select-list__link::before {
