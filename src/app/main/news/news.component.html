@@ -41,7 +41,7 @@
                                 <img class="cart__item__cover-img lazyload" [src]="news.listingImageUrl" alt="{{ news.title }}"/>
                             </div>
                             <div class="card-box__text-box indent">
-                                <p class="card-box__type">{{ news.typeName }}</p>
+                                <p class="card-box__type" [innerHTML]="news.typeName"></p>
                                 <h3 class="card-box__title"><span class="clamp-3">{{ news.title }}</span></h3>
                                 <p class="card-box__date">{{ news.displayDate | date}}</p>
                             </div>
@@ -61,7 +61,7 @@
                     <img class="cart__item__cover-img lazyload" [src]="news.listingImageUrl" alt="{{ news.title }}"/>
                 </div>
                 <div class="card-box__text-box indent">
-                    <p class="card-box__type">{{ news.typeName }}</p>
+                    <p class="card-box__type" [innerHTML]="news.typeName"></p>
                     <h3 class="card-box__title"><span class="clamp-3">{{ news.title }}</span></h3>
                     <p class="card-box__date">{{ news.displayDate | date}}</p>
                 </div>

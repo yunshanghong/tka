@@ -1,4 +1,5 @@
-import { AfterViewChecked, AfterViewInit, Component, ElementRef, OnDestroy, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, ElementRef, OnDestroy, Renderer2, ViewChild, ViewEncapsulation } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { EventEmitterService } from 'src/app/services/eventEmitter.service';
 import { InfoService } from 'src/app/services/info.service';
@@ -7,7 +8,8 @@ import Swiper from 'swiper';
 @Component({
     selector: 'app-news',
     templateUrl: './news.component.html',
-    styleUrls: ["../../../styles/news.css"]
+    styleUrls: ["../../../styles/news.css"],
+    encapsulation: ViewEncapsulation.None
 })
 export class NewsComponent implements AfterViewInit, OnDestroy, AfterViewChecked {
 
@@ -25,7 +27,8 @@ export class NewsComponent implements AfterViewInit, OnDestroy, AfterViewChecked
         private infoService: InfoService,
         private eventEmitterService: EventEmitterService,
         private renderer: Renderer2,
-        private route: ActivatedRoute) { }
+        private route: ActivatedRoute,
+        private sanitizer: DomSanitizer) { }
 
     ngAfterViewInit() {
         if (this.route.snapshot.queryParams.type) {
@@ -36,9 +39,11 @@ export class NewsComponent implements AfterViewInit, OnDestroy, AfterViewChecked
             (response: any) => {
                 let result;
                 if (this.showType) {
-                    result = response.filter(item => item.typeName === this.showType);
+                    result = response
+                        .filter(item => item.typeName === this.showType)
+                        .map(item => ({ ...item, typeName: this.sanitizer.bypassSecurityTrustHtml(item.typeName.replace(' ', "<span class='large'>&nbsp;</span>")) }));
                 } else {
-                    result = response;
+                    result = response.map(item => ({ ...item, typeName: this.sanitizer.bypassSecurityTrustHtml(item.typeName.replace(' ', "<span class='large'>&nbsp;</span>")) }));
                 }
                 this.topList = result.splice(0, 3);
                 this.downList = result;
