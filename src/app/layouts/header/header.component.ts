@@ -30,8 +30,11 @@ export class HeaderComponent {
     onNavPage(i: number, j: number) {
         const target = this.Menus[i].children[j];
         if (target.queryParams) {
+            this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+            this.router.onSameUrlNavigation = 'reload';
             this.router.navigate([target.url], { queryParams: target.queryParams });
         } else {
+            
             this.router.navigate([target.url]);
         }
     }
