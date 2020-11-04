@@ -66,8 +66,8 @@
                                 <label class="palette__icon" *ngIf="carItem.itemType === 'Interior' ">
                                     <input class="palette__icon__input" type="radio" name="interior" value="{{ carItem.name }}" [checked]="i === currentInteriorId"/>
                                     <div class="palette__icon__label" style="color: #313131;">
-                                        <img class="palette__icon__label-item" [src]="'data:image/jpeg;base64,'+ carItem.imageContent" *ngIf="carItem.imageContent" alt="{{carInfo.vehicle.variants[currentVariantId].vehicleConfigItems[currentInteriorId].name}}">
-                                        <img class="palette__icon__label-item" [src]="carItem.imageUrl" *ngIf="carItem.imageUrl" alt="{{carInfo.vehicle.variants[currentVariantId].vehicleConfigItems[currentInteriorId].name}}">
+                                        <img class="palette__icon__label-item" [src]="'data:image/jpeg;base64,'+ carItem.imageContent" *ngIf="carItem.imageContent" alt="{{carItem.name}}">
+                                        <img class="palette__icon__label-item" [src]="carItem.imageUrl" *ngIf="carItem.imageUrl" alt="{{carItem.name}}">
                                     </div>
                                 </label>
                             </div>
