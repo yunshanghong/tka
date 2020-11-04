@@ -416,8 +416,8 @@ screen and (min-width:64em) and (max-width:74.99875em) {
   }
 }
 
-.sec-index-banner .sec-title__title .to {
-  margin-left: 2em
+.sec-index-banner .sec-title__title .text-indent {
+  margin-left: .6em
 }
 
 .sec-index-banner .sec-title__title .em {
