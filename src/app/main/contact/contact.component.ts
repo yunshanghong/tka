@@ -55,7 +55,7 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
             email: this.contactForm.get('email').value,
             content: this.contactForm.get('problem').value
         }).subscribe(
-            (response) => { console.log(response) },
+            (response) => { },
             (error) => { console.error(error) },
             () => { this.router.navigate(['/']); }
         )
