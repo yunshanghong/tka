@@ -138,6 +138,7 @@ export class ModelContentComponent implements OnInit, AfterViewInit, OnDestroy {
             financialProductCode: this.leasingInfo.financialProductCode,
             exteriorColorConfigItemCode: selectedVariant.vehicleConfigItems[this.currentColorId].vehicleConfigItemCode,
             interiorColorConfigItemCode: selectedVariant.vehicleConfigItems[this.currentInteriorId].vehicleConfigItemCode,
+            brandCode: this.carInfo.vehicle.brandCode,
         };
 
         this.router.navigate(["/term-condition"]);

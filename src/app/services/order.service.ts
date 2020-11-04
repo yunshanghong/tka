@@ -20,6 +20,7 @@ export interface orderModelInterface {
     financialProductCode: string;
     exteriorColorConfigItemCode: string;
     interiorColorConfigItemCode: string;
+    brandCode: string;
 
     // response 
     quoteRequestId?: number; // 387

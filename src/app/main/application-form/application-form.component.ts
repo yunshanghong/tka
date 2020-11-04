@@ -84,7 +84,7 @@ export class ApplicationFormComponent implements OnInit, AfterViewInit, OnDestro
             contactOption: null,
             variantCode: this.orderModel.variantCode,
             terms: this.orderModel.tenure,
-            brand: "TOYOTA",
+            brand: this.orderModel.brandCode,
             isGuaranteedCoePrice: true,
             modelCode: this.orderModel.internalModelCode,
             financialProductCode: this.orderModel.financialProductCode,

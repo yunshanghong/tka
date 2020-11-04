@@ -32,14 +32,15 @@ export class TermConditionComponent implements OnInit, OnDestroy {
         // not follow the path then navigate to models
         if (!this.orderService.orderModel) {
             this.router.navigate(["/models"]);
+        } else {
+            const brandCode = this.orderService.orderModel.brandCode;
+            // Term & Conditions
+            this.infoService.getTermCondition(brandCode).subscribe(
+                (response: termInterface) => this.termAndCondition = response.content,
+                error => console.error(error),
+                () => { this.eventEmitterService.onLoadingComplete() }
+            );
         }
-
-        // Term & Conditions
-        this.infoService.getTermCondition("TOYOTA").subscribe(
-            (response: termInterface) => this.termAndCondition = response.content,
-            error => console.error(error),
-            () => { this.eventEmitterService.onLoadingComplete() }
-        );
     }
 
     ngOnDestroy() {
