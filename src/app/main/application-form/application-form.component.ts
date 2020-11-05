@@ -83,13 +83,13 @@ export class ApplicationFormComponent implements OnInit, AfterViewInit, OnDestro
             receiveMarketingMaterial: false,
             contactOption: null,
             variantCode: this.orderModel.variantCode,
-            terms: this.orderModel.tenure,
+            terms: this.orderModel.tenure * 12,
             brand: this.orderModel.brandCode,
             isGuaranteedCoePrice: true,
             modelCode: this.orderModel.internalModelCode,
             financialProductCode: this.orderModel.financialProductCode,
             financialProductId: this.orderModel.financialProductId,
-            downPaymentPercentage: 60,
+            downPaymentPercentage: 0,
             exteriorColorConfigItemCode: "VCI109",
             interiorColorConfigItemCode: "VCI119"
         }).then((resposne: any) => {

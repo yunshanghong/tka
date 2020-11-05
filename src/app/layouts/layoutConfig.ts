@@ -1,6 +1,5 @@
 export const defaultNavigationConfig = [{
     title: 'WHAT IS KINTO ONE',
-    url: '/about',
     isOpen: false,
     children: [
         {
@@ -15,9 +14,12 @@ export const defaultNavigationConfig = [{
 },
 {
     title: 'NEWS & PROMOTION',
-    url: '/news',
     isOpen: false,
     children: [
+        {
+            title: 'All',
+            url: '/news',
+        },
         {
             title: 'Promotion',
             url: '/news',
@@ -32,9 +34,12 @@ export const defaultNavigationConfig = [{
 },
 {
     title: 'FAQ',
-    url: '/faq',
     isOpen: false,
     children: [
+        {
+            title: 'All',
+            url: '/faq',
+        },
         {
             title: 'Accessories',
             url: '/faq',
@@ -87,6 +92,10 @@ export const defaultFooterConfig = [{
     isOpen: false,
     children: [
         {
+            title: 'All',
+            url: '/news',
+        },
+        {
             title: 'Promotion',
             url: '/news',
             queryParams: { type: 'Latest Promotion' }
@@ -103,6 +112,10 @@ export const defaultFooterConfig = [{
     url: '/faq',
     isOpen: false,
     children: [
+        {
+            title: 'All',
+            url: '/faq',
+        },
         {
             title: 'Accessories',
             url: '/faq',
