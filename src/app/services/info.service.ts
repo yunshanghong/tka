@@ -102,10 +102,9 @@ export class InfoService {
 	//#endregion
 
 	//#region 2.1 All Models
-	getBrandMenu(paramsObj) {
-		return this.http.get(basicUrl + 'LookUp/GetGlobalCodesByCategoryName', {
-			headers: this.headers,
-			params: paramsObj
+	getBrandMenu() {
+		return this.http.get(basicUrl + 'LookUp/GetAvailableBrand', {
+			headers: this.headers
 		})
 	}
 

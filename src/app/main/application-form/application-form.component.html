@@ -67,7 +67,7 @@
                                         </div>
                                         <ul class="sort__select-list scrollbar-ver is-thin">
                                             <!-- 當前項目請加上 .is-active，當點擊項目後，移除 .sort__select 的 .is-open-->
-                                            <li class="sort__select-list__item" *ngFor="let num of numberList; let i = index" [ngClass]="{'is-active': num === selectedNum}" (click)="selectedNum = num"><a class="sort__select-list__link" href="javascript:;">{{ num }}</a></li>
+                                            <li class="sort__select-list__item" *ngFor="let num of numberList; let i = index" [ngClass]="{'is-active': num === selectedNum}" (click)="selectedNum = num"><a class="sort__select-list__link" >{{ num }}</a></li>
                                         </ul>
                                     </div>
                                 </div>

@@ -37,7 +37,7 @@ export class AllModelsComponent implements OnInit, AfterViewInit, OnDestroy {
 
     ngOnInit() {
         // 1. Brand Menu
-        this.infoService.getBrandMenu({ CategoryName: 'Vehicle.AvailableBrand' }).subscribe(
+        this.infoService.getBrandMenu().subscribe(
             (response: Array<brandCateInterface>) => response.map(item => this.brandList.push(item)),
             error => console.error(error),
             () => { }

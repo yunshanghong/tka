@@ -32,7 +32,6 @@ export class ApplicationSubmittedComponent implements OnInit, OnDestroy {
             this.modelId = this.orderService.orderModel.id;
             const postBody = {
                 quoteRequestId: this.orderService.orderModel.quoteRequestId,
-                rcoNumber: "KT0000377",
                 salesmanCode: ""
             }
 
