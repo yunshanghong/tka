@@ -1,9 +1,9 @@
 @font-face {
   font-family: "icon";
-  src: url("icon.eot?1604479293565");
-  src: url("icon.eot?#iefix-1604479293565") format("embedded-opentype"), url("icon.woff2?1604479293565") format("woff2"), url("icon.woff?1604479293565") format("woff"), url("icon.ttf?1604479293565") format("truetype"), url("icon.svg?1604479293565#icon") format("svg");
+  src: url("icon.eot?1605497443942");
+  src: url("icon.eot?#iefix-1605497443942") format("embedded-opentype"), url("icon.woff2?1605497443942") format("woff2"), url("icon.woff?1605497443942") format("woff"), url("icon.ttf?1605497443942") format("truetype"), url("icon.svg?1605497443942#icon") format("svg");
   font-display: block;
-  unicode-range: U+EA01-EA1A;
+  unicode-range: U+EA01-EA1B;
 }
 
 .be-icon:before {
@@ -117,18 +117,22 @@
   content: '\ea16';
 }
 
-.be-icon-term:before {
+.be-icon-setting:before {
   content: '\ea17';
 }
 
-.be-icon-time-cost:before {
+.be-icon-term:before {
   content: '\ea18';
 }
 
-.be-icon-tool:before {
+.be-icon-time-cost:before {
   content: '\ea19';
 }
 
-.be-icon-unlimited:before {
+.be-icon-tool:before {
   content: '\ea1a';
+}
+
+.be-icon-unlimited:before {
+  content: '\ea1b';
 }
