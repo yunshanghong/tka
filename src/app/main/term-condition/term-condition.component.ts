@@ -19,6 +19,7 @@ export interface termInterface {
 export class TermConditionComponent implements OnInit, OnDestroy {
 
     termAndCondition: string;
+    isPopup: boolean = false;
 
     @ViewChild('termComponent') termComponent: ElementRef;
 
@@ -37,7 +38,10 @@ export class TermConditionComponent implements OnInit, OnDestroy {
             // Term & Conditions
             this.infoService.getTermCondition(brandCode).subscribe(
                 (response: termInterface) => this.termAndCondition = response.content,
-                error => console.error(error),
+                error => {
+                    this.isPopup = true;
+                    console.error(error);
+                },
                 () => { this.eventEmitterService.onLoadingComplete() }
             );
         }

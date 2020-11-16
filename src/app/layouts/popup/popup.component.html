@@ -1,0 +1,14 @@
+<!-- 加上 is-active class 展開 popup-->
+<!-- 關閉 popup，只能點擊 x -->
+<div class="modal" [ngClass]="{'is-active': isPopup}">
+    <div class="modal__inner">
+        <div class="modal__cnt text-center">
+        <div class="modal__cnt__icon"><i class="be-icon be-icon-setting" aria-hidden="true"></i></div>
+        <p class="modal__cnt__msg">This Website is unable to process orders at this time. Please try again later.</p><a class="modal__cnt__btn button" href="/">Back to homepage</a>
+        </div>
+        <div class="modal__ctrl">
+        <button class="modal__ctrl__close-btn" (click)="isPopup = !isPopup; onClosePopup()"><i class="be-icon be-icon-close" aria-hidden="true"></i></button>
+        </div>
+    </div>
+    <div class="modal__overlay"></div>
+</div>

@@ -14,6 +14,7 @@ export class ModelContentComponent implements OnInit, AfterViewInit, OnDestroy {
     id: string;
     openAside: boolean = false;
     carInfoEmitter: EventEmitter<boolean> = new EventEmitter()
+    isPopup: boolean = false;
 
     // 1. Car Information
     carInfo: any;
@@ -55,9 +56,8 @@ export class ModelContentComponent implements OnInit, AfterViewInit, OnDestroy {
                 this.currentInteriorId = configItems.findIndex(item => item.itemType === 'Interior');
             },
             (error) => {
-                // jump out of this page
+                this.isPopup = true;
                 console.error(error);
-                this.router.navigate(['/models']);
             },
             () => { this.carInfoEmitter.emit(true); }
         )
@@ -65,7 +65,10 @@ export class ModelContentComponent implements OnInit, AfterViewInit, OnDestroy {
         // 4. Content Services
         this.infoService.getDynamicContentByType({ Type: 'Kinto.Services' }).subscribe(
             (response: any) => this.serviceList = response,
-            error => console.error(error),
+            error => {
+                this.isPopup = true;
+                console.error(error);
+            },
             () => { }
         )
     }
@@ -101,7 +104,10 @@ export class ModelContentComponent implements OnInit, AfterViewInit, OnDestroy {
                 this.tenures = [leasing.minTerm / 12, leasing.defaultTerm / 12, leasing.maxTerm / 12];
                 this.leasingInfo = leasing;
             },
-            (error) => { console.error(error) },
+            (error) => {
+                this.isPopup = true;
+                console.error(error);
+            },
             () => { this.onGetDeposit() }
         )
     }
@@ -111,7 +117,10 @@ export class ModelContentComponent implements OnInit, AfterViewInit, OnDestroy {
         const tenure = this.tenures[this.currentTenureId] * 12;
         this.infoService.postCalcDeposit(this.leasingInfo.id, variantId, tenure).subscribe(
             (response: any) => this.amountInfo = response,
-            (error) => { console.error(error) },
+            (error) => {
+                this.isPopup = true;
+                console.error(error);
+            },
             () => { }
         )
     }

@@ -20,6 +20,7 @@ export class ApplicationFormComponent implements OnInit, AfterViewInit, OnDestro
     isOpenNum: boolean = false;
     orderModel: orderModelInterface;
     applyForm: FormGroup;
+    isPopup: boolean = false;
 
     @ViewChild('formComponent') formComponent: ElementRef;
 
@@ -96,6 +97,7 @@ export class ApplicationFormComponent implements OnInit, AfterViewInit, OnDestro
             this.orderService.orderModel.quoteRequestId = resposne.detail.quoteRequestId;
             this.router.navigate(['/application-submitted'])
         }).catch((error) => {
+            this.isPopup = true;
             console.error(error);
         });
     }
