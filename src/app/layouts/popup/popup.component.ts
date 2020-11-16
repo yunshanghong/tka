@@ -10,6 +10,7 @@ export class PopupComponent {
     @Output() change: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     onClosePopup() {
+        this.isPopup = false;
         this.change.emit(true);
     }
 }
