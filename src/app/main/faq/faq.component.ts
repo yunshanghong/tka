@@ -31,7 +31,7 @@ export class FAQComponent implements OnInit, OnDestroy {
                 this.allList = response.map((item: any) => {
                     if (this.typeList.indexOf(item.typeName) === -1) { this.typeList.push(item.typeName) }
                     return { ...item, open: false };
-                })
+                }).sort((a: any, b: any) => (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0)); // 依照order從小到大排列
             },
             (error) => console.error(error),
             () => this.eventEmitterService.onLoadingComplete()
