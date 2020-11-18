@@ -55,7 +55,7 @@
         </div>
         <div class="news-list__box js-ani" appIsAni>
             <!-- [Start] downList Array Data 3~ -->
-            <a class="card-box" routerLink="/news-content" title="{{ news.title }}" *ngFor="let news of downList; let i = index">
+            <a class="card-box" [routerLink]="['/news-content', news.id]" title="{{ news.title }}" *ngFor="let news of downList; let i = index">
                 <div class="hover-refl"><span class="hover-refl__light"></span></div>
                 <div class="card-box__img-box object-fit">
                     <img class="cart__item__cover-img lazyload" [src]="news.listingImageUrl" alt="{{ news.title }}"/>

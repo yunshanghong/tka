@@ -2,6 +2,7 @@ import { AfterViewChecked, Component, ElementRef, OnDestroy, OnInit, ViewChild }
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventEmitterService } from 'src/app/services/eventEmitter.service';
 import { InfoService } from 'src/app/services/info.service';
+import { RouterService } from 'src/app/services/router.service';
 
 @Component({
     selector: 'app-news-content',
@@ -20,7 +21,8 @@ export class NewsContentComponent implements OnInit, AfterViewChecked, OnDestroy
         private eventEmitterService: EventEmitterService,
         private infoService: InfoService,
         private route: ActivatedRoute,
-        private router: Router) { }
+        private router: Router,
+        private routerService: RouterService) { }
 
     ngOnInit() {
         this.id = this.route.snapshot.params["id"];
@@ -46,5 +48,14 @@ export class NewsContentComponent implements OnInit, AfterViewChecked, OnDestroy
 
     ngOnDestroy() {
         this.newsContentComponent.nativeElement.remove();
+    }
+
+    onNavPrevPage() {
+        const target = this.routerService.getPreviousUrl().split("?");
+        if (target.length === 2 && target[0] === "/news" && target[1].split("=").length === 2 && target[1].split("=")[0] === 'type') {
+            this.router.navigate(['/news'], { queryParams: { "type": target[1].split("=")[1].replace("%20", " ").replace("%25", "%") } });
+        } else {
+            this.router.navigate(['/news']);
+        }
     }
 }

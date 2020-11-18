@@ -1,6 +1,4 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Location } from '@angular/common';
-
 
 import { EventEmitterService } from 'src/app/services/eventEmitter.service';
 import { InfoService } from '../../services/info.service';
