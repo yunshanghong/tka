@@ -101,7 +101,7 @@ export class ModelContentComponent implements OnInit, AfterViewInit, OnDestroy {
         this.infoService.getMonthlyAmount(variantId).subscribe(
             (response: any) => {
                 const leasing = response.leasing;
-                this.tenures = [leasing.minTerm / 12, leasing.defaultTerm / 12, leasing.maxTerm / 12];
+                this.tenures = leasing.termSelection.map(item => item / 12);
                 this.leasingInfo = leasing;
             },
             (error) => {
