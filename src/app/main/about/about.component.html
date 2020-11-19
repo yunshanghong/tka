@@ -33,8 +33,9 @@
             <p class="sec-title__desc">KINTO was first introduced in Japan and is being introduced to Singapore. KINTO ONE is launched under Toyota Financial Services Singapore, which offers online car full-service lease services for long-term car rental for individual, including comprehensive service solution to maximise the freedom under the concept of Freedom to Drive.</p>
             <div class="about__service js-ani" appIsAni>
                 <!-- [Start] Reasons Array Data -->
-                <div class="about__service__item grid-x" *ngFor="let reason of reasons; let i = index">
-                    <div class="about__service__cover">
+                <!-- 沒有圖片不要生成 .about__service__cover 區塊，要在 .about__service__item 上 加上 .without-cover class-->
+                <div class="about__service__item grid-x" [ngClass]="{'without-cover': !reason.listingImageUrl}" *ngFor="let reason of reasons; let i = index">
+                    <div class="about__service__cover" *ngIf="reason.listingImageUrl">
                         <div class="object-fit">
                             <img class="about__service__cover-img lazyload" [src]="reason.listingImageUrl" alt=""/>
                         </div>
@@ -66,20 +67,6 @@
                     </div>
                 </div>
                 <!-- [End] Services Array Data -->
-            </div>
-            </div>
-            <div class="about__service about__service--models js-ani" appIsAni>
-            <div class="about__service__item grid-x">
-                <div class="about__service__cover">
-                <div class="object-fit"><img class="about__service__cover-img lazyload" src="assets/images/about/img-04.png" alt="New car every 3,4 or 5 years"/></div>
-                <div class="about__service__cover-cart"><img class="about__service__cover-cart-img lazyload" src="assets/images/about/car.png" alt="New car every 3,4 or 5 years"/></div>
-                </div>
-                <div class="about__service__info">
-                <h3 class="about__service__title">New car every 3,4 or 5 years</h3>
-                <p class="about__service__detial">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor.</p>
-                <div class="about__service__links"><a class="about__service__link" routerLink="/models">All Models</a>
-                </div>
-                </div>
             </div>
             </div>
         </div>
