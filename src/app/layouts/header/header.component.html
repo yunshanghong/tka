@@ -32,7 +32,8 @@
 				
 				<li *ngFor="let menu of Menus; let i = index" class="hd-menu__item" [ngClass]="{'has-sec': menu.children, 'is-open': menu.isOpen}">
 					<a class="hd-menu__link js-detect-for-link" *ngIf="menu.children" data-href="about.html" (click)="Menus[i].isOpen = !Menus[i].isOpen">{{menu.title}}</a>
-					<a class="hd-menu__link js-detect-for-link" routerLink="{{menu.url}}" *ngIf="!menu.children" data-href="about.html" (click)="Menus[i].isOpen = !Menus[i].isOpen">{{menu.title}}</a>
+					<a class="hd-menu__link js-detect-for-link" routerLink="{{menu.url}}" *ngIf="!menu.children && !menu.outLink" data-href="about.html" (click)="Menus[i].isOpen = !Menus[i].isOpen">{{menu.title}}</a>
+					<a class="hd-menu__link js-detect-for-link" href="{{menu.url}}" *ngIf="!menu.children && menu.outLink" data-href="about.html" (click)="Menus[i].isOpen = !Menus[i].isOpen">{{menu.title}}</a>
 					<ul class="hd-menu__sec" *ngIf="menu.children">
 						<li *ngFor="let item of menu.children; let j = index" class="hd-menu__sec__item" (click)="onNavPage(i, j); HamburgerIsActive = !HamburgerIsActive">
 							<a class="hd-menu__sec__link"  >{{item.title}}</a>

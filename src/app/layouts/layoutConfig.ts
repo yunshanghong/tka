@@ -40,31 +40,12 @@ export const defaultNavigationConfig = [{
             title: 'All',
             url: '/faq',
         },
-        {
-            title: 'Accessories',
-            url: '/faq',
-            queryParams: { type: 'Accessories' }
-        },
-        {
-            title: 'Insurance & Maintenance',
-            url: '/faq',
-            queryParams: { type: 'Insurance & Claim Service' }
-        },
-        {
-            title: 'Payment',
-            url: '/faq',
-            queryParams: { type: 'Payment' }
-        },
-        {
-            title: 'Others',
-            url: '/faq',
-            queryParams: { type: 'Others' }
-        }
     ]
 },
 {
     title: 'MY ORDER',
-    url: '/'
+    url: 'https://status-uat.toyotafinancial.sg/?module=applicationstatus',
+    outLink: true
 },
 {
     title: 'CONTACT US',
@@ -116,25 +97,5 @@ export const defaultFooterConfig = [{
             title: 'All',
             url: '/faq',
         },
-        {
-            title: 'Accessories',
-            url: '/faq',
-            queryParams: { type: 'Accessories' }
-        },
-        {
-            title: 'Insurance & Maintenance',
-            url: '/faq',
-            queryParams: { type: "Insurance & Claim Service" }
-        },
-        {
-            title: 'Payment',
-            url: '/faq',
-            queryParams: { type: 'Payment' }
-        },
-        {
-            title: 'Others',
-            url: '/faq',
-            queryParams: { type: 'Others' }
-        }
     ]
 }]

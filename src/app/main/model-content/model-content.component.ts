@@ -52,8 +52,10 @@ export class ModelContentComponent implements OnInit, AfterViewInit, OnDestroy {
             (response: any) => {
                 this.carInfo = response;
                 const configItems = response.vehicle.variants[this.currentVariantId].vehicleConfigItems;
-                this.currentColorId = configItems.findIndex(item => item.itemType === 'Color');
-                this.currentInteriorId = configItems.findIndex(item => item.itemType === 'Interior');
+                const colorId = configItems.findIndex(item => item.itemType === 'Color');
+                const interiorId = configItems.findIndex(item => item.itemType === 'Interior');
+                this.currentColorId = colorId === -1 ? 0 : colorId;
+                this.currentInteriorId = interiorId === -1 ? 0 : interiorId;
             },
             (error) => {
                 this.isPopup = true;

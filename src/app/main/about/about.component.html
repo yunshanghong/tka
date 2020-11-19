@@ -36,7 +36,7 @@
                 <div class="about__service__item grid-x" *ngFor="let reason of reasons; let i = index">
                     <div class="about__service__cover">
                         <div class="object-fit">
-                            <img class="about__service__cover-img lazyload" [src]="reasons.listingImageUrl" alt=""/>
+                            <img class="about__service__cover-img lazyload" [src]="reason.listingImageUrl" alt=""/>
                         </div>
                     </div>
                     <div class="about__service__info">
@@ -57,7 +57,7 @@
                 <div class="cell medium-6 large-4" *ngFor="let service of services; let i = index">
                     <div class="circle-icon-box__item">
                         <div class="circle-icon-box__icon-box">
-                            <i class="be-icon absolute-center be-icon-maintenance" aria-hidden="true"></i>
+                            <img class="be-icon absolute-center be-icon-maintenance" [src]="service.listingImageUrl"/>
                         </div>
                         <div class="circle-icon-box__wrap">
                             <h4 class="circle-icon-box__title">{{ service.shortDescription }}</h4>

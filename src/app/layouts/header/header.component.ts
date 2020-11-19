@@ -1,7 +1,8 @@
-import { Component, HostListener, Inject } from '@angular/core';
+import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { defaultNavigationConfig } from '../layoutConfig';
 import { Router } from '@angular/router';
+import { InfoService } from 'src/app/services/info.service';
 
 export interface MenuFirstLayer {
     title: string;
@@ -13,13 +14,30 @@ export interface MenuFirstLayer {
     selector: 'app-header',
     templateUrl: './header.component.html',
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
     Menus: Array<any> = defaultNavigationConfig;
     MenusIsCollapse: boolean = false;
     HamburgerIsActive: boolean = false;
 
-    constructor(@Inject(DOCUMENT) private document: Document, private router: Router) { }
+    constructor(@Inject(DOCUMENT) private document: Document, private router: Router, private infoService: InfoService) { }
+
+    ngOnInit() {
+        this.infoService.getAllFaqs().subscribe(
+            (response: Array<Object>) => {
+                const typeList = [];
+                response.sort((a: any, b: any) => (a.order < b.order) ? 1 : ((b.order < a.order) ? -1 : 0)) // 依照order從大到小排列
+                    .map((item: any) => {
+                        if (typeList.indexOf(item.typeName) === -1) {
+                            typeList.push(item.typeName)
+                            this.Menus[2].children.push({ title: item.typeName, url: '/faq', queryParams: { type: item.typeName } })
+                        }
+                    })
+            },
+            (error) => console.error(error),
+            () => { }
+        )
+    }
 
     // 監控頁面滾動
     @HostListener('window:scroll', [])
@@ -34,7 +52,6 @@ export class HeaderComponent {
             this.router.onSameUrlNavigation = 'reload';
             this.router.navigate([target.url], { queryParams: target.queryParams });
         } else {
-            
             this.router.navigate([target.url]);
         }
     }

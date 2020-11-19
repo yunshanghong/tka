@@ -4,6 +4,7 @@ import { EventEmitterService } from 'src/app/services/eventEmitter.service';
 import { InfoService } from '../../services/info.service';
 
 export interface brandCateInterface {
+    brandCode: String;
     code: string;
     name: string;
     order: number;
@@ -19,12 +20,12 @@ export class AllModelsComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // 1. Brand Menu
     brandOpen: boolean = false;
-    brandList: Array<brandCateInterface> = [{ code: "0000", name: "All", order: 0 }]
+    brandList: Array<brandCateInterface> = [{ brandCode: "All", code: "All", name: "All", order: 0 }]
     selectBrand: String = "All";
 
     // 2. Category Menu
     cateOpen: boolean = false;
-    cateList: Array<brandCateInterface> = [{ code: "0000", name: "All", order: 0 }]
+    cateList: Array<brandCateInterface> = [{ brandCode: "All", code: "All", name: "All", order: 9999 }]
     selectCate: String = "All";
 
     // 3. All Models 
@@ -40,20 +41,24 @@ export class AllModelsComponent implements OnInit, AfterViewInit, OnDestroy {
         this.infoService.getBrandMenu().subscribe(
             (response: Array<brandCateInterface>) => response.map(item => this.brandList.push(item)),
             error => console.error(error),
-            () => { }
+            () => {
+                this.brandList.sort((a: any, b: any) => (a.order < b.order) ? 1 : ((b.order < a.order) ? -1 : 0)) // 依照order從大到小排列
+            }
         );
 
         // 2. Category Menu
-        this.infoService.getCateMenu({ BrandCode: 'TOYOTA' }).subscribe(
+        this.infoService.getCateMenu({ BrandCode: '' }).subscribe(
             (response: Array<{ category: brandCateInterface, vehicles: Object }>) => response.map(item => this.cateList.push(item.category)),
             error => console.error(error),
-            () => { }
+            () => {
+                this.cateList.sort((a: any, b: any) => (a.order < b.order) ? 1 : ((b.order < a.order) ? -1 : 0)) // 依照order從大到小排列
+            }
         );
 
         // 3. All Models
         this.infoService.getAllModels()
             .then(
-                (response: Array<Object>) => this.showList = response
+                (response: Array<Object>) => this.showList = response.sort((a: any, b: any) => (a.itemOrder < b.itemOrder) ? 1 : ((b.itemOrder < a.itemOrder) ? -1 : 0)) // 依照itemOrder從大到小排列
             )
             .catch(error => console.error(error))
             .finally(() => { })
@@ -69,8 +74,19 @@ export class AllModelsComponent implements OnInit, AfterViewInit, OnDestroy {
 
     onModelsSearch(searchString: String) {
         this.infoService.postModelsSearch(searchString).then(
-            (response: Array<Object>) => this.showList = response)
+            (response: Array<Object>) => this.showList = response.sort((a: any, b: any) => (a.itemOrder < b.itemOrder) ? 1 : ((b.itemOrder < a.itemOrder) ? -1 : 0))) // 依照itemOrder從大到小排列
             .catch(error => console.error(error))
             .finally(() => { })
+    }
+
+    onSelectBrand(selectBrand: String) {
+        this.selectBrand = selectBrand;
+        this.brandOpen = !this.brandOpen;
+
+        const brandWithCate = this.cateList.find(item => item.name === this.selectCate && item.brandCode === selectBrand);
+
+        if (!brandWithCate) {
+            this.selectCate = "All"
+        }
     }
 }

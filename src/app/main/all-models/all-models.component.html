@@ -53,7 +53,7 @@
             <div class="sort__select-selected" (click)="brandOpen = !brandOpen"> {{ selectBrand }}<i class="be-icon be-icon-arrow-down" aria-hidden="true"></i></div>
             <ul class="sort__select-list scrollbar-ver is-thin">
                 <!-- [Start] Brand Array Data -->
-                <li class="sort__select-list__item" *ngFor="let brand of brandList; let i = index" (click)="selectBrand = brand.name; brandOpen = !brandOpen " ><a class="sort__select-list__link">{{ brand.name }}</a></li>
+                <li class="sort__select-list__item" *ngFor="let brand of brandList; let i = index" (click)="onSelectBrand(brand.name)" ><a class="sort__select-list__link">{{ brand.name }}</a></li>
                 <!-- [End] Brand Array Data -->
             </ul>
             </div>
@@ -65,7 +65,7 @@
             <div class="sort__select-selected" (click)="cateOpen = !cateOpen"> {{ selectCate }}<i class="be-icon be-icon-arrow-down" aria-hidden="true"></i></div>
             <ul class="sort__select-list scrollbar-ver is-thin">
                 <!-- [Start] Category Array Data -->
-                <li class="sort__select-list__item" *ngFor="let category of cateList; let i = index" (click)="selectCate = category.name; cateOpen = !cateOpen " ><a class="sort__select-list__link">{{ category.name }}</a></li>
+                <li class="sort__select-list__item" *ngFor="let category of cateList | cateFilterBrand: selectBrand; let i = index" (click)="selectCate = category.name; cateOpen = !cateOpen " ><a class="sort__select-list__link">{{ category.name }}</a></li>
                 <!-- [End] Category Array Data -->
             </ul>
             </div>

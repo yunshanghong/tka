@@ -28,10 +28,11 @@ export class FAQComponent implements OnInit, OnDestroy {
 
         this.infoService.getAllFaqs().subscribe(
             (response: Array<Object>) => {
-                this.allList = response.map((item: any) => {
-                    if (this.typeList.indexOf(item.typeName) === -1) { this.typeList.push(item.typeName) }
-                    return { ...item, open: false };
-                }).sort((a: any, b: any) => (a.order > b.order) ? 1 : ((b.order > a.order) ? -1 : 0)); // 依照order從小到大排列
+                this.allList = response.sort((a: any, b: any) => (a.order < b.order) ? 1 : ((b.order < a.order) ? -1 : 0)) // 依照order從大到小排列
+                    .map((item: any) => {
+                        if (this.typeList.indexOf(item.typeName) === -1) { this.typeList.push(item.typeName) }
+                        return { ...item, open: false };
+                    })
             },
             (error) => console.error(error),
             () => this.eventEmitterService.onLoadingComplete()

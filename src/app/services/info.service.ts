@@ -38,12 +38,12 @@ export class InfoService {
 		const variantId = banner[0].vehicle.variants[0].id;
 		const leasing = banner[0].financialProducts.leasing;
 		const newBanners = {
-			minTerm: { id: id, variantId: variantId, term: leasing.minTerm / 12 },
-			defaultTerm: { id: id, variantId: variantId, term: leasing.defaultTerm / 12 },
-			maxTerm: { id: id, variantId: variantId, term: leasing.maxTerm / 12 }
+			minTerm: { id: id, variantId: variantId, term: leasing.termSelection[0] / 12 },
+			defaultTerm: { id: id, variantId: variantId, term: leasing.termSelection[1] / 12 },
+			maxTerm: { id: id, variantId: variantId, term: leasing.termSelection[2] / 12 }
 		}
 
-		const result = { ...newBanners, displayCarInfos: [...banner[0].vehicle.variants[0].vehicleConfigItems], carId: banner[0].vehicle.id };
+		const result = { ...newBanners, displayCarInfos: [...banner[0].vehicle.variants[0].vehicleConfigItems], carId: banner[0].vehicle.id, carName: banner[0].vehicle.name };
 		for (var key in newBanners) {
 			const item = newBanners[key];
 			const tempResult: any = await this.getFinance(item.id, item.variantId, item.term * 12).toPromise();
@@ -63,15 +63,15 @@ export class InfoService {
 			const id = choices[key].financialProducts.leasing.id;
 			const variantId = choices[key].vehicle.variants[0].id;
 			const leasing = choices[key].financialProducts.leasing;
-			const minAmount: any = await this.getFinance(id, variantId, leasing.minTerm).toPromise();
-			const defaultAmount: any = await this.getFinance(id, variantId, leasing.defaultTerm).toPromise();
-			const maxAmount: any = await this.getFinance(id, variantId, leasing.maxTerm).toPromise();
+			const minAmount: any = await this.getFinance(id, variantId, leasing.termSelection[0]).toPromise();
+			const defaultAmount: any = await this.getFinance(id, variantId, leasing.termSelection[1]).toPromise();
+			const maxAmount: any = await this.getFinance(id, variantId, leasing.termSelection[2]).toPromise();
 			result.push({
 				index: Number(key),
 				displayCarImg: choices[key].vehicle.secondaryImageUrl,
-				minTerm: { id: id, variantId: variantId, term: leasing.minTerm / 12, monthlyPaymentAmount: minAmount.monthlyPaymentAmount },
-				defaultTerm: { id: id, variantId: variantId, term: leasing.defaultTerm / 12, monthlyPaymentAmount: defaultAmount.monthlyPaymentAmount },
-				maxTerm: { id: id, variantId: variantId, term: leasing.maxTerm / 12, monthlyPaymentAmount: maxAmount.monthlyPaymentAmount },
+				minTerm: { id: id, variantId: variantId, term: leasing.termSelection[0] / 12, monthlyPaymentAmount: minAmount.monthlyPaymentAmount },
+				defaultTerm: { id: id, variantId: variantId, term: leasing.termSelection[1] / 12, monthlyPaymentAmount: defaultAmount.monthlyPaymentAmount },
+				maxTerm: { id: id, variantId: variantId, term: leasing.termSelection[2] / 12, monthlyPaymentAmount: maxAmount.monthlyPaymentAmount },
 				name: choices[key].vehicle.name,
 				carId: choices[key].vehicle.id,
 			})
