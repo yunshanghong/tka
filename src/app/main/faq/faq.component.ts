@@ -35,7 +35,11 @@ export class FAQComponent implements OnInit, OnDestroy {
                     })
             },
             (error) => console.error(error),
-            () => this.eventEmitterService.onLoadingComplete()
+            () => {
+                console.log(this.typeList);
+                this.typeList.sort((a: any, b: any) => (a > b) ? 1 : ((b > a) ? -1 : 0)) // 依照typeName從大到小排列
+                this.eventEmitterService.onLoadingComplete()
+            }
         )
     }
 

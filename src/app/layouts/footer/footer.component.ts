@@ -17,7 +17,7 @@ export class FooterComponent implements OnInit {
         this.infoService.getAllFaqs().subscribe(
             (response: Array<Object>) => {
                 const typeList = [];
-                response.sort((a: any, b: any) => (a.order < b.order) ? 1 : ((b.order < a.order) ? -1 : 0)) // 依照order從大到小排列
+                response.sort((a: any, b: any) => (a.typeName > b.typeName) ? 1 : ((b.typeName > a.typeName) ? -1 : 0)) // 依照order從大到小排列
                     .map((item: any) => {
                         if (typeList.indexOf(item.typeName) === -1) {
                             typeList.push(item.typeName)
