@@ -25,7 +25,7 @@ import { AboutComponent } from './main/about/about.component';
 import { ApplyComponent } from './main/apply/apply.component';
 import { FAQComponent } from './main/faq/faq.component';
 import { ContactComponent } from './main/contact/contact.component';
-import { TypeFilterLengthPipe, TypeFilterObjectPipe, ModelFilterBrandPipe, ModelFilterCatePipe, CateFilterBrandPipe } from './shared/typeFilter.pipe';
+import { TypeFilterLengthPipe, TypeFilterObjectPipe, ModelFilterBrandPipe, ModelFilterCatePipe, CateFilterBrandPipe, SafeHtmlPipe } from './shared/typeFilter.pipe';
 
 // Routes Path and Components
 const routes: Routes = [
@@ -69,6 +69,7 @@ const routes: Routes = [
     ModelFilterBrandPipe,
     ModelFilterCatePipe,
     CateFilterBrandPipe,
+    SafeHtmlPipe,
     PopupComponent
   ],
   imports: [

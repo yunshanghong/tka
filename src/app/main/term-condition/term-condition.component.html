@@ -33,7 +33,7 @@
         <form class="form" id="termCondition">
             <div class="term">
                 <div class="term-condition__wrap">
-                    <div class="term-condition__inner scrollbar-ver" *ngIf="termAndCondition" [innerHTML]="termAndCondition"></div>
+                    <div class="term-condition__inner scrollbar-ver" *ngIf="termAndCondition" [innerHTML]="termAndCondition | safeHtml"></div>
                 </div>
                 <div class="term__ctrl"><a class="button btn-lightest" title="Decline" (click)="onPrevPage()">Decline</a>
                 <button class="button" (click)="onNextPage()">Accept</button>

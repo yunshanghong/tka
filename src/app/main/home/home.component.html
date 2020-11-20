@@ -271,7 +271,7 @@
 							<div class="card-box__img-box object-fit"><img class="swiper-lazy" src='assets/images/index/faq_{{i+1}}.jpg' alt="{{item.title}}"/></div>
 							<div class="card-box__text-box indent">
 								<h3 class="card-box__title clamp-3">{{item.title}}</h3>
-								<p class="clamp-4">{{item.content}}</p>
+								<p class="clamp-4" [innerHTML]="item.content | safeHtml"></p>
 							</div></a>
 						</div>
 						<!-- [End] FAQ Array Data -->

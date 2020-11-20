@@ -57,9 +57,9 @@ export class AllModelsComponent implements OnInit, AfterViewInit, OnDestroy {
 
         // 3. All Models
         this.infoService.getAllModels()
-            .then(
-                (response: Array<Object>) => this.showList = response.sort((a: any, b: any) => (a.itemOrder < b.itemOrder) ? 1 : ((b.itemOrder < a.itemOrder) ? -1 : 0)) // 依照itemOrder從大到小排列
-            )
+            .then((response: Array<Object>) => {
+                this.showList = response.sort((a: any, b: any) => (a.itemOrder < b.itemOrder) ? 1 : ((b.itemOrder < a.itemOrder) ? -1 : 0)) // 依照itemOrder從大到小排列
+            })
             .catch(error => console.error(error))
             .finally(() => { })
     }

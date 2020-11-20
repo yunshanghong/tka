@@ -159,7 +159,7 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
 
         // 4. FAQ
         this.infoService.getFAQ().subscribe(
-            (response: Array<Object>) => this.FAQs = response,
+            (response: Array<Object>) => this.FAQs = response.slice(0, 3),
             error => console.error(error),
             () => {
                 this.renderFAQ = true;

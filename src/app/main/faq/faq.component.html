@@ -72,7 +72,7 @@
                         </div>
                         <div class="faq__item__body scrollbar-ver is-thin">
                             <div class="cont-editor">
-                                <p class="cnt__txt" [innerHTML]="item.content"></p>
+                                <p class="cnt__txt" [innerHTML]="item.content | safeHtml"></p>
                             </div>
                         </div>
                         <!-- 點擊 .faq__item__ctrl 展開，請 .faq__item 加上 is-open；再次點擊會收起，請移除 .faq__item 上的 is-open-->

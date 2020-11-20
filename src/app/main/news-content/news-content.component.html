@@ -39,7 +39,7 @@
             </div>
             <div class="news-content__body">
                 <div class="cont-editor" *ngIf="contentInfo">
-                    <p class="cnt__txt">{{ contentInfo.content }}</p>
+                    <p class="cnt__txt" [innerHTML]="contentInfo.content | safeHtml"></p>
                     <h3 class="cnt__title">Notice</h3>
                     <ul class="cnt__list">
                     <li class="cnt__list-item">Cars participating Yaris Ativ 2 and C-HR Hybrid test drive a car like the quality of the new model car.</li>

@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Pipe({ name: 'typeFilterLength' })
 export class TypeFilterLengthPipe implements PipeTransform {
@@ -57,5 +58,14 @@ export class CateFilterBrandPipe implements PipeTransform {
             return obj;
         }
         return [{ brandCode: "All", code: "All", name: "All", order: 9999 }, ...obj.filter((item: any) => item.brandCode === findType)];
+    }
+}
+
+
+@Pipe({ name: 'safeHtml' })
+export class SafeHtmlPipe implements PipeTransform {
+    constructor(private sanitized: DomSanitizer) { }
+    transform(value) {
+        return this.sanitized.bypassSecurityTrustHtml(value);
     }
 }

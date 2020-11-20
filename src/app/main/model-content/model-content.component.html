@@ -92,7 +92,7 @@
             <div class="model__sec js-ani" appIsAni>
                 <h3 class="model__sec__title text-center">Feature</h3>
                 <div class="flex-center">
-                    <ul class="model__sec__list" *ngIf="carInfo" [innerHTML]="carInfo.vehicle.variants[currentVariantId].feature"></ul>
+                    <ul class="model__sec__list" *ngIf="carInfo" [innerHTML]="carInfo.vehicle.variants[currentVariantId].feature | safeHtml"></ul>
                 </div>
             </div>
             <div class="model__sec kinto-one js-ani" appIsAni>
