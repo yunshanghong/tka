@@ -83,10 +83,7 @@ export class AllModelsComponent implements OnInit, AfterViewInit, OnDestroy {
         this.selectBrand = selectBrand;
         this.brandOpen = !this.brandOpen;
 
-        const brandWithCate = this.cateList.find(item => item.name === this.selectCate && item.brandCode === selectBrand);
-
-        if (!brandWithCate) {
-            this.selectCate = "All"
-        }
+        const brandWithCate = this.cateList.find(item => item.brandCode === selectBrand);
+        this.selectCate = brandWithCate ? brandWithCate.name : "All";
     }
 }
