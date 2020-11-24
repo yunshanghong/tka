@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, AfterViewInit, ViewChild, OnDestroy, Renderer2 } from '@angular/core';
+import { Component, ElementRef, OnInit, AfterViewInit, ViewChild, OnDestroy, Renderer2, HostListener } from '@angular/core';
 
 import { EventEmitterService } from 'src/app/services/eventEmitter.service';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
@@ -73,6 +73,11 @@ export class ApplicationFormComponent implements OnInit, AfterViewInit, OnDestro
         this.renderer.setStyle(this.infoNum2.nativeElement as HTMLElement, "z-index", 100);
 
         this.onResetPosition();
+    }
+
+    @HostListener('window:resize', [])
+    onWindowResize() {
+        this.onResetPosition()
     }
 
     ngOnDestroy() {
