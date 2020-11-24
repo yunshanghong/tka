@@ -72,10 +72,17 @@ export class AllModelsComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     onModelsSearch(searchString: String) {
-        this.infoService.postModelsSearch(searchString).then(
-            (response: Array<Object>) => this.showList = response.sort((a: any, b: any) => (a.itemOrder < b.itemOrder) ? 1 : ((b.itemOrder < a.itemOrder) ? -1 : 0))) // 依照itemOrder從大到小排列
-            .catch(error => console.error(error))
-            .finally(() => { })
+        this.infoService.postModelsSearch(searchString).subscribe(
+            (response: Array<any>) => {
+                for (var i in response) {
+                    // 依照itemOrder從大到小排列
+                    response[i].variants.sort((a: any, b: any) => (a.itemOrder > b.itemOrder) ? 1 : ((b.itemOrder > a.itemOrder) ? -1 : 0));
+                }
+                this.showList = response;
+            },
+            error => console.error(error),
+            () => { }
+        )
     }
 
     onSelectBrand(selectBrand: String) {

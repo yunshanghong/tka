@@ -57,6 +57,7 @@ export class ModelContentComponent implements OnInit, AfterViewInit, OnDestroy {
         // 1. Car Info 
         this.infoService.getCarInfo(this.id).subscribe(
             (response: any) => {
+                response.vehicle.variants.sort((a: any, b: any) => (a.itemOrder > b.itemOrder) ? 1 : ((b.itemOrder > a.itemOrder) ? -1 : 0));
                 this.carInfo = response;
                 const configItems = response.vehicle.variants[this.currentVariantId].vehicleConfigItems;
                 const colorId = configItems.findIndex(item => item.itemType === 'Color');

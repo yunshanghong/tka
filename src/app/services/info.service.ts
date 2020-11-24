@@ -130,31 +130,21 @@ export class InfoService {
 		}
 
 		for (var i in allModels) {
-			const category = allModels[i].category;
-			if (category.order === 0) {
-				const vehicles = allModels[i].vehicles;
-				for (var j in vehicles) {
-					const vehicle = vehicles[j];
-					vehicle.brand = brandList[vehicle.category]
-					vehicle.variants.sort((a: any, b: any) => (a.itemOrder > b.itemOrder) ? 1 : ((b.itemOrder > a.itemOrder) ? -1 : 0));
-				}
-				newAllModels = vehicles;
+			const vehicles = allModels[i].vehicles;
+			for (var j in vehicles) {
+				const vehicle = vehicles[j];
+				vehicle.brand = brandList[vehicle.category]
+				newAllModels.push(vehicle)
 			}
 		}
 		return newAllModels;
 	}
 
-	async postModelsSearch(searchStr: String) {
-
-		const searchModels = await this.http.post(basicUrl + 'Search/SearchModelByKeyword',
+	postModelsSearch(searchStr: String) {
+		return this.http.post(basicUrl + 'Search/SearchModelByKeyword',
 			{ "keyword": searchStr },
 			{ headers: this.headers }
-		).toPromise();
-
-		for (var i in searchModels) {
-			searchModels[i].variants.sort((a: any, b: any) => (a.itemOrder > b.itemOrder) ? 1 : ((b.itemOrder > a.itemOrder) ? -1 : 0));
-		}
-		return searchModels;
+		);
 	}
 
 	//#endregion
@@ -165,10 +155,7 @@ export class InfoService {
 		return this.http.get(basicUrl + 'Vehicle/GetDetails', {
 			headers: this.headers,
 			params: { Id: carId }
-		}).pipe(map((data: any) => {
-			data.vehicle.variants.sort((a: any, b: any) => (a.itemOrder > b.itemOrder) ? 1 : ((b.itemOrder > a.itemOrder) ? -1 : 0));
-			return data;
-		}))
+		})
 	}
 
 	getMonthlyAmount(carVariantId) {
