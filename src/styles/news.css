@@ -464,6 +464,95 @@ screen and (min-width:64em) {
   }
 }
 
+.news-list__empty {
+  margin-top: 4.75rem;
+  margin-bottom: 3.125rem
+}
+
+.news-list__empty__icon {
+  margin-bottom: .625rem;
+  color: #fff;
+  text-shadow: 0 0 15px #99edf1
+}
+
+.news-list__empty__icon .be-icon {
+  font-size: 7.5rem;
+  line-height: 1
+}
+
+@media print,
+screen and (min-width:40em) {
+  .news-list__empty__icon {
+    margin-top: 4.75rem;
+    margin-bottom: 3.125rem
+  }
+}
+
+.news-list__empty__desc {
+  font-size: 1.5rem;
+  font-weight: 500
+}
+
+.news-list__empty.js-ani {
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+  transform: translateY(50px);
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: opacity, transform;
+  transition-property: opacity, transform, -webkit-transform;
+  -webkit-transition-delay: .3s;
+  transition-delay: .3s
+}
+
+.news-list__empty.js-ani .news-list__empty__icon {
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+  transform: translateY(50px);
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: opacity, transform;
+  transition-property: opacity, transform, -webkit-transform;
+  -webkit-transition-delay: .6s;
+  transition-delay: .6s
+}
+
+.news-list__empty.js-ani .news-list__empty__desc {
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+  transform: translateY(50px);
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: opacity, transform;
+  transition-property: opacity, transform, -webkit-transform;
+  -webkit-transition-delay: .9s;
+  transition-delay: .9s
+}
+
+.news-list__empty.js-ani.is-animated {
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none
+}
+
+.news-list__empty.js-ani.is-animated .news-list__empty__icon {
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none
+}
+
+.news-list__empty.js-ani.is-animated .news-list__empty__desc {
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none
+}
+
 .news-content {
   margin-bottom: 3.125rem;
   max-width: 84.625rem
