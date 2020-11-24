@@ -1,5 +1,4 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
 import { EventEmitterService } from 'src/app/services/eventEmitter.service';
 import { InfoService } from '../../services/info.service';
 
@@ -34,7 +33,7 @@ export class AllModelsComponent implements OnInit, AfterViewInit, OnDestroy {
     // 4. Search String 
     searchString: String = "";
 
-    constructor(private infoService: InfoService, private eventEmitterService: EventEmitterService, private router: Router) { }
+    constructor(private infoService: InfoService, private eventEmitterService: EventEmitterService) { }
 
     ngOnInit() {
         // 1. Brand Menu
@@ -83,7 +82,10 @@ export class AllModelsComponent implements OnInit, AfterViewInit, OnDestroy {
         this.selectBrand = selectBrand;
         this.brandOpen = !this.brandOpen;
 
-        const brandWithCate = this.cateList.find(item => item.brandCode === selectBrand);
-        this.selectCate = brandWithCate ? brandWithCate.name : "All";
+        const brandWithCate = this.cateList.find(item => item.name === this.selectCate && item.brandCode === selectBrand);
+
+        if (!brandWithCate) {
+            this.selectCate = "All"
+        }
     }
 }
