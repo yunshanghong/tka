@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, AfterViewInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, ElementRef, OnInit, AfterViewInit, ViewChild, OnDestroy, Renderer2 } from '@angular/core';
 
 import { EventEmitterService } from 'src/app/services/eventEmitter.service';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
@@ -21,14 +21,21 @@ export class ApplicationFormComponent implements OnInit, AfterViewInit, OnDestro
     orderModel: orderModelInterface;
     applyForm: FormGroup;
     isPopup: boolean = false;
+    infoIsOpen1: boolean = false;
+    infoIsOpen2: boolean = false;
 
+    @ViewChild('infoNum1') infoNum1: ElementRef;
+    @ViewChild('infoContent1') infoContent1: ElementRef;
+    @ViewChild('infoNum2') infoNum2: ElementRef;
+    @ViewChild('infoContent2') infoContent2: ElementRef;
     @ViewChild('formComponent') formComponent: ElementRef;
 
     constructor(
         private eventEmitterService: EventEmitterService,
         private infoService: InfoService,
         private router: Router,
-        private orderService: OrderService) { }
+        private orderService: OrderService,
+        private renderer: Renderer2,) { }
 
     ngOnInit() {
         // not follow the path then navigate to models
@@ -61,6 +68,11 @@ export class ApplicationFormComponent implements OnInit, AfterViewInit, OnDestro
 
     ngAfterViewInit() {
         this.eventEmitterService.onLoadingComplete();
+
+        this.renderer.setStyle(this.infoNum1.nativeElement as HTMLElement, "z-index", 100);
+        this.renderer.setStyle(this.infoNum2.nativeElement as HTMLElement, "z-index", 100);
+
+        this.onResetPosition();
     }
 
     ngOnDestroy() {
@@ -100,5 +112,23 @@ export class ApplicationFormComponent implements OnInit, AfterViewInit, OnDestro
             this.isPopup = true;
             console.error(error);
         });
+    }
+
+    onResetPosition() {
+        const infoContent1 = this.infoContent1.nativeElement as HTMLElement;
+        const infoContent2 = this.infoContent2.nativeElement as HTMLElement;
+        this.renderer.setStyle(infoContent1, 'top', "".concat((infoContent1.getBoundingClientRect().height * -1 + 1).toString(), "px"));
+        this.renderer.setStyle(infoContent1, 'left', "".concat((infoContent1.getBoundingClientRect().width / 2 * -1 + 13).toString(), "px"));
+        this.renderer.setStyle(infoContent2, 'top', "".concat((infoContent2.getBoundingClientRect().height * -1 + 1).toString(), "px"));
+        this.renderer.setStyle(infoContent2, 'left', "".concat((infoContent2.getBoundingClientRect().width / 2 * -1 + 13).toString(), "px"));
+    }
+
+    onInfoNum2Over() {
+        this.renderer.setStyle(this.infoNum1.nativeElement as HTMLElement, "z-index", 0);
+        this.infoIsOpen2 = true;
+    }
+    onInfoNum2Leave() {
+        this.renderer.setStyle(this.infoNum1.nativeElement as HTMLElement, "z-index", 100);
+        this.infoIsOpen2 = false;
     }
 }

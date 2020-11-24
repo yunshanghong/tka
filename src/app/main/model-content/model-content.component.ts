@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, OnDestroy, OnInit, ViewChild, Renderer2, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventEmitterService } from 'src/app/services/eventEmitter.service';
 import { InfoService } from 'src/app/services/info.service';
@@ -26,10 +26,16 @@ export class ModelContentComponent implements OnInit, AfterViewInit, OnDestroy {
     currentTenureId: number = 1;
     leasingInfo: any;
     amountInfo: any;
+    infoIsOpen1: boolean = false;
+    infoIsOpen2: boolean = false;
 
     // 4. Content Services
     serviceList: Array<Object> = [];
 
+    @ViewChild('infoNum1') infoNum1: ElementRef;
+    @ViewChild('infoContent1') infoContent1: ElementRef;
+    @ViewChild('infoNum2') infoNum2: ElementRef;
+    @ViewChild('infoContent2') infoContent2: ElementRef;
     @ViewChild('contentComponent') contentComponent: ElementRef;
 
     constructor(
@@ -37,7 +43,8 @@ export class ModelContentComponent implements OnInit, AfterViewInit, OnDestroy {
         private eventEmitterService: EventEmitterService,
         private router: Router,
         private route: ActivatedRoute,
-        private orderService: OrderService) { }
+        private orderService: OrderService,
+        private renderer: Renderer2,) { }
 
     ngOnInit() {
         this.id = this.route.snapshot.params["id"];
@@ -77,6 +84,16 @@ export class ModelContentComponent implements OnInit, AfterViewInit, OnDestroy {
 
     ngAfterViewInit() {
         this.eventEmitterService.onLoadingComplete();
+
+        this.renderer.setStyle(this.infoNum1.nativeElement as HTMLElement, "z-index", 100);
+        this.renderer.setStyle(this.infoNum2.nativeElement as HTMLElement, "z-index", 100);
+
+        this.onResetPosition();
+    }
+
+    @HostListener('window:resize', [])
+    onWindowResize() {
+        this.onResetPosition()
     }
 
     ngOnDestroy() {
@@ -153,5 +170,23 @@ export class ModelContentComponent implements OnInit, AfterViewInit, OnDestroy {
         };
 
         this.router.navigate(["/term-condition"]);
+    }
+
+    onResetPosition() {
+        const infoContent1 = this.infoContent1.nativeElement as HTMLElement;
+        const infoContent2 = this.infoContent2.nativeElement as HTMLElement;
+        this.renderer.setStyle(infoContent1, 'top', "".concat((infoContent1.getBoundingClientRect().height * -1 + 1).toString(), "px"));
+        this.renderer.setStyle(infoContent1, 'left', "".concat((infoContent1.getBoundingClientRect().width / 2 * -1 + 13).toString(), "px"));
+        this.renderer.setStyle(infoContent2, 'top', "".concat((infoContent2.getBoundingClientRect().height * -1 + 1).toString(), "px"));
+        this.renderer.setStyle(infoContent2, 'left', "".concat((infoContent2.getBoundingClientRect().width / 2 * -1 + 13).toString(), "px"));
+    }
+
+    onInfoNum2Over() {
+        this.renderer.setStyle(this.infoNum1.nativeElement as HTMLElement, "z-index", 0);
+        this.infoIsOpen2 = true;
+    }
+    onInfoNum2Leave() {
+        this.renderer.setStyle(this.infoNum1.nativeElement as HTMLElement, "z-index", 100);
+        this.infoIsOpen2 = false;
     }
 }

@@ -38,7 +38,7 @@
         <div class="model__wrap">
             <div class="model__head js-ani" appIsAni>
                 <div class="model__cover object-fit" *ngIf="carInfo">
-                    <img class="cart__item__cover-img lazyload" src="{{carInfo.vehicle.variants[currentVariantId].vehicleConfigItems[currentColorId].imageUrl}}" alt="{{ carInfo.vehicle.name }}">
+                    <img class="cart__item__cover-img lazyload" [src]="carInfo.vehicle.variants[currentVariantId].vehicleConfigItems[currentColorId].imageUrl" alt="{{ carInfo.vehicle.name }}">
                 </div>
                 <div class="model__config" *ngIf="carInfo">
                     <div class="model__config__item">
@@ -184,28 +184,28 @@
             <p class="model__config__notice">* Delivery timeframe (Fastest delivery after 1st COE bid). Car will be delivered at your preferred location.</p>
         </div>
         <div class="model__divide"></div>
-        <div class="model__config model__config--price" *ngIf="amountInfo">
+        <div class="model__config model__config--price" >
             <div class="model__config__item">
-            <div class="model__config__label">Monthly Rental Amount
-                <div class="tooltip-wrapper"><span class="tooltip__icon" data-toggle="tooltip-rental"><i class="be-icon be-icon-notice-circle"></i></span>
-                <div class="dropdown-pane" id="tooltip-rental" data-dropdown="data-dropdown" data-position="top" data-alignment="center" data-hover="true" data-hover-pane="true">
-                    <div class="tooltip__box"><strong>Note</strong>Monthly rates are subject to 7%GST.  Toyota Financial Services Singapore reserves the right to change the monthly lease rates without prior notice. T&amp;Cs apply.</div>
+                <div class="model__config__label">Monthly Rental Amount
+                    <div class="tooltip-wrapper"><span class="tooltip__icon" data-toggle="tooltip-rental" [ngClass]="{'hover': infoIsOpen1}" (mouseover)="infoIsOpen1 = true" (mouseleave)="infoIsOpen1 = false" #infoNum1><i class="be-icon be-icon-notice-circle"></i></span>
+                    <div class="dropdown-pane" id="tooltip-rental" data-dropdown="data-dropdown" data-position="top" data-alignment="center" data-hover="true" data-hover-pane="true" [ngClass]="{'is-open': infoIsOpen1}" #infoContent1>
+                        <div class="tooltip__box"><strong>Note</strong>Monthly rates are subject to 7%GST.  Toyota Financial Services Singapore reserves the right to change the monthly lease rates without prior notice. T&amp;Cs apply.</div>
+                    </div>
+                    </div>
                 </div>
+                <div class="model__config__info" *ngIf="amountInfo">
+                    <h3 class="model__config__info__title highlight">$ {{ amountInfo.monthlyPaymentAmount | number: '2.'}}</h3>/ month
                 </div>
-            </div>
-            <div class="model__config__info">
-                <h3 class="model__config__info__title highlight">$ {{ amountInfo.monthlyPaymentAmount | number: '2.'}}</h3>/ month
-            </div>
             </div>
             <div class="model__config__item">
             <div class="model__config__label">Refundable Security Deposit
-                <div class="tooltip-wrapper"><span class="tooltip__icon" data-toggle="tooltip-refundable"><i class="be-icon be-icon-notice-circle"></i></span>
-                <div class="dropdown-pane" id="tooltip-refundable" data-dropdown="data-dropdown" data-position="top" data-alignment="center" data-hover="true" data-hover-pane="true">
+                <div class="tooltip-wrapper"><span class="tooltip__icon" data-toggle="tooltip-refundable" [ngClass]="{'hover': infoIsOpen2}" (mouseover)="onInfoNum2Over()" (mouseleave)="onInfoNum2Leave()" #infoNum2><i class="be-icon be-icon-notice-circle"></i></span>
+                <div class="dropdown-pane" id="tooltip-refundable" data-dropdown="data-dropdown" data-position="top" data-alignment="center" data-hover="true" data-hover-pane="true" [ngClass]="{'is-open': infoIsOpen2}" #infoContent2>
                     <div class="tooltip__box"><strong>Note</strong>You will receive a link to make payment for a two months refundable security deposit amount after your credit has been approved. The security deposit will be refunded at the end of the lease tenure. T&amp;Cs apply.</div>
                 </div>
                 </div>
             </div>
-            <div class="model__config__info">
+            <div class="model__config__info" *ngIf="amountInfo">
                 <h3 class="model__config__info__title">$ {{ amountInfo.securityDepositAmount | number: '2.' }}</h3>
             </div>
             </div>

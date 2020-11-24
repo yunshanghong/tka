@@ -132,8 +132,8 @@
                     <div class="model__config model__config--price">
                         <div class="model__config__item model__config__item--refundable">
                         <div class="model__config__label">Refundable Security Deposit
-                            <div class="tooltip-wrapper"><span class="tooltip__icon" data-toggle="tooltip-refundable"><i class="be-icon be-icon-notice-circle"></i></span>
-                            <div class="dropdown-pane" id="tooltip-refundable" data-dropdown="data-dropdown" data-position="top" data-alignment="center" data-hover="true" data-hover-pane="true">
+                            <div class="tooltip-wrapper"><span class="tooltip__icon" data-toggle="tooltip-refundable" [ngClass]="{'hover': infoIsOpen1}" (mouseover)="infoIsOpen1 = true" (mouseleave)="infoIsOpen1 = false" #infoNum1><i class="be-icon be-icon-notice-circle"></i></span>
+                            <div class="dropdown-pane" id="tooltip-refundable" data-dropdown="data-dropdown" data-position="top" data-alignment="center" data-hover="true" data-hover-pane="true" [ngClass]="{'is-open': infoIsOpen1}" #infoContent1>
                                 <div class="tooltip__box"><strong>Note</strong>You will receive a link to make payment for a two months refundable security deposit amount after your credit has been approved. The security deposit will be refunded at the end of the lease tenure. T&amp;Cs apply.</div>
                             </div>
                             </div>
@@ -144,8 +144,8 @@
                         </div>
                         <div class="model__config__item model__config__item--rental">
                         <div class="model__config__label">Monthly Rental Amount
-                            <div class="tooltip-wrapper"><span class="tooltip__icon" data-toggle="tooltip-rental"><i class="be-icon be-icon-notice-circle"></i></span>
-                            <div class="dropdown-pane" id="tooltip-rental" data-dropdown="data-dropdown" data-position="top" data-alignment="center" data-hover="true" data-hover-pane="true">
+                            <div class="tooltip-wrapper"><span class="tooltip__icon" data-toggle="tooltip-rental" [ngClass]="{'hover': infoIsOpen2}" (mouseover)="onInfoNum2Over()" (mouseleave)="onInfoNum2Leave()" #infoNum2><i class="be-icon be-icon-notice-circle"></i></span>
+                            <div class="dropdown-pane" id="tooltip-rental" data-dropdown="data-dropdown" data-position="top" data-alignment="center" data-hover="true" data-hover-pane="true" [ngClass]="{'is-open': infoIsOpen2}" #infoContent2>
                                 <div class="tooltip__box"><strong>Note</strong>Monthly rates are inclusive of annual Road Tax, comprehensive motor insurance , scheduled maintenance and replacement vehicle. Toyota Financial Services Singapore reserves the right to change the monthly lease rates without prior notice. T&amp;Cs apply.</div>
                             </div>
                             </div>
