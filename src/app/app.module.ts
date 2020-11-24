@@ -25,6 +25,7 @@ import { AboutComponent } from './main/about/about.component';
 import { ApplyComponent } from './main/apply/apply.component';
 import { FAQComponent } from './main/faq/faq.component';
 import { ContactComponent } from './main/contact/contact.component';
+import { TermsComponent } from './main/terms/terms.component';
 import { TypeFilterLengthPipe, TypeFilterObjectPipe, ModelFilterBrandPipe, ModelFilterCatePipe, CateFilterBrandPipe, SafeHtmlPipe } from './shared/typeFilter.pipe';
 
 // Routes Path and Components
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'apply', component: ApplyComponent },
   { path: 'faq', component: FAQComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'terms', component: TermsComponent },
   { path: '**', redirectTo: "/" },
 ];
 
@@ -64,6 +66,7 @@ const routes: Routes = [
     ApplyComponent,
     FAQComponent,
     ContactComponent,
+    TermsComponent,
     TypeFilterLengthPipe,
     TypeFilterObjectPipe,
     ModelFilterBrandPipe,

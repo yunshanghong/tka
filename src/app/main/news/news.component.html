@@ -30,7 +30,14 @@
     </div>
     <div class="grid-container">
         <h2 class="sec-title__title text-center">News</h2>
-        <div class="swiper-box news-swiper">
+        <!-- [START] 新聞列表空值-->
+        <div class="news-list__empty js-ani" *ngIf="!topList" appIsAni >
+            <hr class="sec-divide divide--top">
+            <div class="news-list__empty__icon text-center"><i class="be-icon be-icon-news-release-zero" aria-hidden="true"></i></div>
+            <p class="news-list__empty__desc text-center">There are no current news at the moment.</p>
+        </div>
+        <!-- [END] 新聞列表空值-->
+        <div class="swiper-box news-swiper" *ngIf="topList">
             <div class="swiper-container" id="news-carousel" #newsCarousel>
                 <div class="swiper-wrapper" >
                     <!-- [Start] topList Array Data 0~2 -->
@@ -53,19 +60,21 @@
             </div>
             <div class="swiper-pagination" #newsSwiperPagination></div>
         </div>
-        <div class="news-list__box js-ani" appIsAni>
+        <div class="news-list__box js-ani" appIsAni >
             <!-- [Start] downList Array Data 3~ -->
-            <a class="card-box" [routerLink]="['/news-content', news.id]" title="{{ news.title }}" *ngFor="let news of downList; let i = index">
-                <div class="hover-refl"><span class="hover-refl__light"></span></div>
-                <div class="card-box__img-box object-fit">
-                    <img class="cart__item__cover-img lazyload" [src]="news.listingImageUrl" alt="{{ news.title }}"/>
-                </div>
-                <div class="card-box__text-box indent">
-                    <p class="card-box__type" [innerHTML]="news.typeName"></p>
-                    <h3 class="card-box__title"><span class="clamp-3">{{ news.title }}</span></h3>
-                    <p class="card-box__date">{{ news.displayDate | date}}</p>
-                </div>
-            </a>
+            <div *ngIf="downList">
+                <a class="card-box" [routerLink]="['/news-content', news.id]" title="{{ news.title }}" *ngFor="let news of downList; let i = index">
+                    <div class="hover-refl"><span class="hover-refl__light"></span></div>
+                    <div class="card-box__img-box object-fit">
+                        <img class="cart__item__cover-img lazyload" [src]="news.listingImageUrl" alt="{{ news.title }}"/>
+                    </div>
+                    <div class="card-box__text-box indent">
+                        <p class="card-box__type" [innerHTML]="news.typeName"></p>
+                        <h3 class="card-box__title"><span class="clamp-3">{{ news.title }}</span></h3>
+                        <p class="card-box__date">{{ news.displayDate | date}}</p>
+                    </div>
+                </a>
+            </div>
             <!-- [End] downList Array Data 3~ -->
         </div>
         <!-- <div class="loading">

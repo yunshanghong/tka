@@ -1,0 +1,228 @@
+@charset "UTF-8";
+
+.radius-bar-deco.top-right.terms-deco {
+  top: 100vh
+}
+
+.radius-bar-deco.bottom-left.terms-deco-1 {
+  top: 50%;
+  bottom: auto
+}
+
+.sec-terms {
+  position: relative;
+  margin-right: auto;
+  margin-bottom: 3.125rem;
+  margin-left: auto;
+  max-width: 101.9375rem
+}
+
+@media print,
+screen and (min-width:64em) {
+  .sec-terms {
+    margin-bottom: 9.375rem
+  }
+}
+
+.terms-content.js-ani .breadcrumbs {
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+  transform: translateY(50px);
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: opacity, transform;
+  transition-property: opacity, transform, -webkit-transform;
+  -webkit-transition-delay: .3s;
+  transition-delay: .3s
+}
+
+.terms-content.js-ani .terms-content__info {
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+  transform: translateY(50px);
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: opacity, transform;
+  transition-property: opacity, transform, -webkit-transform;
+  -webkit-transition-delay: .6s;
+  transition-delay: .6s
+}
+
+.terms-content.js-ani .terms-content__body {
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+  transform: translateY(50px);
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: opacity, transform;
+  transition-property: opacity, transform, -webkit-transform;
+  -webkit-transition-delay: .9s;
+  transition-delay: .9s
+}
+
+.terms-content.js-ani.is-animated .breadcrumbs {
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none
+}
+
+.terms-content.js-ani.is-animated .terms-content__info {
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none
+}
+
+.terms-content.js-ani.is-animated .terms-content__body {
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none
+}
+
+.terms-content {
+  margin-bottom: 3.125rem;
+  max-width: 84.625rem
+}
+
+@media print,
+screen and (min-width:64em) {
+  .terms-content {
+    margin-bottom: 7.5rem
+  }
+}
+
+.terms-content__info {
+  padding: 1.875rem 0
+}
+
+@media screen and (min-width:75em) {
+  .terms-content__info {
+    padding: 2.8125rem 0
+  }
+}
+
+.terms-content__title {
+  margin-bottom: .43em;
+  font-weight: 500
+}
+
+.terms-content__date {
+  margin-bottom: 0
+}
+
+.terms-content__body {
+  margin-bottom: 1.875rem;
+  padding: 1.875rem 0;
+  font-size: 1.125rem;
+  border-top: 1px solid;
+  border-color: rgba(0, 112, 141, .5)
+}
+
+@media print,
+screen and (min-width:64em) {
+  .terms-content__body {
+    margin-bottom: 4.6875rem;
+    padding: 4.6875rem 0;
+    text-align: justify
+  }
+}
+
+.terms-list {
+  margin-left: 0
+}
+
+.terms-list,
+.terms-list .type-number {
+  counter-reset: item;
+  margin-left: 0
+}
+
+.terms-list .type-number>li,
+.terms-list>li {
+  position: relative;
+  display: block
+}
+
+.terms-list .type-number>li::before,
+.terms-list>li::before {
+  content: counters(item, ".") ". ";
+  counter-increment: item;
+  position: absolute;
+  top: 0;
+  left: 0
+}
+
+.terms-list ol.no-bullet>li {
+  padding-left: 0
+}
+
+.terms-list ol.no-bullet>li::before {
+  display: none
+}
+
+.terms-list ol[type='a'] {
+  counter-reset: letter;
+  margin-left: 0
+}
+
+.terms-list ol[type='a']>li {
+  position: relative;
+  display: block
+}
+
+.terms-list ol[type='a']>li::before {
+  content: "("counter(letter, lower-alpha) ") ";
+  counter-increment: letter;
+  position: absolute;
+  top: 0;
+  left: 0
+}
+
+.terms-list li {
+  margin-bottom: 1.25rem
+}
+
+.terms-list li li {
+  padding-left: 3.125rem
+}
+
+.terms-list li ol,
+.terms-list li ul {
+  margin-top: 1.25rem
+}
+
+.terms-list a {
+  text-decoration: underline
+}
+
+.terms-list__item {
+  font-size: 1.125rem
+}
+
+li.terms-list__item {
+  margin-bottom: 3.125rem
+}
+
+.terms-list__item::before {
+  visibility: hidden
+}
+
+.terms-list__title {
+  margin-bottom: .9375rem;
+  padding-left: 2.8125rem;
+  font-weight: 700
+}
+
+.terms-list__title::before {
+  content: counters(item, ".") ". ";
+  position: absolute;
+  top: 0;
+  left: 0
+}
+
+/*# sourceMappingURL=maps/terms-to-use.min.css.map */

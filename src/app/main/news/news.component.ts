@@ -1,4 +1,4 @@
-import { AfterViewChecked, AfterViewInit, Component, ElementRef, OnDestroy, Renderer2, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { EventEmitterService } from 'src/app/services/eventEmitter.service';
@@ -11,7 +11,7 @@ import Swiper from 'swiper';
     styleUrls: ["../../../styles/news.css"],
     encapsulation: ViewEncapsulation.None
 })
-export class NewsComponent implements AfterViewInit, OnDestroy, AfterViewChecked {
+export class NewsComponent implements OnInit, OnDestroy, AfterViewChecked {
 
     topList: Array<Object>;
     downList: Array<Object>;
@@ -30,7 +30,7 @@ export class NewsComponent implements AfterViewInit, OnDestroy, AfterViewChecked
         private route: ActivatedRoute,
         private sanitizer: DomSanitizer) { }
 
-    ngAfterViewInit() {
+    ngOnInit() {
         if (this.route.snapshot.queryParams.type) {
             this.showType = this.route.snapshot.queryParams.type
         };
@@ -51,13 +51,15 @@ export class NewsComponent implements AfterViewInit, OnDestroy, AfterViewChecked
             (error) => { console.error(error) },
             () => {
                 this.renderList = true;
-                this.eventEmitterService.onLoadingComplete()
             }
         )
     }
 
     ngAfterViewChecked() {
-        this.renderList && this.onBuildFaq();
+        if (this.renderList) {
+            this.eventEmitterService.onLoadingComplete();
+            this.onBuildFaq();
+        }
     }
 
     ngOnDestroy() {
