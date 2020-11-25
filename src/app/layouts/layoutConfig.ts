@@ -1,3 +1,5 @@
+import { environment } from 'src/environments/environment';
+
 export const defaultNavigationConfig = [{
     title: 'WHAT IS KINTO ONE',
     isOpen: false,
@@ -44,7 +46,7 @@ export const defaultNavigationConfig = [{
 },
 {
     title: 'MY ORDER',
-    url: 'https://status-uat.toyotafinancial.sg/?module=applicationstatus',
+    url: environment.myOrderUrl,
     outLink: true
 },
 {
