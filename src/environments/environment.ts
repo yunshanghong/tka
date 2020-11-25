@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  myOrderUrl: '',
+  myOrderUrl: 'https://status-uat.toyotafinancial.sg/?module=applicationstatus',
   production: false
 };
 
