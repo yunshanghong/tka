@@ -37,7 +37,8 @@
                 <div class="about__service__item grid-x" [ngClass]="{'without-cover': !reason.listingImageUrl}" *ngFor="let reason of reasons; let i = index">
                     <div class="about__service__cover" *ngIf="reason.listingImageUrl">
                         <div class="object-fit">
-                            <img class="about__service__cover-img lazyload" [src]="reason.listingImageUrl" alt=""/>
+                            <img class="about__service__cover-img lazyload"  alt="" [src]="reason.listingImageUrl" (load)="reasons[i].imageLoaded = true" [hidden]="!reason.imageLoaded"/>
+                            <img class="about__service__cover-img lazyload"  alt="" src="assets/images/default.jpg" [hidden]="reason.imageLoaded"/>
                         </div>
                     </div>
                     <div class="about__service__info">

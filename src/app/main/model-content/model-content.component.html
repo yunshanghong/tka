@@ -38,7 +38,8 @@
         <div class="model__wrap">
             <div class="model__head js-ani" appIsAni>
                 <div class="model__cover object-fit" *ngIf="carInfo">
-                    <img class="cart__item__cover-img lazyload" [src]="carInfo.vehicle.variants[currentVariantId].vehicleConfigItems[currentColorId].imageUrl" alt="{{ carInfo.vehicle.name }}">
+                    <img class="cart__item__cover-img lazyload" [src]="carInfo.vehicle.variants[currentVariantId].vehicleConfigItems[currentColorId].imageUrl" (load)="carInfo.vehicle.variants[currentVariantId].vehicleConfigItems[currentColorId].imageLoaded = true" [hidden]="!carInfo.vehicle.variants[currentVariantId].vehicleConfigItems[currentColorId].imageLoaded" alt="{{ carInfo.vehicle.name }}">
+                    <img class="cart__item__cover-img lazyload" src="assets/images/default.jpg" [hidden]="carInfo.vehicle.variants[currentVariantId].vehicleConfigItems[currentColorId].imageLoaded" alt="{{ carInfo.vehicle.name }}">
                 </div>
                 <div class="model__config" *ngIf="carInfo">
                     <div class="model__config__item">

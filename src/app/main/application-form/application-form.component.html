@@ -86,7 +86,10 @@
                 </div>
                 <h3 class="application-form__title text-center">Rental Details</h3>
                 <div class="model__box card-box" *ngIf="orderModel">
-                    <div class="model__cover object-fit-contain"><img class="cart__item__cover-img lazyload" [src]="orderModel.colorImage" alt="{{ orderModel.carName }}"></div>
+                    <div class="model__cover object-fit-contain">
+                        <img class="cart__item__cover-img lazyload" [src]="orderModel.colorImage" (load)="orderModel.imageLoaded = true" [hidden]="!orderModel.imageLoaded" alt="{{ orderModel.carName }}">
+                        <img class="cart__item__cover-img lazyload" src="assets/images/default.jpg" [hidden]="orderModel.imageLoaded" alt="{{ orderModel.carName }}">
+                    </div>
                     <div class="model__box__inner">
                     <div class="model__config model__config--detial scrollbar-model is-thin">
                         <div class="model__config__item">

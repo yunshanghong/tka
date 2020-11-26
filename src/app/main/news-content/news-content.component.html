@@ -30,7 +30,10 @@
         </div>
         <div class="grid-container" >
             <div class="news-content__head" *ngIf="contentInfo">
-                <div class="news-content__cover object-fit" ><img class="cart__item__cover-img lazyload" [src]="contentInfo.detailBannerImageUrl" alt="{{ carcontentInfo && contentInfo.title }}"></div>
+                <div class="news-content__cover object-fit" >
+                    <img class="cart__item__cover-img lazyload" [src]="contentInfo.detailBannerImageUrl" (load)="contentInfo.imageLoaded = true" [hidden]="!contentInfo.imageLoaded" alt="{{ carcontentInfo && contentInfo.title }}">
+                    <img class="cart__item__cover-img lazyload" src="assets/images/common_cont.jpg" [hidden]="contentInfo.imageLoaded" alt="{{ carcontentInfo && contentInfo.title }}">
+                </div>
                 <div class="news-content__info" >
                     <p class="news-content__type text-center">{{ contentInfo.typeName }}</p>
                     <h2 class="news-content__title text-center">{{ contentInfo.title }}</h2>

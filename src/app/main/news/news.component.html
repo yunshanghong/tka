@@ -45,7 +45,7 @@
                         <a class="card-box" [routerLink]="['/news-content', news.id ]" title="{{ news.title }}"  >
                             <div class="hover-refl"><span class="hover-refl__light"></span></div>
                             <div class="card-box__img-box object-fit">
-                                <img class="cart__item__cover-img lazyload" [src]="news.listingImageUrl" alt="{{ news.title }}"/>
+                                <img class="cart__item__cover-img lazyload" [src]="news.listingImageUrl || 'assets/images/common_list.jpg'" alt="{{ news.title }}"/>
                             </div>
                             <div class="card-box__text-box indent">
                                 <p class="card-box__type" [innerHTML]="news.typeName"></p>
@@ -66,7 +66,8 @@
                 <a class="card-box" [routerLink]="['/news-content', news.id]" title="{{ news.title }}" *ngFor="let news of downList; let i = index">
                     <div class="hover-refl"><span class="hover-refl__light"></span></div>
                     <div class="card-box__img-box object-fit">
-                        <img class="cart__item__cover-img lazyload" [src]="news.listingImageUrl" alt="{{ news.title }}"/>
+                        <img class="cart__item__cover-img lazyload" [src]="news.listingImageUrl" (load)="downList[i].imageLoaded = true" [hidden]="!news.imageLoaded" alt="{{ news.title }}"/>
+                        <img class="cart__item__cover-img lazyload" src="assets/images/common_list.jpg" [hidden]="news.imageLoaded" alt="{{ news.title }}"/>
                     </div>
                     <div class="card-box__text-box indent">
                         <p class="card-box__type" [innerHTML]="news.typeName"></p>
