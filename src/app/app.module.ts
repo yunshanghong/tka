@@ -82,7 +82,7 @@ const routes: Routes = [
     NgxUsefulSwiperModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes, {useHash: true}),
+    RouterModule.forRoot(routes),
   ],
   providers: [],
   bootstrap: [AppComponent]

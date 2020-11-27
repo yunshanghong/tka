@@ -21,6 +21,9 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 *******In UAT environment Run `ng build`, in official environment Run `ng build --prod`. The only difference is myOrderUrl in Header Component which can also be changed in `src/environments/environment.prod.ts` and `src/environments/environment.ts`.
 
+******* Set up IIS environment: 
+******* Download Windows "URL Rewrite" Tool in `https://www.iis.net/downloads/microsoft/url-rewrite`
+
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
