@@ -1122,7 +1122,9 @@ screen and (min-width:64em) {
 .fixed-bottom-nav .button {
   margin-bottom: 0;
   width: 100%;
-  height: 45px
+  height: 3.75rem;
+  font-size: 1.25rem;
+  font-weight: 700
 }
 
 /*# sourceMappingURL=maps/model.min.css.map */

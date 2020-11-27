@@ -101,7 +101,9 @@
                 <div class="model__sec__circle-icon circle-icon-box">
                     <!-- [Start] Services Array Data -->
                     <div class="circle-icon-box__item" *ngFor="let service of serviceList; let i = index">
-                        <div class="circle-icon-box__icon-box"><i class="be-icon absolute-center be-icon-insurance" aria-hidden="true"></i></div>
+                        <div class="circle-icon-box__icon-box">
+                            <img class="be-icon absolute-center be-icon-insurance" [src]="service.listingImageUrl"/>
+                        </div>
                         <h4 class="circle-icon-box__title">{{ service.shortDescription }}</h4>
                         <div class="circle-icon-box__desc">
                         </div>
