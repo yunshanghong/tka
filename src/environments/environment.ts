@@ -4,6 +4,7 @@
 
 export const environment = {
   myOrderUrl: 'https://status-uat.toyotafinancial.sg/?module=applicationstatus',
+  backendUrl: 'https://api-uat.kinto-sg.com/kinto-api/api/',
   production: true
 };
 

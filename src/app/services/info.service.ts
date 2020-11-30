@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
-const basicUrl = "https://api-uat.kinto-sg.com/kinto-api/api/";
-
+const basicUrl = environment.backendUrl;
 
 @Injectable({ providedIn: 'root' })
 export class InfoService {
