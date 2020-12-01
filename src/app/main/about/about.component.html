@@ -59,7 +59,7 @@
                 <div class="cell medium-6 large-4" *ngFor="let service of services; let i = index">
                     <div class="circle-icon-box__item">
                         <div class="circle-icon-box__icon-box">
-                            <img class="be-icon absolute-center be-icon-maintenance" [src]="service.listingImageUrl"/>
+                            <img class="absolute-center lazyload" [src]="service.listingImageUrl || 'assets/images/icon/feature_maintenance@2x.png'" width="60"/>
                         </div>
                         <div class="circle-icon-box__wrap">
                             <h4 class="circle-icon-box__title">{{ service.shortDescription }}</h4>
