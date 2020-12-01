@@ -120,19 +120,12 @@ export class InfoService {
 		}).toPromise();
 
 		var newAllModels = [];
-		var brandList = {};
 		for (var i in allModels) {
 			const category = allModels[i].category;
-			if (category.order !== 0) {
-				brandList[category.code] = category.brandCode;
-			}
-		}
-
-		for (var i in allModels) {
 			const vehicles = allModels[i].vehicles;
 			for (var j in vehicles) {
 				const vehicle = vehicles[j];
-				vehicle.brand = brandList[vehicle.category]
+				vehicle.brand = category.brandCode;
 				newAllModels.push(vehicle)
 			}
 		}
