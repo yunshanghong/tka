@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { EventEmitterService } from 'src/app/services/eventEmitter.service';
 import { InfoService } from 'src/app/services/info.service';
 import { contactNumber } from '../../shared/contactNumber';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-contact',
@@ -16,6 +17,7 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
     isOpenNum: boolean = false;
     selectedNum: string = '+65'
     contactForm: FormGroup;
+    contactEmail: string = environment.contactEmail;
 
     @ViewChild('contactComponent') contactComponent: ElementRef;
 

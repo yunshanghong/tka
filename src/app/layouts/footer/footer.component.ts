@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { InfoService } from 'src/app/services/info.service';
 import { defaultFooterConfig } from '../layoutConfig';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-footer',
@@ -10,6 +11,9 @@ import { defaultFooterConfig } from '../layoutConfig';
 export class FooterComponent implements OnInit {
 
     Menus: Array<any> = defaultFooterConfig
+    contactEmail: string = environment.contactEmail;
+    fbUrl: string = environment.facebookUrl;
+    igUrl: string = environment.igUrl;
 
     constructor(private router: Router, private infoService: InfoService) { }
 
